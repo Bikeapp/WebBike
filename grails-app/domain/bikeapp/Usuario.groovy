@@ -4,16 +4,6 @@ import groovy.transform.ToString
 @ToString
 class Usuario {
 
-<<<<<<< HEAD
-	static hasMany = [puntos: PuntoInteres]
-
-	String usuario
-	String email
-	String contraseña
-	String fecha
-
-    static constraints = {
-=======
 	static hasMany = [puntos: PuntoInteres, fotos: Foto]
 
 	String usuario		//Nombre de usuario para login
@@ -32,6 +22,6 @@ class Usuario {
     	contraseña(nullable:false)
     	fecha(nullable:false)
     	interes(nullable:false)
->>>>>>> modelo
+
     }
 }
