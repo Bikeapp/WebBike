@@ -5,9 +5,9 @@ import groovy.transform.ToString
 class Parche {
 
 	static hasMany = [ usuarios : Usuario , comentarios: Comentario]
+	static belongsTo = [ lider : Usuario ]
 	
 	String nombre
-	Usuario lider
 	String descripcion
 
     static constraints = {
