@@ -15,5 +15,6 @@ class PuntoInteres {
 
     static constraints = {
     	usuario nullable: true
+    	ruta nullable:true
     }
 }
