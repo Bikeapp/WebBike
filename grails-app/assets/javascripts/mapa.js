@@ -1,5 +1,5 @@
 var map;
-  	
+
   	function initMap() {
 		var myLatlng = new google.maps.LatLng(4.5,-74);
 		var options = {
@@ -18,7 +18,7 @@ var map;
     	    icon: '../assets/'+tipo+'_icon.png',
     	});
     }
-    function test(puntosJSON,parchesJSON){
+   function test(puntosJSON,parchesJSON){
     	initMap();
     	for (var i=0; i < puntosJSON.length; i++) {
     		var punto = puntosJSON[i];
@@ -42,3 +42,4 @@ var map;
 			addMarkerToMap(punto.nombre,parseInt(punto.lat),parseInt(punto.lon),"parking");
 		}
 	}
+}
