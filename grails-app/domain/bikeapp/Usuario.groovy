@@ -22,6 +22,7 @@ class Usuario {
     	contraseña(nullable:false)
     	fecha(nullable:false)
     	interes(nullable:false)
+    	puntos(nullable:true)
 
     }
 }
