@@ -8,7 +8,7 @@ class Usuario {
 
 	String usuario		//Nombre de usuario para login
 	String email		//Email del usuario
-	String contraseña	//Contraseña para login
+	String contrasena	//Contraseña para login
 	String fecha		//Fecha nacimiento
 	String interes		//Lista de intereses
 	String nombre		//Nombre real del usuario
@@ -19,10 +19,15 @@ class Usuario {
     static constraints = {
     	usuario(nullable:false)
     	email(nullable:false)
-    	contraseña(nullable:false)
+    	contrasena(nullable:false)
     	fecha(nullable:false)
     	interes(nullable:false)
     	puntos(nullable:true)
+		nombre(nullable:true)
+		sexo(nullable:true)
+		foto(nullable:true)
+		mensaje(nullable:true)
+		rol(nullable:true)
 
     }
 }

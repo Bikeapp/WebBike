@@ -9,7 +9,7 @@
 	    	</div>
 	        <div>
 	            <g:each var="users" in="${userList}">
-	            	<p>El usuario ${users.usuario} nacio en ${users.fecha}. Su email es ${users.email} y la contraseña es ${users.contraseña}</p>
+	            	<p>El usuario ${users.usuario} nacio en ${users.fecha}. Su email es ${users.email} y la contraseña es ${users.contrasena}</p>
 	            	</br>
 
 	            </g:each>
