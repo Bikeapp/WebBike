@@ -30,7 +30,8 @@
         </div>
         <div class="topMenu">?</div>
         <div class="topMenu"><g:link url="${resource(dir:'mapa', file:'index.gsp')}">Mapa</g:link></div>
-        <div class="topMenu"><g:link url="${resource(dir:'usuario', file:'index.gsp')}">Perfil</g:link></div>
+        <div class="topMenu"><g:link url="${resource(dir:'usuario', file:'registro.gsp')}">Registro</g:link></div>
+        <div class="topMenu"><g:link url="${resource(dir:'foto', file:'index.gsp')}">Fotos</g:link></div>
     	<div class="topMenu">Contacto</div>
       </div>
     </nav>
