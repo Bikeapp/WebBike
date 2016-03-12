@@ -3,9 +3,11 @@ package bikeapp
 class FotoController {
 
    def index(Integer max) {
-      
+      if(session.user == null){
+         accesoDenegado()
+      }
       params.max = Math.min(max ?: 10, 100)
-      respond Foto.list(params), model:[FotoInstanceCount: Foto.count()]
+      //respond Foto.list(params), model:[FotoInstanceCount: Foto.count()]
    }
 
    def create(){
@@ -30,4 +32,8 @@ class FotoController {
    }
 
 
+   def accesoDenegado(){
+      log.error("Acceso denegado, no hay una sesion activa")
+      return response.sendError(400)
+   }
 }

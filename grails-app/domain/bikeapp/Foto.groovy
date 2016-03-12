@@ -1,21 +1,23 @@
 package bikeapp
 import groovy.transform.ToString
+import java.util.Date
 
 @ToString
 class Foto {
 
-	static belongsTo = [ usuario: Usuario ]
-	static hasMany = [ comentarios : Comentario ]
-	
-	String fecha
-	String lat
-	String lon
+   static belongsTo = [ usuario: Usuario ]
+   static hasMany = [ comentarios : Comentario ]
 
-    static constraints = {
-    	usuario(nullable:false)
-    	comentarios(nullable:true)
-    	fecha(nullable:false)
-    	lat(nullable:true)
-    	lon(nullable:true)
-    }
+   Date dateCreated
+   String lat
+   String lon
+   byte[] imagen
+
+   static constraints = {
+      imagen(nullable:false, maxSize:1073741824)
+      usuario(nullable:true)
+      comentarios(nullable:true)
+      lat(nullable:true)
+      lon(nullable:true)
+   }
 }
