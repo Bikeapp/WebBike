@@ -7,7 +7,7 @@ class UsuarioController {
     
     def registro() {
         render(params)
-        session['user']=params.usuario
+        
         def users = new Usuario(params)
         users.save(failOnError: true)
         session['id']=users.id
