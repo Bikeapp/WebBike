@@ -73,6 +73,7 @@
         <p>La movilidad empieza desde tus dedos.</p>
         </br></br></br>
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Descargala ya! &raquo;</a></p>
+         <g:link controller="Foto" action="index">Hacia las fotos</g:link>
       </div>
     </div>
 
