@@ -1,18 +1,7 @@
 <!DOCTYPE html>
-<asset:stylesheet href="bootstrap.min.css"/>
-<asset:stylesheet href="bikeApp.css"/>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="../../favicon.ico">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-   <link rel="stylesheet" href="${resource(dir: 'css', file: 'ruta.css')}" type="text/css">
-<title>BikeApp - ¡Muevete por Bogotá!</title>
+<meta name="layaout" content="main">
 </head>
 
 <body>
