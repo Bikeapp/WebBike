@@ -2,8 +2,8 @@
 	<asset:stylesheet href="bikeApp.css"/>
 	<html>
 	    <head>
-	        <title>User page</title>
-	    </head>
+  			<meta name="layout" content="main"/>
+  		</head>
 	    <body>
 	    	<div class="header">
 	    	</div>

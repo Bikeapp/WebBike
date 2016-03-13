@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-    <title>BikeApp - ¡Muevete por Bogotá!</title>
-
+  	<meta name="layout" content="main"/>
   </head>
 
   <body>
