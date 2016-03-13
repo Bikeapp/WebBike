@@ -7,8 +7,9 @@ class FotoController {
          accesoDenegado()
       }
       params.max = Math.min(max ?: 10, 100)
-      respond Foto.list(params), model:[FotoInstanceCount: Foto.count()]
-   }
+      //respond Foto.list(params), model:[FotoInstanceCount: Foto.count()]
+      list()
+    }
 
    def create(){
       respond new Foto(params)
@@ -27,7 +28,7 @@ class FotoController {
 
    /**Esta función es llamada por el .gsp que pinta las fotos, transoforma de un arreglo de byte a una foto visible*/
    def pintarImagen(Foto instancia){
-      response.outputStream << instancia.photo
+      response.outputStream << instancia.imagen
       response.outputStream.flush()
    }
 
@@ -36,4 +37,10 @@ class FotoController {
       //log.error("Acceso denegado, no hay una sesion activa")
       return response.sendError(400)
    }
+   
+   def list(){
+      def imagenes = Foto.findAllByUsuario(session.user)
+      [imagenes:imagenes]
+   }
+
 }
