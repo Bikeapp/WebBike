@@ -1,114 +1,122 @@
 <!DOCTYPE html>
-<asset:stylesheet href="bootstrap.min.css"/>
-<asset:stylesheet href="bikeApp.css"/>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+<html>
+	<head>
+		<meta name="layout" content="main"/>
+		<title>Welcome to Grails</title>
+		<style type="text/css" media="screen">
+			#status {
+				background-color: #eee;
+				border: .2em solid #fff;
+				margin: 2em 2em 1em;
+				padding: 1em;
+				width: 12em;
+				float: left;
+				-moz-box-shadow: 0px 0px 1.25em #ccc;
+				-webkit-box-shadow: 0px 0px 1.25em #ccc;
+				box-shadow: 0px 0px 1.25em #ccc;
+				-moz-border-radius: 0.6em;
+				-webkit-border-radius: 0.6em;
+				border-radius: 0.6em;
+			}
 
-    <title>BikeApp - ¡Muevete por Bogotá!</title>
+			.ie6 #status {
+				display: inline; /* float double margin fix http://www.positioniseverything.net/explorer/doubled-margin.html */
+			}
 
-  </head>
+			#status ul {
+				font-size: 0.9em;
+				list-style-type: none;
+				margin-bottom: 0.6em;
+				padding: 0;
+			}
 
-  <body>
+			#status li {
+				line-height: 1.3;
+			}
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">BikeApp</a>
-        </div>
-        <div class="topMenu">?</div>
-        <div class="topMenu"><g:link url="${resource(dir:'mapa', file:'index.gsp')}">Mapa</g:link></div>
-        <div class="topMenu"><g:link url="${resource(dir:'usuario', file:'registro.gsp')}">Registro</g:link></div>
-        <div class="topMenu"><g:link url="${resource(dir:'foto', file:'index.gsp')}">Fotos</g:link></div>
-    	<div class="topMenu">Contacto</div>
-      </div>
-    </nav>
-	
-	</br></br></br>
-	<div class="container">
-	<!-- username | logout link -->
-    <g:if test="${session?.user}">
-		<div id="login">
-			${session?.user?.usuario} ${session?.user?.email} |
-			<g:link controller="usuario" action="logout">Logout</g:link>
+			#status h1 {
+				text-transform: uppercase;
+				font-size: 1.1em;
+				margin: 0 0 0.3em;
+			}
+
+			#page-body {
+				margin: 2em 1em 1.25em 18em;
+			}
+
+			h2 {
+				margin-top: 1em;
+				margin-bottom: 0.3em;
+				font-size: 1em;
+			}
+
+			p {
+				line-height: 1.5;
+				margin: 0.25em 0;
+			}
+
+			#controller-list ul {
+				list-style-position: inside;
+			}
+
+			#controller-list li {
+				line-height: 1.3;
+				list-style-position: inside;
+				margin: 0.25em 0;
+			}
+
+			@media screen and (max-width: 480px) {
+				#status {
+					display: none;
+				}
+
+				#page-body {
+					margin: 0 1em 1em;
+				}
+
+				#page-body h1 {
+					margin-top: 0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+		<div id="status" role="complementary">
+			<h1>Application Status</h1>
+			<ul>
+				<li>App version: <g:meta name="app.version"/></li>
+				<li>Grails version: <g:meta name="app.grails.version"/></li>
+				<li>Groovy version: ${GroovySystem.getVersion()}</li>
+				<li>JVM version: ${System.getProperty('java.version')}</li>
+				<li>Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</li>
+				<li>Controllers: ${grailsApplication.controllerClasses.size()}</li>
+				<li>Domains: ${grailsApplication.domainClasses.size()}</li>
+				<li>Services: ${grailsApplication.serviceClasses.size()}</li>
+				<li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
+			</ul>
+			<h1>Installed Plugins</h1>
+			<ul>
+				<g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
+					<li>${plugin.name} - ${plugin.version}</li>
+				</g:each>
+			</ul>
+		</div>
+		<div id="page-body" role="main">
+			<h1>Welcome to Grails</h1>
+			<p>Congratulations, you have successfully started your first Grails application! At the moment
+			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
+			   content you may choose. Below is a list of controllers that are currently deployed in this application,
+			   click on each to execute its default action:</p>
+
+			<div id="controller-list" role="navigation">
+				<h2>Available Controllers:</h2>
+				<ul>
+					<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
+						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
+					</g:each>
+				</ul>
 			</div>
-	<!-- END #login -->
-    </g:if>
-	<g:else>
-		<g:form name="login" controller="usuario" action="login">
-		<p>
-			<label for="email">Email</label>
-			 <input type="email" name="email" required placeholder="Enter a valid email">
-		</p>
-		<p>
-			<label for="contrasena">Contraseña</label>
-			
-			<input type="password" name="contrasena" required placeholder="Enter a valid password">
-		</p>
-		<p class="button">
-			<label>&nbsp;</label>
-			<g:submitButton class="button" name="submitButton" value="Logiiin" />
-		</p>
-		
-		</g:form>
-	</g:else>
-	
-	</div>
-	
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1>BikeApp Movil!</h1>
-        <p>La movilidad empieza desde tus dedos.</p>
-        </br></br></br>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Descargala ya! &raquo;</a></p>
-         <g:link controller="Foto" action="index">Hacia las fotos</g:link>
-      </div>
-    </div>
-
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-			<div class="col-md-6">
-			  <h1>Registrate fácil!</h2>
-			  <p>En menos de 1 minuto puedes empezar a usar BikeApp!</p>
-			  <p><a class="btn btn-default" href="#" role="button">Ver más &raquo;</a></p>
-			</div>
-			<div class="col-md-6">
-			  <h2>Dueño de negocio? Contactenos!</h2>
-			  <p>BikeApp es la mejor manera de hacer visible su negocio para la comunidad ciclista!
-			  <p><a class="btn btn-default" href="#" role="button">Ver más &raquo;</a></p>
-			</div>
-      </div>
-
-      <hr>
-
-      <footer>
-        <p>&copy; 2015 Company, Inc.</p>
-      </footer>
-    </div> <!-- /container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-    <asset:javascript src="App2.js"/>
-  </body>
+		</div>
+	</body>
 </html>

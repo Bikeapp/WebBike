@@ -16,18 +16,19 @@ class Usuario {
 	String foto			//Foto de perfil
 	String mensaje		//Mensaje dinstintivo del usuario
 	String rol			// ???? No se para que lo usamos la verdad....
+    
     static constraints = {
     	usuario(nullable:false)
-    	email(nullable:false, email:true)
+    	email(nullable:false)
     	contrasena(nullable:false)
     	fecha(nullable:false)
     	interes(nullable:true)
     	puntos(nullable:true)
-		nombre(nullable:true)
-		sexo(nullable:true)
-		foto(nullable:true)
-		mensaje(nullable:true)
-		rol(nullable:true)
+    	foto(nullable:true)
+    	mensaje(nullable:true)
+    	rol(nullable:true)	
+    	nombre(nullable:true)
+    	sexo(nullable:true)		
 
     }
 }
