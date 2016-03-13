@@ -35,6 +35,8 @@ var map;
 	 	    icon: '../assets/'+tipo+'_icon.png',
     		});
 	  }
+    	
+    }
 	function test(puntosJSON){
     		initMap();
     		for (var i=0; i < puntosJSON.length; i++) {
