@@ -28,7 +28,6 @@
           </button>
           <a class="navbar-brand" href="/WebBike">BikeApp</a>
         </div>
-    	<div class="topMenu"><g:link controller="Usuario" action="index"> Registrate!</g:link></div>
       </div>
     </nav>
 	
@@ -38,8 +37,8 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Acceso Denegado.</h1>
-        <p>Para acceder a este recurso debes iniciar sesión.</p>
+        <h1>Algo ha salido mal.</h1>
+        <p>La operación no ha sido exitosa, por favor vuelve a intentarlo.</p>
         </br></br></br>
         <p><a class="btn btn-primary btn-lg" href="/WebBike" role="button">Volver al inicio</a></p>
       </div>

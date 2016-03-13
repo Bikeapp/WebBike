@@ -1,62 +1,84 @@
-
-<%@ page import="bikeapp.Foto" %>
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'foto.label', default: 'Foto')}" />
-		<title><g:message code="default.list.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#list-foto" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="list-foto" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<table>
-			<thead>
-					<tr>
-					
-						<g:sortableColumn property="imagen" title="${message(code: 'foto.imagen.label', default: 'Imagen')}" />
-					
-						<th><g:message code="foto.usuario.label" default="Usuario" /></th>
-					
-						<g:sortableColumn property="lat" title="${message(code: 'foto.lat.label', default: 'Lat')}" />
-					
-						<g:sortableColumn property="lon" title="${message(code: 'foto.lon.label', default: 'Lon')}" />
-					
-						<g:sortableColumn property="dateCreated" title="${message(code: 'foto.dateCreated.label', default: 'Date Created')}" />
-					
-					</tr>
-				</thead>
-				<tbody>
-				<g:each in="${fotoInstanceList}" status="i" var="fotoInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${fotoInstance.id}">${fieldValue(bean: fotoInstance, field: "imagen")}</g:link></td>
-					
-						<td>${fieldValue(bean: fotoInstance, field: "usuario")}</td>
-					
-						<td>${fieldValue(bean: fotoInstance, field: "lat")}</td>
-					
-						<td>${fieldValue(bean: fotoInstance, field: "lon")}</td>
-					
-						<td><g:formatDate date="${fotoInstance.dateCreated}" /></td>
-					
-					</tr>
-				</g:each>
-				</tbody>
-			</table>
-			<div class="pagination">
-				<g:paginate total="${fotoInstanceCount ?: 0}" />
-			</div>
-		</div>
-	</body>
+   <asset:stylesheet href="bootstrap.min.css"/>
+   <asset:stylesheet href="bikeApp.css"/>
+   <html lang="en">
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <link rel="icon" href="../../favicon.ico">
+   <title>BikeApp - ¡Muevete por Bogotá!</title>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="/WebBike">BikeApp</a>
+</div>
+</div>
+</nav>
+</br></br></br>
+
+<h1>Mis fotos</h1>
+<div class="nav" role="navigation">
+<ul>
+<li><g:link class="create" action="create">Agregar Imagen</g:link></li>
+</ul>
+</div>
+
+
+
+<table>
+<thead>
+<tr>
+</tr>
+</thead>
+<tbody>
+<g:each in="${fotoInstanceList}" status="i" var="fotoInstance">
+<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+<td>
+<img src="${createLink(controller:'Foto', action:'pintarImagen', id:"${fotoInstance.id}")}" width='300' height='300'/>
+</td>
+<td>
+${fotoInstance.usuario}
+</td>
+</g:each>
+</tbody>
+</table>
+
+
+<g:each var="imagen" in="${imagenes}" status="i">
+<img src="${createLink(controller:'Foto', action:'pintarImagen', id:"${imagen.id}")}" width='300' height='300'/>
+<br>
+</g:each>
+
+
+<div class="container">
+<!-- Example row of columns -->
+<footer>
+<p>BikeApp&copy; 2016 Company, Inc.</p>
+</footer>
+</div> <!-- /container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+</body>
 </html>
