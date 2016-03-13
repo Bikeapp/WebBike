@@ -40,7 +40,7 @@
 				<g:each in="${fotoInstanceList}" status="i" var="fotoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${fotoInstance.id}">${fieldValue(bean: fotoInstance, field: "imagen")}</g:link></td>
+						<!-- <td><g:link action="show" id="${fotoInstance.id}">${fieldValue(bean: fotoInstance, field: "imagen")}</g:link></td> --> 
 					
 						<td>${fieldValue(bean: fotoInstance, field: "usuario")}</td>
 					
