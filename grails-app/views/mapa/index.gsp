@@ -25,6 +25,10 @@
 	</g:javascript>
     <div id="mapa"></div>
     
+    <button onclick="crearG()">Crear Grupo!</button></br>
+    <button onclick="crearP()">Crear Punto Interés!</button></br>
+    <button onclick="crearR()">Crear Ruta!</button></br>
+    
     <div id="formulario">
     	<g:form name="myForm" controller="mapa">
     		<label>Tipo:</label><g:textField name="tipo"/></br>
@@ -50,10 +54,6 @@
     	<g:select name="parches" from="${parches}" optionValue="id"/>
     	<g:select name="puntos" from="${puntos}" optionValue="id"/>
     	</br>
-    </div>
-    <g:each var="parches" in="${parches}">
-    	Nombre: ${parches.nombre} Lider: ${parches.lider} Lon: ${parches.lon} Lat: ${parches.lat} Descripcion: ${parches.descripcion}
-    	</br>
-    </g:each>	
+    </div>	
   </body>
 </html>
