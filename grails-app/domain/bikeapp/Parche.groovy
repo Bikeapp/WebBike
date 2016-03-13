@@ -9,6 +9,8 @@ class Parche {
 	
 	String nombre
 	String descripcion
+	String lat
+	String lon
 
     static constraints = {
     	usuarios(nullable:true)

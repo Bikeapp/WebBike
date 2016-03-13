@@ -21,7 +21,7 @@
   </head>
   <body>
   	<g:javascript>
-		google.maps.event.addDomListener( window, 'load', function() { test(${puntos as JSON},${parches as JSON}) } );
+		google.maps.event.addDomListener( window, 'load', function() { test	(${puntos as JSON},${parches as JSON}) } );
 	</g:javascript>
     <div id="mapa"></div>
     
@@ -42,7 +42,6 @@
     		<label>Lon:</label><g:textField name="lon"/></br>
     		<label>Lat:</label><g:textField name="lat"/></br>
     		<label>Usuario:</label><g:select name="usuario" from="${usuarios}" optionValue="usuario" optionKey="id"/></br>
-    		<label>Tipo:</label><g:textField name="tipo"/></br>
     		<g:actionSubmit action="parche" value="Crear!"/>
     	</g:form>
     </div>
@@ -51,5 +50,10 @@
     	<g:select name="parches" from="${parches}" optionValue="id"/>
     	<g:select name="puntos" from="${puntos}" optionValue="id"/>
     	</br>
+    </div>
+    <g:each var="parches" in="${parches}">
+    	Nombre: ${parches.nombre} Lider: ${parches.lider} Lon: ${parches.lon} Lat: ${parches.lat} Descripcion: ${parches.descripcion}
+    	</br>
+    </g:each>	
   </body>
 </html>
