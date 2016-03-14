@@ -15,9 +15,8 @@ $("#selector").change(function(){
 });
 
 $("#create").on("click",function(){
-   var selec = $("#combo")
-   alert("OK");
-   if( selec.files.length == 0){
+   var selec = $("#selector")
+   if( selec.val() == ''){
       alert("Por favor selecione una imagen");
       $("#vistaimagen").css("background-color","#ffe6e6");
       return false;

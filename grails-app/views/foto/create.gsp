@@ -17,7 +17,7 @@
 <fieldset class="form">
 <div id="controlessubir" class="controlessubir">
 <img id="vistaimagen" src="" height="600" width="500" />
-<input type="file" id="combo" name="selector" />
+<input type="file" id="selector" name="selector" />
 </div>
 </fieldset>
 <p>
