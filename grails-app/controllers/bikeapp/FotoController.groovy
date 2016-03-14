@@ -19,7 +19,7 @@ class FotoController {
       if( instancia == null){
          return response.sendError(500)
       }
-      def uploadedFile = request.getFile('imagen')
+      def uploadedFile = request.getFile('selector')
       instancia.imagen = uploadedFile.getBytes()
       instancia.usuario = session.user
       instancia.save flush:true
@@ -41,6 +41,12 @@ class FotoController {
    def list(){
       def imagenes = Foto.findAllByUsuario(session.user)
       [imagenes:imagenes]
+   }
+
+   def show(){
+      def inx = params['imagenactual']
+      def img = Foto.findById(inx)
+      render(view:"show", model:[imagencapturada: img, inx : inx] )
    }
 
 }
