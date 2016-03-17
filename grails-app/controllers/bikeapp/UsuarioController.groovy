@@ -5,13 +5,11 @@ class UsuarioController {
      def index() {
     }
     
-    def registro() {
-        render(params)
-        
+    def registro() {      
         def users = new Usuario(params)
         users.save(failOnError: true)
         session['id']=users.id
-        render (view:"registro", model: [userList:Usuario.list()])
+        redirect(uri:'/')
     }
 
     def intereses(){
