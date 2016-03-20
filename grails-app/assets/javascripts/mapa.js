@@ -1,23 +1,16 @@
 			var map;				//Variable donde se almacena la referencia al mapa de google.
-			var icono = "parking";	//Variable para modificar el icono del marcador.
+			var icono = null;	//Variable para modificar el icono del marcador.
 			var infowindow;
 			var markPoint;
-	
-			//Funciones para escoger el icono que se le asignará al punto de interes.
-			function crearP(){
-				icono = "parking";
-			}
-			function crearR(){
-				icono = "ruta";
-			}
-			function crearG(){
-				icono = "parche";
-			}
-	
+			var RStart,RFinish,RWayPoints = "";
+			var points = [];
+			var index = 0;
+			var calcRoute = false;
+		
 			//Funcion que inicializa los parametros iniciales del mapa de google.
 			function initMap() {
 				var directionsService = new google.maps.DirectionsService;			//Instanciar un servicio de direcciones
-				var directionsDisplay = new google.maps.DirectionsRenderer;			//Instanciar un servicio para graficar direcciones
+				var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers:true});			//Instanciar un servicio para graficar direcciones, la opcion permite no mostrar los marcadores por defecto para hacerlo mas estetico.
 				var myLatlng = new google.maps.LatLng(4.5,-74);
 				var options = {
 					center: myLatlng,
@@ -42,16 +35,26 @@
 			
 				$(document).on('click', '#butRP', function(event) {					//Añadir listener al boton de punto de partida.
 					RStart = markPoint;
+					icono = "ruta";
 					calcRoute = true;
 					infowindow.close();
+					points[index-1].setIcon('../assets/'+icono+'_icon.png');		//Al haber escogido un boton, se le asigna el icono correspondiente al marcador.
 				});
+				
+				
+				//HAY QUE AÑADIR OTRO LISTENER PARA EL BOTON DE PUNTO INTERMEDIO.
+				
+				
 				$(document).on('click', '#butRF', function(event) {					//Añadir listener al boton de punto final.
 					RFinish = markPoint;
 					infowindow.close();
+					icono = "ruta";
+					points[index-1].setIcon('../assets/'+icono+'_icon.png');		//Al haber escogido un boton, se le asigna el icono correspondiente al marcador.
 					calcRoute = false;
 					//Calc ruta
 					var request = {													//Parametros utilizados para las direcciones.
 						origin:RStart,
+						//waypoints:RWayPoints,										//ALEX AQUI VAN LOS WAYPOINTS.
 						destination:RFinish,
 						travelMode: google.maps.TravelMode.DRIVING,
 					};
@@ -89,16 +92,7 @@
 					}
 				});
 			}
-			//Funcion para mostrar dinámicamente el punto en el mapa. No se almacena.
-			function addMarkerToMap(nombre, lat, lon, tipo){
-				var myLatLng = new google.maps.LatLng(lat, lon);
-				var marker = new google.maps.Marker({
-					position: myLatLng,
-					map: map,
-					icon: '../assets/'+tipo+'_icon.png',		//Dependiendo de la variable icono se almacena con un icono distinto.
-				});
 
-			}
 			//Funcion que recorre la base de datos buscando puntos de interes y parches, y los representa en el mapa.
 			function showMarkers(puntosJSON,parchesJSON){
 				for (var i=0; i < puntosJSON.length; i++) {
@@ -117,3 +111,55 @@
 				initMap();								//Inicializar mapa.
 				showMarkers(puntosJSON,parchesJSON);		//Graficar marcadores.		
 			} 
+			
+			
+			//Funcion para agregar los marcadores al mapa y mostrarlos en una lista al lado del mapa.
+			//También despliega un infoWindow para darle opciones al usuario sobre el punto que desee agregar.
+			function addMarker(location){
+			   var marker = new google.maps.Marker({
+				  position: location,
+				  draggable:true,
+				  map:map,
+			   });
+			   points[index++] = marker;
+   
+			   if (calcRoute){
+				var contentString = '<div class="butTipo" id="butRI"><button>Punto intermedio</button></div>'+			//Muestra la versión del infowindow si ya se empezo a calcular una ruta.
+									'<div class="butTipo" id="butRF"><button>Punto final</button></div>';
+			   }
+			   else{
+				var contentString = '<div class="butTipo" id="butRP"><button>Punto de partida</button></div>'+
+									'<div class="butTipo" id="butP"><button>Punto de interes</button></div>'+ 			//Muestra la versión del infowindow si no se ha empezado a calcular una ruta.
+									'<div class="butTipo" id="butG"><button>Punto de encuentro</button></div>';
+			   }
+	  
+	
+				infowindow = new google.maps.InfoWindow({		//Crea una nueva infoWindow con el contenido de arriba y en la posicion del marker donde se hizo click.
+					content: contentString,
+					location: marker,
+				});
+	
+				infowindow.open(map, marker);			//Muestra la ventana emergente en ese punto	
+			}
+			
+			//Funcion que imprime los puntos agregados dinamicamente por el usuario en forma de lista.
+			function printArrayJQ(){
+			   var $finalString = $("<table></table>");
+			   $.each(points, function(i,item){
+				  var $line = $("<tr></tr>");
+				  $line.append( $("<td></td>").html(i) );
+				  $line.append( $("<td></td>").html(item.position.toString()) );
+				  $line.append( $("<td></td>").html( "<button type=\"button\" id=\"botonPunto"+i+"\" data-index="+i+">Borrar</button>") );
+				  $finalString.append($line);
+			   });
+			   $("#table").html($finalString);
+			   for( i = 0 ; i < points.length ; i++ ){
+				  $("#botonPunto"+i).click(function(){
+					 var ind = $(this).data("index");
+					 points[ind].setMap(null);
+					 points.splice(ind,1);
+					 index = index-1;
+					 printArrayJQ();
+				  });
+			   }
+			}
