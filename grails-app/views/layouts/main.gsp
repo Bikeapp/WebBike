@@ -14,7 +14,7 @@
     <!-- Custom styles for this template -->
     <asset:stylesheet href="bikeApp.css"/>
     
-    <g:javascript library="jquery" plugin="jquery"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <r:layoutResources/>
     <g:layoutHead/>
   </head>

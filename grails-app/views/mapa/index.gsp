@@ -7,6 +7,7 @@
   	<meta name="layout" content="main"/>
   	<script src="https://maps.google.com/maps/api/js"></script>
   	<asset:javascript src="mapa.js"/>
+  	<asset:javascript src="ruta.js"/>
     <title>Mapa</title>
     <style>
       html, body {
@@ -23,11 +24,13 @@
   <body>
   	<g:javascript>
 		google.maps.event.addDomListener( window, 'load', function() { test	(${puntos as JSON},${parches as JSON}) } );
+		alert(jQuery.fn.jquery);
 	</g:javascript>
 	
 	<div class="jumbotron">
       <div class="container">
       	<div id="mapa"></div>
+      	<div id="table"></div>
 	
 		<button onclick="crearG()">Crear Grupo!</button></br>
 		<button onclick="crearP()">Crear Punto Interés!</button></br>

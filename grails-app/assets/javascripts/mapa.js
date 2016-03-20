@@ -1,5 +1,7 @@
 			var map;				//Variable donde se almacena la referencia al mapa de google.
 			var icono = "parking";	//Variable para modificar el icono del marcador.
+			var infowindow;
+			var markPoint;
 	
 			//Funciones para escoger el icono que se le asignará al punto de interes.
 			function crearP(){
@@ -20,19 +22,50 @@
 				var options = {
 					center: myLatlng,
 					zoom: 9,
+					disableDoubleClickZoom: true,
 				}
 				map = new google.maps.Map(document.getElementById('mapa'),options);	//Se le asigna el mapa de google al div con nombre 'mapa'
 				
-				map.addListener('rightclick', function(event) {						//El mapa escuchara eventos (click derecho) y ejecuta la funcion
-					addMarkerToMap("Prueba",event.latLng.lat(),event.latLng.lng(),icono);		//Funcion para agregar el punto de interes en el mapa
-					addMarkerToBD("Prueba",event.latLng.lat(),event.latLng.lng(),icono,"Prueba descripcion",null,null);		//Funcion para agregar el punto de interés a la BD.
-				});
-		
+				map.addListener('click', function(event) {						//El mapa escuchara eventos (click) y ejecuta la funcion
+					//addMarkerToMap("Prueba",event.latLng.lat(),event.latLng.lng(),icono);		//Funcion para agregar el punto de interes en el mapa
+					addMarker(event.latLng);								//Funcion de Ciro para agregar puntos.
+					printArrayJQ();							//Funcion de Ciro para mostrar puntos dinamicamente.
+					//addMarkerToBD("Prueba",event.latLng.lat(),event.latLng.lng(),icono,"Prueba descripcion",null,null);		//Funcion para agregar el punto de interés a la BD.
+					markPoint = event.latLng;
+				});		
 
 				var bikeLayer = new google.maps.BicyclingLayer();					//Instanciar las rutas de bicicleta si estan disponibles.
 				bikeLayer.setMap(map);												//Asignar la ruta de bicicleta al mapa.					
 		
-				//directionsDisplay.setMap(map);									//Renderizar las direcciones del graficador sobre el mapa.		
+				directionsDisplay.setMap(map);										//Renderizar las direcciones del graficador sobre el mapa.		
+			
+			
+				$(document).on('click', '#butRP', function(event) {					//Añadir listener al boton de punto de partida.
+					RStart = markPoint;
+					calcRoute = true;
+					infowindow.close();
+				});
+				$(document).on('click', '#butRF', function(event) {					//Añadir listener al boton de punto final.
+					RFinish = markPoint;
+					infowindow.close();
+					calcRoute = false;
+					//Calc ruta
+					var request = {													//Parametros utilizados para las direcciones.
+						origin:RStart,
+						destination:RFinish,
+						travelMode: google.maps.TravelMode.DRIVING,
+					};
+					
+					directionsService.route(request,function(response,status){		//Hace la llamada para calcular la ruta.
+						if (status == google.maps.DirectionsStatus.OK) {
+							directionsDisplay.setDirections(response);				//El renderizador muestra la ruta si el llamado fue exitoso.
+						}
+						else{
+							window.alert('Directions request failed due to ' + status);
+						}
+					});
+				});
+			
 			}
 			
 			//Funcion para agregar el punto a la base de datos por medio de un llamado AJAX.
@@ -64,6 +97,7 @@
 					map: map,
 					icon: '../assets/'+tipo+'_icon.png',		//Dependiendo de la variable icono se almacena con un icono distinto.
 				});
+
 			}
 			//Funcion que recorre la base de datos buscando puntos de interes y parches, y los representa en el mapa.
 			function showMarkers(puntosJSON,parchesJSON){
@@ -81,5 +115,5 @@
 			//Se llama cuando termina de cargar Mapa/index.gsp
 			function test(puntosJSON,parchesJSON){
 				initMap();								//Inicializar mapa.
-				showMarkers(puntoJSON,parchesJSON);		//Graficar marcadores.		
+				showMarkers(puntosJSON,parchesJSON);		//Graficar marcadores.		
 			} 

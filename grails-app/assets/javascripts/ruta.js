@@ -1,28 +1,37 @@
-var map;
-var points = []
-var index = 0
+//var map;
+var points = [];
+var index = 0;
+var calcRoute = false;
+var RStart,RFinish,RWayPoints = "";
 
-function initMap() {
-   var mapDiv = document.getElementById('map');
-   map = new google.maps.Map(mapDiv, {
-      center: {lat: 4.6363, lng: -74.0808},
-      zoom: 15
-   });
-   map.addListener('click',function(e){
-      //alert(e.latLng)
-      addMarker(e.latLng)
-      printArrayJQ()
-   });
-}
 
 function addMarker(location){
    var marker = new google.maps.Marker({
       position: location,
+      draggable:true,
       map: map,
-      draggable:true
    });
-   points[index++] = marker
+   points[index++] = marker;
+   
+   if (calcRoute){
+   	var contentString = '<div class="butTipo" id="butRI"><button onclick="crearR()">Punto intermedio</button></div>'+		
+						'<div class="butTipo" id="butRF"><button onclick="crearR()">Punto final</button></div>';
+   }
+   else{
+   	var contentString = '<div class="butTipo" id="butRP"><button onclick="crearR()">Punto de partida</button></div>'+
+						'<div class="butTipo" id="butP"><button onclick="crearP()">Punto de interes</button></div>'+ 		
+						'<div class="butTipo" id="butG"><button onclick="crearG()">Punto de encuentro</button></div>';
+   }
+      
+	
+	infowindow = new google.maps.InfoWindow({
+    	content: contentString,
+    	location: marker,
+  	});
+  	infowindow.open(map, marker);			//Muestra la ventana emergente en ese punto	
 }
+
+
 
 function printArrayJQ(){
    var $finalString = $("<table></table>");
@@ -43,19 +52,4 @@ function printArrayJQ(){
          printArrayJQ();
       });
    }
-}
-
-function printArrayJS(){
-   //for(i=0;i<points.length;i++){
-      //alert(points[i])
-   //points.toString()
-   var toPrint = ""
-   for( i=0 ; i<points.length ; i++ ){
-      toPrint += points[i]+"<br>"
-   }
-   document.getElementById("table").innerHTML = toPrint
-}
-
-function test(){
-   alert("OK");
 }
