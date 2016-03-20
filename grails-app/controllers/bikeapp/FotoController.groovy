@@ -19,7 +19,7 @@ class FotoController {
       if( instancia == null){
          return response.sendError(500)
       }
-      def uploadedFile = request.getFile('imagen')
+      def uploadedFile = request.getFile('selector')
       instancia.imagen = uploadedFile.getBytes()
       instancia.usuario = session.user
       instancia.save flush:true
@@ -32,15 +32,26 @@ class FotoController {
       response.outputStream.flush()
    }
 
-
+   /*
+   * Se leventa un error, tipo 400, cuando no se encuentra un usuario con sesion activa
+   */
    def accesoDenegado(){
       //log.error("Acceso denegado, no hay una sesion activa")
       return response.sendError(400)
    }
-   
+ 
+   /*
+   *Filtra las imagenes de acuerdo al usuario que se encuentre en sesión
+   */  
    def list(){
       def imagenes = Foto.findAllByUsuario(session.user)
       [imagenes:imagenes]
+   }
+
+   def show(){
+      def inx = params['imagenactual']
+      def img = Foto.findById(inx)
+      render(view:"show", model:[imagencapturada: img, inx : inx] )
    }
 
 }
