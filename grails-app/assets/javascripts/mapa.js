@@ -9,7 +9,7 @@
 			var points = [];
 			var index = 0;
 			var directionsService = new google.maps.DirectionsService;			//Instanciar un servicio de direcciones
-			var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});			//Instanciar un servicio para graficar direcciones, la opcion permite no mostrar los marcadores por defecto para hacerlo mas estetico.
+			var directionsDisplay = new google.maps.DirectionsRenderer;			//Instanciar un servicio para graficar direcciones, la opcion permite no mostrar los marcadores por defecto para hacerlo mas estetico.
 		
 			//Funcion que inicializa los parametros iniciales del mapa de google.
 			function initMap() {
@@ -25,8 +25,8 @@
 				
 				var divCU = document.createElement('div');
 				var divCR = document.createElement('div');
-				crearControlUbicacion(divCU,map);
-				crearControlRuta(divCR,map);		
+				crearControlUbicacion(divCU,map);			//Crea el boton de geolocalizacion en el mapa
+				crearControlRuta(divCR,map);				//Crea el boton de rutas en el mapa.		
 				divCU.index=1;
 				divCR.index=1;
 
@@ -34,19 +34,19 @@
 				//bikeLayer.setMap(map);												//Asignar la ruta de bicicleta al mapa.					
 				directionsDisplay.setMap(map);										//Renderizar las direcciones del graficador sobre el mapa.		
 			
-			
-				$(document).on('click', '#butRP', function(event) {					//Añadir listener al boton de punto de partida.
+				//Añadir listener al boton de punto de partida.
+				$(document).on('click', '#butRP', function(event) {					
 					infowindow.close();
 					var txtOrigen = document.getElementById('txtOr');
-					txtOrigen.value = markPoint.toString();			//Utiliza la coordenada del punto para ponerlo como origen en el cuadro de texto.
 					if (Marker1 != null){						//Verifica si ya había otro marcador establecido como origen.
 						Marker1.setMap(null);
-						Marker1.position = tmpMarker.position;		//Si existia otro, lo reemplaza por el nuevo.
+						Marker1 = tmpMarker;		//Si existia otro, lo reemplaza por el nuevo.
 						Marker1.setMap(map);
 					}
 					else{
 						Marker1 = tmpMarker;						//Si no existe, lo asigna como nuevo punto de origen.
 					}
+					txtOrigen.value = Marker1.position.toString();			//Utiliza la coordenada del punto para ponerlo como origen en el cuadro de texto.
 					tmpMarker = null;								//El temporal queda vacio, lo que significa que se asigno correctamente el punto de origen.
 				});
 				
@@ -54,18 +54,19 @@
 				//HAY QUE AÑADIR OTRO LISTENER PARA EL BOTON DE PUNTO INTERMEDIO.
 				
 				//COMPORTAMIENTO SIMILAR BOTON DE ORIGEN, SOLO CAMBIAN LAS REFERENCIAS, LA LOGICA ES IGUAL.
-				$(document).on('click', '#butRF', function(event) {					//Añadir listener al boton de punto final.
+				//Añadir listener al boton de punto final.
+				$(document).on('click', '#butRF', function(event) {					
 					infowindow.close();
 					var txtDestino= document.getElementById('txtDe');
-					txtDestino.value = markPoint.toString();
 					if (Marker2 != null){
 						Marker2.setMap(null);
-						Marker2.position = tmpMarker.position;
+						Marker2 = tmpMarker;
 						Marker2.setMap(map);
 					}
 					else{
 						Marker2 = tmpMarker;
 					}
+					txtDestino.value = Marker2.position.toString();
 					tmpMarker = null;
 				});
 			
@@ -266,9 +267,9 @@
 			
 			//Limpia todos los marcadores del mapa.
 			function cleanMarkers(){
-				Marker1.setMap(null);
-				Marker2.setMap(null);
-				tmpMarker.setMap(null);
+				if (Marker1 != null) Marker1.setMap(null); Marker1 = null;
+				if (Marker2 != null) Marker2.setMap(null); Marker2 = null;
+				if (tmpMarker != null) tmpMarker.setMap(null); tmpMarker = null;
 			}
 			
 			//Utiliza la posicion de inicio y destino establecidas por el usuario para calcular la ruta con el api de google.
