@@ -15,10 +15,6 @@
         margin: 0;
         padding: 0;
       }
-      #mapa {
-        height: 500px;
-        width: 500px;
-      }
     </style>
   </head>
   <body>
@@ -29,33 +25,6 @@
 	<div class="jumbotron">
       <div class="container">
       	<div id="mapa"></div>
-      	<div id="table"></div>
-		<div id="formulario">
-			<g:form name="myForm" controller="mapa">
-				<label>Tipo:</label><g:textField name="tipo"/></br>
-				<label>Long:</label><g:textField name="lon"/></br>
-				<label>Lat:</label><g:textField name="lat"/></br>					<!--Registra puntos de interes--!> 
-				<label>Nombre:</label><g:textField name="nombre"/></br>
-				<label>Descripcion:</label><g:textField name="descripcion"/></br>
-				<g:actionSubmit action="registrar" value="Registrar!"/>
-			</g:form>
-		</div>
-		<div>
-			<g:form name="formParche" controller="mapa">
-				<label>Nombre:</label><g:textField name="nombre"/></br>
-				<label>Descripcion:</label><g:textField name="descripcion"/></br>
-				<label>Lon:</label><g:textField name="lon"/></br>					<!--Registra parches--!> 
-				<label>Lat:</label><g:textField name="lat"/></br>
-				<label>Usuario:</label><g:select name="usuario" from="${usuarios}" optionValue="usuario" optionKey="id"/></br>
-				<g:actionSubmit action="parche" value="Crear!"/>
-			</g:form>
-		</div>
-		<div>
-			<g:select name="usuarios" from="${usuarios}" optionValue="id"/>
-			<g:select name="parches" from="${parches}" optionValue="id"/>
-			<g:select name="puntos" from="${puntos}" optionValue="id"/>
-			</br>
-		</div>	
       </div>
     </div>
   </body>

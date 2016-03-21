@@ -9,27 +9,30 @@
 		
 			//Funcion que inicializa los parametros iniciales del mapa de google.
 			function initMap() {
+				
+
 				var directionsService = new google.maps.DirectionsService;			//Instanciar un servicio de direcciones
 				var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers:true});			//Instanciar un servicio para graficar direcciones, la opcion permite no mostrar los marcadores por defecto para hacerlo mas estetico.
 				var myLatlng = new google.maps.LatLng(4.5,-74);
 				var options = {
 					center: myLatlng,
-					zoom: 9,
+					zoom: 15,
 					disableDoubleClickZoom: true,
 				}
 				map = new google.maps.Map(document.getElementById('mapa'),options);	//Se le asigna el mapa de google al div con nombre 'mapa'
-				
 				map.addListener('click', function(event) {						//El mapa escuchara eventos (click) y ejecuta la funcion
-					//addMarkerToMap("Prueba",event.latLng.lat(),event.latLng.lng(),icono);		//Funcion para agregar el punto de interes en el mapa
 					addMarker(event.latLng);								//Funcion de Ciro para agregar puntos.
-					printArrayJQ();							//Funcion de Ciro para mostrar puntos dinamicamente.
+					//printArrayJQ();							//Funcion de Ciro para mostrar puntos dinamicamente.
 					//addMarkerToBD("Prueba",event.latLng.lat(),event.latLng.lng(),icono,"Prueba descripcion",null,null);		//Funcion para agregar el punto de interés a la BD.
 					markPoint = event.latLng;
-				});		
+				});	
+				
+				var divs = document.createElement('div');
+				crearControlUbicacion(divs,map);	
+				divs.index=0;
 
-				var bikeLayer = new google.maps.BicyclingLayer();					//Instanciar las rutas de bicicleta si estan disponibles.
-				bikeLayer.setMap(map);												//Asignar la ruta de bicicleta al mapa.					
-		
+				//var bikeLayer = new google.maps.BicyclingLayer();					//Instanciar las rutas de bicicleta si estan disponibles.
+				//bikeLayer.setMap(map);												//Asignar la ruta de bicicleta al mapa.					
 				directionsDisplay.setMap(map);										//Renderizar las direcciones del graficador sobre el mapa.		
 			
 			
@@ -163,3 +166,53 @@
 				  });
 			   }
 			}
+			
+			function crearControlUbicacion(divContainer,map){
+				var divBoton = document.createElement('div');
+				divBoton.style.backgroundColor = '#fff';
+				divBoton.style.border = '2px solid #fff';
+				divBoton.style.borderRadius = '3px';
+				divBoton.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+				divBoton.style.cursor = 'pointer';
+				divBoton.style.marginBottom = '22px';
+				divBoton.style.textAlign = 'center';
+				divBoton.innerHTML = '<img src="../assets/geo_icon.png"></img>';
+				divBoton.title = 'Click para ubicarte en el mapa';
+				divContainer.appendChild(divBoton);
+				divBoton.addEventListener('click',pedirUbicacion);
+				map.controls[google.maps.ControlPosition.TOP_RIGHT].push(divContainer);
+			}
+
+			
+			
+			function pedirUbicacion(){
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(function(position) {
+						var pos = {
+							lat: position.coords.latitude,
+							lng: position.coords.longitude
+					  	};
+					  	map.setCenter(pos);
+					  	map.setZoom(16);
+					  	var marker = new google.maps.Marker({
+						  	position: pos,
+						  	draggable:false,
+						  	map:map,
+						  	icon:'../assets/user_icon.png'
+					   	});
+						}, function() {alert("No se pudo llevar acabo el servicio de geolocalizacion.");}
+					);
+				}
+				else{
+					alert("Su navegador no soporta el servicio de geolocalizacion. Por favor actualice para utilizar este servicio.");
+				}
+			}
+			
+			
+			
+				
+				
+			
+			
+			
+			
