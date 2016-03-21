@@ -4,7 +4,7 @@ import groovy.transform.ToString
 @ToString
 class Usuario {
 
-	static hasMany = [puntos: PuntoInteres, fotos: Foto]
+	static hasMany = [puntos: PuntoInteres, fotos: Foto,comentarios:Comentario]
 
 	String usuario		//Nombre de usuario para login
 	String email		//Email del usuario

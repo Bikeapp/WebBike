@@ -4,7 +4,7 @@ import groovy.transform.ToString
 @ToString
 class Ruta {
 
-   static hasMany = [ puntos : PuntoInteres, comentarios: Comentario]
+   static hasMany = [ puntos : PuntoInteres]
    String nombre
    String descripcion
    String calificacion
@@ -14,7 +14,6 @@ class Ruta {
       nombre(nullable:false)
       descripcion(nullable:false)
       puntos(nullable:true)
-      comentarios(nullable:true)
       calificacion(nullable:true)
     }
 

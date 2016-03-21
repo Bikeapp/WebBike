@@ -5,8 +5,8 @@ import java.util.Date
 @ToString
 class Foto {
 
-   static belongsTo = [ usuario: Usuario ]
-   static hasMany = [ comentarios : Comentario ]
+   static belongsTo = [ usuario: Usuario ]   
+   static hasMany = [comentarios: Comentario]
 
    Date dateCreated
    String lat
@@ -16,7 +16,6 @@ class Foto {
    static constraints = {
       imagen(nullable:false, maxSize:1073741824)
       usuario(nullable:true)
-      comentarios(nullable:true)
       lat(nullable:true)
       lon(nullable:true)
    }

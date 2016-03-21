@@ -4,13 +4,14 @@ import groovy.transform.ToString
 @ToString
 class Comentario {
 
-	static belongsTo = [ ruta: Ruta ]
-	
-	String contenido
-	String fecha
+   static belongsTo = [usuario:Usuario, foto:Foto]
 
-    static constraints = {
-    	contenido(nullable:false)
-    	fecha(nullable:false)
-    }
+   Date dateCreated
+   String contenido
+
+   static constraints = {
+      contenido(nullable:false)
+      usuario(nullable:false)
+      foto(nullable:false)
+   }
 }

@@ -51,7 +51,9 @@ class FotoController {
    def show(){
       def inx = params['imagenactual']
       def img = Foto.findById(inx)
-      render(view:"show", model:[imagencapturada: img, inx : inx] )
+      def comentarios = Comentario.findAllByFoto(img)
+      //render comentarios
+      render(view:"show", model:[imagencapturada: img, inx : inx,comentarios:comentarios] )
    }
 
 }
