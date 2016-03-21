@@ -2,7 +2,9 @@ package bikeapp
 
 class FotoController {
 
-   def index(Integer max) {
+   //metodo index, es el encargado de llamar a la vista para mostrar el "album de fotos", para ello 
+   //primero se tienen que reunir las fotos, eso lo hago en el metodo list()
+  def index(Integer max) {
       if(session.user == null){
          accesoDenegado()
       }
@@ -11,10 +13,16 @@ class FotoController {
       list()
     }
 
+
+   //create de crear una nueva foto
    def create(){
       respond new Foto(params)
    }
 
+   //Save nos permite guardar la foto en la base de datos, primero se valida que tengamos una instancia valida
+   //donde guardar la foto, luego se captura la foto que el usuario selecciono, y posteriormente se convierte en un arreglo de bytes
+   //antes de guardar capturo la sesion actual del usuario que esta activa y guardo, al final me dirigo a la pagina principal, es decir
+   //a la que tiene el album de fotos, este metodo es invocado por la vista de create
    def save(Foto instancia){
       if( instancia == null){
          return response.sendError(500)
@@ -48,6 +56,10 @@ class FotoController {
       [imagenes:imagenes]
    }
 
+   /**
+   * este metodo es el encargado de mostrar una foto en particular, para ello desde la vista se captura el id de la imagen, 
+   * y se pasa al modelo de esta vista, show, la imagen actual así como su indice, es una bobada redundante pero pues que se le hace
+   */
    def show(){
       def inx = params['imagenactual']
       def img = Foto.findById(inx)

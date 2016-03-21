@@ -25,6 +25,7 @@ foto capturada
 <fieldset class="form">
 <div id="controlessubir" class="controlessubir">
 <g:textField name="contenido" />
+<!-- FIJARSE EN ESTE PUNTO, ESTE ES EL CAMPO INVISIBLE AL CUAL ME REFIERO --!>
 <g:hiddenField name="fotoId" value="${inx}" />
 </div>
 </fieldset>
