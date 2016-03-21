@@ -20,16 +20,14 @@
 					disableDoubleClickZoom: true,
 				}
 				map = new google.maps.Map(document.getElementById('mapa'),options);	//Se le asigna el mapa de google al div con nombre 'mapa'
-				map.addListener('click', function(event) {						//El mapa escuchara eventos (click) y ejecuta la funcion
-					addMarker(event.latLng);								//Funcion de Ciro para agregar puntos.
-					//printArrayJQ();							//Funcion de Ciro para mostrar puntos dinamicamente.
-					//addMarkerToBD("Prueba",event.latLng.lat(),event.latLng.lng(),icono,"Prueba descripcion",null,null);		//Funcion para agregar el punto de interés a la BD.
-					markPoint = event.latLng;
-				});	
 				
-				var divs = document.createElement('div');
-				crearControlUbicacion(divs,map);	
-				divs.index=0;
+				
+				var divCU = document.createElement('div');
+				var divCR = document.createElement('div');
+				crearControlUbicacion(divCU,map);
+				crearControlRuta(divCR,map);		
+				divCU.index=1;
+				divCR.index=1;
 
 				//var bikeLayer = new google.maps.BicyclingLayer();					//Instanciar las rutas de bicicleta si estan disponibles.
 				//bikeLayer.setMap(map);												//Asignar la ruta de bicicleta al mapa.					
@@ -182,9 +180,23 @@
 				divBoton.addEventListener('click',pedirUbicacion);
 				map.controls[google.maps.ControlPosition.TOP_RIGHT].push(divContainer);
 			}
-
 			
-			
+			function crearControlRuta(divContainer,map){
+				var divBoton = document.createElement('div');
+				divBoton.style.backgroundColor = '#fff';
+				divBoton.style.border = '2px solid #fff';
+				divBoton.style.borderRadius = '3px';
+				divBoton.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+				divBoton.style.cursor = 'pointer';
+				divBoton.style.marginBottom = '22px';
+				divBoton.style.textAlign = 'center';
+				divBoton.innerHTML = '<img src="../assets/rutas_icon.png"></img>';
+				divBoton.title = 'Click para calcular una ruta';
+				divContainer.appendChild(divBoton);
+				divBoton.addEventListener('click',mostrarUIRuta);
+				map.controls[google.maps.ControlPosition.TOP_RIGHT].push(divContainer);
+			}
+	
 			function pedirUbicacion(){
 				if (navigator.geolocation) {
 					navigator.geolocation.getCurrentPosition(function(position) {
@@ -208,7 +220,39 @@
 				}
 			}
 			
-			
+			function mostrarUIRuta(){
+				map.addListener('click', function(event) {						//El mapa escuchara eventos (click) y ejecuta la funcion
+					addMarker(event.latLng);								//Funcion de Ciro para agregar puntos.
+					//printArrayJQ();							//Funcion de Ciro para mostrar puntos dinamicamente.
+					//addMarkerToBD("Prueba",event.latLng.lat(),event.latLng.lng(),icono,"Prueba descripcion",null,null);		//Funcion para agregar el punto de interés a la BD.
+					markPoint = event.latLng;
+				});	
+				var container = document.createElement('div');
+				var lblOrigen = document.createElement('div');
+				var lblDestino = document.createElement('div');
+				var txtOrigen = document.createElement('input');
+				var txtDestino = document.createElement('input');
+				container.appendChild(lblOrigen);
+				container.appendChild(txtOrigen);
+				container.appendChild(lblDestino);
+				container.appendChild(txtDestino);
+				container.style.width = '400px';
+				container.style.margin = 'auto';
+				container.style.border = '3px solid black';
+				txtOrigen.style.type = 'text';
+				lblOrigen.style.float = 'left';
+				lblOrigen.innerHTML = 'Origen:';
+				txtDestino.style.float = 'left';
+				lblDestino.style.float = 'left';
+				lblDestino.innerHTML = 'Destino:';
+				txtOrigen.style.float = 'left';
+				txtDestino.style.type = 'text';
+				txtOrigen.style.name = 'lblOrigen';
+				txtDestino.style.name = 'lblDestino';
+				txtOrigen.style.value = "Origen";
+				txtDestino.style.value = "Destino";
+				map.controls[google.maps.ControlPosition.TOP_CENTER].push(container);
+			}
 			
 				
 				
