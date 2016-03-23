@@ -115,3 +115,24 @@ log4j.main = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+
+// Added by the Spring Security Core plugin:
+//CONFIGURACION DEL PLUGIN NOTAR COMO SE ENLAZAN LAS CLASES DE SEGURIDAD PARA EL USUARIO Y PARA EL ROLE
+//LA LISTA DE URL CORRESPONDE A LAS URL DE ACCESO GENERAL, ES DECIR A LAS CUALES SE PUEDE ACCEDER SIN NECESIDAD DE TENER UNA SESION ACTIVA
+//REVISEN QUE ACTIVE EL ACCESO A LA BASE DE DATOS, POR MEDIO DE LA UI, Y DE TODAS LAS SUBPAGINAS DE LA MISMA '**'
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'bikeapp.SecUsuario'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'bikeapp.SecUsuarioSecRole'
+grails.plugin.springsecurity.authority.className = 'bikeapp.SecRole'
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+	'/':                ['permitAll'],
+	'/index':           ['permitAll'],
+	'/index.gsp':       ['permitAll'],
+	'/assets/**':       ['permitAll'],
+	'/**/js/**':        ['permitAll'],
+	'/**/css/**':       ['permitAll'],
+	'/**/images/**':    ['permitAll'],
+	'/**/favicon.ico':  ['permitAll'],
+        '/dbconsole/**': ['permitAll']
+]
+
