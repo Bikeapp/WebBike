@@ -36,3 +36,13 @@ $("#create").on("click",function(){
    }
    return true;
 });
+
+/*
+ * ESTA FUNCION SE ENCARGA DE LIMPIAR EL AREA DE TEXTO DE LOS COMENTARIOS ASI MISMO COMO DESPLAZAR LSO COMENTARIOS HACIA ABAJO
+ * SIN EMBARGO NO FUNCIONA LO DEL DESPLAZAMIENTO
+ */
+function limpiar(){
+   $("#contenido").val('');
+   //$('#comment').animate({'margin-top': '50px'}, 1000);
+   $("#comment").animate({ scrollTop: $("#comment").attr("scrollHeight") }, 3000);
+}

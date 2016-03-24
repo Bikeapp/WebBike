@@ -68,4 +68,20 @@ class FotoController {
       render(view:"show", model:[imagencapturada: img, inx : inx,comentarios:comentarios] )
    }
 
+
+   /*
+   * METODO ACTUALIZAR COMENTARIOS, SE ENCARGA DE VOLVER A LEER LOS COMENTARIOS DE LA FOTO Y LOS ENVIA AL TEMPLATE
+   * NOTAR LA DIFERENCIA ENTRE EL redirect DEL METODO show Y EL DE ESTE METODO, AHORA APUNTO AL TEMPLATE DE comentarios
+   * ES IMPORTANTE LEER SOBRE ESTA CARACTERISTICA QUE TIENE GRAILS Y ENTENDER COMO ES QUE FUNCIONA 
+   */
+   def actualizarComentarios(){
+   
+      def inx = params['imagenactual']
+      def img = Foto.findById(inx)
+      def comentarios = Comentario.findAllByFoto(img)
+      //render comentarios
+      render(template:"comentario", model:[comentarios:comentarios])
+
+   }
+
 }

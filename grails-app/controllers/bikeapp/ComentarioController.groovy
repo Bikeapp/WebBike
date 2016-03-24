@@ -13,6 +13,7 @@ class ComentarioController {
    *hay que tener en cuenta la forma en al cual capturo el id de la foto, esto lo hago por medio de un campo invisible, para mayor 
    *informacion contacte a mi abogado, no mentiras en la vista pueden ver el campo
    */
+   //se actualiza ahora se apunta a lmetodo actualizar comentarios, en el cual se puede actualiza unicamente el template
    def save(Comentario comentarioInstance){
       if( comentarioInstance == null){
          return response.sendError(500)
@@ -20,7 +21,7 @@ class ComentarioController {
       comentarioInstance.foto = Foto.findById(params.fotoId)
       comentarioInstance.usuario = session.user
       comentarioInstance.save flush:true
-      redirect(controller:"Foto",action: "show", params:[imagenactual : params.fotoId]);
+      redirect(controller:"Foto",action: "actualizarComentarios", params:[imagenactual : params.fotoId]);
    }
 
 }

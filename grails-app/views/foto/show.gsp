@@ -2,38 +2,38 @@
 <html lang="en">
 <head>
 <meta name="layout" content="main"/>
+<asset:stylesheet href="foto.css"/>
+<asset:javascript src="foto.js"/>
 </head>
 
 <body>
 
-foto capturada
-<br>
+<div id="container">
+
+<div id="navbar">
 <img src="${createLink(controller:'Foto', action:'pintarImagen', id:"${inx}")}" width='800' height='600'/>
-<br>
-<g:each in="${comentarios}">
-   <table>
-   <tr>
-   <td> ${it.contenido} </td>
-   <td> ${it.usuario.usuario} </td>
-   <td> ${it.dateCreated} </td>
-   </tr>
-   </table>
-</g:each>
+</div>
 
 
-<g:form url="[resource:comentarioInstance, action:'save',controller:'Comentario']"   enctype="multipart/form-data">
+
+
+<div id="content">
+
+<g:render template="comentario" model="[comentarios:comentarios]" />
+
+<g:formRemote name="comentar" update="comment" url="[resource:comentarioInstance, action:'save',controller:'Comentario']" after="limpiar()">
 <fieldset class="form">
-<div id="controlessubir" class="controlessubir">
-<g:textField name="contenido" />
+<g:textArea name="contenido" />
 <!-- FIJARSE EN ESTE PUNTO, ESTE ES EL CAMPO INVISIBLE AL CUAL ME REFIERO --!>
 <g:hiddenField name="fotoId" value="${inx}" />
-</div>
 </fieldset>
-<p>
 <fieldset class="buttons">
 <g:submitButton name="create" class="save" value="Comentar" id="create" />
 </fieldset>
-</g:form>
+</g:formRemote>
+
+</div>
+</div>
 
 </body>
 </html>

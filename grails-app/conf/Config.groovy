@@ -37,6 +37,10 @@ grails.mime.types = [ // the first one is the default format
 // Legacy setting for codec used to encode data with ${}
 grails.views.default.codec = "html"
 
+//NO TENGO NI IDEA QUE HACE, CREO QUE ES OBIO PERO PUES NO ENTIENDOSU MAGIA
+//LA PONGO PARA PERMITIR EL USO DE LAS UTILIDADES PARA ajax QUE OFRECE GRAILS
+grails.views.javascript.library = "jquery"
+
 // The default scope for controllers. May be prototype, session or singleton.
 // If unspecified, controllers are prototype scoped.
 grails.controllers.defaultScope = 'singleton'
@@ -115,3 +119,4 @@ log4j.main = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
