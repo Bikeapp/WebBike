@@ -14,6 +14,25 @@
 </div>
 
 
+<div id="lista">
+<g:each var="grupo" in="${grupos}">
+   <table>
+   <tr>
+   <td>
+   <g:link action="show" params="[ grupoactual : grupo.id]">
+   ${grupo.nombre}
+   </g:link>
+   </td>
+   <td>
+   ${grupo.descripcion}
+   </td>
+   </tr>
+   </table>
+   <br>
+</g:each>
+</div>
+
+
 <asset:stylesheet href="foto.css" />
 <div class="container">
 <!-- Example row of columns -->

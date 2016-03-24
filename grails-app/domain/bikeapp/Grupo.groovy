@@ -2,8 +2,9 @@ package bikeapp
 
 class Grupo {
 
-   static belongsTo = Usuario
-   static hasMany = [usuarios:Usuario]
+
+   //NOTAR QUE SE CAMBIO LA RELACION, ANTES LA RELACION DE MUCHOS A MUCHOS SE ESTABA REALIZANDO POR MEDIO DE GRAILS
+   //SIN EMBARGO NO FUNCIONO COMO SE ESPERABA Y PUES SE UTILIZO ESTE ARTEFACTO
    static hasOne = [administrador:Usuario]
    
    String nombre
@@ -14,4 +15,5 @@ class Grupo {
          descripcion(nullable:true)
          administrador(nullable:false) 
     }
+
 }
