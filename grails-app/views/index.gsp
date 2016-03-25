@@ -12,27 +12,43 @@
   <div id="regbar">
     <div id="navthing">
 <	<g:if test="${session?.user}">
-			<div id="login">
-				${session?.user?.usuario} ${session?.user?.email} |
-				<g:link controller="usuario" action="logout">Logout</g:link>
-			</div>-
+			<div class="randompad">
+			 <g:form name="logout" controller="usuario" action="logout">
+			 <h2>${session?.user?.usuario} ${session?.user?.email}</h2>
+			 <g:submitButton class="button" name="submitButton" value="Salir!" />
+			 </g:form>
+			 </div>
 		<!-- END #login -->
 		</g:if>
 		<g:else>
-      <h2><a href="#" id="loginform">Login</a> | <a href="#">Register</a></h2>
+      <h2><a href="#" id="loginform">Login</a> | <a href="#" id="logoutform">Register</a></h2>
     <div class="login">
       <div class="arrow-up"></div>
       <div class="formholder">
         <div class="randompad">
            <fieldset>
-            <!-- <g:form name="login" controller="usuario" action="login">-->
+            <g:form name="login" controller="usuario" action="login">
 				<label for="email">Email</label>
 				<input type="email" name="email" required placeholder="Enter a valid email">
 				<label for="contrasena">Contraseña</label>
 				<input type="password" name="contrasena" required placeholder="Enter a valid password">
-             <input type="submit" value="Login" />
 				<g:submitButton class="button" name="submitButton" value="Ingresar!" />
-  </g:form>
+			</g:form>
+           </fieldset>
+        </div>
+      </div>
+    </div>
+	<div class="logout">
+      <div class="arrow-up"></div>
+      <div class="formholder">
+        <div class="randompad">
+           <fieldset>
+            <g:form name="login" controller="usuario" action="login">
+				<label for="email">Email</label>
+				<input type="email" name="email" required placeholder="Enter a valid email">
+				
+				<g:submitButton class="button" name="submitButton" value="Ingresar!" />
+			</g:form>
            </fieldset>
         </div>
       </div>
