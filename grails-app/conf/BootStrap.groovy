@@ -21,7 +21,7 @@ class BootStrap {
          fecha: "13-04-94"
          ).save()
    
-   
+      SecUsuarioSecRole.create usuarioNormal,userRole  
  }
     def destroy = {
     }

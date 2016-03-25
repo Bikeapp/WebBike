@@ -120,9 +120,6 @@ log4j.main = {
            'net.sf.ehcache.hibernate'
 }
 
-<<<<<<< HEAD
-=======
-
 // Added by the Spring Security Core plugin:
 //CONFIGURACION DEL PLUGIN NOTAR COMO SE ENLAZAN LAS CLASES DE SEGURIDAD PARA EL USUARIO Y PARA EL ROLE
 //LA LISTA DE URL CORRESPONDE A LAS URL DE ACCESO GENERAL, ES DECIR A LAS CUALES SE PUEDE ACCEDER SIN NECESIDAD DE TENER UNA SESION ACTIVA
@@ -142,4 +139,3 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/dbconsole/**': ['permitAll']
 ]
 
->>>>>>> spring_security
