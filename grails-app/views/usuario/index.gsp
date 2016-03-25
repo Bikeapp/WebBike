@@ -2,15 +2,29 @@
 <html lang="en">
   <head>
   	<meta name="layout" content="main"/>
+      <asset:stylesheet src="style.css"/>
   </head>
 
   <body>
-	<g:form name="myForm" controller="usuario">
-		<label>Nombre:</label><g:textField name="usuario"/>
-		<label>Email:</label><g:textField name="email"/>
-		<label>Contraseña:</label><g:textField name="contrasena"/>
-		<label>Fecha:</label><g:textField name="fecha"/>
-		<g:actionSubmit action="registro" value="Registrar!"/>
+    <div class="wrap">
+
+  <div class="formholder2">
+       <fieldset>
+<g:form name="myForm" controller="usuario">
+
+<center><label>Nombre:</label></center>
+<center><g:textField name="usuario"/></br></center>
+<center><label>Email:</label></center>
+<center><g:textField name="email"/></center>
+<center><label>Contraseña:</label></center>
+<center><g:textField name="contrasena"/></center>
+<center><label>Fecha:</label></center>
+<center><g:textField name="fecha"/></center></br></br>
+	<center><g:actionSubmit action="registro" value="Registrar!"/></center>
 	</g:form>
+</fieldset>
+</div>
+
+</div>
   </body>
 </html>
