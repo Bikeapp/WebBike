@@ -5,3 +5,18 @@
 img{
    background-color: #f2f2f2;
 }
+
+#comentario{
+   border-style: dotted;  
+}
+
+
+#comment{
+   height: 500px;
+   overflow-y: scroll;
+}
+
+#navbar{
+   float:left;
+   width: 55%;
+}

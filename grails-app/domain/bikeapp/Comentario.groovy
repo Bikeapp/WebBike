@@ -4,13 +4,16 @@ import groovy.transform.ToString
 @ToString
 class Comentario {
 
-	static belongsTo = [ ruta: Ruta ]
-	
-	String contenido
-	String fecha
+   //Hay que tener presente la relación que exite entre estos tres personajes
+   static belongsTo = [usuario:Usuario, foto:Foto]
 
-    static constraints = {
-    	contenido(nullable:false)
-    	fecha(nullable:false)
-    }
+   //este campo es capturado de forma automatica por grails, y debe ir con ese nombre que tiene
+   Date dateCreated
+   String contenido
+
+   static constraints = {
+      contenido(nullable:false)
+      usuario(nullable:false)
+      foto(nullable:false)
+   }
 }

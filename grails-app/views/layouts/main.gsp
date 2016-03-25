@@ -15,6 +15,8 @@
     <asset:stylesheet href="bikeApp.css"/>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+   <!-- PONGO LA LIBRERIA PARA QUE AHORA SE PUEDA USAR AJAX --!>
+      <g:setProvider libary="jquery"/>
     <r:layoutResources/>
     <g:layoutHead/>
   </head>
@@ -37,6 +39,7 @@
             <li><g:link url="${resource(dir:'Usuario', file:'index.gsp')}">Registro</g:link></li>
             <li><g:link url="${resource(dir:'Foto', file:'index.gsp')}">Foto</g:link></li>
             <li><g:link url="${resource(dir:'Mapa', file:'index.gsp')}">Mapa</g:link></li>
+            <li><g:link url="${resource(dir:'Grupo', file:'index.gsp')}">Grupo</g:link></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

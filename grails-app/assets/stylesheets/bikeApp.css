@@ -1,15 +1,24 @@
 body {
-  padding-top: 50px;
+  width: 100%;
+  height:100%;
+  padding-top:50px;
 }
 .starter-template {
   padding: 40px 15px;
   text-align: center;
 }
-
-#mapa{
-  float: left;
+.container {
+  width: 100%;
+  height:100%;
+}
+.jumbotron {
+  height: 100%;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 }
 
-#table{
-  float: left;
+#mapa{
+  border: 3px solid white;
+  width: 100%;
+  height: 100%;
 }
