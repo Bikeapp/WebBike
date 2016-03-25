@@ -50,22 +50,11 @@ fieldset {
   top: -10px;
 }
 
-.formholder{
+.formholder {
   background: #ecf0f1;
   width: 350px;
   border-radius: 5px;
   padding-top: 5px;
-}
-
-.formholder2 {
-  margin-top: 10%;
-
-  background-color: inherit;
-  width: auto;
-  color:gray;
-  border-radius: 5px;
-  padding-top: 5px;
-  display: block;
 }
 .formholder input[type="email"], .formholder input[type="password"] {
   padding: 7px 5px;
