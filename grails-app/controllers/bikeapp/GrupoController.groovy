@@ -1,11 +1,12 @@
 package bikeapp
+import grails.plugin.springsecurity.annotation.Secured;
 
+@Secured(['ROLE_USUARIO'])
 class GrupoController {
 
+   def sesionService
+
    def index() {
-      if( session.user == null){
-         return response.sendError(400)
-      }
       def grupos = Grupo.getAll()
       model:[ grupos : grupos ]
    }
@@ -21,7 +22,7 @@ class GrupoController {
       if( grupoInstance == null){
          return response.sendError(500)
       }
-      def usuario = session.user
+      def usuario = sesionService.usuarioEnSesion()
       grupoInstance.administrador = usuario
       grupoInstance.save flush:true 
       def usuario_grupo = new UsuarioGrupo(usuario:usuario,grupo:grupoInstance)
@@ -40,7 +41,7 @@ class GrupoController {
 
    //PERMITE UNIRSE A UN GRUPO, ESTO SIMPLEMENTE SE HACE AGREGANDO UN REGISTRO EN LA TABLA INTERMEDIA
    def unirme(){
-      def usuario = session.user
+      def usuario = sesionService.usuarioEnSesion()
       def grupo = Grupo.findById(params["grupoId"])
       def usuario_grupo = new UsuarioGrupo(usuario:usuario,grupo:grupo)
       usuario_grupo.save flush:true

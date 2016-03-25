@@ -5,7 +5,7 @@
     ${it.contenido} 
    </tr>
    <tr>
-   <td> ${it.usuario.usuario} </td>
+   <td> ${it.usuario.username} </td>
    <td> ${it.dateCreated} </td>
    </tr>
    </table>
