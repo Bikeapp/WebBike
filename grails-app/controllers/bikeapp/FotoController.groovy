@@ -1,18 +1,25 @@
 package bikeapp
+import grails.plugin.springsecurity.annotation.Secured;
 
+
+//CON SPRING SE PUEDEN HACER ANOTACIONES, LAS CUALES VAN A MANEJAR DE FORMA AUTOMATICA EL ACCESO A RECURSOS
+//HAY 4 TIPOS PARA HACER ESTO, LAS ANOTACIONES SON LAS MÁS FACILES DE USAR, FIJARSE EN QUE CON LA SIGUIENTE ANOTACION LO QUE LE DIGO 
+//A SPRING ES QUE ESTE RECURSO PUEDE SER USADO O ACCEDIDO POR EL ROL DE USUARIO, LOS ROLES LOS CARGO DE FORMA DINAMICA EN LA BASE DE DATOS
+//AL INICIAR LA APLICACION 'run-app' PARA VER LA CARGA PUEDEN VER EL ARCHIVO BootStrap.groovy EN conf
+//OTRA OBSERVACION IMPORTANTE ES QUE ESTAS ANOTACIONES SE PUEDEN TRABAJAR A NIVEL DE CLASE O A NIVEL DE METODO, COMO SE DESEE
+@Secured(['ROLE_USUARIO'])
 class FotoController {
 
+   //AQUI SE DA USO AL SERVICIO, ESTO SE HACE FORMA AUTOMATICA POR MEDIO DE INYECCION DE DEPENDENCIAS, VER EL CURSO DE SOFTWARE 1 SI NO TIENEN NI IDEA
+   //GRAILS NOS INYECTA LA DEPENDENCIA EN LA VARIABLE SIGUIENTE, SE HACE EL ENLACE DE FORMA AUTOMATICA
+   def sesionService
    //metodo index, es el encargado de llamar a la vista para mostrar el "album de fotos", para ello 
    //primero se tienen que reunir las fotos, eso lo hago en el metodo list()
   def index(Integer max) {
-      if(session.user == null){
-         accesoDenegado()
-      }
       params.max = Math.min(max ?: 10, 100)
       //respond Foto.list(params), model:[FotoInstanceCount: Foto.count()]
       list()
     }
-
 
    //create de crear una nueva foto
    def create(){
@@ -29,7 +36,8 @@ class FotoController {
       }
       def uploadedFile = request.getFile('selector')
       instancia.imagen = uploadedFile.getBytes()
-      instancia.usuario = session.user
+      //UNA VEZ SE INYECTA LA DEPENDENCIA PUEDO DAR DE ELLA, NOTAR COMO SE SIMPLIFICA LA OBTENCION DEL USUARIO EN SESION ACTIVA
+      instancia.usuario = sesionService.usuarioEnSesion()
       instancia.save flush:true
       redirect(action: "index")
    }
@@ -41,18 +49,10 @@ class FotoController {
    }
 
    /*
-   * Se leventa un error, tipo 400, cuando no se encuentra un usuario con sesion activa
-   */
-   def accesoDenegado(){
-      //log.error("Acceso denegado, no hay una sesion activa")
-      return response.sendError(400)
-   }
- 
-   /*
    *Filtra las imagenes de acuerdo al usuario que se encuentre en sesión
    */  
    def list(){
-      def imagenes = Foto.findAllByUsuario(session.user)
+      def imagenes = Foto.findAllByUsuario(sesionService.usuarioEnSesion())
       [imagenes:imagenes]
    }
 
