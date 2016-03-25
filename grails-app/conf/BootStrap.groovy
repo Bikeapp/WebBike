@@ -13,16 +13,39 @@ class BootStrap {
       def userRole = new SecRole(authority:"ROLE_USUARIO").save()
       def adminRole = new SecRole(authority:"ROLE_ADMIN").save()
       //INSERTO UN NUEVO USUARIO EN LA BASE DE DATOS
-      def usuarioNormal = new Usuario(
+      def usuario1 = new Usuario(
          username: "cigarcial",
          password: "1234",
          enable: true,
-         email: "cigarcial@unal.edu.co",
+         email: "cigarcial@gmail.com",
          fecha: "13-04-94"
          ).save()
-   
-      SecUsuarioSecRole.create usuarioNormal,userRole  
- }
+      SecUsuarioSecRole.create usuario1,userRole  
+      def usuario2 = new Usuario(
+         username: "migarcial",
+         password: "1234",
+         enable: true,
+         email: "migarcial@gmail.com",
+         fecha: "13-04-94"
+         ).save()
+      SecUsuarioSecRole.create usuario2,userRole  
+      def usuario3 = new Usuario(
+         username: "cneiva",
+         password: "1234",
+         enable: true,
+         email: "cneiva@gmail.com",
+         fecha: "13-04-94"
+         ).save()
+      SecUsuarioSecRole.create usuario3,userRole  
+      def usuario4 = new Usuario(
+         username: "ddager",
+         password: "1234",
+         enable: true,
+         email: "ddager@gmail.com",
+         fecha: "13-04-94"
+         ).save()
+      SecUsuarioSecRole.create usuario4,userRole  
+   }
     def destroy = {
     }
 }

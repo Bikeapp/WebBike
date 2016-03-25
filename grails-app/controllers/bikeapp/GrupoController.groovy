@@ -33,10 +33,12 @@ class GrupoController {
 
    //MUESTRA LOS GRUPOS CONSULTANDO APROPIADAMENTE LAS CLASES, FIJARSE EN COMO ENTRA LA TABLA INTERMEDIA EN LAS CONSULTAS
    def show(){
+      def usuario = sesionService.usuarioEnSesion()
       def inx = params['grupoactual']
       def grupo = Grupo.findById(inx)
       def miembros = UsuarioGrupo.findAllByGrupo(grupo)
-      render(view:"show",model:[grupo:grupo,miembros:miembros])
+      def miembro = miembros.every{ it.usuario != usuario}
+      render(view:"show",model:[grupo:grupo,miembros:miembros,miembro:miembro])
    }
 
    //PERMITE UNIRSE A UN GRUPO, ESTO SIMPLEMENTE SE HACE AGREGANDO UN REGISTRO EN LA TABLA INTERMEDIA
