@@ -27,7 +27,13 @@ class Usuario extends SecUsuario{
 	String mensaje		//Mensaje dinstintivo del usuario
 	String rol			// ???? No se para que lo usamos la verdad....
     static constraints = {
+<<<<<<< HEAD
+    	usuario(nullable:false,unique:true)
+    	email(nullable:false, email:true,unique:true)
+    	contrasena(nullable:false)
+=======
     	email(nullable:false, email:true)
+>>>>>>> spring_security
     	fecha(nullable:false)
     	interes(nullable:true)
     	puntos(nullable:true)
