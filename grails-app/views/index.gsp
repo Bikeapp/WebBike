@@ -43,13 +43,13 @@
       <div class="formholder">
         <div class="randompad">
            <fieldset>
-            <g:form name="registro" controller="usuario" action="registro">
-				<label for="usuario">Usuario</label>
-				<input type="text" name="usuario" required placeholder="Ingrese un nombre de usuario">
+            <g:form name="registro" controller="Usuario" action="registro">
+				<label for="username">Usuario</label>
+				<input type="text" name="username" required placeholder="Ingrese un nombre de usuario">
 				<label for="email">Email</label>
 				<input type="email" name="email" required placeholder="Ingrese un email válido">
-				<label for="contrasena">Contraseña</label>
-				<input type="password" name="contrasena" required placeholder="Ingrese su contraseña">
+				<label for="password">Contraseña</label>
+				<input type="password" name="password" required placeholder="Ingrese su contraseña">
 				<label for="fecha">Fecha</label>
 				<input type="text" name="fecha" required placeholder="Ingrese fecha">
 				<g:submitButton class="button" name="submitButton" value="Registrarme!" />
