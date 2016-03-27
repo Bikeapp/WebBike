@@ -40,6 +40,9 @@
             <li><g:link url="${resource(dir:'Foto', file:'index.gsp')}">Foto</g:link></li>
             <li><g:link url="${resource(dir:'Mapa', file:'index.gsp')}">Mapa</g:link></li>
             <li><g:link url="${resource(dir:'Grupo', file:'index.gsp')}">Grupo</g:link></li>
+            <li><g:remoteLink class="logout" controller="logout">
+               Logout
+               </g:remoteLink> </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

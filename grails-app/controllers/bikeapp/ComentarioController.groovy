@@ -1,6 +1,10 @@
 package bikeapp
+import grails.plugin.springsecurity.annotation.Secured;
 
+@Secured(['ROLE_USUARIO'])
 class ComentarioController {
+
+   def sesionService
 
    // no hace nada
    def index(){
@@ -19,7 +23,7 @@ class ComentarioController {
          return response.sendError(500)
       }
       comentarioInstance.foto = Foto.findById(params.fotoId)
-      comentarioInstance.usuario = session.user
+      comentarioInstance.usuario = sesionService.usuarioEnSesion()
       comentarioInstance.save flush:true
       redirect(controller:"Foto",action: "actualizarComentarios", params:[imagenactual : params.fotoId]);
    }
