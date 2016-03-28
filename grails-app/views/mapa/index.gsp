@@ -57,7 +57,7 @@
 	<div class="jumbotron">
       <div class="container">
       	<div id="mapa"></div>
-        <div id="right-panel">
+        <div id="right-panel" style="overflow-y: scroll; height:50%;">
           <p>Distancia Total: <span id="total"></span></p>
         </div>
       </div>
