@@ -5,16 +5,22 @@
 			var Marker1 = null;
 			var Marker2 = null;
 			var tmpMarker = null;
-			var RStart,RFinish,RWayPoints = "";
+			var RStart,RFinish,RWayPoints = [];
 			var points = [];
 			var index = 0;
 			var directionsService = new google.maps.DirectionsService;			//Instanciar un servicio de direcciones
-			var directionsDisplay = new google.maps.DirectionsRenderer;			//Instanciar un servicio para graficar direcciones, la opcion permite no mostrar los marcadores por defecto para hacerlo mas estetico.
+			var directionsDisplay = new google.maps.DirectionsRenderer({
+										    draggable: true,
+										    map: map										    
+										  });	
+
+										  //Instanciar un servicio para graficar direcciones, la opcion permite no mostrar los marcadores por defecto para hacerlo mas estetico.
 		
 			//Funcion que inicializa los parametros iniciales del mapa de google.
 			function initMap() {
+				directionsDisplay.setPanel(document.getElementById('right-panel'));
 			
-				var myLatlng = new google.maps.LatLng(4.5,-74);
+				var myLatlng = new google.maps.LatLng(4.6385739, -74.0950293);
 				var options = {
 					center: myLatlng,
 					zoom: 15,
@@ -35,7 +41,8 @@
 				directionsDisplay.setMap(map);										//Renderizar las direcciones del graficador sobre el mapa.		
 			
 				//Añadir listener al boton de punto de partida.
-				$(document).on('click', '#butRP', function(event) {					
+				$(document).on('click', '#butRP', function(event) {	
+					RWayPoints=[];				
 					infowindow.close();
 					var txtOrigen = document.getElementById('txtOr');
 					if (Marker1 != null){						//Verifica si ya había otro marcador establecido como origen.
@@ -48,6 +55,17 @@
 					}
 					txtOrigen.value = Marker1.position.toString();			//Utiliza la coordenada del punto para ponerlo como origen en el cuadro de texto.
 					tmpMarker = null;								//El temporal queda vacio, lo que significa que se asigno correctamente el punto de origen.
+				});
+
+				$(document).on('click', '#butPI', function(event) {
+
+					RWayPoints.push({
+	                  location: tmpMarker.position,
+	                  stopover: true
+	                });
+      
+
+
 				});
 				
 				
@@ -70,7 +88,13 @@
 					tmpMarker = null;
 				});
 			
+				directionsDisplay.addListener('directions_changed', function() {
+    
+				    computeTotalDistance(directionsDisplay.getDirections());
+				});
 			}
+
+			
 			
 			//Funcion para agregar el punto a la base de datos por medio de un llamado AJAX.
 			//GOLD.
@@ -132,7 +156,7 @@
 			   tmpMarker = marker;
    
 			   var contentString = '<div class="butTipo" id="butRP"><button>Origen</button></div>'+
-									'<div class="butTipo" id="butRP"><button>Punto intermedio</button></div>'+ 			//Muestra la versión del infowindow para calcular rutas.
+									'<div class="butTipo" id="butPI"><button>Punto intermedio</button></div>'+ 			//Muestra la versión del infowindow para calcular rutas.
 									'<div class="butTipo" id="butRF"><button>Destino</button></div>';
 									
 			   infowindow = new google.maps.InfoWindow({		//Crea una nueva infoWindow con el contenido de arriba y en la posicion del marker donde se hizo click.
@@ -276,18 +300,31 @@
 			function calcRuta(){
 				var request = {													//Parametros utilizados para las direcciones.
 					origin:Marker1.position,
-					//waypoints:RWayPoints,										//ALEX AQUI VAN LOS WAYPOINTS.
+					waypoints:RWayPoints,										//ALEX AQUI VAN LOS WAYPOINTS.
 					destination:Marker2.position,
 					travelMode: google.maps.TravelMode.DRIVING,
 				};
 				directionsService.route(request,function(response,status){		//Hace la llamada para calcular la ruta.
 					if (status == google.maps.DirectionsStatus.OK) {
-						directionsDisplay.setDirections(response);				//El renderizador muestra la ruta si el llamado fue exitoso.
+						directionsDisplay.setDirections(response);
+									//El renderizador muestra la ruta si el llamado fue exitoso.
 					}
 					else{
 						window.alert('Directions request failed due to ' + status);
 					}
 				});
+			}
+
+			
+
+			function computeTotalDistance(result) {
+			  var total = 0;
+			  var myroute = result.routes[0];
+			  for (var i = 0; i < myroute.legs.length; i++) {
+			    total += myroute.legs[i].distance.value;
+			  }
+			  total = total / 1000;
+			  document.getElementById('total').innerHTML = total + ' km';
 			}
 			
 				
