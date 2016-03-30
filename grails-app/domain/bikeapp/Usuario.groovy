@@ -16,27 +16,26 @@ class Usuario extends SecUsuario{
       //QUE NO ME PREGUNTAN PERO ES DEL ASCO, NO ME QUISO TRABAJAR BIEN, CUANDO NO ERA UNA COSA ERA LA OTRA Y AL FINAL 
       //NO DEJO GUARDAR EN LA BASE DE DATOS
       //VER LA 'TABLA' INTERMEDIA 'UsuarioGrupo'
-	static hasMany = [puntos: PuntoInteres, fotos: Foto,comentarios:Comentario,grupos:Grupo]
+   static hasMany = [puntos: PuntoInteres, fotos: Foto,comentarios:Comentario,grupos:Grupo]
 
-	String email		//Email del usuario
-	String fecha		//Fecha nacimiento
-	String interes		//Lista de intereses
-	String nombre		//Nombre real del usuario
-	String sexo			//Sexo del usuario
-	String foto			//Foto de perfil
-	String mensaje		//Mensaje dinstintivo del usuario
-	String rol			// ???? No se para que lo usamos la verdad....
-    static constraints = {
-    	email(nullable:false, email:true)
-    	fecha(nullable:false)
-    	interes(nullable:true)
-    	puntos(nullable:true)
-		nombre(nullable:true)
-		sexo(nullable:true)
-		foto(nullable:true)
-		mensaje(nullable:true)
-		rol(nullable:true)
+      String email		//Email del usuario
+      String fecha		//Fecha nacimiento
+      String interes		//Lista de intereses
+      String nombre		//Nombre real del usuario
+      String sexo			//Sexo del usuario
+      String mensaje		//Mensaje dinstintivo del usuario
+      byte[] foto
+  
+   static constraints = {
+      email(nullable:false, email:true)
+      foto(nullable:true, maxSize:1073741824)
+            fecha(nullable:false)
+            interes(nullable:true)
+            puntos(nullable:true)
+            nombre(nullable:true)
+            sexo(nullable:true)
+            mensaje(nullable:true)
 
-    }
+      }
 
 }
