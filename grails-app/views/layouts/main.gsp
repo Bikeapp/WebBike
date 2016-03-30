@@ -40,7 +40,8 @@
             <li><g:link url="${resource(dir:'Foto', file:'index.gsp')}">Foto</g:link></li>
             <li><g:link url="${resource(dir:'Mapa', file:'index.gsp')}">Mapa</g:link></li>
             <li><g:link url="${resource(dir:'Grupo', file:'index.gsp')}">Grupo</g:link></li>
-            <li><g:link url="${resource(dir:'Perfil', file:'miPerfil')}">Mi Perfil</g:link></li>
+            <li><g:link url="${resource(dir:'Perfil', file:'miPerfil.gsp')}">Mi Perfil</g:link></li>
+            <li><g:link url="${resource(dir:'Evento', file:'index.gsp')}">Eventos</g:link></li>
             <li><g:remoteLink class="logout" controller="logout">
                Logout
                </g:remoteLink> </li>

@@ -7,14 +7,14 @@ package bikeapp
 class UsuarioController {
 
    def sesionService
-  
-    def registro() {
-        
-        def users = new Usuario(params)
-        users.save(failOnError: true)
-		def roleUser = SecRole.findByAuthority('ROLE_USUARIO')
-		SecUsuarioSecRole.create users,roleUser  
-		
-    }
-	
+
+   def registro() {
+
+         def users = new Usuario(params)
+            users.save(failOnError: true)
+            def roleUser = SecRole.findByAuthority('ROLE_USUARIO')
+            SecUsuarioSecRole.create users,roleUser,true
+
+      }
+
 }

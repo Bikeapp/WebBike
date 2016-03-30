@@ -9,7 +9,8 @@ class PerfilController {
 
    def show(){
       def usuario = Usuario.findByUsername(params["usuario"])
-      render(view:"show",model:[usuario:usuario])     
+      [usuario:usuario]
+      //render(view:"show",model:[usuario:usuario])     
    }
 
    def pintarImagen(Usuario instancia){
