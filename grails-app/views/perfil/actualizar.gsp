@@ -2,42 +2,37 @@
 <html lang="en">
 <head>
 <meta name="layout" content="main"/>
-<asset:stylesheet href="foto.css"/>
-<asset:javascript src="foto.js"/>
 </head>
 
 <body>
 
-
 <div role="navigation">
-<g:form url="[resource:fotoInstance, action:'save']"  enctype="multipart/form-data">
+<g:form action="update"  enctype="multipart/form-data">
 <fieldset class="form">
 <div id="controlessubir" class="controlessubir">
-<img id="vistaimagen" src="" height="600" width="500" />
-<input type="file" id="selector" name="selector" />
+<img id="vistaimagen" src="${createLink(controller:'Perfil', action:'pintarImagen', id:"${usuario.id}")}" width='400' height='400'/>
+<br>
+<input type="file" id="fileload" name="selector" />
 </div>
+Mensaje personal: <g:textArea name="mensaje" value="${usuario.mensaje}" />
+<br>
+Nombre de Usuario: <g:textField name="username" value="${usuario.username}" />
+<br>
+Email: <g:textField name="email" value="${usuario.email}" />
+<br>
+Sexo: <g:select name="sexo" value="${usuario.sexo}" from="${sexos}" />
+<br>
+Fecha de nacimiento: <g:textField name="fecha" value="${usuario.fecha}" />
 </fieldset>
 <p>
 <fieldset class="buttons">
-<g:submitButton name="create" class="save" value="Subir" id="create" />
+<g:submitButton name="update" class="update" value="Actualizar" id="update" />
 </fieldset>
 </g:form>
 </div>
 
-<div id="foto">
-<img src="${createLink(controller:'Foto', action:'pintarImagen', id:"${usuario}")}" width='400' height='400'/>
-</div>
 
-
-Mensaje distintivo: ${usuario.mensaje}
-<br>
-Nombre de usuario: ${usuario.username}
-<br>
-Email: ${usuario.email}
-<br>
-Sexo: ${usuario.sexo}
-<br>
-Fecha de Nacimiento: ${usuario.fecha}
+<asset:javascript src="perfil.js"/>
 
 </body>
 </html>
