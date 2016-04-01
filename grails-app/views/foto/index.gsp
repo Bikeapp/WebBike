@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
 <meta name="layout" content="main"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<asset:stylesheet src="lightweightLightbox.css"/>
+	<style>
+    .box img { width: 300px; float:left; border:1px solid #ccc; padding:5px; margin:10px;}
+    h1 { margin-top:50px; text-align:center;}
+    .jquery-script-ads { width:728px; margin:50px auto;}
+    </style>
 </head>
 <body>
 
@@ -13,32 +20,43 @@
 </ul>
 </div>
 
-<div id="divfotos" class="albumfotos">
-<table id="albumfotos"> 
-<g:each var="imagen" in="${imagenes}" status="i">
-<g:if test="${ i%3 == 0}">
-<tr>
-<g:if test="${ i != 0}">
-</tr>
-</g:if>
-</g:if>
-<td>
-<g:link action="show" params="[imagenactual : imagen.id]">
-<img src="${createLink(controller:'Foto', action:'pintarImagen', id:"${imagen.id}")}" width='150' height='150'/>
-</g:link>
-</td>
-</g:each>
-</table>
+
+
+<div class="lightbox-container">
+
+
+    
+		<g:each var="imagen" in="${imagenes}" status="i">
+		<!-- <g:link action="show" params="[imagenactual : imagen.id]"> -->
+		<div class="box">
+      <img alt="An example image 2" class="lightbox-image" src="${createLink(controller:'Foto', action:'pintarImagen', id:"${imagen.id}")}" width='300' height='300' />
+	  </div>
+	  <!-- </g:link> -->
+	  </g:each>
+  
+    
 </div>
 
 
-<asset:stylesheet href="foto.css" />
-<div class="container">
+
+<!-- <asset:stylesheet href="foto.css" /> -->
+<div >
 <!-- Example row of columns -->
 <footer>
 <p>BikeApp&copy; 2016 Company, Inc.</p>
 </footer>
 </div> <!-- /container -->
+
+
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<!-- <script src="js/lightweightLightbox.min.js"></script> -->
+<asset:javascript src="lightweightLightbox.min.js"/>
+
+<script type="text/javascript">
+    $(".lightbox-container").lightweightLightbox();
+</script>
+
 
 </body>
 </html>
