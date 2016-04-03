@@ -14,9 +14,6 @@
 <img src="${createLink(controller:'Foto', action:'pintarImagen', id:"${inx}")}" width='800' height='600'/>
 </div>
 
-
-
-
 <div id="content">
 
 <g:render template="comentario" model="[comentarios:comentarios]" />

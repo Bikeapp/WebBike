@@ -6,3 +6,7 @@
 #miembros{
    margin-left:50%;
 }
+#aportes{
+   height:400px;
+   overflow-y: scroll;
+}

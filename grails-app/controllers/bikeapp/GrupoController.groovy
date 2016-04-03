@@ -56,4 +56,12 @@ class GrupoController {
       def aporte= new Aporte(params)
       aporte.save()
    }
+
+   def actualizarComentarios(){
+      def inx = params['grupoActual']
+      def grupo = Grupo.findById(inx)
+      //render comentarios
+      render(template:"aporte", model:[grupo:grupo])
+
+   }
 }
