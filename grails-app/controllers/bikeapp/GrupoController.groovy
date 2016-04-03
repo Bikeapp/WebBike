@@ -49,4 +49,10 @@ class GrupoController {
       usuario_grupo.save flush:true
       redirect(action:"index")
    }
+
+   def crearAporte(){
+      params.usuario=sesionService.usuarioEnSesion()      
+      def aporte= new Aporte(params)
+      aporte.save()
+   }
 }
