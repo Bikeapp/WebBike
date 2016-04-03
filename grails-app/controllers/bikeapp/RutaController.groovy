@@ -1,5 +1,8 @@
 package bikeapp
 
+import grails.plugin.springsecurity.annotation.Secured
+
+@Secured(['ROLE_USUARIO'])
 class RutaController {
 
     def index() { }

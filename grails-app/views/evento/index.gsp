@@ -15,9 +15,18 @@
 </div>
 
 <div id="misEventos" >
+<table>
 <g:each var="evento" in="${misEventos}">
-${evento.descripcion}
+<tr>
+<td>
+${evento.descripcion}   
+</td>
+<td>
+${evento.fecha}
+</td>
+</tr>
 </g:each>
+</table>
 
 </div>
 

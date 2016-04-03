@@ -4,17 +4,21 @@ import groovy.transform.ToString
 @ToString
 class PuntoInteres {
 
-	static belongsTo = [ usuario : Usuario, ruta: Ruta]
-	
-	String lat
-	String lon
-	String nombre
-	String descripcion
-	String calificacion
-	String tipo
+   static belongsTo = [ usuario : Usuario, ruta: Ruta,evento:Evento]
 
-    static constraints = {
-    	usuario nullable: true
-    	ruta nullable:true
-    }
+   double lat
+   double lng
+   String nombre
+   String descripcion
+   double calificacion
+   String tipo
+
+   static constraints = {
+      usuario(nullable:false)
+      ruta(nullable:true)
+      nombre(nullable:true)
+      descripcion(nullable:true)
+      calificacion(nullable:true)
+      evento(nullable:true)
+   }
 }

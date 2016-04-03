@@ -1,7 +1,9 @@
 package bikeapp
 
 import grails.converters.JSON
+import grails.plugin.springsecurity.annotation.Secured
 
+@Secured(['ROLE_USUARIO'])
 class MapaController {
 
 	def puntoInteresService
