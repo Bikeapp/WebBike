@@ -50,6 +50,7 @@ class GrupoController {
       redirect(action:"index")
    }
 
+   //NO SE ESTA GUARDANDO EN LA DB
    def crearAporte(){
       params.usuario=sesionService.usuarioEnSesion()      
       def aporte= new Aporte(params)
