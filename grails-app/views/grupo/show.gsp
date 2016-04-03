@@ -3,26 +3,38 @@
 <head>
 	<meta name="layout" content="main"/>
 	<asset:stylesheet href="grupo.css"/>
+	
 </head>
 <body>
 
 
 	<h1>Bienvenidos al grupo ${grupo.nombre}</h1>
 
-	<g:formRemote name="formulario_aporte" update="updateMe" url="[controller: 'grupo', action: 'crearAporte', params: [grupo: '${grupo.id}']]">
+	<g:formRemote name="formulario_aporte" update="div_aportes" url="[controller: 'Aporte', action: 'save']">
 
 	    <fieldset class="form">
 			<div id="contenido_aporte_input">
 			<label>Aporte:</label> <br>			
 				<g:textArea name="contenido" />
 			</div>
+			<g:hiddenField name="grupo" value="${grupo.id}" />
 		</fieldset>
 
 		<fieldset class="buttons">
-			<g:submitButton name="create" class="save" value="Aportar" id="aporte_botton" />
+			<g:submitButton name="create" class="save" value="Aportar" id="aporte_boton" />
 		</fieldset>
 			    
 	</g:formRemote>
+
+	
+	<g:if test="${grupo.aportes}">
+		<div id="div_aportes">
+			<h1>Aportes:</h1>
+		    <g:render template="aporte" model="[aportes:grupo.aportes]" />
+		</div>
+	</g:if>
+
+	
 
 	
 

@@ -9,12 +9,14 @@ class Aporte {
 
 	String contenido
       //esto debe ser de tipo fecha
-	String fecha = new Date()
+	Date fecha 
 
     static constraints = {
+        fecha(defaultValue: new Date())
     	grupo(nullable:false)
     	usuario(nullable:false)
     	contenido(nullable:false)
     	fecha(nullable:false)
     }
+
 }
