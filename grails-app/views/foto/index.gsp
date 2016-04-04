@@ -51,8 +51,8 @@
 
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <!-- <script src="js/lightweightLightbox.min.js"></script> -->
-<asset:javascript src="lightweightLightbox.min.js"/>
-
+<asset:javascript src="lightweightLightbox.js"/>
+<asset:javascript src="foto.js"/>
 <script type="text/javascript">
     $(".lightbox-container").lightweightLightbox();
 </script>

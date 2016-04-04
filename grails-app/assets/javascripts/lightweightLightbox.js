@@ -28,7 +28,28 @@
                 refreshLightbox(image, title);
             }
             else {
-                $("body").append('<div class="lightbox" id="lightbox"><span class="close fa fa-times"></span><span class="left fa fa-chevron-left"></span><span class="right fa fa-chevron-right"></span><div class="content"><div class="inner"><div class="image"><img src="' + image + '" /></div><div class="title">' + title + '</div></div></div></div>');
+                $("body").append('<div class="lightbox" id="lightbox">'
+				+ '<span class="close fa fa-times"></span>'
+				+ '<span class="left fa fa-chevron-left"></span>'
+				+ '<span class="right fa fa-chevron-right"></span>'
+				+ '<div class="content">'
+				+' <div class="inner">'
+				+ '<div class="image"><img src="\' + image + \'" /></div>'
+				+ '<div class="title">\' + title + \'</div>'
+				+ '</div></div>'
+				+ '<div class="commentbox" id="commentbox">'
+				+ '<p>hola</p>'
+				+ '<g:render template="comentario" model="[comentarios:comentarios]" />'
+				+ '<g:formRemote name="comentar" update="comment" url="[resource:comentarioInstance, action:\'save\',controller:\'Comentario\']" after="limpiar()">'
+				+ '<fieldset class="form">'
+				+ '<g:textArea name="contenido" />'
+				+ '<!-- FIJARSE EN ESTE PUNTO, ESTE ES EL CAMPO INVISIBLE AL CUAL ME REFIERO --!>'
+				+ '<g:hiddenField name="fotoId" value="${inx}" />'
+				+ '</fieldset>'
+				+ '<fieldset class="buttons">'
+				+ '<g:submitButton name="create" class="save" value="Comentar" id="create" />'
+				+ '</fieldset>'
+				+ '</g:formRemote><span class="boton fa fa-angle-double-right"></span></div></div>');
             }
 
             populateArrows();

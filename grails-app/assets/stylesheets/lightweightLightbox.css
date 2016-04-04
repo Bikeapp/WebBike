@@ -48,7 +48,8 @@
 
 .lightbox .left,
 .lightbox .right,
-.lightbox .close{
+.lightbox .close,
+.commentbox .boton{
     color:#666;
     font-size:30px;
     opacity:1;
@@ -74,8 +75,33 @@
 
 .lightbox .left:hover,
 .lightbox .right:hover,
-.lightbox .close:hover{
+.lightbox .close:hover,
+.commentbox .boton:hover{
     color:#fff;
     cursor: pointer;
     transition:color 0.2s ease;
+}
+
+.commentbox{
+    background:white;
+    bottom:0;
+    height:70%;
+    left:100px;
+    margin:0;
+    position:fixed;
+    right:0;
+    top:100px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width:30%;
+    z-index:2500;
+}
+
+.commentbox .boton{
+    right:20px;
+    top:90%;
 }
