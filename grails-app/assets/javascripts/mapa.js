@@ -4,21 +4,29 @@
 			var markPoint;
 			var Marker1 = null;
 			var Marker2 = null;
+			var NMarkers = [];
 			var tmpMarker = null;
-			var RStart,RFinish,RWayPoints = "";
+			var RStart,RFinish,RWayPoints = [];
 			var points = [];
 			var index = 0;
 			var directionsService = new google.maps.DirectionsService;			//Instanciar un servicio de direcciones
-			var directionsDisplay = new google.maps.DirectionsRenderer;			//Instanciar un servicio para graficar direcciones, la opcion permite no mostrar los marcadores por defecto para hacerlo mas estetico.
+			var directionsDisplay = new google.maps.DirectionsRenderer({
+										    draggable: true,
+										    map: map										    
+										  });	
+
+										  //Instanciar un servicio para graficar direcciones, la opcion permite no mostrar los marcadores por defecto para hacerlo mas estetico.
 		
 			//Funcion que inicializa los parametros iniciales del mapa de google.
 			function initMap() {
+				directionsDisplay.setPanel(document.getElementById('right-panel'));
 			
-				var myLatlng = new google.maps.LatLng(4.5,-74);
+				var myLatlng = new google.maps.LatLng(4.6385739, -74.0950293);
 				var options = {
 					center: myLatlng,
 					zoom: 15,
 					disableDoubleClickZoom: true,
+					mapTypeControl: false
 				}
 				map = new google.maps.Map(document.getElementById('mapa'),options);	//Se le asigna el mapa de google al div con nombre 'mapa'
 				
@@ -35,7 +43,8 @@
 				directionsDisplay.setMap(map);										//Renderizar las direcciones del graficador sobre el mapa.		
 			
 				//Añadir listener al boton de punto de partida.
-				$(document).on('click', '#butRP', function(event) {					
+				$(document).on('click', '#butRP', function(event) {	
+					RWayPoints=[];				
 					infowindow.close();
 					var txtOrigen = document.getElementById('txtOr');
 					if (Marker1 != null){						//Verifica si ya había otro marcador establecido como origen.
@@ -48,6 +57,20 @@
 					}
 					txtOrigen.value = Marker1.position.toString();			//Utiliza la coordenada del punto para ponerlo como origen en el cuadro de texto.
 					tmpMarker = null;								//El temporal queda vacio, lo que significa que se asigno correctamente el punto de origen.
+				});
+
+				$(document).on('click', '#butPI', function(event) {
+					infowindow.close();
+					RWayPoints.push({
+	                  location: tmpMarker.position,
+	                  stopover: true
+	                });
+			   		var marker = new google.maps.Marker({
+				  		position: tmpMarker.position,
+				  		draggable:true,
+				  		map:map,
+			   		});
+			   		NMarkers.push(marker);
 				});
 				
 				
@@ -70,7 +93,13 @@
 					tmpMarker = null;
 				});
 			
+				directionsDisplay.addListener('directions_changed', function() {
+    
+				    computeTotalDistance(directionsDisplay.getDirections());
+				});
 			}
+
+			
 			
 			//Funcion para agregar el punto a la base de datos por medio de un llamado AJAX.
 			//GOLD.
@@ -128,16 +157,16 @@
 				  draggable:true,
 				  map:map,
 			   });
+			   
 			   //El marcador queda almacenado mientras se define que tipo de punto es.
 			   tmpMarker = marker;
    
 			   var contentString = '<div class="butTipo" id="butRP"><button>Origen</button></div>'+
-									'<div class="butTipo" id="butRP"><button>Punto intermedio</button></div>'+ 			//Muestra la versión del infowindow para calcular rutas.
+									'<div class="butTipo" id="butPI"><button>Punto intermedio</button></div>'+ 			//Muestra la versión del infowindow para calcular rutas.
 									'<div class="butTipo" id="butRF"><button>Destino</button></div>';
 									
 			   infowindow = new google.maps.InfoWindow({		//Crea una nueva infoWindow con el contenido de arriba y en la posicion del marker donde se hizo click.
 					content: contentString,
-					location: marker,
 			   });
 	
 			   infowindow.open(map, marker);			//Muestra la ventana emergente en ese punto	 
@@ -173,13 +202,13 @@
 				divBoton.style.borderRadius = '3px';
 				divBoton.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
 				divBoton.style.cursor = 'pointer';
-				divBoton.style.marginBottom = '22px';
+				divBoton.style.marginBottom = '2px';
 				divBoton.style.textAlign = 'center';
 				divBoton.innerHTML = '<img src="../assets/geo_icon.png"></img>';
 				divBoton.title = 'Click para ubicarte en el mapa';
 				divContainer.appendChild(divBoton);
 				divBoton.addEventListener('click',pedirUbicacion);
-				map.controls[google.maps.ControlPosition.TOP_RIGHT].push(divContainer);
+				map.controls[google.maps.ControlPosition.LEFT].push(divContainer);
 			}
 			
 			//Muestra el boton en la esquina superior derecha del mapa para calcular rutas.
@@ -190,13 +219,13 @@
 				divBoton.style.borderRadius = '3px';
 				divBoton.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
 				divBoton.style.cursor = 'pointer';
-				divBoton.style.marginBottom = '22px';
+				divBoton.style.marginBottom = '2px';
 				divBoton.style.textAlign = 'center';
 				divBoton.innerHTML = '<img src="../assets/rutas_icon.png"></img>';
 				divBoton.title = 'Click para calcular una ruta';
 				divContainer.appendChild(divBoton);
 				divBoton.addEventListener('click',mostrarUIRuta);
-				map.controls[google.maps.ControlPosition.TOP_RIGHT].push(divContainer);
+				map.controls[google.maps.ControlPosition.LEFT].push(divContainer);
 			}
 	
 			//Obtiene la ubicacion del usuario y centra el mapa en ella.
@@ -228,6 +257,7 @@
 			//Habilita la ventana emergente con click izquierdo para que el usuario escoja destino, origen o punto intermedio.
 			function mostrarUIRuta(){
 				map.addListener('click', function(event) {						//El mapa escuchara eventos (click) y ejecuta la funcion
+					//alert(event.latLng);
 					addMarker(event.latLng);								//Funcion de Ciro para agregar puntos.
 					//printArrayJQ();							//Funcion de Ciro para mostrar puntos dinamicamente.
 					//addMarkerToBD("Prueba",event.latLng.lat(),event.latLng.lng(),icono,"Prueba descripcion",null,null);		//Funcion para agregar el punto de interés a la BD.
@@ -247,6 +277,7 @@
 				container.style.width = '500px';
 				container.style.margin = 'auto';
 				container.style.border = '3px solid black';
+				container.setAttribute('id','direcciones');
 				btnRuta.innerHTML = 'Calcular Ruta';
 				btnRuta.onclick = function() { calcRuta();cleanMarkers(); }
 				btnRuta.style.width = '120px';
@@ -270,24 +301,53 @@
 				if (Marker1 != null) Marker1.setMap(null); Marker1 = null;
 				if (Marker2 != null) Marker2.setMap(null); Marker2 = null;
 				if (tmpMarker != null) tmpMarker.setMap(null); tmpMarker = null;
+				for(var i = 0 ; i < NMarkers.length ; i++){
+					NMarkers[i].setMap(null);
+				}
 			}
 			
 			//Utiliza la posicion de inicio y destino establecidas por el usuario para calcular la ruta con el api de google.
 			function calcRuta(){
 				var request = {													//Parametros utilizados para las direcciones.
 					origin:Marker1.position,
-					//waypoints:RWayPoints,										//ALEX AQUI VAN LOS WAYPOINTS.
+					waypoints:RWayPoints,										//ALEX AQUI VAN LOS WAYPOINTS.
 					destination:Marker2.position,
 					travelMode: google.maps.TravelMode.DRIVING,
 				};
 				directionsService.route(request,function(response,status){		//Hace la llamada para calcular la ruta.
 					if (status == google.maps.DirectionsStatus.OK) {
-						directionsDisplay.setDirections(response);				//El renderizador muestra la ruta si el llamado fue exitoso.
+						directionsDisplay.setDirections(response);
+									//El renderizador muestra la ruta si el llamado fue exitoso.
 					}
 					else{
 						window.alert('Directions request failed due to ' + status);
 					}
 				});
+				toLeft();
+			}
+			
+			function toLeft(){
+				$("#mapa").animate({width:'70%'},4000);
+				$("#right-panel").animate({width:'30%',opacity:'1'},4000);
+				$("#direcciones").animate({marginLeft:'-170px'},4000);
+			}
+			
+			function toRight(){
+				$("#mapa").animate({width:'100%'},4000);
+				$("#right-panel").animate({width:'0%',opacity:'0'},4000);
+				$("#direcciones").animate({marginLeft:'-auto'},4000);
+			}
+
+			
+
+			function computeTotalDistance(result) {
+			  var total = 0;
+			  var myroute = result.routes[0];
+			  for (var i = 0; i < myroute.legs.length; i++) {
+			    total += myroute.legs[i].distance.value;
+			  }
+			  total = total / 1000;
+			  document.getElementById('total').innerHTML = total + ' km';
 			}
 			
 				
