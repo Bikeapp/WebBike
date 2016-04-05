@@ -9,7 +9,7 @@ class MensajeController {
 
    def index(){
       def usuario = sesionService.usuarioEnSesion()  	//Obtenemos el usuario para buscar mensajes que corresponde.
-      [mensajes:Mensaje.list(),usuario:usuario, conversaciones: ConvU.list()]		//El controlador envía al cliente un parametro con los mensajes que encuentre en la BD.
+      [mensajes:Mensaje.list(),usuario:usuario, conversaciones: ConvU.findAllByU1(usuario)]		//El controlador envía al cliente un parametro con los mensajes que encuentre en la BD.
    }
    
    def crearC(){
