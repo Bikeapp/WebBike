@@ -13,6 +13,7 @@
 
     <!-- Custom styles for this template -->
     <asset:stylesheet href="bikeApp.css"/>
+    <asset:stylesheet href="mensajes.css"/>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
    <!-- PONGO LA LIBRERIA PARA QUE AHORA SE PUEDA USAR AJAX --!>

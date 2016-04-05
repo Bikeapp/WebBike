@@ -4,13 +4,17 @@ import groovy.transform.ToString
 @ToString
 class Mensaje {
 
-	static hasMany = [ usuarios : Usuario]
-	
 	String contenido
 	String fecha
-
+	ConvU conversacion
+	Usuario dueño
+	
+	
+	
     static constraints = {
     	contenido(nullable:false)
     	fecha(nullable:false)
+    	conversacion(nullable:false)
+    	dueño(nullable:false)
     }
 }
