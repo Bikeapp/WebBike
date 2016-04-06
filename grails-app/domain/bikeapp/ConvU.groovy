@@ -4,8 +4,8 @@ import groovy.transform.ToString
 @ToString
 class ConvU {
 
-	Usuario u1
-	Usuario u2
+	Usuario u1			//Primer usuario de la conversacion
+	Usuario u2			//Segundo usuario de la conversacion
 
     static constraints = {
     	u1(nullable:false)

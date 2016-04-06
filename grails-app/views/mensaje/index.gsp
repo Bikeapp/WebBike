@@ -1,7 +1,14 @@
+<%@ defaultCodec="none" %> 
+<%! import grails.converters.JSON %>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta name="layout" content="main"/>
+<asset:javascript src="mensajes.js"/>
+
+
 </head>
 
 <body>
@@ -13,23 +20,18 @@
 		<div id = "menContainer">
 			<div id="contactos">
 				<g:form>
-				<g:each var="contacto" in="${conversaciones}">
-					<button class="mensaje">${contacto.u2.nombre}</button>
-				</g:each>
-				<g:actionSubmit value="Crear Conversacion" action="crearC"/>
+					<g:each var="contacto" in="${conversaciones}">
+						<div class="contacto">${contacto.u2.nombre}</div>
+					</g:each>
+					<g:actionSubmit value="Crear Conversacion" action="crearC"/>
+					<!--FALTA CREAR UNA INTERFAZ PARA QUE EL USUARIO SELECCIONE A UN AMIGO O TODOS EN ESTE CASO.--!>
 				</g:form>
 			</div>
-			<div id="mensajes">
-				<g:each var="mensaje" in="${mensajes}">
-					<button class="mensaje">${mensaje.contenido}</button>
-				</g:each>
-			</div>
+			<div id="mensajes"></div>
 			<div id="input">
 				<g:form>
-					<!-- <g:select name="convSel" from="${conversaciones}" optionKey="id" optionValue="id"/>
-					<g:select name="menSel" from="${mensajes}" optionKey="id" optionValue="id"/> --!>
-					<g:textField name="contenido" value="Por favor escriba un mensaje"/>
-					<g:actionSubmit value="Crear Mensaje" action="crearM"/>
+					<input type="text" id="contenido" value="Por favor escriba un mensaje"/>
+					<button id="cm">Crear Mensaje</button>
 				</g:form>
 			</div>
 		</div>
