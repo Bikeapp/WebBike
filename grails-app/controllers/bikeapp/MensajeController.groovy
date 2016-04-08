@@ -54,11 +54,13 @@ class MensajeController {
    
    def crearConversacion(){
       def usuario1 = sesionService.usuarioEnSesion()		//Usuario creador de la conversacio
-      def userName = params.convSel				//Nombre de usuario del destinatario
+      def userName = params.userName				//Nombre de usuario del destinatario
       def usuario2 = Usuario.findByNombre(userName)			//Usuario del destinatario en la base de datos
       def conversacion = new ConvU(u1:usuario1,u2:usuario2)		//Creo una nueva conversacion con ambos usuarios
       conversacion.save(flush:true)		//Almaceno la nueva conversacion
-      render conversacion as JSON
+      JSON.use('deep'){		//MOTHERFUCKER DEEP JSON.
+        render conversacion as JSON
+      }
       
    }
 

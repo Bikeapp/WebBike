@@ -23,7 +23,9 @@
 					<g:each var="contacto" in="${conversaciones}">
 						<div class="contacto">${contacto.u2.nombre}</div>
 					</g:each>
-					<g:actionSubmit value="Crear Conversacion" action="crearC"/>
+					<div id="btndiv">
+						<button id="cc">Crear Conversacion</button>
+					</div>
 					<!--FALTA CREAR UNA INTERFAZ PARA QUE EL USUARIO SELECCIONE A UN AMIGO O TODOS EN ESTE CASO.--!>
 				</g:form>
 			</div>

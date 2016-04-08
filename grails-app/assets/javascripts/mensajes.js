@@ -13,6 +13,8 @@ $(document).on('click','.contacto',function(){
 			userName: convSel			//Envio el nombre de usuario que tengo seleccionado.
 		},
 		success: function(data) {
+			console.log(data);
+			$('#mensajes').empty();
 			for(obj in data){					
 				$('#mensajes').append("<div class='mensaje'>"+data[obj].contenido+"</div>");	//En caso de ser exitoso el request, iterar por cada objeto(mensaje) y mostrar.
 			}
@@ -61,12 +63,13 @@ $(document).on('click','#cc',function(event){
 	$.ajax({
 		url: 'crearConversacion',			//Llamo a crearConversacion
 		type: 'POST',
-		dataType: 'text',					//Que el controlador me devuelva el objeto de tipo texto.
+		dataType: 'json',					//Que el controlador me devuelva el objeto de tipo texto.
 		data: {
 			userName: convSel,			//Envio el nombre de usuario que tengo seleccionado.
 		},
 		success: function(data) {
-			$('#contactos').append("<div class='contacto'>"+data+"</div>");		//Agrega la nueva conversacion al gsp
+			console.log(data);					
+			$('#contactos').append("<div class='contacto'>"+data.u2.nombre+"</div>");	//En caso de ser exitoso el request, iterar por cada objeto(mensaje) y mostrar.
 		},
 		error: function (xhr, ajaxOptions, thrownError) {
 			alert(xhr.status);
