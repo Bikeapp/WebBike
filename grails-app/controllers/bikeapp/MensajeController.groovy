@@ -10,26 +10,10 @@ class MensajeController {
 
    def index(){
       def usuario = sesionService.usuarioEnSesion()  	//Obtenemos el usuario para buscar mensajes que corresponde.
-      [mensajes:Mensaje.list(),usuario:usuario, conversacionesAll: ConvU.list(), conversaciones: ConvU.findAllByU1OrU2(usuario,usuario),usuarios: Usuario.list()]		//El controlador envía al cliente un parametro con los mensajes que encuentre en la BD para el usuario en sesion.
+      [usuario:usuario, conversaciones: ConvU.findAllByU1OrU2(usuario,usuario),usuarios: Usuario.list()]		//El controlador envía al cliente un parametro con los mensajes que encuentre en la BD para el usuario en sesion.
    }
    
-   //Se utiliza para crear una conversacion nueva.
-   def crearC(){
-      def usuario = sesionService.usuarioEnSesion()		//Obtiene el usuario
-      def conversacion = new ConvU(u1:usuario.id,u2:usuario.id)	//Crea una conversacion con el usuario
-      conversacion.save(flush:true)		//Persiste en la base de datos
-      redirect(view:"index")			//Redirecciona a la pagina principal de mensajes
-   }
-   
-   //Se utiliza para crear mensajes.
-   def crearM(){
-      def usuario = sesionService.usuarioEnSesion()			//Obtiene el usuario
-      def mensaje = new Mensaje(dueño:usuario.id,conversacion:usuario.id,fecha:"hoy",contenido:params.contenido)		//Crea un nuevo mensaje
-      mensaje.save(flush:true)			//persiste en la base de datos.
-      redirect(view:"index")			//redirecciona a index de mensajes.
-   }
-   
-   
+	//Se utiliza para buscar los mensajes asociados a una conversacion entre 2 usuarios.
    def buscarMensajes(){
       def userName = params.userName		//Recibo el userName
       def mensajes = []
@@ -37,6 +21,8 @@ class MensajeController {
       def usuario2 = Usuario.findByNombre(userName)		//Encuentro el usuario con ese username
       def conversacion2 = ConvU.findByU1AndU2(usuario1,usuario2)
       def conversacion3 = ConvU.findByU1AndU2(usuario2,usuario1)
+      //Tengo que revisar ambas posibilidades en la base de datos. (u1,u2 y u2,u1). Ambas son la misma conversacion, por eso debo hacer 2 busquedas.
+      //Si todo funciona bien, en el momento de crear conversaciones no deja hacer duplicados (a,b) y (b,a). Solo puede existir una : (a,b)  ó  (b,a)
       if (conversacion2 != null){
       	mensajes = Mensaje.findAllByConversacion(conversacion2)	//Encuentro mensajes asociados a esa conversacion
       }
@@ -46,7 +32,6 @@ class MensajeController {
       else{
       	mensajes = null
       }
-      //println("Mensajes:" + mensajes)
       render mensajes as JSON				//devuelvo mensajes a javascript
    }
    
@@ -82,7 +67,8 @@ class MensajeController {
       def userName = params.userName				//Nombre de usuario del destinatario
       def usuario2 = Usuario.findByNombre(userName)			//Usuario del destinatario en la base de datos
       def conv1 = ConvU.findByU1AndU2(usuario1,usuario2)
-      def conv2 = ConvU.findByU1AndU2(usuario2,usuario1)
+      def conv2 = ConvU.findByU1AndU2(usuario2,usuario1)	//Hago 2 busquedas ya que necesito buscar conversaciones con ambas posiblidades de usuarios.
+      //retorna la conversacion que encuentre (conv1 o conv2). retorna conversacion si es una nueva porque no encuentra ninguna.
       if (conv1 != null){
       	JSON.use('deep'){		//MOTHERFUCKER DEEP JSON.
         	render conv1 as JSON

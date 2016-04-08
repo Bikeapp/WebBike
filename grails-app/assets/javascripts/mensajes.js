@@ -43,7 +43,6 @@ $(document).on('click','#cm',function(event){
 				contenido: $('#contenido').val(),
 			},
 			success: function(data) {
-				$('#mensajes').empty();
 				$('#mensajes').append("<div class='mensaje'>"+data+"</div>");		//Agrega el nuevo mensaje al gsp
 			},
 			error: function (xhr, ajaxOptions, thrownError) {
@@ -61,7 +60,7 @@ $(document).on('click','#cm',function(event){
 //AJAX PARA CREAR UNA CONVERSACION Y MOSTRARLO EN LA PAGINA.
 $(document).on('click','#cc',function(event){
 	event.preventDefault();
-	var user = $( "#friendSelect option:selected").text();
+	var user = $( "#friendSelect option:selected").text();		//Obtengo el nombre de usuario del destinatario en la conversacion desde el select
 	$.ajax({
 		url: 'crearConversacion',			//Llamo a crearConversacion
 		type: 'POST',
@@ -69,23 +68,21 @@ $(document).on('click','#cc',function(event){
 		data: {
 			userName: user,			//Envio el nombre de usuario que tengo seleccionado.
 		},
-		success: function(data) {
-			alert(data.u1.nombre + "equals" + nomUsuario);
+		success: function(data) {		//Si creo la conversacion exitosamente.
+			//Verifica el nombre de usuario  en sesion para identificar el otro usuario de la conversacion e imprimir en pantalla ese nombre.
 			if (data.u1.nombre == nomUsuario){
-				convSel = $(".contacto:contains("+data.u2.nombre+")").text();
+				convSel = $(".contacto:contains("+data.u2.nombre+")").html();
 				if (convSel.length < 1){
-					$('#contactos').append("<div class='contacto'>"+data.u2.nombre+"</div>");	//En caso de ser exitoso el request, iterar por cada objeto(mensaje) y mostrar.
-					convSel = $('.contacto:contains('+data.u2.nombre+')').html();
-					alert(convSel);
+					$('#contactos').append("<div class='contacto'>"+data.u2.nombre+"</div>");	
 				}
+				convSel = $('.contacto:contains('+data.u2.nombre+')').html();		//dejar la conversacion seleccionada de una vez. Al escribir un mensaje queda asociado a esta conversacion
 			}
 			else{
-				convSel = $(".contacto:contains("+data.u1.nombre+")").text();
+				convSel = $(".contacto:contains("+data.u1.nombre+")").html();
 				if (convSel.length < 1){
-					$('#contactos').append("<div class='contacto'>"+data.u1.nombre+"</div>");	//En caso de ser exitoso el request, iterar por cada objeto(mensaje) y mostrar.
-					convSel = $('.contacto:contains('+data.u1.nombre+')').html();
-					alert(convSel);
+					$('#contactos').append("<div class='contacto'>"+data.u1.nombre+"</div>");	//Mostrar el nombre del destinatario en pantalla.
 				}
+				convSel = $('.contacto:contains('+data.u1.nombre+')').html();		//dejar la conversacion seleccionada de una vez.Al escribir un mensaje queda asociado a esta conversacion
 			}
 		},
 		error: function (xhr, ajaxOptions, thrownError) {
