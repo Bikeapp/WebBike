@@ -27,7 +27,8 @@ class BootStrap {
          password: "1234",
          enable: true,
          email: "migarcial@gmail.com",
-         fecha: "13-04-94"
+         fecha: "13-04-94",
+         nombre: "garcia"
          ).save()
       SecUsuarioSecRole.create usuario2,userRole  
       def usuario3 = new Usuario(
@@ -35,7 +36,8 @@ class BootStrap {
          password: "1234",
          enable: true,
          email: "cneiva@gmail.com",
-         fecha: "13-04-94"
+         fecha: "13-04-94",
+         nombre: "Neiva"
          ).save()
       SecUsuarioSecRole.create usuario3,userRole  
       def usuario4 = new Usuario(
