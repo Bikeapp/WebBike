@@ -89,7 +89,7 @@
 						ruta: ruta
 					},
 					success: function(data) {
-						alert(data);					//Instruccion a ejecutar cuando haya una conexión exitosa con el servidor.
+						alert("holaaaaaa");					//Instruccion a ejecutar cuando haya una conexión exitosa con el servidor.
 					}
 				});
 			}

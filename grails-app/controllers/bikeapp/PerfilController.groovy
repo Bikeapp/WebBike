@@ -17,6 +17,11 @@ class PerfilController {
       response.outputStream << instancia.foto
       response.outputStream.flush()
    }
+   
+   //Controlador que redirige a los mensajes del usuario
+   def mensajes(){
+   	  redirect(controller:"mensaje",view:"index")
+   }
 
    def miPerfil(){
       render(view:"show",model:[usuario:sesionService.usuarioEnSesion()])

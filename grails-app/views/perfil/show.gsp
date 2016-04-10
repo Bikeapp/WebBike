@@ -10,6 +10,7 @@
 <div class="nav" role="navigation">
 <ul>
 <li><g:link action="actualizar">Actualizar perfil</g:link></li>
+<li><g:link action="mensajes">Mensajes</g:link></li>
 </ul>
 </div>
 <div id="foto">

@@ -13,12 +13,13 @@
 
     <!-- Custom styles for this template -->
     <asset:stylesheet href="bikeApp.css"/>
+    <asset:stylesheet href="mensajes.css"/>    
+    
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
    <!-- PONGO LA LIBRERIA PARA QUE AHORA SE PUEDA USAR AJAX --!>
-      <g:setProvider libary="jquery"/>
-    <r:layoutResources/>
     <g:layoutHead/>
+    <r:layoutResources/>
   </head>
 
   <body>
@@ -50,20 +51,8 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-    
-    
-
     <g:layoutBody/>
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <r:layoutResources/>
   </body>
 </html>
 
