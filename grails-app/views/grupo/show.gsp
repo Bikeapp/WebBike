@@ -3,11 +3,31 @@
 <head>
 <meta name="layout" content="main"/>
 <asset:stylesheet href="grupo.css"/>
+
 </head>
 <body>
 
 
 <h1>Bienvenidos al grupo ${grupo.nombre}</h1>
+
+<div id="general">
+
+<g:render template="aporte" model="[aportes:grupo.aportes]" />
+
+<g:formRemote name="formulario_aporte" update="aportes" url="[controller: 'Aporte', action: 'save']">
+<fieldset class="form">
+<div id="contenido_aporte_input">
+<label>Aporte:</label> <br>			
+<g:textArea name="contenido" />
+</div>
+<g:hiddenField name="grupo" value="${grupo.id}" />
+</fieldset>
+<fieldset class="buttons">
+<g:submitButton name="create" class="save" value="Aportar" id="aporte_boton" />
+</fieldset>
+</g:formRemote>
+
+
 
 <g:if test="${miembro}">
 <g:form name="comentar" url="[action:'unirme',controller:'Grupo']" >
@@ -27,12 +47,14 @@
 <div id="miembros">
 <g:each var="miembro" in="${miembros}">
 <table>
-   <tr>
-   <td> ${miembro.usuario.username} </td>
-   </tr>
+<tr>
+<td> ${miembro.usuario.username} </td>
+</tr>
 </table>
 </g:each>
 </div>
+</div>
+
 </div>
 
 

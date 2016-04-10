@@ -16,7 +16,8 @@ class Usuario extends SecUsuario{
       //QUE NO ME PREGUNTAN PERO ES DEL ASCO, NO ME QUISO TRABAJAR BIEN, CUANDO NO ERA UNA COSA ERA LA OTRA Y AL FINAL 
       //NO DEJO GUARDAR EN LA BASE DE DATOS
       //VER LA 'TABLA' INTERMEDIA 'UsuarioGrupo'
-   static hasMany = [puntos: PuntoInteres, fotos: Foto,comentarios:Comentario,grupos:Grupo]
+
+	static hasMany = [puntos: PuntoInteres, fotos: Foto,comentarios:Comentario,grupos:Grupo,aportes:Aporte]
 
       String email		//Email del usuario
       String fecha		//Fecha nacimiento

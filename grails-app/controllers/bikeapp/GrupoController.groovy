@@ -49,4 +49,19 @@ class GrupoController {
       usuario_grupo.save flush:true
       redirect(action:"index")
    }
+
+   //NO SE ESTA GUARDANDO EN LA DB
+   def crearAporte(){
+      params.usuario=sesionService.usuarioEnSesion()      
+      def aporte= new Aporte(params)
+      aporte.save()
+   }
+
+   def actualizarComentarios(){
+      def inx = params['grupoActual']
+      def grupo = Grupo.findById(inx)
+      //render comentarios
+      render(template:"aporte", model:[grupo:grupo])
+
+   }
 }
