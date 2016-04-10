@@ -25,6 +25,7 @@
 	<div class="jumbotron">
       <div class="container">
       	<div id="mapa"></div>
+      	<div id="right-panel"></div>
       </div>
     </div>
   </body>
