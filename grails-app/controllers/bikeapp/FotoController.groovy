@@ -3,17 +3,18 @@ import grails.plugin.springsecurity.annotation.Secured;
 
 
 //CON SPRING SE PUEDEN HACER ANOTACIONES, LAS CUALES VAN A MANEJAR DE FORMA AUTOMATICA EL ACCESO A RECURSOS
-//HAY 4 TIPOS PARA HACER ESTO, LAS ANOTACIONES SON LAS MÁS FACILES DE USAR, FIJARSE EN QUE CON LA SIGUIENTE ANOTACION LO QUE LE DIGO 
+//HAY 4 TIPOS PARA HACER ESTO, LAS ANOTACIONES SON LAS MÁS FACILES DE USAR, FIJARSE EN QUE CON LA SIGUIENTE ANOTACION LO QUE LE DIGO
 //A SPRING ES QUE ESTE RECURSO PUEDE SER USADO O ACCEDIDO POR EL ROL DE USUARIO, LOS ROLES LOS CARGO DE FORMA DINAMICA EN LA BASE DE DATOS
 //AL INICIAR LA APLICACION 'run-app' PARA VER LA CARGA PUEDEN VER EL ARCHIVO BootStrap.groovy EN conf
 //OTRA OBSERVACION IMPORTANTE ES QUE ESTAS ANOTACIONES SE PUEDEN TRABAJAR A NIVEL DE CLASE O A NIVEL DE METODO, COMO SE DESEE
 @Secured(['ROLE_USUARIO'])
 class FotoController {
 
-   //AQUI SE DA USO AL SERVICIO, ESTO SE HACE FORMA AUTOMATICA POR MEDIO DE INYECCION DE DEPENDENCIAS, VER EL CURSO DE SOFTWARE 1 SI NO TIENEN NI IDEA
+   //AQUI SE DA USO AL SERVICIO, ESTO SE HACE FORMA AUTOMATICA POR MEDIO DE INYECCION DE DEPENDENCIAS, VER EL CURSO DE SOFTWARE 1
+   //SI NO TIENEN NI IDEA
    //GRAILS NOS INYECTA LA DEPENDENCIA EN LA VARIABLE SIGUIENTE, SE HACE EL ENLACE DE FORMA AUTOMATICA
    def sesionService
-   //metodo index, es el encargado de llamar a la vista para mostrar el "album de fotos", para ello 
+   //metodo index, es el encargado de llamar a la vista para mostrar el "album de fotos", para ello
    //primero se tienen que reunir las fotos, eso lo hago en el metodo list()
   def index(Integer max) {
       params.max = Math.min(max ?: 10, 100)
@@ -50,14 +51,14 @@ class FotoController {
 
    /*
    *Filtra las imagenes de acuerdo al usuario que se encuentre en sesión
-   */  
+   */
    def list(){
       def imagenes = Foto.findAllByUsuario(sesionService.usuarioEnSesion())
       [imagenes:imagenes]
    }
 
    /**
-   * este metodo es el encargado de mostrar una foto en particular, para ello desde la vista se captura el id de la imagen, 
+   * este metodo es el encargado de mostrar una foto en particular, para ello desde la vista se captura el id de la imagen,
    * y se pasa al modelo de esta vista, show, la imagen actual así como su indice, es una bobada redundante pero pues que se le hace
    */
    def show(){
@@ -72,10 +73,10 @@ class FotoController {
    /*
    * METODO ACTUALIZAR COMENTARIOS, SE ENCARGA DE VOLVER A LEER LOS COMENTARIOS DE LA FOTO Y LOS ENVIA AL TEMPLATE
    * NOTAR LA DIFERENCIA ENTRE EL redirect DEL METODO show Y EL DE ESTE METODO, AHORA APUNTO AL TEMPLATE DE comentarios
-   * ES IMPORTANTE LEER SOBRE ESTA CARACTERISTICA QUE TIENE GRAILS Y ENTENDER COMO ES QUE FUNCIONA 
+   * ES IMPORTANTE LEER SOBRE ESTA CARACTERISTICA QUE TIENE GRAILS Y ENTENDER COMO ES QUE FUNCIONA
    */
    def actualizarComentarios(){
-   
+
       def inx = params['imagenactual']
       def img = Foto.findById(inx)
       def comentarios = Comentario.findAllByFoto(img)

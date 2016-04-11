@@ -11,7 +11,7 @@
   <div id="wrap">
   <div id="regbar">
     <div id="navthing">
-<	<g:if test="${session?.user}">
+	<g:if test="${session?.user}">
 			<div class="randompad">
 			 <g:form name="logout" controller="usuario" action="logout">
 			 <h2>${session?.user?.usuario} ${session?.user?.email}</h2>

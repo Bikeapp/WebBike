@@ -10,5 +10,6 @@ class UrlMappings {
         "/"(view:"/index")
         "500"(view:'/error')
         "400"(view:'/accesoDenegado') 
+        "/logoutexit"(view:'j_spring_security_logout')
 	}
 }

@@ -43,16 +43,14 @@
             <li><g:link url="${resource(dir:'Grupo', file:'index.gsp')}">Grupo</g:link></li>
             <li><g:link url="${resource(dir:'Perfil', file:'miPerfil.gsp')}">Mi Perfil</g:link></li>
             <li><g:link url="${resource(dir:'Evento', file:'index.gsp')}">Eventos</g:link></li>
-            <li><g:remoteLink class="logout" controller="logout">
-               Logout
-               </g:remoteLink> </li>
+            <li><g:link url="${createLink(controller:'logout') }">Logout</g:link><li>
+
             
           </ul>
-        </div><!--/.nav-collapse -->
-      </div>
+        </div>
+      </div>x
     </nav>
     <g:layoutBody/>
-    <r:layoutResources/>
   </body>
 </html>
 

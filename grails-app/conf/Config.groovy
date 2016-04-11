@@ -39,7 +39,7 @@ grails.views.default.codec = "html"
 
 //NO TENGO NI IDEA QUE HACE, CREO QUE ES OBIO PERO PUES NO ENTIENDOSU MAGIA
 //LA PONGO PARA PERMITIR EL USO DE LAS UTILIDADES PARA ajax QUE OFRECE GRAILS
-grails.views.javascript.library = "jquery"
+//grails.views.javascript.library = "jquery"
 
 // The default scope for controllers. May be prototype, session or singleton.
 // If unspecified, controllers are prototype scoped.
@@ -127,6 +127,7 @@ log4j.main = {
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'bikeapp.SecUsuario'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'bikeapp.SecUsuarioSecRole'
 grails.plugin.springsecurity.authority.className = 'bikeapp.SecRole'
+grails.plugin.springsecurity.logout.postOnly=false
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':                ['permitAll'],
 	'/index':           ['permitAll'],
