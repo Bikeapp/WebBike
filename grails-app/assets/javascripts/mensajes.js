@@ -72,14 +72,15 @@ $(document).on('click','#cc',function(event){
 			//Verifica el nombre de usuario  en sesion para identificar el otro usuario de la conversacion e imprimir en pantalla ese nombre.
 			if (data.u1.nombre == nomUsuario){
 				convSel = $(".contacto:contains("+data.u2.nombre+")").html();
-				if (convSel.length < 1){
+				console.log(convSel);
+				if (convSel.length == "undefined"){
 					$('#contactos').append("<div class='contacto'>"+data.u2.nombre+"</div>");	
 				}
 				convSel = $('.contacto:contains('+data.u2.nombre+')').html();		//dejar la conversacion seleccionada de una vez. Al escribir un mensaje queda asociado a esta conversacion
 			}
 			else{
 				convSel = $(".contacto:contains("+data.u1.nombre+")").html();
-				if (convSel.length < 1){
+				if (convSel.length == "undefined"){
 					$('#contactos').append("<div class='contacto'>"+data.u1.nombre+"</div>");	//Mostrar el nombre del destinatario en pantalla.
 				}
 				convSel = $('.contacto:contains('+data.u1.nombre+')').html();		//dejar la conversacion seleccionada de una vez.Al escribir un mensaje queda asociado a esta conversacion

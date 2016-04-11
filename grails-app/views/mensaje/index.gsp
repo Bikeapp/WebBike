@@ -7,8 +7,6 @@
 <head>
 <meta name="layout" content="main"/>
 <asset:javascript src="mensajes.js"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <script>
 var nomUsuario = "${usuario.nombre}";
 </script>

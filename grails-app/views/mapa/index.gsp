@@ -21,7 +21,6 @@
   	<g:javascript>
 		google.maps.event.addDomListener( window, 'load', function() { test	(${puntos as JSON},${parches as JSON}) } );
 	</g:javascript>
-	
 	<div class="jumbotron">
       <div class="container">
       	<div id="mapa"></div>
