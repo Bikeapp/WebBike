@@ -13,19 +13,22 @@
 				h4,
 				h5,
 				h6 {
-				    text-transform: uppercase;
-				    color: white;
-				    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+					color: black;
+					font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+				    text-transform: uppercase;				    			   
 				    font-weight: 700;
 				    letter-spacing: 1px;
 				}
 				body {
-				    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-				    background: url('${resource(dir: "images", file: "bicycles_gears.jpg")}'); no-repeat center center fixed;
-				    -webkit-background-size: cover;
-				    -moz-background-size: cover;
-				    background-size: cover;
-				    -o-background-size: cover;
+				    
+				    background: url('${resource(dir: "images", file: "bicycles_gears.jpg")}'); 
+				    background-size: auto auto;
+				    background-attachment: fixed;
+				   
+				}
+				footer {
+				    position: fixed;
+   					 bottom: 0;
 				}
 			    .box img { width: 300px; float:left; border:1px solid #ccc; padding:5px; margin:10px;}
 			    h1 { margin-top:50px; text-align:center;}
