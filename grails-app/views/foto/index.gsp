@@ -57,12 +57,12 @@
 
 
 
-		<div class="container">
+		<div class="lightbox-container">
 		    
 				<g:each var="imagen" in="${imagenes}" status="i">
 					<!-- <g:link action="show" params="[imagenactual : imagen.id]"> -->
 					<div class="box">
-						<img alt="An example image 2" class="img-thumbnail lightbox-image" src="${createLink(controller:'Foto', action:'pintarImagen', id:"${imagen.id}")}" width='300' height='300' />
+						<img alt="An example image 2" class="lightbox-image" src="${createLink(controller:'Foto', action:'pintarImagen', id:"${imagen.id}")}" width='300' height='300' />
 					</div>
 					<!-- </g:link> -->
 				</g:each>
