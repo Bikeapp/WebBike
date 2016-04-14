@@ -93,3 +93,32 @@ $(document).on('click','#cc',function(event){
 	});
 });
 
+//Activamos el evento click en el boton de creación de conversaciones.
+$('#cc').click(function(){ShowCustomDialog();});
+
+function ShowCustomDialog(){ShowDialogBox();}
+
+function ShowDialogBox() {
+        $("#dialog").dialog({
+                    resizable: false,
+                    title: 'Crear Conversacion',
+                    modal: true,
+                    width: '400px',
+                    height: '400px',
+                    bgiframe: false,
+                    hide: { effect: 'scale', duration: 400 },
+                    buttons: [
+                                    {
+                                        text: 'Crear!',
+                                        click: function () {$("#dialog").dialog('close');}
+                                    },
+                                    {
+                                        text: 'Cancelar',
+                                        click: function () {$("#dialog").dialog('close');}
+                                    }
+                              ]
+        });
+}
+
+
+
