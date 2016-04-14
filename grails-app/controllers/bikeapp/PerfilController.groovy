@@ -6,6 +6,10 @@ import grails.plugin.springsecurity.annotation.Secured
 class PerfilController {
 
    def sesionService
+   
+   def index(){
+      redirect(action:"miPerfil");
+   }
 
    def show(){
       def usuario = Usuario.findByUsername(params["usuario"])

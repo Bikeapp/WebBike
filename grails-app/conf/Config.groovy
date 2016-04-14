@@ -128,6 +128,7 @@ grails.plugin.springsecurity.userLookup.userDomainClassName = 'bikeapp.SecUsuari
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'bikeapp.SecUsuarioSecRole'
 grails.plugin.springsecurity.authority.className = 'bikeapp.SecRole'
 grails.plugin.springsecurity.logout.postOnly=false
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/Perfil'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':                ['permitAll'],
 	'/index':           ['permitAll'],
