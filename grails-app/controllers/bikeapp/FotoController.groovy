@@ -38,8 +38,17 @@ class FotoController {
       def uploadedFile = request.getFile('selector')
       instancia.imagen = uploadedFile.getBytes()
       //UNA VEZ SE INYECTA LA DEPENDENCIA PUEDO DAR DE ELLA, NOTAR COMO SE SIMPLIFICA LA OBTENCION DEL USUARIO EN SESION ACTIVA
+      if( params["ubicacion"] ){
+         PuntoInteres pnt = new PuntoInteres()
+         pnt.lat = Double.parseDouble(params["lat"])
+         pnt.lng = Double.parseDouble(params["lng"])
+         pnt.usuario = sesionService.usuarioEnSesion()
+         pnt.tipo = "PUNTO_IMAGEN"
+         pnt.save flush:true,failOnError:true
+         instancia.puntoImagen = pnt
+      }
       instancia.usuario = sesionService.usuarioEnSesion()
-      instancia.save flush:true
+      instancia.save flush:true,failOnError:true
       redirect(action: "index")
    }
 

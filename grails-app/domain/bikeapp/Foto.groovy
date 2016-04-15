@@ -9,14 +9,12 @@ class Foto {
    static hasMany = [comentarios: Comentario]
 
    Date dateCreated
-   String lat
-   String lon
    byte[] imagen
+   PuntoInteres puntoImagen
 
    static constraints = {
       imagen(nullable:false, maxSize:1073741824)
       usuario(nullable:true)
-      lat(nullable:true)
-      lon(nullable:true)
+      puntoImagen(nullable:true)
    }
 }

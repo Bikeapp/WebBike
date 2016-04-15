@@ -74,6 +74,10 @@ $("#create").on("click",function(){
       $("#vistaimagen").css("background-color","#ffe6e6");
       return false;
    }
+   if( $("#ubicacion").is(":checked") && ( $("#lat").val() == "NONE" || $("#lng").val() == "NONE" ) ){
+      alert("Por favor seleccione la ubicación de la foto");
+      return false;
+   }
    return true;
 });
 
