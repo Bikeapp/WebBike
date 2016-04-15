@@ -18,14 +18,12 @@ class ComentarioController {
    *informacion contacte a mi abogado, no mentiras en la vista pueden ver el campo
    */
    //se actualiza ahora se apunta a lmetodo actualizar comentarios, en el cual se puede actualiza unicamente el template
-   def save(Comentario comentarioInstance){
-      if( comentarioInstance == null){
-         return response.sendError(500)
-      }
-      comentarioInstance.foto = Foto.findById(params.fotoId)
+   def save(String contenido,String id){
+      Comentario comentarioInstance = new Comentario()
+      comentarioInstance.contenido = contenido
+      comentarioInstance.foto = Foto.findById(id);
       comentarioInstance.usuario = sesionService.usuarioEnSesion()
-      comentarioInstance.save flush:true
-      redirect(controller:"Foto",action: "actualizarComentarios", params:[imagenactual : params.fotoId]);
+      comentarioInstance.save flush:true,failOnError:true
+      redirect(controller:"Foto",action: "actualizarComentarios", params:[imagenactual : id]);
    }
-
 }

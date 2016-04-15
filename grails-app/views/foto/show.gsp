@@ -16,20 +16,19 @@
 
 <div id="content">
 
-<div id="tmp">
+<div id="comments">
 <g:render template="comentario" model="[comentarios:comentarios]" />
 </div>
 
-<g:formRemote name="comentar" update="comment" url="[resource:comentarioInstance, action:'save',controller:'Comentario']" after="limpiar()">
-<fieldset class="form">
-<g:textArea name="contenido" />
-<!-- FIJARSE EN ESTE PUNTO, ESTE ES EL CAMPO INVISIBLE AL CUAL ME REFIERO --!>
-<g:hiddenField name="fotoId" value="${inx}" />
-</fieldset>
-<fieldset class="buttons">
-<g:submitButton name="create" class="save" value="Comentar" id="create" />
-</fieldset>
-</g:formRemote>
+<form name="comentario">
+<textarea rows="3" cols="30" name="contenido" id="contenido">
+</textarea>
+<input type="button" onclick="save()" value="Comentar">
+<g:hiddenField name="fotoId" value="${inx}"/>
+<g:javascript>
+var url = "${createLink(controller:'comentario',action:'save')}"
+</g:javascript>
+</form
 
 </div>
 </div>

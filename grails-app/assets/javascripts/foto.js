@@ -88,11 +88,11 @@ $("#create").on("click",function(){
 function limpiar(){
    $("#contenido").val('');
    //$('#comment').animate({'margin-top': '50px'}, 1000);
-   $("#tmp").animate({ scrollTop: $("#tmp").prop("scrollHeight") }, 3000);
+   $("#comments").animate({ scrollTop: $("#comments").prop("scrollHeight") }, 3000);
 }
 
 $("document").ready(function(){
-   $("#tmp").animate({ scrollTop: $("#tmp").prop("scrollHeight") }, 3000);
+   $("#comments").animate({ scrollTop: $("#comments").prop("scrollHeight") }, 3000);
 });
 
 $("#ubicacion").change(function(){
@@ -104,3 +104,27 @@ $("#ubicacion").change(function(){
 });
 
 
+
+//AJAX para los comentarios
+//AJAJAJAJAJAJAJAJAX una función es menos que tres, verdad?
+function save(e){
+   $.ajax({
+      type: "POST",
+      url: url,
+      data:{
+         contenido: $("#contenido").val(),
+         id: $("#fotoId").val()
+      },
+      success: function(data){
+         $("#comments").html(data),
+         limpiar()
+      },
+      error: function(request,sttus,error){
+         alert("algo salio mal");
+      },
+      complete: function(){
+      }
+
+   });
+   return false;
+}

@@ -1,4 +1,3 @@
-<div id="comment">
 <g:each in="${comentarios}" status="i" var="it">
    <table id="comentario_${i}">
    <tr>
@@ -10,4 +9,3 @@
    </tr>
    </table>
 </g:each>
-</div>
