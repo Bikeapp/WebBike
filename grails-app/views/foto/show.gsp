@@ -21,8 +21,7 @@
 </div>
 
 <form name="comentario">
-<textarea rows="3" cols="30" name="contenido" id="contenido">
-</textarea>
+<g:textArea name="contenido"></g:textArea>
 <input type="button" onclick="save()" value="Comentar">
 <g:hiddenField name="fotoId" value="${inx}"/>
 <g:javascript>

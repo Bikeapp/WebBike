@@ -103,8 +103,6 @@ $("#ubicacion").change(function(){
    }
 });
 
-
-
 //AJAX para los comentarios
 //AJAJAJAJAJAJAJAJAX una función es menos que tres, verdad?
 function save(e){
@@ -126,5 +124,4 @@ function save(e){
       }
 
    });
-   return false;
 }

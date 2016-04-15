@@ -24,11 +24,11 @@ class PerfilController {
    
    //Controlador que redirige a los mensajes del usuario
    def mensajes(){
-   	  redirect(controller:"mensaje",view:"index")
+      redirect(controller:"mensaje",view:"index")
    }
 
    def miPerfil(){
-      render(view:"show",model:[usuario:sesionService.usuarioEnSesion()])
+      render(view:"perfil",model:[usuario:sesionService.usuarioEnSesion()])
    }
 
    def actualizar(){
@@ -44,7 +44,7 @@ class PerfilController {
       usuario.mensaje = params["mensaje"]
       usuario.sexo = params["sexo"]
       usuario.fecha = params["fecha"]
-      usuario.save flush:true
+      usuario.save flush:true,failOnError:true
       redirect(action:"miPerfil")
    }
 
