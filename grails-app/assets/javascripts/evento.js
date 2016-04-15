@@ -34,5 +34,5 @@ function addMarker(location){
 function actualizarPosicion(location){
    $("#lat").val(location.lat);
    $("#lng").val(location.lng);
-   alert( $("#lat").val() + ", "+ $("#lng").val() );
+   //alert( $("#lat").val() + ", "+ $("#lng").val() );
 }

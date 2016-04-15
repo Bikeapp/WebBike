@@ -5,6 +5,9 @@
 /*
  * Se encarga de pintar la imagen en el componente de previsualización
  */
+var map;
+var marker = null;
+
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -16,6 +19,43 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+//la idea es mejorar esto, pero pues para la entrega creo que mola
+function initMap(tipo){
+   var myLatlng = new google.maps.LatLng(4.5,-74);
+   var options = {
+      center: myLatlng,
+      zoom: 15,
+      disableDoubleClickZoom: true,
+   }
+   map = new google.maps.Map(document.getElementById("mapa"),options);
+   map.addListener('click',function(e){
+      addMarker(e.latLng)
+   });
+}
+
+function addMarker(location){
+   if( marker != null){
+      marker.setMap(null);
+   }
+   marker = new google.maps.Marker({
+      position:location,
+      map: map,
+      draggable: true,
+      animation: google.maps.Animation.DROP
+   });
+   marker.addListener('dragend', function(e){
+      actualizarPosicion(e.latLng)
+   });
+   actualizarPosicion(location);
+}
+
+function actualizarPosicion(location){
+   $("#lat").val(location.lat);
+   $("#lng").val(location.lng);
+   //alert( $("#lat").val() + ", "+ $("#lng").val() );
+}
+
 
 /*
  * En esta parte el código se registra el evento "cambio de estado" para el seleccionador de archivos
@@ -50,3 +90,13 @@ function limpiar(){
 $("document").ready(function(){
    $("#tmp").animate({ scrollTop: $("#tmp").prop("scrollHeight") }, 3000);
 });
+
+$("#ubicacion").change(function(){
+   if( this.checked ){
+      $("#mapa").show();
+   }else{
+      $("#mapa").hide();
+   }
+});
+
+
