@@ -3,6 +3,7 @@
 <head>
 <meta name="layout" content="main"/>
 <asset:stylesheet href="grupo.css"/>
+<asset:javascript src="grupo.js"/>
 
 </head>
 <body>
@@ -12,9 +13,11 @@
 
 <div id="general">
 
+<div id="tmp">
 <g:render template="aporte" model="[aportes:grupo.aportes]" />
+</div>
 
-<g:formRemote name="formulario_aporte" update="aportes" url="[controller: 'Aporte', action: 'save']">
+<g:formRemote name="formulario_aporte" update="aportes" url="[controller: 'Aporte', action: 'save']" after="limpiar()">
 <fieldset class="form">
 <div id="contenido_aporte_input">
 <label>Aporte:</label> <br>			

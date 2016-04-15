@@ -1,6 +1,6 @@
 <div id="comment">
-<g:each in="${comentarios}">
-   <table id="comentario">
+<g:each in="${comentarios}" status="i" var="it">
+   <table id="comentario_${i}">
    <tr>
     ${it.contenido} 
    </tr>
@@ -11,4 +11,3 @@
    </table>
 </g:each>
 </div>
-<br>

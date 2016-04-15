@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta name="layout" content="main"/>
+<asset:stylesheet href="foto.css"/>
+<asset:javascript src="foto.js"/>
 </head>
 
 <body>
@@ -14,7 +16,9 @@
 
 <div id="content">
 
+<div id="tmp">
 <g:render template="comentario" model="[comentarios:comentarios]" />
+</div>
 
 <g:formRemote name="comentar" update="comment" url="[resource:comentarioInstance, action:'save',controller:'Comentario']" after="limpiar()">
 <fieldset class="form">
@@ -30,7 +34,5 @@
 </div>
 </div>
 
-<asset:stylesheet href="foto.css"/>
-<asset:javascript src="foto.js"/>
 </body>
 </html>

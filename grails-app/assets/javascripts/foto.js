@@ -44,5 +44,9 @@ $("#create").on("click",function(){
 function limpiar(){
    $("#contenido").val('');
    //$('#comment').animate({'margin-top': '50px'}, 1000);
-   $("#comment").animate({ scrollTop: $("#comment").attr("scrollHeight") }, 3000);
+   $("#tmp").animate({ scrollTop: $("#tmp").prop("scrollHeight") }, 3000);
 }
+
+$("document").ready(function(){
+   $("#tmp").animate({ scrollTop: $("#tmp").prop("scrollHeight") }, 3000);
+});

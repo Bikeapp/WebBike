@@ -6,7 +6,8 @@
 #miembros{
    margin-left:50%;
 }
-#aportes{
+
+#tmp{
    height:400px;
    overflow-y: scroll;
 }
