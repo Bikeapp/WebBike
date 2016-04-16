@@ -95,6 +95,7 @@ $("document").ready(function(){
    $("#comments").animate({ scrollTop: $("#comments").prop("scrollHeight") }, 3000);
 });
 
+/*
 $("#ubicacion").change(function(){
    if( this.checked ){
       $("#mapa").show();
@@ -102,6 +103,7 @@ $("#ubicacion").change(function(){
       $("#mapa").hide();
    }
 });
+*/
 
 //AJAX para los comentarios
 //AJAJAJAJAJAJAJAJAX una función es menos que tres, verdad?

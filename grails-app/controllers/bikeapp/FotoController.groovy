@@ -94,4 +94,9 @@ class FotoController {
 
    }
 
+   def fotosUsuario(String username){
+      def imagenes = Foto.findAllByUsuario(Usuario.findByUsername(username))
+      [imagenes:imagenes,username:username]
+   }
+
 }

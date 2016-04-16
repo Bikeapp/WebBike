@@ -38,7 +38,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><g:link url="${resource(dir:'Perfil', file:'miPerfil.gsp')}">Mi Perfil</g:link></li>
+            <li><g:link url="${resource(dir:'Perfil', file:'miPerfil.gsp')}"> ${sec.loggedInUserInfo(field:"username")}  </g:link></li>
             <li><g:link url="${resource(dir:'Foto', file:'index.gsp')}">Foto</g:link></li>
             <li><g:link url="${resource(dir:'Mapa', file:'index.gsp')}">Mapa</g:link></li>
             <li><g:link url="${resource(dir:'Grupo', file:'index.gsp')}">Grupo</g:link></li>

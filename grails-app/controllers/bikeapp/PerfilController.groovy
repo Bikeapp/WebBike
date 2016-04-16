@@ -12,7 +12,10 @@ class PerfilController {
    }
 
    def show(){
-      def usuario = Usuario.findByUsername(params["usuario"])
+      if( params["username"] == sesionService.usuarioEnSesion().username ){
+         redirect(action:"index")
+      }
+      def usuario = Usuario.findByUsername(params["username"])
       [usuario:usuario]
       //render(view:"show",model:[usuario:usuario])     
    }

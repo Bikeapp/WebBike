@@ -25,7 +25,7 @@
 <div id="derecho">
 <fieldset class="buttons">
 <g:submitButton name="create" class="save" value="Subir" id="create" />
-<g:checkBox name="ubicacion" id="ubicacion" value="${true}" />Incluir ubicación
+<g:checkBox name="ubicacion" id="ubicacion" />Incluir ubicación
 <g:hiddenField id="lat" name="lat" value="NONE" />
 <g:hiddenField id="lng" name="lng" value="NONE" />
 <script src="https://maps.google.com/maps/api/js?callback=initMap" async defer></script>

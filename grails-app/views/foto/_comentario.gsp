@@ -4,7 +4,7 @@
     ${it.contenido} 
    </tr>
    <tr>
-   <td> ${it.usuario.username} </td>
+   <td> <g:link controller="Perfil" action="show" params="[username:it.usuario.username]" >${it.usuario.username} </g:link></td>
    <td> ${it.dateCreated} </td>
    </tr>
    </table>
