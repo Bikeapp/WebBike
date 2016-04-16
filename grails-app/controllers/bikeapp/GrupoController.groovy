@@ -24,9 +24,9 @@ class GrupoController {
       }
       def usuario = sesionService.usuarioEnSesion()
       grupoInstance.administrador = usuario
-      grupoInstance.save flush:true 
+      grupoInstance.save flush:true,failOnError:true
       def usuario_grupo = new UsuarioGrupo(usuario:usuario,grupo:grupoInstance)
-      usuario_grupo.save flush:true
+      usuario_grupo.save flush:true,failOnError:true
       redirect(action:"index")  
    }
 
@@ -42,12 +42,15 @@ class GrupoController {
    }
 
    //PERMITE UNIRSE A UN GRUPO, ESTO SIMPLEMENTE SE HACE AGREGANDO UN REGISTRO EN LA TABLA INTERMEDIA
-   def unirme(){
+   def unirme(String id){
       def usuario = sesionService.usuarioEnSesion()
-      def grupo = Grupo.findById(params["grupoId"])
+      def grupo = Grupo.findById(id)
       def usuario_grupo = new UsuarioGrupo(usuario:usuario,grupo:grupo)
-      usuario_grupo.save flush:true
-      redirect(action:"index")
+      usuario_grupo.save flush:true,failOnError:true
+      def miembros = UsuarioGrupo.findAllByGrupo(grupo)
+      def miembro = miembros.every{ it.usuario != usuario}
+      render(template:"union",model:[grupo:grupo,miembros:miembros,miembro:miembro])
+      //redirect(action:"index")
    }
 
    //NO SE ESTA GUARDANDO EN LA DB

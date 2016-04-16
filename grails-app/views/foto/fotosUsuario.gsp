@@ -7,12 +7,7 @@
 <body>
 
 
-<h1>Mis fotos</h1>
-<div class="nav" role="navigation">
-<ul>
-<li><g:link class="create" action="create">Agregar Imagen</g:link></li>
-</ul>
-</div>
+<h1>Fotos de ${username}</h1>
 
 <div id="divfotos" class="albumfotos">
 <table id="albumfotos"> 

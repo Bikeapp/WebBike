@@ -1,5 +1,7 @@
 #controlessubir {
-   padding-left: 90px;
+   padding-left: 50px;
+   float:left;
+   width:40%;
 }
 
 img{
@@ -11,7 +13,7 @@ img{
 }
 
 
-#comment{
+#comments{
    height: 500px;
    overflow-y: scroll;
 }
@@ -20,3 +22,11 @@ img{
    float:left;
    width: 55%;
 }
+
+#mapa{
+   height:500px;
+   width:800px;
+   float: left;
+}
+
+

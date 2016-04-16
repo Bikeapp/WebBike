@@ -21,7 +21,7 @@ class BootStrap {
          fecha: "13-04-94",
          nombre: "Cirochan Garcia"
          ).save()
-      SecUsuarioSecRole.create usuario1,adminRole  
+      SecUsuarioSecRole.create usuario1,userRole
       def usuario2 = new Usuario(
          username: "migarcial",
          password: "1234",

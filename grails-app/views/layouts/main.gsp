@@ -18,7 +18,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-   <!-- PONGO LA LIBRERIA PARA QUE AHORA SE PUEDA USAR AJAX --!>
    
     <g:layoutHead/>
     <r:layoutResources/>
@@ -35,15 +34,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/WebBike">BikeApp</a>
+          <a class="navbar-brand" href="/WebBike/Perfil">BikeApp</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><g:link url="${resource(dir:'Usuario', file:'index.gsp')}">Registro</g:link></li>
+            <li><g:link url="${resource(dir:'Perfil', file:'miPerfil.gsp')}"> ${sec.loggedInUserInfo(field:"username")}  </g:link></li>
             <li><g:link url="${resource(dir:'Foto', file:'index.gsp')}">Foto</g:link></li>
             <li><g:link url="${resource(dir:'Mapa', file:'index.gsp')}">Mapa</g:link></li>
             <li><g:link url="${resource(dir:'Grupo', file:'index.gsp')}">Grupo</g:link></li>
-            <li><g:link url="${resource(dir:'Perfil', file:'miPerfil.gsp')}">Mi Perfil</g:link></li>
             <li><g:link url="${resource(dir:'Evento', file:'index.gsp')}">Eventos</g:link></li>
             <li><g:link url="${createLink(controller:'logout') }">Logout</g:link><li>
           </ul>
