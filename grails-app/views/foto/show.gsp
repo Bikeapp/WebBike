@@ -11,14 +11,19 @@
 <div id="container">
 
 <div id="navbar">
-<img src="${createLink(controller:'Foto', action:'pintarImagen', id:"${inx}")}" width='800' height='600'/>
+<img src="${createLink(controller:'Foto', action:'pintarImagen', id:"${inx}")}" width='400' height='400'/>
 </div>
 
 <div id="content">
 
-<div id="comments">
+
+
+      <div id="dialogbox">
+<span class="tip tip-up"></span>
 <g:render template="comentario" model="[comentarios:comentarios]" />
+
 </div>
+    
 
 <form name="comentario">
 <g:textArea name="contenido"></g:textArea>
@@ -27,7 +32,7 @@
 <g:javascript>
 var url = "${createLink(controller:'comentario',action:'save')}"
 </g:javascript>
-</form
+</form>
 
 </div>
 </div>

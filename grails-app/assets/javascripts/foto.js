@@ -88,11 +88,11 @@ $("#create").on("click",function(){
 function limpiar(){
    $("#contenido").val('');
    //$('#comment').animate({'margin-top': '50px'}, 1000);
-   $("#comments").animate({ scrollTop: $("#comments").prop("scrollHeight") }, 3000);
+   $("#dialogbox").animate({ scrollTop: $("#dialogbox").prop("scrollHeight") }, 3000);
 }
 
 $("document").ready(function(){
-   $("#comments").animate({ scrollTop: $("#comments").prop("scrollHeight") }, 3000);
+   $("#dialogbox").animate({ scrollTop: $("#dialogbox").prop("scrollHeight") }, 3000);
 });
 
 /*
@@ -116,7 +116,7 @@ function save(e){
          id: $("#fotoId").val()
       },
       success: function(data){
-         $("#comments").html(data),
+         $("#dialogbox").html(data),
          limpiar()
       },
       error: function(request,sttus,error){
