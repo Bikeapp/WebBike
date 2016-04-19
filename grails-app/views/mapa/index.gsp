@@ -11,8 +11,8 @@
     <script>
       $(document).ready(function(){
 
-          $("#mapa").fadeOut(500);
-          $("#right-panel").fadeOut(500);
+          $("#mapa").fadeOut(700);
+          $("#right-panel").fadeOut(700);
 
           var flag_mapa=true;
 

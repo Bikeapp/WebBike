@@ -6,9 +6,13 @@
 <html lang="en">
 <head>
 <meta name="layout" content="main"/>
+
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <asset:javascript src="mensajes.js"/>
 <script>
 var nomUsuario = "${usuario.nombre}";
+
+
 </script>
 
 </head>
@@ -34,21 +38,49 @@ var nomUsuario = "${usuario.nombre}";
 			</div>
 				<div id="crearC">
 					<div id="btndiv">
-						<button id="cc">Crear Conversacion</button>
+						<!-- Trigger the modal with a button -->
+						<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalMensaje" >Crear Conversacion</button>
 					</div>
+
+								
+		
+
+			<!-- Modal -->
+			<div id="modalMensaje" class="modal fade" role="dialog">
+			  <div class="modal-dialog">
+
+			    <!-- Modal content-->
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Envio de Mensajes</h4>
+			      </div>
+			      <div class="modal-body">
+			        <g:select class="form-control" name="amigoSel" id="friendSelect" from="${usuarios}" optionKey="id" optionValue="nombre"/>
+			      </div>
+			      <div class="modal-footer">
+			      	<button type="button" class="btn btn-primary btn-sm" id="cc" data-toggle="modal" data-target="#modalMensaje" >Aceptar</button>
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			      </div>
+			    </div>
+
+			  </div>
+			</div>
+			<!-- Fin del Modal-->
+
 				</div>
 			</div>
 			<div id = "derContainer">
 				<div id="mensajes"></div>
 				<div id="input">
 					<g:form>
-						<input type="text" id="contenido" value="Por favor escriba un mensaje"/>
+						<input type="text" id="contenido" placeholder ="Escriba un mensaje"/>
 						<button id="cm">Crear Mensaje</button>
 					</g:form>
 				</div>
 			</div>
-			Este combobox se tiene que reemplazar por algun pop up que deje escoger un usuario para crear una nueva conversacion
-		<g:select name="amigoSel" id="friendSelect" from="${usuarios}" optionKey="id" optionValue="nombre"/>
+	
+		
 		</div>
     </div>
 </div>

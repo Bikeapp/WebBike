@@ -2,6 +2,8 @@
 var convSel = null;		//Variable para controlar la conversacion actual.
 
 
+
+
 //AJAX PARA CARGAR LOS MENSAJES DE UNA CONVERSACION Y MOSTRARLOS.
 $(document).on('click','.contacto',function(){
 	convSel = $(this).text();		//Obtengo UserName
@@ -43,6 +45,7 @@ $(document).on('click','#cm',function(event){
 				contenido: $('#contenido').val(),
 			},
 			success: function(data) {
+				$('#contenido').val("");
 				$('#mensajes').append("<div class='mensaje'>"+data+"</div>");		//Agrega el nuevo mensaje al gsp
 			},
 			error: function (xhr, ajaxOptions, thrownError) {
@@ -94,9 +97,15 @@ $(document).on('click','#cc',function(event){
 });
 
 //Activamos el evento click en el boton de creación de conversaciones.
-$('#cc').click(function(){ShowCustomDialog();});
+
 
 function ShowCustomDialog(){ShowDialogBox();}
+
+$(document).ready(function(){
+    $("#cc").click(function(){    	     
+
+    });
+});
 
 function ShowDialogBox() {
         $("#dialog").dialog({
