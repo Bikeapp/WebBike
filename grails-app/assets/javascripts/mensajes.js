@@ -102,10 +102,23 @@ $(document).on('click','#cc',function(event){
 function ShowCustomDialog(){ShowDialogBox();}
 
 $(document).ready(function(){
-    $("#cc").click(function(){    	     
+    $("#contenido").on('input',function(){
+    	checkContenido();
+    	   	     
 
     });
+
 });
+
+function checkContenido(){
+	var cont=$("#contenido").val();
+	if(cont=="")
+		$("#cm").addClass("disabled");
+	else
+		$("#cm").removeClass("disabled");
+	
+
+};
 
 function ShowDialogBox() {
         $("#dialog").dialog({

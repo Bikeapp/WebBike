@@ -59,7 +59,7 @@ var nomUsuario = "${usuario.nombre}";
 			        <g:select class="form-control" name="amigoSel" id="friendSelect" from="${usuarios}" optionKey="id" optionValue="nombre"/>
 			      </div>
 			      <div class="modal-footer">
-			      	<button type="button" class="btn btn-primary btn-sm" id="cc" data-toggle="modal" data-target="#modalMensaje" >Aceptar</button>
+			      	<button type="button" class="btn btn-primary " id="cc" data-toggle="modal" data-target="#modalMensaje" >Aceptar</button>
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 			      </div>
 			    </div>
@@ -75,7 +75,7 @@ var nomUsuario = "${usuario.nombre}";
 				<div id="input">
 					<g:form>
 						<input type="text" id="contenido" placeholder ="Escriba un mensaje"/>
-						<button id="cm">Crear Mensaje</button>
+						<button class="btn btn-success btn-sm disabled" id="cm">Crear Mensaje</button>
 					</g:form>
 				</div>
 			</div>
