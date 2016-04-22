@@ -73,14 +73,15 @@ $(document).on('click','#cc',function(event){
 			if (data.u1.nombre == nomUsuario){
 				convSel = $(".contacto:contains("+data.u2.nombre+")").html();
 				console.log(convSel);
-				if (convSel.length == "undefined"){
+				console.log(convSel == undefined);
+				if (convSel == undefined){
 					$('#contactos').append("<div class='contacto'>"+data.u2.nombre+"</div>");	
 				}
 				convSel = $('.contacto:contains('+data.u2.nombre+')').html();		//dejar la conversacion seleccionada de una vez. Al escribir un mensaje queda asociado a esta conversacion
 			}
 			else{
 				convSel = $(".contacto:contains("+data.u1.nombre+")").html();
-				if (convSel.length == "undefined"){
+				if (convSel == "undefined"){
 					$('#contactos').append("<div class='contacto'>"+data.u1.nombre+"</div>");	//Mostrar el nombre del destinatario en pantalla.
 				}
 				convSel = $('.contacto:contains('+data.u1.nombre+')').html();		//dejar la conversacion seleccionada de una vez.Al escribir un mensaje queda asociado a esta conversacion

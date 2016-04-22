@@ -9,10 +9,13 @@
 			var RStart,RFinish,RWayPoints = [];
 			var points = [];
 			var index = 0;
+			var leftPanel = false;
+			var calculandoRuta = false;
 			var directionsService = new google.maps.DirectionsService;			//Instanciar un servicio de direcciones
 			var directionsDisplay = new google.maps.DirectionsRenderer({
 										    draggable: true,
-										    map: map										    
+										    map: map,
+										    //preserveViewport: true									    
 										  });	
 
 										  //Instanciar un servicio para graficar direcciones, la opcion permite no mostrar los marcadores por defecto para hacerlo mas estetico.
@@ -94,8 +97,7 @@
 				});
 			
 				directionsDisplay.addListener('directions_changed', function() {
-    
-				    computeTotalDistance(directionsDisplay.getDirections());
+				    directionsDisplay.getDirections();
 				});
 			}
 
@@ -262,38 +264,41 @@
 					//printArrayJQ();							//Funcion de Ciro para mostrar puntos dinamicamente.
 					//addMarkerToBD("Prueba",event.latLng.lat(),event.latLng.lng(),icono,"Prueba descripcion",null,null);		//Funcion para agregar el punto de interés a la BD.
 					markPoint = event.latLng;
-				});	
-				var container = document.createElement('div');
-				var lblOrigen = document.createElement('div');
-				var lblDestino = document.createElement('div');
-				var txtOrigen = document.createElement('input');
-				var txtDestino = document.createElement('input');
-				var btnRuta = document.createElement('button');
-				container.appendChild(lblOrigen);
-				container.appendChild(txtOrigen);
-				container.appendChild(lblDestino);
-				container.appendChild(txtDestino);
-				container.appendChild(btnRuta);
-				container.style.width = '500px';
-				container.style.margin = 'auto';
-				container.style.border = '3px solid black';
-				container.setAttribute('id','direcciones');
-				btnRuta.innerHTML = 'Calcular Ruta';
-				btnRuta.onclick = function() { calcRuta();cleanMarkers(); }
-				btnRuta.style.width = '120px';
-				btnRuta.id = 'btnRu';
-				btnRuta.style.height = '20px';
-				txtOrigen.style.type = 'text';
-				txtOrigen.id='txtOr';
-				txtDestino.id='txtDe';
-				lblOrigen.style.float = 'left';
-				lblOrigen.innerHTML = 'Origen:';
-				txtDestino.style.float = 'left';
-				lblDestino.style.float = 'left';
-				lblDestino.innerHTML = 'Destino:';
-				txtOrigen.style.float = 'left';
-				txtDestino.style.type = 'text';
-				map.controls[google.maps.ControlPosition.TOP_CENTER].push(container);
+				});
+				if (!calculandoRuta ) {
+					calculandoRuta = true;
+					var container = document.createElement('div');
+					var lblOrigen = document.createElement('div');
+					var lblDestino = document.createElement('div');
+					var txtOrigen = document.createElement('input');
+					var txtDestino = document.createElement('input');
+					var btnRuta = document.createElement('button');
+					container.appendChild(lblOrigen);
+					container.appendChild(txtOrigen);
+					container.appendChild(lblDestino);
+					container.appendChild(txtDestino);
+					container.appendChild(btnRuta);
+					container.style.width = '500px';
+					container.style.margin = 'auto';
+					container.style.border = '3px solid black';
+					container.setAttribute('id','direcciones');
+					btnRuta.innerHTML = 'Calcular Ruta';
+					btnRuta.onclick = function() { calcRuta();cleanMarkers(); }
+					btnRuta.style.width = '120px';
+					btnRuta.id = 'btnRu';
+					btnRuta.style.height = '20px';
+					txtOrigen.style.type = 'text';
+					txtOrigen.id='txtOr';
+					txtDestino.id='txtDe';
+					lblOrigen.style.float = 'left';
+					lblOrigen.innerHTML = 'Origen:';
+					txtDestino.style.float = 'left';
+					lblDestino.style.float = 'left';
+					lblDestino.innerHTML = 'Destino:';
+					txtOrigen.style.float = 'left';
+					txtDestino.style.type = 'text';
+					map.controls[google.maps.ControlPosition.TOP_CENTER].push(container);
+				}
 			}
 			
 			//Limpia todos los marcadores del mapa.
@@ -312,7 +317,7 @@
 					origin:Marker1.position,
 					waypoints:RWayPoints,										//ALEX AQUI VAN LOS WAYPOINTS.
 					destination:Marker2.position,
-					travelMode: google.maps.TravelMode.DRIVING,
+					travelMode: google.maps.TravelMode.WALKING,
 				};
 				directionsService.route(request,function(response,status){		//Hace la llamada para calcular la ruta.
 					if (status == google.maps.DirectionsStatus.OK) {
@@ -323,31 +328,23 @@
 						window.alert('Directions request failed due to ' + status);
 					}
 				});
-				toLeft();
+				if (leftPanel == false){
+					toLeft(Marker1.position);
+					console.log("hola");
+					leftPanel = true;
+				}
 			}
 			
 			function toLeft(){
 				$("#mapa").animate({width:'70%'},4000);
 				$("#right-panel").animate({width:'30%',opacity:'1'},4000);
-				$("#direcciones").animate({marginLeft:'-170px'},4000);
+				$("#direcciones").animate({marginLeft:'-170px'},4000);				
 			}
 			
 			function toRight(){
 				$("#mapa").animate({width:'100%'},4000);
 				$("#right-panel").animate({width:'0%',opacity:'0'},4000);
 				$("#direcciones").animate({marginLeft:'-auto'},4000);
-			}
-
-			
-
-			function computeTotalDistance(result) {
-			  var total = 0;
-			  var myroute = result.routes[0];
-			  for (var i = 0; i < myroute.legs.length; i++) {
-			    total += myroute.legs[i].distance.value;
-			  }
-			  total = total / 1000;
-			  document.getElementById('total').innerHTML = total + ' km';
 			}
 			
 				
