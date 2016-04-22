@@ -8,16 +8,35 @@ img{
    background-color: #f2f2f2;
 }
 
-#comentario{
-   border-style: dotted;  
+#container{
+	left:20px;
+	background-color: blue;
+	
+}
+#comentarios{
+   width: 550px;
+   height: 400px;  
+   float: right;
+   background-color: transparent;
+   margin: 10% 10px;
+  padding: 5px;
 }
 
+#foto{
+   float:left;
+   width: 400px;
+   left:20px;
+   margin: 10% 10px;
+  padding: 5px;
+}
 
-
-
+body{
+	background-image: url("http://cdn.pcwallart.com/images/camera-wallpaper-2.jpg");
+}
 #navbar{
    float:left;
    width: 55%;
+   left:20px;
 }
 
 #mapa{
@@ -27,32 +46,16 @@ img{
 }
 
 #dialogbox {
-	overflow-y: scroll;
+  overflow-y: scroll;
+  float:right;
   right:20px;
-  max-width: 300px;
-  height: 500px;
-  margin: 20px 10px;
+  width: 550px;
+  height: 400px;
+  margin: 10% 10px;
   padding: 5px;
-  background-color: #DADADA;
-  border-radius: 3px;
-  border: 5px solid #ccc;
+  background-color: transparent;
 }
 
 
-.tip {
-  width: 0px;
-  height: 0px;
-  position: absolute;
-  background: transparent;
-  border: 10px solid #ccc;
-}
-
-.tip-up {
-  top: -25px; /* Same as body margin top + border */
-  left: 10px;
-  border-right-color: transparent;
-  border-left-color: transparent;
-  border-top-color: transparent;
-}
 
 
