@@ -14,7 +14,31 @@ class UsuarioController {
             users.save(failOnError: true)
             def roleUser = SecRole.findByAuthority('ROLE_USUARIO')
             SecUsuarioSecRole.create users,roleUser,true
+            session['id']=users.id
 
-      }
+    }
+
+    def intereses(){
+
+
+
+       def user= Usuario.get(session['id']) 
+
+       String s="['"
+
+        for(item in params.interes){
+            s+=item
+          s+="','"
+        }
+        s=s.substring(0,s.length()-2)
+
+        s+="]"
+
+        user.interes=s
+        user.save()         
+
+        redirect(uri:'/')
+    }
+   
 
 }
