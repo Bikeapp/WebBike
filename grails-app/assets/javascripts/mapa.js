@@ -33,8 +33,10 @@
 				
 				var divCU = document.createElement('div');
 				var divCR = document.createElement('div');
+				
 				crearControlUbicacion(divCU,map);			//Crea el boton de geolocalizacion en el mapa
-				crearControlRuta(divCR,map);				//Crea el boton de rutas en el mapa.		
+				crearControlRuta(divCR,map);				//Crea el boton de rutas en el mapa.
+				
 				divCU.index=1;
 				divCR.index=1;
 
@@ -210,6 +212,23 @@
 				divBoton.addEventListener('click',pedirUbicacion);
 				map.controls[google.maps.ControlPosition.LEFT].push(divContainer);
 			}
+
+			//Muestra el boton de ocultar el panel derecha del mapa para la geolocalización.
+			function crearControlPanel(divContainer,map){
+				var divBoton = document.createElement('div');
+				divBoton.style.backgroundColor = '#fff';
+				divBoton.style.border = '2px solid #fff';
+				divBoton.style.borderRadius = '3px';
+				divBoton.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+				divBoton.style.cursor = 'pointer';
+				divBoton.style.marginBottom = '2px';
+				divBoton.style.textAlign = 'center';
+				divBoton.innerHTML = '<img src="../assets/geo_icon.png"></img>';
+				divBoton.title = 'Click para mostrar/ocultar el panel de direcciones';
+				divContainer.appendChild(divBoton);
+				divBoton.addEventListener('click',botonPanel);
+				map.controls[google.maps.ControlPosition.LEFT].push(divContainer);
+			}
 			
 			//Muestra el boton en la esquina superior derecha del mapa para calcular rutas.
 			function crearControlRuta(divContainer,map){
@@ -250,6 +269,21 @@
 				else{
 					alert("Su navegador no soporta el servicio de geolocalizacion. Por favor actualice para utilizar este servicio.");
 				}
+			}
+
+			var flag_panel=false;
+			function botonPanel(){
+
+				if(flag_panel)			
+					toLeft();
+				else				
+					toRight();
+
+				
+				flag_panel=!(flag_panel);
+
+				
+
 			}
 			
 			//Muestra los controles de origen y destino.
@@ -307,7 +341,14 @@
 			}
 			
 			//Utiliza la posicion de inicio y destino establecidas por el usuario para calcular la ruta con el api de google.
+			var flag_calc=true;
 			function calcRuta(){
+				if(flag_calc){
+					flag_calc=false;
+					var divCP = document.createElement('div');
+					crearControlPanel(divCP,map);				//Crea el boton del panel en el mapa.		
+					divCP.index=1;
+				}
 				var request = {													//Parametros utilizados para las direcciones.
 					origin:Marker1.position,
 					waypoints:RWayPoints,										//ALEX AQUI VAN LOS WAYPOINTS.
