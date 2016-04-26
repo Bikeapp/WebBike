@@ -36,7 +36,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/WebBike/Perfil">BikeApp</a>
+          <a class="navbar-brand" href="/">BikeApp</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -52,7 +52,7 @@
     </nav>
   </div>
 </div>
-
+<g:layoutBody/>
   </body>
-    <g:layoutBody/>
+    
 </html>
