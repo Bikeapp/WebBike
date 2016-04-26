@@ -12,7 +12,7 @@ class MensajeController {
       def usuario = sesionService.usuarioEnSesion()  	//Obtenemos el usuario para buscar mensajes que corresponde.
       [usuario:usuario, conversaciones: ConvU.findAllByU1OrU2(usuario,usuario),usuarios: Usuario.list()]		//El controlador envía al cliente un parametro con los mensajes que encuentre en la BD para el usuario en sesion.
    }
-   
+
 	//Se utiliza para buscar los mensajes asociados a una conversacion entre 2 usuarios.
    def buscarMensajes(){
       def userName = params.userName		//Recibo el userName
@@ -34,7 +34,7 @@ class MensajeController {
       }
       render mensajes as JSON				//devuelvo mensajes a javascript
    }
-   
+
    //Funcion que se encarga de buscar las conversaciones asociadas a un usuario en la base de datos.
    def buscarConversaciones(usr1,usr2){
    		def usuario = usr
@@ -46,22 +46,36 @@ class MensajeController {
    			def conversacion = new ConvU(u1:usr1,u2:usr2)		//Creo una nueva conversacion con ambos usuarios
       		conversacion.save(flush:true)		//Almaceno
       	}
-   
-   
+
+
    }
-   
-   
+
+
    def crearMensaje(){
    	  def userName = params.userName			//Obtengo el parametro nombre para buscar el usuario.
+      println(userName)
       def usuario1 = sesionService.usuarioEnSesion()		//encuentro el usuario logueado
+      println(usuario1)
       def usuario2 = Usuario.findByNombre(userName)			//Encuentro el usuario destino
-      def conversacion = ConvU.findByU1AndU2(usuario1,usuario2)			//Encuentro la conversacion actual
-      def mensaje = new Mensaje(fecha:"hoy",conversacion:conversacion,dueño:usuario1,contenido:params.contenido)		//Creo el nuevo mensaje
+      println(usuario2)
+      def conversacion1 = ConvU.findByU1AndU2(usuario1,usuario2)			//Encuentro la conversacion actual
+      def conversacion2 = ConvU.findByU1AndU2(usuario2,usuario1)
+      def mensaje
+      if (conversacion1 == null){
+        mensaje = new Mensaje(fecha:"hoy",conversacion:conversacion2,dueño:usuario1,contenido:params.contenido)		//Creo el nuevo mensaje
+        println(conversacion2)
+      }
+      else{
+        mensaje = new Mensaje(fecha:"hoy",conversacion:conversacion1,dueño:usuario1,contenido:params.contenido)		//Creo el nuevo mensaje
+        println(conversacion1)
+      }
+      //def mensaje = new Mensaje(fecha:"hoy",conversacion:conversacion,dueño:usuario1,contenido:params.contenido)		//Creo el nuevo mensaje
       mensaje.save(flush:true)
+      println(mensaje)
       render mensaje.contenido
    }
-   
-   
+
+
    def crearConversacion(){
       def usuario1 = sesionService.usuarioEnSesion()		//Usuario creador de la conversacio
       def userName = params.userName				//Nombre de usuario del destinatario
@@ -85,6 +99,6 @@ class MensajeController {
       	JSON.use('deep'){		//MOTHERFUCKER DEEP JSON.
         	render conversacion as JSON
       	}
-      }      
+      }
    }
 }
