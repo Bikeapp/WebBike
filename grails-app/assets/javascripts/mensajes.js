@@ -32,6 +32,9 @@ $(document).on('click','.contacto',function(){
 //AJAX PARA CREAR UN NUEVO MENSAJE Y MOSTRARLO EN LA CONVERSACION.
 $(document).on('click','#cm',function(event){
 	event.preventDefault();
+	console.log("ConvSel es: " + convSel);
+	var a = $('#contenido').val();
+	console.log("contenido es: " + a);
 	if (convSel == null){
 	
 	}
