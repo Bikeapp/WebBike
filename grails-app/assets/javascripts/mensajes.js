@@ -5,7 +5,6 @@ var convSel = null;		//Variable para controlar la conversacion actual.
 //AJAX PARA CARGAR LOS MENSAJES DE UNA CONVERSACION Y MOSTRARLOS.
 $(document).on('click','.contacto',function(){
 	convSel = $(this).text();		//Obtengo UserName
-	console.log("la conv es: " + convSel);
 	$.ajax({
 		url: 'buscarMensajes',			//Llamo a buscarUsuario
 		type: 'POST',
@@ -15,9 +14,8 @@ $(document).on('click','.contacto',function(){
 		},
 		success: function(data) {
 			console.log(data);
-			console.log("jijiji");
 			$('#mensajes').empty();
-			for(obj in data){					
+			for(obj in data){
 				$('#mensajes').append("<div class='mensaje'>"+data[obj].contenido+"</div>");	//En caso de ser exitoso el request, iterar por cada objeto(mensaje) y mostrar.
 			}
 		},
@@ -32,11 +30,11 @@ $(document).on('click','.contacto',function(){
 //AJAX PARA CREAR UN NUEVO MENSAJE Y MOSTRARLO EN LA CONVERSACION.
 $(document).on('click','#cm',function(event){
 	event.preventDefault();
-	console.log("ConvSel es: " + convSel);
+	console.log("ConvSel: " + convSel);
 	var a = $('#contenido').val();
-	console.log("contenido es: " + a);
+	console.log("Contenido: " + a);
 	if (convSel == null){
-	
+
 	}
 	else{
 		$.ajax({
@@ -80,7 +78,7 @@ $(document).on('click','#cc',function(event){
 				console.log(convSel);
 				console.log(convSel == undefined);
 				if (convSel == undefined){
-					$('#contactos').append("<div class='contacto'>"+data.u2.nombre+"</div>");	
+					$('#contactos').append("<div class='contacto'>"+data.u2.nombre+"</div>");
 				}
 				convSel = $('.contacto:contains('+data.u2.nombre+')').html();		//dejar la conversacion seleccionada de una vez. Al escribir un mensaje queda asociado a esta conversacion
 			}
@@ -98,4 +96,3 @@ $(document).on('click','#cc',function(event){
 		}
 	});
 });
-
