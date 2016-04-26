@@ -5,7 +5,7 @@
 <html>
   <head>
   	<meta name="layout" content="main"/>
-  	<script src="https://maps.google.com/maps/api/js"></script>
+  	<script src="https://maps.google.com/maps/api/js?sensor=false&amp;language=es-ES"></script>
   	<asset:javascript src="mapa.js"/>
   	<asset:javascript src="ruta.js"/>
     <title>Mapa</title>
