@@ -13,19 +13,21 @@
 
     <!-- Custom styles for this template -->
     <asset:stylesheet href="bikeApp.css"/>
-    <asset:stylesheet href="mensajes.css"/>    
-    
+    <asset:stylesheet href="mensajes.css"/>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-   
+
     <g:layoutHead/>
     <r:layoutResources/>
   </head>
 
   <body>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-wrapper">
+          <div class="container">
+    <nav class="navbar navbar-inverse navbar-static-top offset-3 pull right">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -48,7 +50,9 @@
         </div>
       </div>
     </nav>
-    <g:layoutBody/>
-  </body>
-</html>
+  </div>
+</div>
 
+  </body>
+    <g:layoutBody/>
+</html>
