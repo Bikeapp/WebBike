@@ -5,6 +5,7 @@ var convSel = null;		//Variable para controlar la conversacion actual.
 //AJAX PARA CARGAR LOS MENSAJES DE UNA CONVERSACION Y MOSTRARLOS.
 $(document).on('click','.contacto',function(){
 	convSel = $(this).text();		//Obtengo UserName
+	console.log("la conv es: " + convSel);
 	$.ajax({
 		url: 'buscarMensajes',			//Llamo a buscarUsuario
 		type: 'POST',
@@ -14,6 +15,7 @@ $(document).on('click','.contacto',function(){
 		},
 		success: function(data) {
 			console.log(data);
+			console.log("jijiji");
 			$('#mensajes').empty();
 			for(obj in data){					
 				$('#mensajes').append("<div class='mensaje'>"+data[obj].contenido+"</div>");	//En caso de ser exitoso el request, iterar por cada objeto(mensaje) y mostrar.
