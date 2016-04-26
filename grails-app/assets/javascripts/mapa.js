@@ -215,19 +215,15 @@
 
 			//Muestra el boton de ocultar el panel derecha del mapa para la geolocalización.
 			function crearControlPanel(divContainer,map){
-				var divBoton = document.createElement('div');
-				divBoton.style.backgroundColor = '#fff';
-				divBoton.style.border = '2px solid #fff';
-				divBoton.style.borderRadius = '3px';
-				divBoton.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+				var divBoton = document.createElement('div');				
 				divBoton.style.cursor = 'pointer';
 				divBoton.style.marginBottom = '2px';
 				divBoton.style.textAlign = 'center';
 				divBoton.innerHTML = '<img src="../assets/geo_icon.png"></img>';
 				divBoton.title = 'Click para mostrar/ocultar el panel de direcciones';
-				divContainer.appendChild(divBoton);
-				divBoton.addEventListener('click',botonPanel);
-				map.controls[google.maps.ControlPosition.LEFT].push(divContainer);
+				divBoton.className = 'btn btn-primary';
+				divContainer.appendChild(divBoton);				
+				map.controls[google.maps.ControlPosition.RIGHT].push(divContainer);
 			}
 			
 			//Muestra el boton en la esquina superior derecha del mapa para calcular rutas.
@@ -344,10 +340,20 @@
 			var flag_calc=true;
 			function calcRuta(){
 				if(flag_calc){
+
+
 					flag_calc=false;
-					var divCP = document.createElement('div');
-					crearControlPanel(divCP,map);				//Crea el boton del panel en el mapa.		
-					divCP.index=1;
+					var buttonCP = document.createElement('button');
+					map.controls[google.maps.ControlPosition.RIGHT].push(buttonCP);
+					buttonCP.addEventListener('click',botonPanel);									
+					buttonCP.className='btn btn-default btn-circle btn-lg';
+					buttonCP.style.position='absolute';
+					buttonCP.style.marginTop='45%';
+					buttonCP.id="buttonCP";
+					buttonCP.innerHTML='<img height="80%"  src="../assets/right_arrow.png"></img>'	;				
+						
+
+					
 				}
 				var request = {													//Parametros utilizados para las direcciones.
 					origin:Marker1.position,
@@ -368,12 +374,14 @@
 			}
 			
 			function toLeft(){
+				$("#buttonCP").html('<img height="80%"  src="../assets/right_arrow.png"></img>');
 				$("#mapa").animate({width:'70%'},4000);
 				$("#right-panel").animate({width:'30%',opacity:'1'},4000);
 				$("#direcciones").animate({marginLeft:'-170px'},4000);
 			}
 			
 			function toRight(){
+				$("#buttonCP").html('<img height="80%"  src="../assets/left_arrow.png"></img>');
 				$("#mapa").animate({width:'100%'},4000);
 				$("#right-panel").animate({width:'0%',opacity:'0'},4000);
 				$("#direcciones").animate({marginLeft:'-auto'},4000);
