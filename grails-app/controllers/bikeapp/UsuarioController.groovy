@@ -9,12 +9,25 @@ class UsuarioController {
    def sesionService
 
    def registro() {
+      def user = new Usuario(params)
+      user.save(failOnError: true)
+      def roleUser = SecRole.findByAuthority('ROLE_USUARIO')
+      SecUsuarioSecRole.create user,roleUser,true
+      [username:user.username]
+   }
 
-         def users = new Usuario(params)
-            users.save(failOnError: true)
-            def roleUser = SecRole.findByAuthority('ROLE_USUARIO')
-            SecUsuarioSecRole.create users,roleUser,true
-
+   def intereses(){
+      def user= Usuario.findByUsername(params['username']) 
+      String s="['"
+      for(item in params.interes){
+         s+=item
+         s+="','"
       }
+      s=s.substring(0,s.length()-2)
+      s+="]"
+      user.interes=s
+      user.save flush:true,failOnError:true
+      redirect(uri:'/')
+   }
 
 }

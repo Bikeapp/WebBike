@@ -36,7 +36,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/Perfil">BikeApp</a>
+          <a class="navbar-brand" href="${createLink(controller:'Perfil',action:'miPerfil')}">BikeApp</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">

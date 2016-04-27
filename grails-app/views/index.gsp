@@ -6,19 +6,13 @@
 
   <body>
 
+   <sec:ifLoggedIn>
+      <!-- MANEJAR SI EL USUARIO YA INICIO SESION -->
+   </sec:ifLoggedIn>
+
   <div id="wrap">
   <div id="regbar">
     <div id="navthing">
-	<g:if test="${session?.user}">
-			<div class="randompad">
-			 <g:form name="logout" controller="usuario" action="logout">
-			 <h2>${session?.user?.usuario} ${session?.user?.email}</h2>
-			 <g:submitButton class="button" name="submitButton" value="Salir!" />
-			 </g:form>
-			 </div>
-		<!-- END #login -->
-		</g:if>
-		<g:else>
       <h2><a href="#" id="loginform">Iniciar Sesión</a> | <a href="#" id="logoutform">Registrarme</a></h2>
     <div class="login">
       <div class="arrow-up"></div>
@@ -44,6 +38,8 @@
             <g:form name="registro" controller="Usuario" action="registro">
 				<label for="username">Usuario</label>
 				<input type="text" name="username" required placeholder="Ingrese un nombre de usuario">
+				<label for="nombre">Nombre real</label>
+				<input type="text" name="nombre" required placeholder="Ingrese el nombre real del usuario">
 				<label for="email">Email</label>
 				<input type="email" name="email" required placeholder="Ingrese un email válido">
 				<label for="password">Contraseña</label>
@@ -56,7 +52,6 @@
         </div>
       </div>
     </div>
-	</g:else>
     </div>
   </div>
 </div>
