@@ -141,7 +141,22 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/images/**':    ['permitAll'],
 	'/**/favicon.ico':  ['permitAll'],
         '/dbconsole/**': ['permitAll'],
-        '/Usuario/registro': ['permitAll'],
-        '/Usuario/intereses': ['permitAll']
+        '/Usuario/**': ['permitAll'],
 ]
 
+
+//CONFIGURACION DEL PLUGIN PARA ENVIO DE EMAIL
+grails{
+   mail{
+      host = "smtp.gmail.com"
+      port = 465
+      username = "bikeappteam@gmail.com"
+      password = "Bikeapp5_-"
+       props = ["mail.smtp.auth":"true",                 
+              "mail.smtp.socketFactory.port":"465",
+              "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+              "mail.smtp.socketFactory.fallback":"false"]
+
+   }
+
+}

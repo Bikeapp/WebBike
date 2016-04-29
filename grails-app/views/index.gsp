@@ -8,6 +8,10 @@
 
    <sec:ifLoggedIn>
       <!-- MANEJAR SI EL USUARIO YA INICIO SESION -->
+      <script>
+         var link = '<g:createLink controller="perfil" action="index" />'
+         window.location.replace(link);
+      </script>
    </sec:ifLoggedIn>
 
   <div id="wrap">
