@@ -1,37 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta name="layout" content="main"/>
-</head>
-
-<body>
-
-<h1>Mi perfil</h1>
-<div class="nav" role="navigation">
-<ul>
-<li><g:link action="actualizar">Actualizar perfil</g:link></li>
-<li><g:link action="mensajes">Mensajes</g:link></li>
-</ul>
-</div>
-<div id="foto">
-</div>
-<g:if test="${usuario.foto == null}">
-<img src="${assetPath(src:'no_photo.png')}" width='400' height='400'/>
-</g:if>
-<g:else>
-<img src="${createLink(controller:'Perfil', action:'pintarImagen', id:"${usuario.id}")}" width='400' height='400'/>
-</g:else>
-<br>
-
-Mensaje distintivo: ${usuario.mensaje}
-<br>
-Nombre de usuario: ${usuario.username}
-<br>
-Email: ${usuario.email}
-<br>
-Sexo: ${usuario.sexo}
-<br>
-Fecha de Nacimiento: ${usuario.fecha}
-
-</body>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script  src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+      <script  src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+      <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" >
+      <asset:stylesheet href="modal.css"/>
+   </head>
+   <body>
+      <div class="section">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6">
+                  <g:if test="${usuario.foto == null}">
+                     <img src="${assetPath(src:'no_photo.png')}" class="img-responsive"/>
+                  </g:if>
+                  <g:else>
+                     <img src="${createLink(controller:'Perfil', action:'pintarImagen', id:"${usuario.id}")}" class="img-responsive"/>
+                  </g:else>
+               </div>
+               <div class="col-md-6">
+                  <h1 class="text-primary">Mis datos<br></h1>
+                  <p></p>
+                  <p>Nombre de usuario: ${usuario.username}</p>
+                  <p>Email: ${usuario.email}</p>
+                  <p>Fecha de Nacimiento: ${usuario.fecha}</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="section">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6">
+                  <g:link class="btn btn-primary" action="mensajes">Mensajes</g:link>
+               </div>
+               <div class="col-md-6">
+                  <g:link class="btn btn-primary" action="actualizar">Actualizar perfil<br></g:link>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="section">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <h1 class="text-primary">Mensaje Distintivo</h1>
+                  <p>${usuario.mensaje} </p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
 </html>
