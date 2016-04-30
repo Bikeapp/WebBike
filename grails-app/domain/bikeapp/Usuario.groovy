@@ -25,10 +25,11 @@ class Usuario extends SecUsuario{
       String nombre		//Nombre real del usuario
       String sexo			//Sexo del usuario
       String mensaje		//Mensaje dinstintivo del usuario
+      String secret;
       byte[] foto
   
    static constraints = {
-      email(nullable:false, email:true)
+      email(nullable:false, email:true, unique:true)
       foto(nullable:true, maxSize:1073741824)
             fecha(nullable:false)
             interes(nullable:true)
@@ -36,7 +37,7 @@ class Usuario extends SecUsuario{
             nombre(nullable:true)
             sexo(nullable:true)
             mensaje(nullable:true)
-
+            secret(nullable:true)
       }
 
 }

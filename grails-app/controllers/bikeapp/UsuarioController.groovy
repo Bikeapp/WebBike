@@ -3,7 +3,7 @@ package bikeapp
 //LO TUVE QUE BORRAR TODO, NO SE QUE ESTABA GENERANDO CONFLICTO Y ME DIO PEREZA PONER A MIRAR UNO POR UNO, LO CIERTO ES QUE EL LOGIN
 //Y EL LOGOUT LO VA A MANEJAR SPRING DE AHORA EN ADELANTE, SERIA RE ESCRIBIR EL REGISTRO, SIN EMBARGO ES SOLO AJUSTAR PARA QUE LO HAGA.:
 
-import grails.plugin.springsecurity.annotation.Secured
+import java.security.SecureRandom
 
 //EN ESTA CLASE PROCURAR NO PONER NADA DADO QUE ES UN CONTROLADOR QUE ES DE TIPO PUBLICO
 class UsuarioController {
@@ -16,6 +16,7 @@ class UsuarioController {
 
    def registro() {
       def user = new Usuario(params)
+      user.secret = new BigInteger(200,new SecureRandom()).toString();
       user.enabled = false
       user.save flush:true,failOnError: true
       def roleUser = SecRole.findByAuthority('ROLE_USUARIO')
@@ -34,25 +35,33 @@ class UsuarioController {
       s+="]"
       user.interes=s
       user.save flush:true,failOnError:true
-      redirect(action:'mensaje',params:[username:user.username,usermail:user.email,name:user.nombre])
+      redirect(action:'mensaje',params:[username:user.username])
    }
 
    def mensaje(){
-      def message = "Hola "+params['name']+", \n\n\n\n"+
+      def user = Usuario.findByUsername(params["username"])
+      def message = "Hola "+user.nombre+", \n\n\n\n"+
          "Gracias por registrarse en BikeApp!! \n\n"+
          "Para validar tu cuenta por favor haz click sobre el siguiente enlace:\n\n"+
-         "http://localhost:8080/WebBike/usuario/confirmar?username="+params['username']+"\n\n"+
+         "http://localhost:8080/WebBike/usuario/confirmar?username="+user.username+"&secret="+user.secret+"\n"+
          "Saludos, BikeApp Team!!"
       sendMail {
          async true
-         to params['usermail']
+         to user.email
          cc "bikeappteam@gmail.com"
          subject "Validación de Cuenta - BikeApp"
          body  message
       }
-      render(view:"satisfactorio")
+      def msj = "Registro exitoso, a tu correo ha sido enviado un mensaje para validar tu cuenta, debes validarla para poder iniciar sesión."
+      render(view:"satisfactorio",model:[msj:msj])
    }
 
+   def reenviar(){
+      def user = Usuario.findByUsername(params["usuario"])
+      //user.secret = new BigInteger(200,new SecureRandom()).toString();
+      //user.save flush:true,failOnError:true
+      redirect(action:'mensaje',params:[username:user.username])
+   }
 
    def test(){
            /*sendMail {
@@ -63,15 +72,21 @@ class UsuarioController {
          body  message
       }*/
       //render "OK"
-
-      render(view:"satisfactorio")
+      def msj = "OK"
+      render(view:"satisfactorio",model:[msj:msj])
    }
 
    def confirmar(){
       def user = Usuario.findByUsername(params['username'])
       user.enabled = true
       user.save flush:true,failOnError:true
-      //falta esta vista
-      redirect(uri:"/")
+      //secret match
+      def msj = "Tu cuenta ha sido validada, gracias por usar BikeApp!!"
+      render(view:"satisfactorio",model:[msj:msj])
    }
+
+   def login(){}
+   def correo(){}
+
 }
+

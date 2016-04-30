@@ -9,8 +9,7 @@
 
 <body>
 
-   Registro exitoso, a tu correo ha sido enviado un mensaje para validar tu cuenta, debes validarla para poder iniciar sesión. 
-
+   ${msj}
 
    Redireccionamiento en 5seg
 
