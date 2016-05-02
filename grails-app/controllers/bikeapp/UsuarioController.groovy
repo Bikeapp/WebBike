@@ -10,32 +10,33 @@ class UsuarioController {
 
    def registro() {
 
-         def users = new Usuario(params)
-            users.save(failOnError: true)
+            def users = new Usuario(params)
+            users.save(failOnError: true)            
             def roleUser = SecRole.findByAuthority('ROLE_USUARIO')
-            SecUsuarioSecRole.create users,roleUser,true
-            session['id']=users.id
+            SecUsuarioSecRole.create users,roleUser,true 
+            render(view:'registro',model:[user:users])          
 
     }
 
     def intereses(){
+      
 
+       def user= Usuario.get(params.idUser) 
 
-
-       def user= Usuario.get(session['id']) 
-
-       String s="['"
+       String s='["'
 
         for(item in params.interes){
             s+=item
-          s+="','"
+          s+='","'
         }
         s=s.substring(0,s.length()-2)
 
         s+="]"
 
         user.interes=s
-        user.save()         
+        user.save() 
+        print(user);
+        
 
         redirect(uri:'/')
     }

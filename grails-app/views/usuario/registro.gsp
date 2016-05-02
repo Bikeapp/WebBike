@@ -51,11 +51,12 @@
 		        
 		        <div class="panel panel-default" style="background-color: rgba(245, 245, 245, 0.4)">
 		        	<div class="panel-heading">
-		        	 	Formulario de registro de intereses
+		        	 	Formulario de registro de intereses 
 		        	</div>
 		        	<div class="panel-body">
 		        		<g:form role="form" action="intereses" method="post" controller="usuario">
 				        	<div class="form-group">
+				        		<g:hiddenField name="idUser" value="${user.id}" />
 				        		<label>Si desea puede agregar uno o varios intereses a su usuario</label>
 				        		<div class="checkbox">
 								  <label><input type="checkbox" name="interes" value="Ofertas "> Ofertas</label>
