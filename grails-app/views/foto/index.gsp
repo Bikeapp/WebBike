@@ -3,43 +3,13 @@
 
 	<head>
 		<meta name="layout" content="main"/>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-			<asset:stylesheet src="lightweightLightbox.css"/>
-			<asset:stylesheet src="bootstrap.min.css"/>
-			<style>
-				h1,
-				h2,
-				h3,
-				h4,
-				h5,
-				h6 {
-					color: black;
-					font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-				    text-transform: uppercase;				    			   
-				    font-weight: 700;
-				    letter-spacing: 1px;
-				}
-				body {
-				    
-				    background: url('${resource(dir: "images", file: "bicycles_gears.jpg")}'); 
-				    background-size: auto auto;
-				    background-attachment: fixed;
-				   
-				}
-				footer {
-				    position: fixed;
-   					 bottom: 0;
-				}
-			    .box img { width: 300px; float:left; border:1px solid #ccc; padding:5px; margin:10px;}
-			    h1 { margin-top:50px; text-align:center;}
-			    .jquery-script-ads { width:728px; margin:50px auto;}
-
-		    </style>
+		<asset:stylesheet src="perfil.css"/>
+			
 	</head>
 
 	<body>
 
-
+<!-- 
 		<h1>Mis fotos</h1>
 		<nav class="navbar navbar-default">
 		  <div class="container-fluid">
@@ -60,7 +30,7 @@
 		<div class="lightbox-container">
 		    <table id="albumfotos"> 
 				<g:each var="imagen" in="${imagenes}" status="i">
-					<!-- <g:link action="show" params="[imagenactual : imagen.id]"> -->
+					
 					
 					<tr>
 					<div class="box">
@@ -72,13 +42,62 @@
 					</td>
 					
 					
-					<!-- </g:link> -->
+					
 				</g:each>
 			</table>
 		    
-		</div>
+		</div> -->
 
-
+		
+<div class="section">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <h1 class="text-center">Mis Fotos</h1>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="section">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div id="carousel-example" data-interval="false" class="carousel slide" data-ride="carousel">
+                     <div class="carousel-inner">
+                        <div class="item active">
+                           <img src="${createLink(controller:'Foto', action:'pintarImagen', id:1)}">
+                           <div class="carousel-caption">
+                              <h2>Title</h2>
+                              <p>Description</p>
+                           </div>
+                        </div>
+						<g:each var="imagen" in="${imagenes}" status="i">
+                        <div class="item">
+							<img src="${createLink(controller:'Foto', action:'pintarImagen', id:"${imagen.id }")}">
+                           <div class="carousel-caption">
+                              <h2>${imagen.id}</h2>
+                              <p>Description</p>
+                           </div>
+                        </div>
+						</g:each>
+                     </div>
+                     <a class="left carousel-control" href="#carousel-example" data-slide="prev"><i class="icon-prev  fa fa-angle-left"></i></a><a class="right carousel-control" href="#carousel-example" data-slide="next"><i class="icon-next fa fa-angle-right"></i></a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="section">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6"><g:link class="btn btn-lg btn-primary" action="create">Añadir Foto</g:link></div>
+               <div class="col-md-6 text-right"><a class="btn btn-lg btn-primary">Comentar</a></div>
+            </div>
+         </div>
+      </div>
+		
+		
+		
 
 		<!-- <asset:stylesheet href="foto.css" /> -->
 		<div >
@@ -88,7 +107,15 @@
 		</footer>
 		</div> <!-- /container -->
 
+		<script>
+			var index = ;
+			myFunction();
 
+			function myFunction() {
+				document.getElementById("demo").innerHTML =
+				"I can display " + carName;
+			}
+		</script>
 
 		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 		<!-- <script src="js/lightweightLightbox.min.js"></script> -->
