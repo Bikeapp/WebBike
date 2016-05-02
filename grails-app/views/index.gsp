@@ -2,15 +2,16 @@
 <html lang="en">
   <head>
     <asset:stylesheet src="style.css"/>
+  	<meta name="layout" content="main"/>
   </head>
 
   <body>
 
+
    <sec:ifLoggedIn>
-      <!-- MANEJAR SI EL USUARIO YA INICIO SESION -->
       <script>
-         var link = '<g:createLink controller="perfil" action="index" />'
-         window.location.replace(link);
+      var link = '<g:createLink controller="perfil" action="index" />'
+      window.location.replace(link);
       </script>
    </sec:ifLoggedIn>
 

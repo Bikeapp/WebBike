@@ -1,7 +1,10 @@
+<!--                 PILAS CON ESTA VISTA, AUNQUE DICE REGISTRO NO CORRESPONDE CON LA VISTA DE REGISTRO -->
+
 <!DOCTYPE html>
 <asset:stylesheet href="bikeApp.css"/>
 <html>
 <head>
+<meta name="layout" content="public"/>
 </head>
 <body>
 <div class="header">

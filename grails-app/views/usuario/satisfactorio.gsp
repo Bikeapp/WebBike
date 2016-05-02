@@ -1,9 +1,10 @@
 <html>
 <head>
+<meta name="layout" content="public"/>
+<!--  SE PREGUNTARAN QUE HACE ESTA JS AQUI, SU RAZON DE SER ES QUE NECESITO QUE GRAILS LO RESUELVA Y ESO NO SUPE COMO HACERLO DESDE EL .js-->
 <script>
    var link = '<g:createLink controller="usuario" action="index" />'
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <asset:javascript src="usuario.js" />
 </head>
 

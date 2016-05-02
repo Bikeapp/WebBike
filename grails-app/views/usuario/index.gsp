@@ -1,7 +1,9 @@
+<!--                    VISTA DEPRECIADA -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  	<meta name="layout" content="main"/>
+  	<meta name="layout" content="public"/>
   </head>
 
   <body>
