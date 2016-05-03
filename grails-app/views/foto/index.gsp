@@ -58,7 +58,7 @@
             </div>
          </div>
       </div>
-      <div class="section">
+<!--       <div class="section">
          <div class="container">
             <div class="row">
                <div class="col-md-12">
@@ -86,7 +86,48 @@
                </div>
             </div>
          </div>
+      </div> -->
+	  
+	  
+	        <div class="section">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="section">
+                     <div class="container">
+						<g:each var="imagen" in="${imagenes}" status="i">
+						<g:if test="${i%4==0}">
+							 <div class="row">
+							  <g:each var="j" in="${ (i..<i+4) }">
+								<div class="col-md-3"> <a><img src="${createLink(controller:'Foto', action:'pintarImagen', id:"${j+1}")}" class="img-responsive"></a> </div>
+							  </g:each>
+                           
+							 </div>
+						</g:if>
+						</g:each>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
       </div>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
       <div class="section">
          <div class="container">
             <div class="row">
