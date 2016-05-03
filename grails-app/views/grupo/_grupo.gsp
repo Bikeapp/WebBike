@@ -1,8 +1,4 @@
 <g:if test="${grupo != null}">
-
-
-
-
     <div class="section">
       <div class="container">
         <div class="row">
@@ -24,19 +20,17 @@
 
 
 <g:if test="${!miembro}">
-<g:formRemote name="formulario_aporte" update="comments" url="[controller: 'Aporte', action: 'save']" after="limpiar()">
-<fieldset class="form">
-<div id="contenido_aporte_input">
+
+<form id="comentar">
+<g:javascript>
+var url2 = "${createLink(controller:'Grupo',action:'crearAporte')}"
+</g:javascript>
 <label>Aporte:</label> <br>			
-<g:textArea name="contenido" />
-</div>
-<g:hiddenField name="grupo" value="${grupo.id}" />
-</fieldset>
-<fieldset class="buttons">
-<g:submitButton name="create" class="save" value="Aportar" id="aporte_boton" />
-                  <a class="btn btn-primary">Click me</a>
-</fieldset>
-</g:formRemote>
+<g:textArea name="contenido" id="contenido" />
+<g:hiddenField id="grupoId" name="grupo" value="${grupo.id}" />
+<a class="btn btn-primary" onclick="aportar()">Comentar</a>
+</form>
+
 </g:if>
 
 
@@ -59,25 +53,12 @@
 <g:each in="${grupo.tags}">
    ${it}<p>
 </g:each>
+${grupo.descripcion}
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </g:if>

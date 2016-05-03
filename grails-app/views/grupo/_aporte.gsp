@@ -3,5 +3,5 @@
 
 <g:link controller="perfil" action="show" params="[username : aporte.usuario.username]">
 ${aporte.usuario.username}</g:link>
-</b><br>${aporte.contenido}<br><i>${aporte.fecha}</i></div> 
+</b><br>${aporte.contenido}<br><i>${aporte.dateCreated}</i></div> 
 </g:each>

@@ -1,15 +1,15 @@
 <g:applyLayout name="main">
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
 
-    <g:layoutHead/>
-    <r:layoutResources/>
+<g:layoutHead/>
+<r:layoutResources/>
 </head>
 <body>
-   <!--                     INICIO DEL LAYOUT PARA UN USUARIO CON SESION ACTIVA -->
+<!--                     INICIO DEL LAYOUT PARA UN USUARIO CON SESION ACTIVA -->
 
-   <sec:ifLoggedIn>
+<sec:ifLoggedIn>
 <script>
 var link = '<g:createLink controller="perfil" action="index" />'
 window.location.replace(link);
@@ -46,5 +46,4 @@ window.location.replace(link);
   </body>
     
 </html>
-
 </g:applyLayout>

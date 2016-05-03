@@ -60,7 +60,7 @@ function buscarGrupos(){
       type:"POST",
       url:url_busGrupo,
       data:{
-         tg:$("#tags").val()
+         tg: $("#tags").val()
       },
       success: function(data){
          $("#listaGrupos").html(data)

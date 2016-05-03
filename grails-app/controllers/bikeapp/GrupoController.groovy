@@ -8,8 +8,8 @@ class GrupoController {
 
    def index() {
       //falta aplicar el filtro para traer solo los grupos del usuario
-      def grupos = Grupo.getAll()
-      //model:[ grupos : grupos ]
+      def usuario = sesionService.usuarioEnSesion()
+      def grupos = UsuarioGrupo.findAllByUsuario(usuario).collect{ it.grupo }
       render(view:"grupos",model:[grupos:grupos])
    }
 
@@ -29,7 +29,7 @@ class GrupoController {
       def tags = params["tags"].tokenize(",")
       tags = tags.collect{ it.trim() }
       tags = tags.findAll{ it != ""}
-      tags.each{ print it }
+      //tags.each{ print it }
       grupoInstance.tags = tags
       grupoInstance.save flush:true,failOnError:true
       def usuario_grupo = new UsuarioGrupo(usuario:usuario,grupo:grupoInstance)
@@ -60,10 +60,18 @@ class GrupoController {
    }
 
    //NO SE ESTA GUARDANDO EN LA DB
-   def crearAporte(){
-      params.usuario=sesionService.usuarioEnSesion()      
-      def aporte= new Aporte(params)
-      aporte.save()
+   def crearAporte(String id,String contenido){
+      def grupo = Grupo.findById(id)
+      def usuario = sesionService.usuarioEnSesion()      
+      def aporte= new Aporte()
+      aporte.contenido = contenido
+      aporte.usuario = usuario
+      aporte.grupo = grupo
+      //print "OK"
+      aporte.save flush:true, failOnError:true
+      //render comentarios
+      //print "OK"
+      render(template:"aporte", model:[grupo:grupo])
    }
 
    def actualizarComentarios(){
@@ -72,5 +80,23 @@ class GrupoController {
       //render comentarios
       render(template:"aporte", model:[grupo:grupo])
 
+   }
+   
+   def buscarGrupos(String tg){
+      def grupos = []
+      if( tg != "" ){
+         def tgs = tg.tokenize(",")
+         tgs = tgs.collect{ it.trim() }
+         tgs = tgs.findAll{ it != ""}
+         print tgs
+         //tags.each{ print it }
+         grupos = Grupo.findAll()
+         grupos = grupos.findAll{ it.tags.any{ tgs.contains(it) } } 
+         print grupos
+      }else{
+         def usuario = sesionService.usuarioEnSesion()
+         grupos = UsuarioGrupo.findAllByUsuario(usuario).collect{ it.grupo }
+      }
+      render(template:"listaGrupos",model:[grupos:grupos])
    }
 }

@@ -9,19 +9,17 @@ class Aporte implements Comparable<Aporte>{
 
 	String contenido
       //esto debe ser de tipo fecha
-	Date fecha 
+	Date dateCreated
 
     static constraints = {
-        fecha(defaultValue: new Date())
     	grupo(nullable:false)
     	usuario(nullable:false)
     	contenido(nullable:false)
-    	fecha(nullable:false)
     }
 
    @Override
    public int compareTo(Aporte other){
-      return fecha.compareTo(other.fecha)
+      return dateCreated.compareTo(other.dateCreated)
    }
 
 }

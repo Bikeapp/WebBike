@@ -24,9 +24,12 @@
                   <form role="form">
                     <div class="form-group">
                       <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Tags a buscar">
+                        <input type="text" class="form-control" id="tags" placeholder="Tags a buscar">
                         <span class="input-group-btn">
-                          <a class="btn btn-success" type="submit">Go</a>
+<g:javascript>
+var url_busGrupo = "${createLink(controller:'Grupo',action:'buscarGrupos')}"
+</g:javascript>
+                          <a class="btn btn-success" type="submit" onclick="buscarGrupos()">Go!</a>
                         </span>
                       </div>
                     </div>
@@ -37,17 +40,11 @@
             <div class="container">
               <div class="row">
                 <div class="col-md-3">
-                  <ul class="list-group">
 
-<g:javascript>
-var url0 = "${createLink(controller:'Grupo',action:'obtenerGrupo')}"
-</g:javascript>
-
-                     <g:each in="${grupos}" >
-                     <a class="list-group-item" onclick="obtenerGrupo(${it.id})">
-                           ${it.nombre}</a>
-                     </g:each>
+                  <ul class="list-group" id="listaGrupos">
+                     <g:render template="listaGrupos" />
                   </ul>
+
                 </div>
               </div>
             </div>
