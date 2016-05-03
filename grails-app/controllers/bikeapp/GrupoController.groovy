@@ -7,8 +7,10 @@ class GrupoController {
    def sesionService
 
    def index() {
+      //falta aplicar el filtro para traer solo los grupos del usuario
       def grupos = Grupo.getAll()
-      model:[ grupos : grupos ]
+      //model:[ grupos : grupos ]
+      render(view:"grupos",model:[grupos:grupos])
    }
 
    def create(){
@@ -37,13 +39,12 @@ class GrupoController {
 
 
    //MUESTRA LOS GRUPOS CONSULTANDO APROPIADAMENTE LAS CLASES, FIJARSE EN COMO ENTRA LA TABLA INTERMEDIA EN LAS CONSULTAS
-   def show(){
+   def obtenerGrupo(String id){
       def usuario = sesionService.usuarioEnSesion()
-      def inx = params['grupoactual']
-      def grupo = Grupo.findById(inx)
+      def grupo = Grupo.findById(id)
       def miembros = UsuarioGrupo.findAllByGrupo(grupo)
       def miembro = miembros.every{ it.usuario != usuario}
-      render(view:"show",model:[grupo:grupo,miembros:miembros,miembro:miembro])
+      render(template:"grupo",model:[grupo:grupo,miembros:miembros,miembro:miembro])
    }
 
    //PERMITE UNIRSE A UN GRUPO, ESTO SIMPLEMENTE SE HACE AGREGANDO UN REGISTRO EN LA TABLA INTERMEDIA

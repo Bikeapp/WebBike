@@ -1,3 +1,21 @@
+function obtenerGrupo(e){
+   $.ajax({
+      type:"POST",
+      url:url0,
+      data:{
+         id:e
+      },
+      success: function(data){
+         //alert(data);
+         $("#contenido-grupo").html(data)
+      },
+      error: function(){
+         alert(url);
+         alert("Algo ha salido mal, por favor intentelo de nuevo!!");
+      },
+      complete: function(){}
+   });
+}
 
 function unirme(e){
    $.ajax({
