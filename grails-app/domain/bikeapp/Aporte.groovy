@@ -2,7 +2,7 @@ package bikeapp
 import groovy.transform.ToString
 
 @ToString
-class Aporte {
+class Aporte implements Comparable<Aporte>{
 
 	 
 	static belongsTo = [ grupo: Grupo, usuario:Usuario ]
@@ -18,5 +18,10 @@ class Aporte {
     	contenido(nullable:false)
     	fecha(nullable:false)
     }
+
+   @Override
+   public int compareTo(Aporte other){
+      return fecha.compareTo(other.fecha)
+   }
 
 }

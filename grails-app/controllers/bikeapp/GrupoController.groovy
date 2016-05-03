@@ -24,6 +24,11 @@ class GrupoController {
       }
       def usuario = sesionService.usuarioEnSesion()
       grupoInstance.administrador = usuario
+      def tags = params["tags"].tokenize(",")
+      tags = tags.collect{ it.trim() }
+      tags = tags.findAll{ it != ""}
+      tags.each{ print it }
+      grupoInstance.tags = tags
       grupoInstance.save flush:true,failOnError:true
       def usuario_grupo = new UsuarioGrupo(usuario:usuario,grupo:grupoInstance)
       usuario_grupo.save flush:true,failOnError:true

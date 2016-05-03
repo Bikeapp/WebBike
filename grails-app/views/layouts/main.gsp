@@ -12,6 +12,7 @@
     <asset:stylesheet href="bootstrap.min.css"/>
 
     <!-- Custom styles for this template -->
+    <asset:stylesheet href="bikeApp.css"/>
    <!-- NO ENTIENDO QUE HACE ESTA HOJA DE ESTILOS AQUÍ VEO QUE CLARAMENTE DICE MENSAJES NO SÉ-->
     <asset:stylesheet href="mensajes.css"/>
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>

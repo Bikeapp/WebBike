@@ -1,4 +1,4 @@
-<g:each in="${comentarios}" status="i" var="it">
+<g:each in="${comentarios.sort{a,b -> a.compareTo(b) }}" status="i" var="it">
    <table id="comentario_${i}">
    <tr>
     ${it.contenido} 

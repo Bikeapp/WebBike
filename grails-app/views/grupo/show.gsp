@@ -19,6 +19,10 @@
 <g:render template="union" />
 </div>
 
+<g:each in="${grupo.tags}">
+   ${it}<p>
+</g:each>
+
 </div>
 
 </body>
