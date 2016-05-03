@@ -49,8 +49,10 @@
 				<input type="email" name="email" required placeholder="Ingrese un email válido">
 				<label for="password">Contraseña</label>
 				<input type="password" name="password" required placeholder="Ingrese su contraseña">
-				<label for="fecha">Fecha</label>
-				<input type="text" name="fecha" required placeholder="Ingrese fecha">
+				<label for="fecha">Fecha de Nacimiento</label><br>
+                              <g:datePicker id="fecha" name="fecha" class="button" precision="day"/>
+<br>
+<br>
 				<g:submitButton class="button" name="submitButton" value="Registrarme!" />
 			</g:form>
            </fieldset>

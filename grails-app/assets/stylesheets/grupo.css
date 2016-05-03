@@ -1,13 +1,9 @@
-
-#board{
-   
-}
-
-#miembros{
-   margin-left:50%;
-}
-
 #comments{
    height:400px;
    overflow-y: scroll;
+}
+
+#col-md-8{
+
+
 }

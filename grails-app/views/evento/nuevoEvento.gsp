@@ -21,7 +21,7 @@
 <div id="controlessubir">
 Descripcion: <g:textArea id="descripcion" name="descripcion" />
 <br>
-Fecha y Hora: <g:datePicker id="fecha" name="fecha" />
+Fecha y Hora: <g:datePicker id="fecha" name="fecha" precision="minute"/>
 
 <g:hiddenField id="lat" name="lat" value="-1" />
 <g:hiddenField id="lng" name="lng" value="-1" />
