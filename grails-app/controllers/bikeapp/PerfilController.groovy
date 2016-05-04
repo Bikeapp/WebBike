@@ -50,5 +50,14 @@ class PerfilController {
       usuario.save flush:true,failOnError:true
       redirect(action:"miPerfil")
    }
+   
+   def crearAmistad(){
+      def u1 = sesionService.usuarioEnSesion()
+      def u2 = Usuario.findByUsername(params.u1_name)
+      def date = new Date()
+      def amistad = new Amistad(u1:u1,u2:u2,fecha:date)
+      amistad.save()
+      render("Amistad creada exitosamente!")   
+   }
 
 }

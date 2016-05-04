@@ -5,12 +5,32 @@
 </head>
 
 <body>
+<script>
+$(document).on('click','#amistad',function(event){
+	$.ajax({
+		url: 'crearAmistad',			//Llamo a buscarUsuario
+		type: 'POST',
+		dataType: 'text',					//Que el controlador me devuelva el objeto de tipo JSON.
+		data: {
+			u1_name:	'ddager',				//Envio el nombre de usuario que tengo seleccionado.
+		},
+		success: function(data) {
+			console.log(data);
+		},
+		error: function (xhr, ajaxOptions, thrownError) {
+        	alert(xhr.status);
+        	alert(thrownError);
+      	}
+	});
+});
+</script>
 
 <h1>Mi perfil</h1>
 <div class="nav" role="navigation">
 <ul>
 <li><g:link action="actualizar">Actualizar perfil</g:link></li>
 <li><g:link action="mensajes">Mensajes</g:link></li>
+<li id="amistad">Amistad</li>
 </ul>
 </div>
 <div id="foto">
