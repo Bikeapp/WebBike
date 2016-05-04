@@ -48,7 +48,7 @@ var nomUsuario = "${usuario.nombre}";
 				</div>
 			</div>
 			Este combobox se tiene que reemplazar por algun pop up que deje escoger un usuario para crear una nueva conversacion
-		<g:select name="amigoSel" id="friendSelect" from="${usuarios}" optionKey="id" optionValue="nombre"/>
+		<g:select name="amigoSel" id="friendSelect" from="${amigos}"/>
 		</div>
     </div>
 </div>

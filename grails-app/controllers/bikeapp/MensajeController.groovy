@@ -7,10 +7,11 @@ import grails.converters.JSON
 class MensajeController {
 
    def sesionService
+   def amistadService
 
    def index(){
       def usuario = sesionService.usuarioEnSesion()  	//Obtenemos el usuario para buscar mensajes que corresponde.
-      [usuario:usuario, conversaciones: ConvU.findAllByU1OrU2(usuario,usuario),usuarios: Usuario.list()]		//El controlador envía al cliente un parametro con los mensajes que encuentre en la BD para el usuario en sesion.
+      [usuario:usuario, conversaciones: ConvU.findAllByU1OrU2(usuario,usuario),amigos: amistadService.Amigos(usuario)]		//El controlador envía al cliente un parametro con los mensajes que encuentre en la BD para el usuario en sesion.
    }
 
 	//Se utiliza para buscar los mensajes asociados a una conversacion entre 2 usuarios.
@@ -79,7 +80,7 @@ class MensajeController {
    def crearConversacion(){
       def usuario1 = sesionService.usuarioEnSesion()		//Usuario creador de la conversacio
       def userName = params.userName				//Nombre de usuario del destinatario
-      def usuario2 = Usuario.findByNombre(userName)			//Usuario del destinatario en la base de datos
+      def usuario2 = Usuario.findByUsername(userName)			//Usuario del destinatario en la base de datos
       def conv1 = ConvU.findByU1AndU2(usuario1,usuario2)
       def conv2 = ConvU.findByU1AndU2(usuario2,usuario1)	//Hago 2 busquedas ya que necesito buscar conversaciones con ambas posiblidades de usuarios.
       //retorna la conversacion que encuentre (conv1 o conv2). retorna conversacion si es una nueva porque no encuentra ninguna.
@@ -96,6 +97,7 @@ class MensajeController {
       else if (conv1 == null && conv2 == null){
       	def conversacion = new ConvU(u1:usuario1,u2:usuario2)		//Creo una nueva conversacion con ambos usuarios
       	conversacion.save(flush:true)		//Almaceno la nueva conversacion
+      	println "Cree una conversacion ${conversacion}"
       	JSON.use('deep'){		//MOTHERFUCKER DEEP JSON.
         	render conversacion as JSON
       	}
