@@ -3,8 +3,8 @@
 
 	<head>
 		<meta name="layout" content="main"/>
+		<link href="http://cdn.alloyui.com/3.0.1/aui-css/css/bootstrap.min.css" rel="stylesheet"></link>
 		<asset:stylesheet src="perfil.css"/>
-			
 	</head>
 
 	<body>
@@ -99,9 +99,10 @@
 						<g:if test="${i%4==0}">
 							 <div class="row">
 							  <g:each var="j" in="${ (i..<i+4) }">
-								<div class="col-md-3"> <a><img src="${createLink(controller:'Foto', action:'pintarImagen', id:"${j+1}")}" class="img-responsive"></a> </div>
+							  <g:if test="${j<imagenes.size()}">
+								<div class="col-md-3" id="hola"> <a href="${createLink(controller:'Foto', action:'pintarImagen', id:"${j+1}")}"><img src="${createLink(controller:'Foto', action:'pintarImagen', id:"${j+1}")}" class="img-responsive"></a> </div>
+							  </g:if>
 							  </g:each>
-                           
 							 </div>
 						</g:if>
 						</g:each>
@@ -111,21 +112,6 @@
             </div>
          </div>
       </div>
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
 	  
 	  
       <div class="section">
@@ -147,24 +133,42 @@
 		<p>BikeApp&copy; 2016 Company, Inc.</p>
 		</footer>
 		</div> <!-- /container -->
-
+		
+		<script src="http://cdn.alloyui.com/3.0.1/aui/aui-min.js"></script>	
+		
 		<script>
-			var index = ;
-			myFunction();
-
-			function myFunction() {
-				document.getElementById("demo").innerHTML =
-				"I can display " + carName;
-			}
+			YUI().use(
+		  'aui-image-viewer',
+		  function(Y) {
+			new Y.ImageViewer(
+			  {
+				caption: 'Liferay Champion Soccer',
+				captionFromTitle: true,
+				centered: true,
+				imageAnim: {
+				 duration: 1,
+				 easing: 'easeIn'
+				},
+				
+				links: '#hola a',
+				maxHeight: 450,
+				playing: true,
+				preloadAllImages: true,
+				preloadNeighborImages: true,
+				showInfo: true,
+				showPlayer: true,
+				width: '150%',
+				zIndex: 1
+			  }
+			).render();
+		  }
+		);
 		</script>
-
-		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		
+		
 		<!-- <script src="js/lightweightLightbox.min.js"></script> -->
-		<asset:javascript src="lightweightLightbox.js"/>
 		<asset:javascript src="foto.js"/>
-		<script type="text/javascript">
-		    $(".lightbox-container").lightweightLightbox();
-		</script>
+		
 
 
 	</body>
