@@ -5,7 +5,7 @@ import groovy.transform.ToString
 class Mensaje {
 
 	String contenido
-	String fecha
+	Date fecha
 	ConvU conversacion
 	Usuario dueño
 	

@@ -14,7 +14,6 @@ class AmistadService {
    	  	else{
    	  	   n_amigos.add(it.u1.username)
    	  	}   	  	 
-   	    println "${it.u1.username}"
    	  }
    	  return n_amigos
    }

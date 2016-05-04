@@ -74,20 +74,18 @@ $(document).on('click','#cc',function(event){
 		success: function(data) {		//Si creo la conversacion exitosamente.
 			//Verifica el nombre de usuario  en sesion para identificar el otro usuario de la conversacion e imprimir en pantalla ese nombre.
 			if (data.u1.nombre == nomUsuario){
-				convSel = $(".contacto:contains("+data.u2.nombre+")").html();
-				console.log(convSel);
-				console.log(convSel == undefined);
+				convSel = $(".contacto:contains("+data.u2.username+")").html();
 				if (convSel == undefined){
 					$('#contactos').append("<div class='contacto'>"+data.u2.nombre+"</div>");
 				}
-				convSel = $('.contacto:contains('+data.u2.nombre+')').html();		//dejar la conversacion seleccionada de una vez. Al escribir un mensaje queda asociado a esta conversacion
+				convSel = $('.contacto:contains('+data.u2.username+')').html();		//dejar la conversacion seleccionada de una vez. Al escribir un mensaje queda asociado a esta conversacion
 			}
 			else{
-				convSel = $(".contacto:contains("+data.u1.nombre+")").html();
+				convSel = $(".contacto:contains("+data.u1.username+")").html();
 				if (convSel == "undefined"){
 					$('#contactos').append("<div class='contacto'>"+data.u1.nombre+"</div>");	//Mostrar el nombre del destinatario en pantalla.
 				}
-				convSel = $('.contacto:contains('+data.u1.nombre+')').html();		//dejar la conversacion seleccionada de una vez.Al escribir un mensaje queda asociado a esta conversacion
+				convSel = $('.contacto:contains('+data.u1.username+')').html();		//dejar la conversacion seleccionada de una vez.Al escribir un mensaje queda asociado a esta conversacion
 			}
 		},
 		error: function (xhr, ajaxOptions, thrownError) {

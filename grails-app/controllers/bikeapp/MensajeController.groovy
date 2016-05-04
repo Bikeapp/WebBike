@@ -63,14 +63,13 @@ class MensajeController {
       def conversacion2 = ConvU.findByU1AndU2(usuario2,usuario1)
       def mensaje
       if (conversacion1 == null){
-        mensaje = new Mensaje(fecha:"hoy",conversacion:conversacion2,dueño:usuario1,contenido:params.contenido)		//Creo el nuevo mensaje
+        mensaje = new Mensaje(fecha:new Date(),conversacion:conversacion2,dueño:usuario1,contenido:params.contenido)		//Creo el nuevo mensaje
         println(conversacion2)
       }
       else{
-        mensaje = new Mensaje(fecha:"hoy",conversacion:conversacion1,dueño:usuario1,contenido:params.contenido)		//Creo el nuevo mensaje
+        mensaje = new Mensaje(fecha:new Date(),conversacion:conversacion1,dueño:usuario1,contenido:params.contenido)		//Creo el nuevo mensaje
         println(conversacion1)
       }
-      //def mensaje = new Mensaje(fecha:"hoy",conversacion:conversacion,dueño:usuario1,contenido:params.contenido)		//Creo el nuevo mensaje
       mensaje.save(flush:true)
       println(mensaje)
       render mensaje.contenido
@@ -97,7 +96,6 @@ class MensajeController {
       else if (conv1 == null && conv2 == null){
       	def conversacion = new ConvU(u1:usuario1,u2:usuario2)		//Creo una nueva conversacion con ambos usuarios
       	conversacion.save(flush:true)		//Almaceno la nueva conversacion
-      	println "Cree una conversacion ${conversacion}"
       	JSON.use('deep'){		//MOTHERFUCKER DEEP JSON.
         	render conversacion as JSON
       	}
