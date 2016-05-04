@@ -1,21 +1,4 @@
-body {
-  width: 100%;
-  height:100%;
-  padding-top:50px;
-}
-.starter-template {
-  padding: 40px 15px;
-  text-align: center;
-}
-.container {
-  width: 100%;
-  height:100%;
-}
-.jumbotron {
-  height: 100%;
-  padding-bottom: 0px;
-  margin-bottom: 0px;
-}
+
 
 #mapa{
   border: 3px solid white;

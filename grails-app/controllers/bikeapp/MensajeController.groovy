@@ -19,7 +19,7 @@ class MensajeController {
       def userName = params.userName		//Recibo el userName
       def mensajes = []
       def usuario1 = sesionService.usuarioEnSesion()	//Encuentro el usuario logueado
-      def usuario2 = Usuario.findByNombre(userName)		//Encuentro el usuario con ese username
+      def usuario2 = Usuario.findByUsername(userName)		//Encuentro el usuario con ese username
       def conversacion2 = ConvU.findByU1AndU2(usuario1,usuario2)
       def conversacion3 = ConvU.findByU1AndU2(usuario2,usuario1)
       //Tengo que revisar ambas posibilidades en la base de datos. (u1,u2 y u2,u1). Ambas son la misma conversacion, por eso debo hacer 2 busquedas.
@@ -57,7 +57,7 @@ class MensajeController {
       println(userName)
       def usuario1 = sesionService.usuarioEnSesion()		//encuentro el usuario logueado
       println(usuario1)
-      def usuario2 = Usuario.findByNombre(userName)			//Encuentro el usuario destino
+      def usuario2 = Usuario.findByUsername(userName)			//Encuentro el usuario destino
       println(usuario2)
       def conversacion1 = ConvU.findByU1AndU2(usuario1,usuario2)			//Encuentro la conversacion actual
       def conversacion2 = ConvU.findByU1AndU2(usuario2,usuario1)

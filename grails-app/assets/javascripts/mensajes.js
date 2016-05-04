@@ -56,14 +56,9 @@ $(document).on('click','#cm',function(event){
 	}
 });
 
-
-//FALTA CREAR UNA INTERFAZ PARA QUE EL USUARIO SELECCIONE A UN AMIGO O TODOS EN ESTE CASO.
-
-
 //AJAX PARA CREAR UNA CONVERSACION Y MOSTRARLO EN LA PAGINA.
-$(document).on('click','#cc',function(event){
-	event.preventDefault();
-	var user = $( "#friendSelect option:selected").text();		//Obtengo el nombre de usuario del destinatario en la conversacion desde el select
+function crearConversacion(){
+	var user = $(".amigoSel").html();		//Obtengo el nombre de usuario del destinatario en la conversacion desde el select
 	$.ajax({
 		url: 'crearConversacion',			//Llamo a crearConversacion
 		type: 'POST',
@@ -76,14 +71,14 @@ $(document).on('click','#cc',function(event){
 			if (data.u1.nombre == nomUsuario){
 				convSel = $(".contacto:contains("+data.u2.username+")").html();
 				if (convSel == undefined){
-					$('#contactos').append("<div class='contacto'>"+data.u2.nombre+"</div>");
+					$('#contactos').append("<div class='contacto'>"+data.u2.username+"</div>");
 				}
 				convSel = $('.contacto:contains('+data.u2.username+')').html();		//dejar la conversacion seleccionada de una vez. Al escribir un mensaje queda asociado a esta conversacion
 			}
 			else{
 				convSel = $(".contacto:contains("+data.u1.username+")").html();
 				if (convSel == "undefined"){
-					$('#contactos').append("<div class='contacto'>"+data.u1.nombre+"</div>");	//Mostrar el nombre del destinatario en pantalla.
+					$('#contactos').append("<div class='contacto'>"+data.u1.username+"</div>");	//Mostrar el nombre del destinatario en pantalla.
 				}
 				convSel = $('.contacto:contains('+data.u1.username+')').html();		//dejar la conversacion seleccionada de una vez.Al escribir un mensaje queda asociado a esta conversacion
 			}
@@ -93,4 +88,16 @@ $(document).on('click','#cc',function(event){
 			alert(thrownError);
 		}
 	});
+	$('.amigoSel').attr('class','amigo');
+}
+
+//Cambio de div entre seleccionado y no seleccionado para el modal
+$(document).on('click','.amigo',function(event){
+	$('.amigoSel').attr('class','amigo');
+	$(this).attr('class', 'amigoSel');
 });
+
+//Activador para abrir el modal
+$(document).on('click','#opener',function() { $( "#dialog" ).dialog( "open" ); });
+
+
