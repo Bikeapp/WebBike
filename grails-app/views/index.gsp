@@ -2,23 +2,22 @@
 <html lang="en">
   <head>
     <asset:stylesheet src="style.css"/>
+  	<meta name="layout" content="main"/>
   </head>
 
   <body>
 
+
+   <sec:ifLoggedIn>
+      <script>
+      var link = '<g:createLink controller="perfil" action="index" />'
+      window.location.replace(link);
+      </script>
+   </sec:ifLoggedIn>
+
   <div id="wrap">
   <div id="regbar">
     <div id="navthing">
-	<g:if test="${session?.user}">
-			<div class="randompad">
-			 <g:form name="logout" controller="usuario" action="logout">
-			 <h2>${session?.user?.usuario} ${session?.user?.email}</h2>
-			 <g:submitButton class="button" name="submitButton" value="Salir!" />
-			 </g:form>
-			 </div>
-		<!-- END #login -->
-		</g:if>
-		<g:else>
       <h2><a href="#" id="loginform">Iniciar Sesión</a> | <a href="#" id="logoutform">Registrarme</a></h2>
     <div class="login">
       <div class="arrow-up"></div>
@@ -44,19 +43,22 @@
             <g:form name="registro" controller="Usuario" action="registro">
 				<label for="username">Usuario</label>
 				<input type="text" name="username" required placeholder="Ingrese un nombre de usuario">
+				<label for="nombre">Nombre real</label>
+				<input type="text" name="nombre" required placeholder="Ingrese el nombre real del usuario">
 				<label for="email">Email</label>
 				<input type="email" name="email" required placeholder="Ingrese un email válido">
 				<label for="password">Contraseña</label>
 				<input type="password" name="password" required placeholder="Ingrese su contraseña">
-				<label for="fecha">Fecha</label>
-				<input type="text" name="fecha" required placeholder="Ingrese fecha">
+				<label for="fecha">Fecha de Nacimiento</label><br>
+                              <g:datePicker id="fecha" name="fecha" class="button" precision="day"/>
+<br>
+<br>
 				<g:submitButton class="button" name="submitButton" value="Registrarme!" />
 			</g:form>
            </fieldset>
         </div>
       </div>
     </div>
-	</g:else>
     </div>
   </div>
 </div>

@@ -13,18 +13,27 @@
 
     <!-- Custom styles for this template -->
     <asset:stylesheet href="bikeApp.css"/>
+   <!-- NO ENTIENDO QUE HACE ESTA HOJA DE ESTILOS AQUÍ VEO QUE CLARAMENTE DICE MENSAJES NO SÉ-->
     <asset:stylesheet href="mensajes.css"/>
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-
+   
     <g:layoutHead/>
     <r:layoutResources/>
+
   </head>
 
   <body>
+
+
+   <!--                     INICIO DEL LAYOUT PARA UN USUARIO CON SESION ACTIVA -->
+   <sec:ifLoggedIn>
+      <!-- COMO ESTA ACTIVO SE LE CAMBIA EL / DE FORMA CONVENIENTE -->
+      
+
     <div class="navbar-wrapper">
           <div class="container">
     <nav class="navbar navbar-inverse navbar-static-top offset-3 pull right">
@@ -36,7 +45,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/Perfil">BikeApp</a>
+          <a class="navbar-brand" href="${createLink(controller:'Perfil',action:'miPerfil')}">BikeApp</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -52,7 +61,12 @@
     </nav>
   </div>
 </div>
-<g:layoutBody/>
+   </sec:ifLoggedIn>
+   <!--                     FIN DEL LAYOUT PARA UN USUARIO CON SESION ACTIVA -->
+
+   <g:layoutBody/> 
+
+
   </body>
     
 </html>

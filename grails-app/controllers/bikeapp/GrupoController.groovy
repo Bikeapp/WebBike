@@ -7,8 +7,10 @@ class GrupoController {
    def sesionService
 
    def index() {
-      def grupos = Grupo.getAll()
-      model:[ grupos : grupos ]
+      //falta aplicar el filtro para traer solo los grupos del usuario
+      def usuario = sesionService.usuarioEnSesion()
+      def grupos = UsuarioGrupo.findAllByUsuario(usuario).collect{ it.grupo }
+      render(view:"grupos",model:[grupos:grupos])
    }
 
    def create(){
@@ -24,6 +26,11 @@ class GrupoController {
       }
       def usuario = sesionService.usuarioEnSesion()
       grupoInstance.administrador = usuario
+      def tags = params["tags"].tokenize(",")
+      tags = tags.collect{ it.trim() }
+      tags = tags.findAll{ it != ""}
+      //tags.each{ print it }
+      grupoInstance.tags = tags
       grupoInstance.save flush:true,failOnError:true
       def usuario_grupo = new UsuarioGrupo(usuario:usuario,grupo:grupoInstance)
       usuario_grupo.save flush:true,failOnError:true
@@ -32,13 +39,12 @@ class GrupoController {
 
 
    //MUESTRA LOS GRUPOS CONSULTANDO APROPIADAMENTE LAS CLASES, FIJARSE EN COMO ENTRA LA TABLA INTERMEDIA EN LAS CONSULTAS
-   def show(){
+   def obtenerGrupo(String id){
       def usuario = sesionService.usuarioEnSesion()
-      def inx = params['grupoactual']
-      def grupo = Grupo.findById(inx)
+      def grupo = Grupo.findById(id)
       def miembros = UsuarioGrupo.findAllByGrupo(grupo)
       def miembro = miembros.every{ it.usuario != usuario}
-      render(view:"show",model:[grupo:grupo,miembros:miembros,miembro:miembro])
+      render(template:"grupo",model:[grupo:grupo,miembros:miembros,miembro:miembro])
    }
 
    //PERMITE UNIRSE A UN GRUPO, ESTO SIMPLEMENTE SE HACE AGREGANDO UN REGISTRO EN LA TABLA INTERMEDIA
@@ -54,10 +60,18 @@ class GrupoController {
    }
 
    //NO SE ESTA GUARDANDO EN LA DB
-   def crearAporte(){
-      params.usuario=sesionService.usuarioEnSesion()      
-      def aporte= new Aporte(params)
-      aporte.save()
+   def crearAporte(String id,String contenido){
+      def grupo = Grupo.findById(id)
+      def usuario = sesionService.usuarioEnSesion()      
+      def aporte= new Aporte()
+      aporte.contenido = contenido
+      aporte.usuario = usuario
+      aporte.grupo = grupo
+      //print "OK"
+      aporte.save flush:true, failOnError:true
+      //render comentarios
+      //print "OK"
+      render(template:"aporte", model:[grupo:grupo])
    }
 
    def actualizarComentarios(){
@@ -66,5 +80,23 @@ class GrupoController {
       //render comentarios
       render(template:"aporte", model:[grupo:grupo])
 
+   }
+   
+   def buscarGrupos(String tg){
+      def grupos = []
+      if( tg != "" ){
+         def tgs = tg.tokenize(",")
+         tgs = tgs.collect{ it.trim() }
+         tgs = tgs.findAll{ it != ""}
+         print tgs
+         //tags.each{ print it }
+         grupos = Grupo.findAll()
+         grupos = grupos.findAll{ it.tags.any{ tgs.contains(it) } } 
+         print grupos
+      }else{
+         def usuario = sesionService.usuarioEnSesion()
+         grupos = UsuarioGrupo.findAllByUsuario(usuario).collect{ it.grupo }
+      }
+      render(template:"listaGrupos",model:[grupos:grupos])
    }
 }

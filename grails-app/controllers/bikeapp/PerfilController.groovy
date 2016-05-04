@@ -43,8 +43,8 @@ class PerfilController {
    def update(){
       def usuario = sesionService.usuarioEnSesion()
       def uploadedFile = request.getFile('selector')
-      usuario.foto = uploadedFile.getBytes()
-      usuario.mensaje = params["mensaje"]
+      usuario.foto = (uploadedFile.getBytes() == [] )? null : uploadedFile.getBytes() ;
+      usuario.mensaje = params["mensaje"] 
       usuario.sexo = params["sexo"]
       usuario.fecha = params["fecha"]
       usuario.save flush:true,failOnError:true

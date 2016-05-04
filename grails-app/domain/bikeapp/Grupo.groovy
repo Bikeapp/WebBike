@@ -10,6 +10,8 @@ class Grupo {
    
    String nombre
    String descripcion
+   String[] tags
+   
 
     static constraints = {
          nombre(nullable:false)

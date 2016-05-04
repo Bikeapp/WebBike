@@ -129,7 +129,8 @@ grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'bikeapp.SecUsu
 grails.plugin.springsecurity.authority.className = 'bikeapp.SecRole'
 grails.plugin.springsecurity.logout.postOnly=false
 grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/Perfil'
-grails.plugin.springsecurity.failureHandler.defaultFailureUrl = '/'
+grails.plugin.springsecurity.failureHandler.defaultFailureUrl = '/Usuario/login'
+grails.plugin.springsecurity.auth.loginFormUrl = '/'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':                ['permitAll'],
 	'/index':           ['permitAll'],
@@ -140,6 +141,22 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/images/**':    ['permitAll'],
 	'/**/favicon.ico':  ['permitAll'],
         '/dbconsole/**': ['permitAll'],
-		'/Usuario/registro': ['permitAll']
+        '/Usuario/**': ['permitAll'],
 ]
 
+
+//CONFIGURACION DEL PLUGIN PARA ENVIO DE EMAIL
+grails{
+   mail{
+      host = "smtp.gmail.com"
+      port = 465
+      username = "bikeappteam@gmail.com"
+      password = "Bikeapp5_-"
+       props = ["mail.smtp.auth":"true",                 
+              "mail.smtp.socketFactory.port":"465",
+              "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+              "mail.smtp.socketFactory.fallback":"false"]
+
+   }
+
+}

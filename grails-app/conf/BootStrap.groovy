@@ -49,6 +49,16 @@ class BootStrap {
          nombre: "Troncho Dager"
          ).save()
       SecUsuarioSecRole.create usuario4,userRole
+      def grupo1 = new Grupo(
+         usuario:usuario4,
+         nombre:"ddager",
+         descripcion:"grupo del rasta",
+      ).save()
+      def grupo2 = new Grupo(
+         usuario:usuario3,
+         nombre:"Lolis",
+         descripcion:"grupo de lolis",
+      ).save() 
    }
     def destroy = {
     }

@@ -2,7 +2,7 @@ package bikeapp
 import groovy.transform.ToString
 
 @ToString
-class Comentario {
+class Comentario implements Comparable<Comentario>{
 
    //Hay que tener presente la relación que exite entre estos tres personajes
    static belongsTo = [usuario:Usuario, foto:Foto]
@@ -15,5 +15,11 @@ class Comentario {
       contenido(nullable:false)
       usuario(nullable:false)
       foto(nullable:false)
+   }
+
+
+   @Override
+   public int compareTo(Comentario other){
+      return dateCreated.compareTo( other.dateCreated)
    }
 }

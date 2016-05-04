@@ -21,6 +21,8 @@
 Nombre del grupo: <g:textField name="nombre" />
 <p>
 Descripcion del grupo<g:textArea name="descripcion" />
+<p>
+Tags <g:textArea name="tags"/>
 </div>
 
 </fieldset>
