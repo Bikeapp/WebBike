@@ -1,16 +1,13 @@
-<h1>Miembros</h1>
-<ol>
-<g:each var="miembro" in="${miembros}">
-<li> ${miembro.usuario.username} </li>
-</g:each>
-</ol>
 <g:if test="${miembro}">
+<div class="sidebar-item  recent">
+<h3>Unirme</h3>
 <form name="join">
-<a class="btn btn-primary" data-toggle="button" onclick="unirme()">Have Fun!!</a>
+<input type="button" name="buscar" class="btn btn-submit" value="Unirme" onclick="unirme()">
 <g:hiddenField name="grupoId" value="${grupo.id}"/>
 <g:javascript>
 var url = "${createLink(controller:'Grupo',action:'unirme')}"
 </g:javascript>
 </form>
+</div>
 </g:if>
 
