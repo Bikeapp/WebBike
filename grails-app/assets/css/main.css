@@ -394,8 +394,6 @@ ul.sub-menu {
 **************************/
 
 #footer {
-  padding-bottom: 10px;
-  background-image: url(../images/home/footer.png);
   background-repeat: repeat-x;
   background-position: bottom;
   background-size: contain;
@@ -407,7 +405,7 @@ ul.sub-menu {
 }
 
 #footer .bottom-separator {
-  margin-bottom: 60px;
+  margin-bottom: 0px;
 }
 
 #message {

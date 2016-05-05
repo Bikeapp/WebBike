@@ -29,7 +29,8 @@
 					center: myLatlng,
 					zoom: 15,
 					disableDoubleClickZoom: true,
-					mapTypeControl: false
+					mapTypeControl: false,
+					scrollwheel: false
 				}
 				map = new google.maps.Map(document.getElementById('gmap'),options);	//Se le asigna el mapa de google al div con nombre 'mapa'
 				
