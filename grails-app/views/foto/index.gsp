@@ -6,8 +6,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Portfolio Default | Triangle</title>
-	<asset:stylesheet href="bootstrap.min.css"/>
+	
 	<asset:stylesheet href="font-awesome.min.css"/>
+	<asset:stylesheet href="bootstrap.min.css"/>
 	<asset:stylesheet href="lightbox.css"/>
 	<asset:stylesheet href="animate.min.css"/>
 	<asset:stylesheet href="main.css"/>
@@ -47,7 +48,7 @@
         <div class="container">
             <div class="row">
                 <ul class="portfolio-filter text-center">
-                    <g:link type="button" class="btn btn-lg btn-success" action="create"><i class="fa fa-picture-o" aria-hidden="true"></i>  Añadir Foto</g:link>
+                    <g:link type="button" class="btn btn-lg btn-success" action="create"><i class="fa fa-picture" aria-hidden="true"></i>  Añadir Foto</g:link>
                 </ul><!--/#portfolio-filter-->
                     
                 <div class="portfolio-items">
