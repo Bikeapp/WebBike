@@ -5,7 +5,6 @@ import groovy.transform.ToString
 class Evento {
 
    static belongsTo = [ lider: Usuario, ruta : Ruta ]
-   static hasMany = [ usuarios : Usuario ]
 
    Date fecha
    String descripcion

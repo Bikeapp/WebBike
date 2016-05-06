@@ -6,30 +6,26 @@
 
 <body>
 
+<g:remoteLink class="logout" controller="logout">
+Logout
+</g:remoteLink> 
 
-<h1>Mis eventos</h1>
-<div class="nav" role="navigation">
-<ul>
-<li><g:link action="nuevoEvento">Crear evento</g:link></li>
-</ul>
-</div>
+<section id="portfolio">
+<div class="container">
+<div class="row">
 
-<div id="misEventos" >
-<table>
-<g:each var="evento" in="${misEventos}">
-<tr>
-<td>
-${evento.descripcion}   
-</td>
-<td>
-${evento.fecha}
-</td>
-</tr>
-</g:each>
-</table>
+<ul class="portfolio-filter text-center">
+<li><a class="btn btn-default active" href="javascript:obtenerEventos()">Mis Eventos</a></li>
+<li><a class="btn btn-default" href="#" data-filter="*">Eventos Futuros</a></li>
+<li><a class="btn btn-default" href="#" data-filter="*">Eventos Pasados</a></li>
+<li><a class="btn btn-default" href="#" data-filter="*">Eventos Pasados</a></li>
+</ul><!--/#portfolio-filter-->
+
+<g:render template="listaEventos" />
 
 </div>
-
+</div>
+</section>
 
 </body>
 </html>

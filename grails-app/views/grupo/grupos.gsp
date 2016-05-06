@@ -2,10 +2,17 @@
 <head>
 <meta name="layout" content="main"/>
 <asset:javascript src="grupo.js" />
+<asset:stylesheet href="grupos.css" />
+
 </head>
+
+
 
 <body>
 
+            <li><g:remoteLink class="logout" controller="logout">
+               Logout
+               </g:remoteLink> </li>
 
 <section id="blog" class="padding-top">
 <div class="container">
@@ -49,14 +56,6 @@ var url_busGrupo = "${createLink(controller:'Grupo',action:'buscarGrupos')}"
 </div>
 </section>
 
-<!--/#blog-->
-<!--/#blog-->
-<!--/#blog-->
-<!--/#blog-->
-<!--/#blog-->
-<!--/#blog-->
-<!--/#blog-->
-<!--/#blog-->
 <!--/#blog-->
 <!--/#blog-->
 <!--/#blog-->

@@ -8,11 +8,14 @@
 
 <h1>Bienvenidos al grupo ${grupo.nombre}</h1>
 
+<!--
 <div class="col-md-9 col-sm-7">
 <div class="row" id="comments">
+-->
 
+<div class="col-sm-6">
+<div class="project-name overflow" id="comments">
 <g:render template="aporte" model="[aportes:grupo.aportes]" />
-
 </div>
 </div>
 
@@ -21,7 +24,7 @@
 <div class="col-md-3 col-sm-5">
 <div class="sidebar blog-sidebar">
 
-<div id="rutinas"
+<div id="rutinas">
 <g:render template="union" />
 </div>
 
@@ -57,21 +60,6 @@ ${grupo.descripcion}
 </div>
 </div>
 </section>
-
-
-<g:if test="${!miembro}">
-
-<form id="comentar">
-<g:javascript>
-var url2 = "${createLink(controller:'Grupo',action:'crearAporte')}"
-</g:javascript>
-<label>Aporte:</label> <br>			
-<g:textArea name="contenido" id="contenido" />
-<g:hiddenField id="grupoId" name="grupo" value="${grupo.id}" />
-<a class="btn btn-primary" onclick="aportar()">Comentar</a>
-</form>
-
-</g:if>
 
 
 </g:if>
