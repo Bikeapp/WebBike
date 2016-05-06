@@ -36,3 +36,43 @@ function actualizarPosicion(location){
    $("#lng").val(location.lng);
    //alert( $("#lat").val() + ", "+ $("#lng").val() );
 }
+
+function obtenerEventos(e){
+   $.ajax({
+      type:"POST",
+      url:url_obtEventos,
+      data:{
+         tp:e
+      },
+      success: function(data){
+         //alert(data);
+         $("#lista-eventos").html(data)
+      },
+      error: function(){
+         alert(url_obtMisEventos);
+         alert("Algo ha salido mal, por favor intentelo de nuevo!!");
+      },
+      complete: function(){}
+   });
+}
+
+
+
+function obtenerMisEventos(e){
+   $.ajax({
+      type:"POST",
+      url:url_obtMisEventos,
+      data:{
+         tp:e
+      },
+      success: function(data){
+         //alert(data);
+         $("#lista-eventos").html(data)
+      },
+      error: function(){
+         alert(url_obtMisEventos);
+         alert("Algo ha salido mal, por favor intentelo de nuevo!!");
+      },
+      complete: function(){}
+   });
+}
