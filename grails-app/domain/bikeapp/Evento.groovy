@@ -9,6 +9,7 @@ class Evento {
    Date fecha
    String descripcion
    PuntoInteres puntoEncuentro
+   String nombre
 
    static constraints = {
       lider(nullable:false)

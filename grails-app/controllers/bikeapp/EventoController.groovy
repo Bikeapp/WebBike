@@ -12,8 +12,8 @@ class EventoController {
       def eventos = UsuarioEvento.findAllByUsuario(usuario).collect{ it.evento }
       def fechaAc = new Date()
       eventos = eventos.findAll { it.fecha.compareTo(fechaAc) >= 0 }
+      //print eventos
       [eventos:eventos]
-      print eventos
    }
 
    def obtenerMisEventos(String tp){
@@ -25,7 +25,7 @@ class EventoController {
       }else{
          eventos = eventos.findAll { it.fecha.compareTo(fechaAc) < 0 }
       }
-      print eventos
+      //print eventos
       render(template:"listaEventos",model:[eventos:eventos])  
    }
 
@@ -58,6 +58,7 @@ class EventoController {
       instance.descripcion = params["descripcion"]
       instance.lider = usuario
       instance.fecha = params["fecha"]
+      instance.nombre = params["nombre"]
       instance.save flush:true,failOnError:true
 
       def usuarioEvento = new UsuarioEvento()
@@ -66,5 +67,23 @@ class EventoController {
       usuarioEvento.save flush:true,failOnError:true
 
       redirect(action:"index")
+   }
+
+   def mostrarEvento(){
+      def ev = Evento.findById(params["evento"])
+      def asistentes = UsuarioEvento.findAllByEvento(ev)
+      def asis = !asistentes.any{ it.usuario == sesionService.usuarioEnSesion() }
+      [evento:ev,asistentes:asistentes,asis:asis]
+   }
+
+   def resumenEvento(){
+   }
+
+   def registrarme(){
+      def evento = Evento.findById(params["evento"])
+      def usuario = sesionService.usuarioEnSesion()
+      def usuarioEvento = new UsuarioEvento(usuario:usuario,evento:evento)
+      usuarioEvento.save flush:true,failOnError:true
+      redirect(action:"mostrarEvento",params:[evento:evento.id])
    }
 }

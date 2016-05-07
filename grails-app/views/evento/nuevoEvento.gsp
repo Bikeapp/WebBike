@@ -19,6 +19,8 @@
 <fieldset class="form">
 <div id="formulario">
 <div id="controlessubir">
+Nombre: <g:textField id="nombre" name="nombre"/>
+<br>
 Descripcion: <g:textArea id="descripcion" name="descripcion" />
 <br>
 Fecha y Hora: <g:datePicker id="fecha" name="fecha" precision="minute"/>

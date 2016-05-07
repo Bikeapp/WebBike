@@ -47,7 +47,7 @@ ${grupo.descripcion}
 <h3>Miembros</h3>
 <ul class="gallery">
 <g:each var="miembro" in="${miembros}">
-<li><a href="#">
+<li><a href="${createLink(controller:'perfil',action:'show',params:[username:miembro.usuario.username])}">
 <!-- <img src="images/portfolio/popular1.jpg" alt=""> --> ${miembro.usuario.nombre}
 </a></li>
 </g:each>
