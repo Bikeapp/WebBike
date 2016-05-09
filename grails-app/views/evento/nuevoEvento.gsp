@@ -3,7 +3,6 @@
 <head>
 <meta name="layout" content="main"/>
 <!-- ATENTOS DIFIERE MI LLAMADO AL DE FELIPE, FELIPE LO HACE INYECTANDO EL MÉTODO EN EL EVENTO POR MEDIO DE DOM-->
-<script src="https://maps.google.com/maps/api/js?callback=initMap" async defer></script>
 <asset:javascript src="evento.js" />
 <asset:stylesheet href="evento.css" />
 </head>
@@ -19,6 +18,8 @@
 <fieldset class="form">
 <div id="formulario">
 <div id="controlessubir">
+Nombre: <g:textField id="nombre" name="nombre"/>
+<br>
 Descripcion: <g:textArea id="descripcion" name="descripcion" />
 <br>
 Fecha y Hora: <g:datePicker id="fecha" name="fecha" precision="minute"/>
@@ -30,6 +31,7 @@ Fecha y Hora: <g:datePicker id="fecha" name="fecha" precision="minute"/>
 </fieldset>
 </div>
 <div id="mapa"></div>
+<script src="https://maps.google.com/maps/api/js?callback=initMap" async defer></script>
 </fieldset>
 <p>
 </g:form>
