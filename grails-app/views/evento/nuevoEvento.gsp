@@ -23,14 +23,15 @@ Nombre: <g:textField id="nombre" name="nombre"/>
 Descripcion: <g:textArea id="descripcion" name="descripcion" />
 <br>
 Fecha y Hora: <g:datePicker id="fecha" name="fecha" precision="minute"/>
-
 <g:hiddenField id="lat" name="lat" value="-1" />
 <g:hiddenField id="lng" name="lng" value="-1" />
+<br>
+Ruta: <g:select name="ruta" value="" from="${rutas.id}" />
 <fieldset class="buttons">
 <g:submitButton name="create" class="save" value="Crear" id="create" />
 </fieldset>
 </div>
-<div id="mapa"></div>
+<div id="mapa" class="mapa"></div>
 <script src="https://maps.google.com/maps/api/js?callback=initMap" async defer></script>
 </fieldset>
 <p>

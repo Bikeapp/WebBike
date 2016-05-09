@@ -18,7 +18,11 @@ function initMap(tipo){
    });
 }
 
-function initMaps(tipo){
+function callback(puntosRutaJSON){
+   initMaps(puntosRutaJSON);
+}
+
+function initMaps(puntosRutaJSON){
    //alert(tipo);
    //MAPA CON EL PUNTO DE ENCUENTRO
    var lat = $("#lat").val();
@@ -41,7 +45,29 @@ function initMaps(tipo){
 
 
    //MAPA QUE INDICA LA RUTA
+   if( puntosRutaJSON.length > 0){
+      myLatlng = new google.maps.LatLng(puntosRutaJSON[0].lat,puntosRutaJSON[0].lng);
+   }else{
+      myLatlng = new google.maps.LatLng(-4.63,-74.103);
+   }
+
+   options = {
+      center: myLatlng,
+      zoom: 13,
+      disableDoubleClickZoom: true,
+   }
    map_rt = new google.maps.Map(document.getElementById('mapa-rt'),options);
+   for(var i=0;i<puntosRutaJSON.length;++i){
+      var latlng = new google.maps.LatLng(puntosRutaJSON[i].lat,puntosRutaJSON[i].lng);
+      new google.maps.Marker({
+         position:latlng,     
+         map: map_rt,
+         draggable: false,
+         animation: google.maps.Animation.DROP
+      });
+
+   }
+
    //NONE TODO CODE HERE
    //
    //
