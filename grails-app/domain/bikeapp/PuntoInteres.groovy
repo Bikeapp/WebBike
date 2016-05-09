@@ -17,7 +17,7 @@ class PuntoInteres {
 
    static constraints = {
       usuario(nullable:false)
-      ruta(nullable:false)
+      ruta(nullable:true)
       nombre(nullable:true)
       descripcion(nullable:true)
       calificacion(nullable:true)

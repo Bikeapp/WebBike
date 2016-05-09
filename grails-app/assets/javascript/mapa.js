@@ -48,7 +48,7 @@
 			
 				//Añadir listener al boton de punto de partida.
 				$(document).on('click', '#butRP', function(event) {	
-					RWayPoints=[];				
+                                     RWayPoints=[];				
 					infowindow.close();
 					var txtOrigen = document.getElementById('txtOr');
 					if (Marker1 != null){						//Verifica si ya había otro marcador establecido como origen.

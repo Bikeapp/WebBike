@@ -42,7 +42,9 @@ class EventoController {
    }
 
    def nuevoEvento(){
-      respond new Evento(params)
+      def rutas = Ruta.list()
+      [rutas:rutas]
+      //respond new Evento(params)
    }
 
    def guardar(Evento instance){
@@ -60,6 +62,9 @@ class EventoController {
       instance.fecha = params["fecha"]
       instance.nombre = params["nombre"]
       instance.save flush:true,failOnError:true
+      if( params["ruta"] != "Ninguna" ){
+         instance.ruta = Ruta.findById(params["ruta"]);
+      }
 
       def usuarioEvento = new UsuarioEvento()
       usuarioEvento.usuario = usuario
@@ -72,8 +77,9 @@ class EventoController {
    def mostrarEvento(){
       def ev = Evento.findById(params["evento"])
       def asistentes = UsuarioEvento.findAllByEvento(ev)
+      def puntosRuta = ( ev.ruta == null )? [] : PuntoInteres.findAllByRuta( ev.ruta )
       def asis = !asistentes.any{ it.usuario == sesionService.usuarioEnSesion() }
-      [evento:ev,asistentes:asistentes,asis:asis]
+      [evento:ev,asistentes:asistentes,asis:asis,puntosRuta:puntosRuta]
    }
 
    def resumenEvento(){

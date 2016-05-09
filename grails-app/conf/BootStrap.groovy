@@ -57,7 +57,7 @@ class BootStrap {
          fecha:		"13-04-94",
          nombre:	"Felipe Daza"
          ).save()
-	  SecUsuarioSecRole.create usuario5,adminRole
+      SecUsuarioSecRole.create usuario5,adminRole
       def grupo1 = new Grupo(
          usuario:usuario4,
          nombre:"ddager",

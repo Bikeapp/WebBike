@@ -1,7 +1,11 @@
+<%@ defaultCodec="none" %> 
+<%! import grails.converters.JSON %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta name="layout" content="main"/>
+  	<script src="https://maps.google.com/maps/api/js?sensor=false&amp;language=es-ES"></script>
 <asset:javascript src="evento.js" />
 <asset:stylesheet href="evento.css" /> 
 </head>
@@ -19,6 +23,8 @@
 <li><a href="#tab1-item2" data-toggle="tab" id="to_map2">Mapa de Ruta</a></li>
 </ul>
 
+
+
 <div class="tab-content">
 <g:hiddenField name="lng" id="lng" value="${evento.puntoEncuentro.lng}"/>
 <g:hiddenField name="lat" id="lat" value="${evento.puntoEncuentro.lat}"/>
@@ -32,8 +38,12 @@
 <div id="mapa-rt" class="mapa">
 </div>
 </div>
-
+<!--
+<g:javascript>
+var ppc = ${puntosRuta}
+</g:javascript>
 <script src="https://maps.google.com/maps/api/js?callback=initMaps" async defer></script>
+-->
 </div>
 </div>
 
@@ -74,6 +84,13 @@ ${evento.descripcion}
 </div>
 </div>
 </section>
+
+
+<g:javascript>
+document.addEventListener("DOMContentLoaded", function(event) {
+      callback(${puntosRuta as JSON});
+      });
+</g:javascript>
 
 </body>
 </html>
