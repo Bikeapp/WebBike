@@ -19,7 +19,7 @@ class Aporte implements Comparable<Aporte>{
 
    @Override
    public int compareTo(Aporte other){
-      return dateCreated.compareTo(other.dateCreated)
+      return other.dateCreated.compareTo(dateCreated)
    }
 
 }

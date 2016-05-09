@@ -80,8 +80,10 @@ $(document).on('click','.panel-body ul li',function(event){
 	if ($(this).text() == 'Nueva Ruta'){
 		directionsDisplay.setMap(null);
 		directionsDisplay = new google.maps.DirectionsRenderer({ draggable: true, map: map })
-		$("#cp-map-container").animate({opacity:'1'},1000);
-		$('#modal').animate({opacity:'0',zIndex:'0'},1000,function(){$('#modal').remove();});
+		//Aparece el mapa con efecto.
+		$("#cp-map-container").filter(':not(:animated)').animate({opacity:'1'},2000);
+		//Se desvanece el modal y se elimina
+		$("#modal").filter(':not(:animated)').animate({opacity:'0'},2000,function(){$('#modal').remove();});
 		map.addListener('click', function(event) {						//El mapa escuchara eventos (click) y ejecuta la funcion
 			addMarker(event.latLng);								//Funcion de Ciro para agregar puntos.
 		});
@@ -92,6 +94,7 @@ $(document).on('click','.panel-body ul li',function(event){
 			container.appendChild(btnCalc);
 			container.appendChild(btnSave);
 			container.id = 'container-ruta-nueva';
+			container.style.opacity = '0';
 			btnCalc.innerHTML = 'Calcular Ruta';
 			btnCalc.onclick = function() { calcRuta();}
 			btnCalc.style.width = '120px';
@@ -104,23 +107,22 @@ $(document).on('click','.panel-body ul li',function(event){
 			btnSave.style.height = '20px';
 			map.controls[google.maps.ControlPosition.TOP_CENTER].push(container);
 		}
-		else{
-			$("#container-ruta-nueva").animate({opacity:'1'},2000);
-		}
+		$("#container-ruta-nueva").filter(':not(:animated)').animate({opacity:'1'},2000);
 	}
 	else if($(this).text() == 'Modificar Ruta'){
 		directionsDisplay.setMap(null);
 		directionsDisplay = new google.maps.DirectionsRenderer({ draggable: true, map: map })
 		if(!$('#modal').length){
-			$("#container-ruta-nueva").animate({opacity:'0'},1000);
-			$("#cp-map-container").animate({opacity:'0.2'},1000);
+
+			$("#cp-map-container").filter(':not(:animated)').animate({opacity:'0'},2000);
+			$("#container-ruta-nueva").filter(':not(:animated)').animate({opacity:'0'},2000);
 		
 			var txt = "";
 			for(var i = 0 ; i < rutas_all.length ;i++){
 				txt = txt + "<li>"+rutas_all[i].nombre+"</li>";
 			}
 			$("#wrapper").append("<div id='modal'><div class='modal-content'><h3>Por favor, escoja una de las rutas existentes para modificar</h3><p class='description'>"+txt+"</p></div></div>");
-			$('#modal').animate({opacity:'1',zIndex:'99'},1000);
+			$("#modal").filter(':not(:animated)').animate({opacity:'1',zIndex:'99'},2000);
 		}
 	}
 });
@@ -278,8 +280,8 @@ $(document).on('click','#modal li',function(){
 					window.alert('Directions request failed due to ' + status);
 				}
 			});
-			$("#cp-map-container").animate({opacity:'1'},1000);
-			$('#modal').animate({opacity:'0',zIndex:'0'},1000,function(){$('#modal').remove();});
+			$("#cp-map-container").filter(':not(:animated)').animate({opacity:'1'},2000);
+			$("#modal").filter(':not(:animated)').animate({opacity:'0',zIndex:'0'},2000,function(){$('#modal').remove();});
 			
 		},
 		error: function (xhr, ajaxOptions, thrownError) {

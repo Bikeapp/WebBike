@@ -3,6 +3,7 @@
 	height: 100%;
 	float:	left;
 	overflow-y:auto;
+	min-width: 150px;
 
 }
 #cp-map-container{
@@ -36,4 +37,15 @@ li {
 	left: 20%;
 	top: 20%;
 	border: 5px solid black;
+}
+.panel-heading{
+	padding: 20px 20px;
+	text-align: center;
+}
+.panel-body{
+	text-align: center;
+}
+ul{
+	margin: 0;
+	padding: 0;
 }

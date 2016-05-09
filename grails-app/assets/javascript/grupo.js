@@ -75,9 +75,9 @@ function buscarGrupos(){
 function limpiar(){
    $("#contenido").val('');
    //$('#comment').animate({'margin-top': '50px'}, 1000);
-   $("#comments").animate({ scrollTop: $("#comments").prop("scrollHeight") }, 1000);
+   //$("#comments").animate({ scrollTop: $("#comments").prop("scrollHeight") }, 1000);
 }
 
 $("document").ready(function(){
-   $("#comments").animate({ scrollTop: $("#comments").prop("scrollHeight") }, 3000);
+   //$("#comments").animate({ scrollTop: $("#comments").prop("scrollHeight") }, 3000);
 });

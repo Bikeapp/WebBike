@@ -31,7 +31,7 @@ class Usuario extends SecUsuario{
    static constraints = {
       email(nullable:false, email:true, unique:true)
       foto(nullable:true, maxSize:1073741824)
-            fecha(nullable:false)
+      fecha(nullable:false)
             interes(nullable:true)
             puntos(nullable:true)
             nombre(nullable:true)
