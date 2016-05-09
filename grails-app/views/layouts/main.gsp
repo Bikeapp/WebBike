@@ -46,7 +46,7 @@
                     </button>
 
                     <a class="navbar-brand" href="index">
-                    	<h1><img src="../images/logo.png" alt="BikeApp - Logo"></h1>
+                    	<h1><img src="images/logo.png" alt="BikeApp - Logo"></h1>
                     </a>
                     
                 </div>
@@ -108,7 +108,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 text-center bottom-separator">
-                    <img src="../images/home/under.png" class="img-responsive inline" alt="">
+                    <img src="<g:resource dir='images/home' file='under.png'/>" class="img-responsive inline" alt="WHAAAAAT">
                 </div>
                 <div class="col-sm-12">
                 

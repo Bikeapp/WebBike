@@ -1,11 +1,36 @@
-<g:applyLayout name="main">
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
+	
+   	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title><g:layoutTitle default="BikeApp - ¡Muevete por Bogotá!"/></title>
+    
+    
+    <!-- Agregamos CSS. /assets/css/ -->
+	<asset:stylesheet src="bootstrap.min.css" />
+	<asset:stylesheet src="font-awesome.min.css" />
+	<asset:stylesheet src="animate.min.css" />
+	<asset:stylesheet src="lightbox.css" />
+	<asset:stylesheet src="main.css" />
+	<asset:stylesheet src="responsive.css" />
+	
+    <!--[if lt IE 9]>
+	    <script src="js/html5shiv.js"></script>
+	    <script src="js/respond.min.js"></script>
+    <![endif]-->       
 
-<g:layoutHead/>
-<r:layoutResources/>
-</head>
+	<!-- Agregamos javascripts. /assets/javascripts/ -->
+   	<asset:javascript src="jquery.js" />
+	<asset:javascript src="bootstrap.min.js" />
+	<asset:javascript src="lightbox.min.js" />
+	<asset:javascript src="wow.min.js" />
+	<asset:javascript src="main.js" />
+    <g:layoutHead/>
+
+  </head>
 <body>
 <!--                     INICIO DEL LAYOUT PARA UN USUARIO CON SESION ACTIVA -->
 
@@ -14,36 +39,68 @@
 var link = '<g:createLink controller="perfil" action="index" />'
 window.location.replace(link);
 </script>
-
-
 </sec:ifLoggedIn>
+
+
    <!--                     FIN DEL LAYOUT PARA UN USUARIO CON SESION ACTIVA -->
    <!--                     INICIO DEL LAYOUT PARA UN USUARIO SIN SESION ACTIVA -->
    
    <sec:ifNotLoggedIn>
-    <div class="navbar-wrapper">
-          <div class="container">
-    <nav class="navbar navbar-inverse navbar-static-top offset-3 pull right">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="${createLink(controller:'Usuario',action:'index')}">BikeApp</a>
+    <header id="header">      
+        <div class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="index">
+                    	<h1><img src="<g:resource dir='images' file='logo.png'/>" alt="BikeApp - Logo"></h1>
+                    </a>
+                    
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href='<g:createLink uri="/"/>'>Home</a></li>
+                        <li><a href='<g:createLink controller="usuario" action="login" />'>Login</a></li>            
+                    </ul>
+                </div>
+                <div class="search">
+                    <form role="form">
+                        <i class="fa fa-search"></i>
+                        <div class="field-toggle">
+                            <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
-    </nav>
-  </div>
-</div>
+    </header>
+  
+   <g:layoutBody/> 
+   
+   
+   
+	<footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center bottom-separator">
+                    <img src="<g:resource dir='images/home' file='under.png'/>" class="img-responsive inline" alt="WHAAAAAT">
+                </div>
+                <div class="col-sm-12">
+                
+                    <div class="copyright-text text-center">
+                        <p>&copy; BikeApp 2016. All Rights Reserved.</p>
+                        <p>Designed by BikeApp</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
    </sec:ifNotLoggedIn>
    <!--                     FIN DEL LAYOUT PARA UN USUARIO SIN SESION ACTIVA -->
-
-   <g:layoutBody/> 
-
   </body>
-    
 </html>
-</g:applyLayout>
