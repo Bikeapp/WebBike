@@ -98,6 +98,6 @@ $(document).on('click','.amigo',function(event){
 });
 
 //Activador para abrir el modal
-$(document).on('click','#opener',function() { $( "#dialog" ).dialog( "open" ); });
+$(document).on('click','#opener',function() { theDialog.dialog("open"); });
 
 

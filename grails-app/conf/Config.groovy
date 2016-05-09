@@ -130,7 +130,7 @@ grails.plugin.springsecurity.authority.className = 'bikeapp.SecRole'
 grails.plugin.springsecurity.logout.postOnly=false
 grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/Perfil'
 grails.plugin.springsecurity.failureHandler.defaultFailureUrl = '/Usuario/login'
-grails.plugin.springsecurity.auth.loginFormUrl = '/'
+grails.plugin.springsecurity.auth.loginFormUrl = '/Usuario/login'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':                ['permitAll'],
 	'/index':           ['permitAll'],
@@ -142,6 +142,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/favicon.ico':  ['permitAll'],
         '/dbconsole/**': ['permitAll'],
         '/Usuario/**': ['permitAll'],
+        '/images/**':	['permitAll']
 ]
 
 

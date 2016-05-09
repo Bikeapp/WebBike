@@ -2,27 +2,26 @@ package bikeapp
 
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
+import org.codehaus.groovy.grails.web.json.*
 
-@Secured(['ROLE_USUARIO'])
 class MapaController {
  	def sesionService
 	def puntoInteresService
 	def parcheService
-
+	@Secured(['ROLE_USUARIO','ROLE_ADMIN'])
     def index() {
     	//Envía al cliente una lista de los puntos, usuarios y parches. Para utilizarlos en el FrontEnd.
 		[puntos : PuntoInteres.list(), usuarios : Usuario.list(), parches: Parche.list()]
     }
-
+    
+    @Secured(['ROLE_ADMIN'])
+    def cp() {
+    	[rutas: Ruta.list()]
+    }
+    
     def registrar() {
     	puntoInteresService.agregarPunto(params)
     	render(view: 'index',model: [puntos : PuntoInteres.list(), usuarios : Usuario.list(),parches : Parche.list()])
-    }
-
-    def registrarPunto() {
-    	def jsonObj = request.JSON
-    	//puntoInteresService.agregarPuntoAJAX(params.nombre, params.lat, params.lon, params.tipo, params.descripcion, params.usuario, params.ruta)
-    	//[puntos : PuntoInteres.list(), usuarios : Usuario.list(),parches : Parche.list()]
     }
 
     //Controlador que recibe la llamada AJAX.

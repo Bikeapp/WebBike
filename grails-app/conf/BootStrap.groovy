@@ -46,9 +46,18 @@ class BootStrap {
          enable: true,
          email: "ddager@gmail.com",
          fecha: "13-04-94",
-         nombre: "Troncho Dager"
+         nombre: "Dager"
          ).save()
       SecUsuarioSecRole.create usuario4,userRole
+      def usuario5 = new Usuario(
+         username: "fvd",
+         password: "1234",
+         enable:	true,
+         email:		"fvd@gmail.com",
+         fecha:		"13-04-94",
+         nombre:	"Felipe Daza"
+         ).save()
+	  SecUsuarioSecRole.create usuario5,adminRole
       def grupo1 = new Grupo(
          usuario:usuario4,
          nombre:"ddager",

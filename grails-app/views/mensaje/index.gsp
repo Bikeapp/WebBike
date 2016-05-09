@@ -54,13 +54,12 @@
 </div>
 <script>
 var nomUsuario = "${usuario.nombre}";
-$( "#dialog" ).dialog({
+var theDialog = $( "#dialog" ).dialog({
 	autoOpen: false,
 	buttons:
 	[
 		{
 		  text: "Crear Conversacion",
-		  icons: { primary: "ui-icon-heart" },
 		  click: function() {
 			crearConversacion();
 			$( this ).dialog( "close" );
