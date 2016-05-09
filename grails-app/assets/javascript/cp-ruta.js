@@ -186,7 +186,7 @@ function cleanMarkers(){
 //AJAX para guardar una nueva ruta con los puntos de inicio, intermedios y final que el usuario especificó.
 function guardarRuta(){
 	$.ajax({
-		url: "../ruta/guardarRuta",			//Llamo al metodo guardarRuta en el controlador Ruta
+		url: "ruta/guardarRuta",			//Llamo al metodo guardarRuta en el controlador Ruta
 		type: 'POST',
 		datatype: 'text/json',
 		data: {
@@ -208,7 +208,7 @@ function guardarRuta(){
 $(document).on('click','#modal li',function(){
 	//AJAX para poder obtener la informacion de la ruta sobre la cual se hizo click.
 	$.ajax({
-		url: "../ruta/buscarRuta",			//Llamo al metodo guardarRuta en el controlador Ruta
+		url: "ruta/buscarRuta",			
 		type: 'POST',
 		datatype: 'text/json',
 		data: {
