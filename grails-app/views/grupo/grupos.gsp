@@ -10,10 +10,6 @@
 
 <body>
 
-            <li><g:remoteLink class="logout" controller="logout">
-               Logout
-               </g:remoteLink> </li>
-
 <section id="blog" class="padding-top">
 <div class="container">
 <div class="row">

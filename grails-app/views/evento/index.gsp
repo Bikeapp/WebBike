@@ -8,10 +8,6 @@
 
 <body>
 
-<g:remoteLink class="logout" controller="logout">
-Logout
-</g:remoteLink> 
-
 <section id="portfolio">
 <div class="container">
 <div class="row">

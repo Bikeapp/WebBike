@@ -60,6 +60,11 @@ class UsuarioController {
       def user = Usuario.findByUsername(params["usuario"])
       //user.secret = new BigInteger(200,new SecureRandom()).toString();
       //user.save flush:true,failOnError:true
+      if( user == null ){
+         def msj = "El usuario no existe!!"
+         render(view:"satisfactorio",model:[msj:msj])
+         return
+      }
       redirect(action:'mensaje',params:[username:user.username])
    }
 
@@ -87,6 +92,7 @@ class UsuarioController {
 
    def login(){}
    def correo(){}
+   def bikeapp(){}
 
 }
 
