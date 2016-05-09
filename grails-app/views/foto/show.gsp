@@ -1,32 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta name="layout" content="main"/>
-<asset:stylesheet href="foto.css"/>
-<asset:javascript src="foto.js"/>
-</head>
-
-<body>
-
-	<div id="foto">
-		<img src="${createLink(controller:'Foto', action:'pintarImagen', id:"${inx}")}" width='400' height='400'/>
-	</div>
-
-    <div id="dialogbox">
-		<g:render template="comentario" model="[comentarios:comentarios]" />
-	</div>
-    
-	<div id="comentarios">
-	<form name="comentario">
-		<g:textArea name="contenido" style="width:550px; height: 400px; background-color: transparent;"></g:textArea>
-		<input type="button" onclick="save()" value="Comentar">
-		<g:hiddenField name="fotoId" value="${inx}"/>
-		<g:javascript>
-			var url = "${createLink(controller:'comentario',action:'save')}"
-		</g:javascript>
-	</form>
-	</div>
-
-
-</body>
+   <head>
+      <meta name="layout" content="main"/>
+      <asset:javascript src="foto.js"/>
+      <asset:stylesheet href="foto.css" />
+   </head>
+   <body>
+      <section id="page-breadcrumb">
+         <div class="vertical-center sun">
+            <div class="container">
+               <div class="row">
+                  <div class="action">
+                     <div class="col-sm-12">
+                        <h1 class="title">Comenta Esta Foto</h1>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section id="portfolio-information" class="padding-top">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-6">
+                  <img src="${createLink(controller:'Foto', action:'pintarImagen', id:"${inx}")}" class="img-responsive" alt="">
+               </div>
+               <div class="col-sm-6">
+                  <div id="dialogbox">
+                     <g:render template="comentario" model="[comentarios:comentarios]" />
+                  </div>
+                  <form  name="comentario" >
+                     <div class="form-group">
+                        <g:textArea name="contenido" class="form-control" rows="8" placeholder="Aquí ingresas tu comentario"></g:textArea>
+                     </div>
+                     <div class="form-group">
+                        <a class="btn btn-common" onclick="save()" >Comentar!</a>
+                     </div>
+                     <g:hiddenField name="fotoId" value="${inx}"/>
+                     <g:javascript>
+                        var url = "${createLink(controller:'comentario',action:'save')}"
+                     </g:javascript>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </section>
+   </body>
 </html>

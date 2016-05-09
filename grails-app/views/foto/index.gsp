@@ -1,103 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-
-	<head>
-		<meta name="layout" content="main"/>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-			<asset:stylesheet src="lightweightLightbox.css"/>
-			<asset:stylesheet src="bootstrap.min.css"/>
-			<style>
-				h1,
-				h2,
-				h3,
-				h4,
-				h5,
-				h6 {
-					color: black;
-					font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-				    text-transform: uppercase;				    			   
-				    font-weight: 700;
-				    letter-spacing: 1px;
-				}
-				body {
-				    
-				    background: url('${resource(dir: "images", file: "bicycles_gears.jpg")}'); 
-				    background-size: auto auto;
-				    background-attachment: fixed;
-				   
-				}
-				footer {
-				    position: fixed;
-   					 bottom: 0;
-				}
-			    .box img { width: 300px; float:left; border:1px solid #ccc; padding:5px; margin:10px;}
-			    h1 { margin-top:50px; text-align:center;}
-			    .jquery-script-ads { width:728px; margin:50px auto;}
-
-		    </style>
-	</head>
-
-	<body>
-
-
-		<h1>Mis fotos</h1>
-		<nav class="navbar navbar-default">
-		  <div class="container-fluid">
-		    <div class="navbar-header">
-		    	
-				<g:link class="btn btn-default navbar-btn create" role="button" action="create">Agregar Imagen</g:link>
-				
-		      
-		    </div>
-		  </div>
-		</nav>
-		
-			
-	
-
-
-
-		<div class="lightbox-container">
-		    <table id="albumfotos"> 
-				<g:each var="imagen" in="${imagenes}" status="i">
-					<!-- <g:link action="show" params="[imagenactual : imagen.id]"> -->
-					
-					<tr>
-					<div class="box">
-						<img alt="An example image 2" class="lightbox-image" src="${createLink(controller:'Foto', action:'pintarImagen', id:"${imagen.id}")}" width='300' height='300' />
-					</div>
-					</tr>
-					<td>
-					<g:link class="btn btn-default navbar-btn create" action="show" params="[imagenactual : imagen.id]">Agregar Imagen</g:link>
-					</td>
-					
-					
-					<!-- </g:link> -->
-				</g:each>
-			</table>
-		    
-		</div>
-
-
-
-		<!-- <asset:stylesheet href="foto.css" /> -->
-		<div >
-		<!-- Example row of columns -->
-		<footer>
-		<p>BikeApp&copy; 2016 Company, Inc.</p>
-		</footer>
-		</div> <!-- /container -->
-
-
-
-		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-		<!-- <script src="js/lightweightLightbox.min.js"></script> -->
-		<asset:javascript src="lightweightLightbox.js"/>
-		<asset:javascript src="foto.js"/>
-		<script type="text/javascript">
-		    $(".lightbox-container").lightweightLightbox();
-		</script>
-
-
-	</body>
+   <head>
+      <meta name="layout" content="main"/>
+      <asset:javascript src="foto.js"/>
+   </head>
+   <body>
+      <section id="page-breadcrumb">
+         <div class="vertical-center sun">
+            <div class="container">
+               <div class="row">
+                  <div class="action">
+                     <div class="col-sm-12">
+                        <h1 class="title">Mis Fotos</h1>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section id="portfolio">
+         <div class="container">
+            <div class="row">
+               <ul class="portfolio-filter text-center">
+                  <g:link type="button" class="btn btn-lg btn-success" action="create"><i class="fa fa-picture" aria-hidden="true"></i>  Añadir Foto</g:link>
+               </ul>
+               <div class="portfolio-items">
+                  <g:each var="imagen" in="${imagenes}" status="i">
+                     <div class="col-xs-6 col-sm-4 col-md-3 portfolio-item branded logos">
+                        <div class="portfolio-wrapper">
+                           <div class="portfolio-single">
+                              <div class="portfolio-thumb">
+                                 <img src="${createLink(controller:'Foto', action:'pintarImagen', id:"${imagen.id}")}" class="img-responsive" alt="">
+                              </div>
+                              <div class="portfolio-view">
+                                 <ul class="nav nav-pills">
+                                    <li>
+                                       <g:link action="show" params="[imagenactual : imagen.id]"><i class="fa fa-link"></i></g:link>
+                                    </li>
+                                    <li><a href="${createLink(controller:'Foto', action:'pintarImagen', id:"${imagen.id}")}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                 </ul>
+                              </div>
+                           </div>
+                           <div class="portfolio-info ">
+                           </div>
+                        </div>
+                     </div>
+                  </g:each>
+               </div>
+            </div>
+         </div>
+      </section>
 </html>
