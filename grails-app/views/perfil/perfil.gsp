@@ -25,33 +25,33 @@ $(document).on('click','#amistad',function(event){
 });
 </script>
 
-<h1>Mi perfil</h1>
-<div class="nav" role="navigation">
-<ul>
-<li><g:link action="actualizar">Actualizar perfil</g:link></li>
-<li><g:link action="mensajes">Mensajes</g:link></li>
-<li id="amistad">Amistad</li>
-</ul>
-</div>
-<div id="foto">
-</div>
-<g:if test="${usuario.foto == null}">
-<img src="${assetPath(src:'no_photo.png')}" width='400' height='400'/>
-</g:if>
-<g:else>
-<img src="${createLink(controller:'Perfil', action:'pintarImagen', id:"${usuario.id}")}" width='400' height='400'/>
-</g:else>
-<br>
 
-Mensaje distintivo: ${usuario.mensaje}
-<br>
-Nombre de usuario: ${usuario.username}
-<br>
-Email: ${usuario.email}
-<br>
-Sexo: ${usuario.sexo}
-<br>
-Fecha de Nacimiento: ${usuario.fecha}
+<div id="buttons-container" style="text-align:center;margin-bottom:2%">
+		<h2 class="page-header" >${usuario.username}</h2>
+			<button type="button" class="btn btn-lg btn-primary"><g:link action="actualizar" >Actualizar perfil</g:link></button>
+			<button type="button" class="btn btn-lg btn-primary"><g:link action="mensajes">Mensajes</g:link></button>
+			<button type="button" class="btn btn-lg btn-primary">Amistad</button>
+</div>
+<div class="container">
+
+<div class="row">
+
+<div class="col-sm-6 padding">
+<g:if test="${usuario.foto == null}"><img src="${assetPath(src:'no_photo.png')}" class="img-responsive"/></g:if>
+<g:else><img src="${createLink(controller:'Perfil', action:'pintarImagen', id:"${usuario.id}")}" class="img-responsive"/></g:else>
+</div>
+<div class="col-sm-6 " style="text-align:center">
+<h2 >Mensaje distintivo:</h2><h2 style="color:#4fcccd"><g:if test="${usuario.mensaje == null} or ${usuario.mensaje ==""}">Sin mensaje</g:if><g:else>${usuario.mensaje}</g:else></h2>
+<h2 >	Nombre de usuario:</h2><h2 style="color:#4fcccd"> ${usuario.username}</h2>
+<h2 >	Email:</h2>	<h2 style="color:#4fcccd"> ${usuario.email}</h2>
+	<h2 >Sexo: </h2>	<h2 style="color:#4fcccd">${usuario.sexo}</h2>
+<h2 >	Fecha de Nacimiento: </h2>	<h2 style="color:#4fcccd">${usuario.fecha}</h2>
+
+</div>
+
+</div>
+</div>
+
 
 </body>
 </html>
