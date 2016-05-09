@@ -71,7 +71,7 @@
 					</div>
 					<div id="collapseTwo" class="panel-collapse collapse">
 						<div class="panel-body">
-							Utilidades para el Mapa.
+							Utilidades para la administracion de usuarios
 						</div>
 					</div>
 				</div>
