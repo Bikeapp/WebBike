@@ -53,7 +53,7 @@
 
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="index.html"> ${sec.loggedInUserInfo(field:"username")}</a></li>
+                        <li class="active"><a href="${createLink(controller:'perfil',action:'index')}"> ${sec.loggedInUserInfo(field:"username")}</a></li>
                         <li><a href="${createLink(controller:'foto',action:'index')}">Mis Fotos</a></li>                    
                         <li><a href="${createLink(controller:'evento',action:'index')}">Eventos</a></li>                    
                         <li><a href="${createLink(controller:'grupo',action:'index')}">Grupos</a></li>                    

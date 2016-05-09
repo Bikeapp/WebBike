@@ -26,13 +26,14 @@
 -->
 
 <!-- ここからモーダルウィンドウ -->
+<!--
 <div id="modal-content">
    <p>Contenido 1 </p>
    <p>Contenido 2</p>
    <p><a id="modal-close">Cerrar</a></p>
 </div>
-
 <p><a id="modal-open" class="button-link">Resumen</a></p>
+-->
 <!-- ここまでモーダルウィンドウ -->
 
 
@@ -55,6 +56,8 @@ ${it.lider.nombre}
 
 </div>
 
+<!--
+
 <div class="portfolio-pagination">
 <ul class="pagination">
 <li><a href="#">left</a></li>
@@ -67,4 +70,4 @@ ${it.lider.nombre}
 <li><a href="#">right</a></li>
 </ul>
 </div>
-
+-->
