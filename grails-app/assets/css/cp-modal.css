@@ -62,8 +62,9 @@
   transition: line-height 0.5s;
 }
 .modal-content{
-  padding: 3em 3em 3em 3em;
+  padding: 1%;
   height: 100%;
+  text-align: center;
 }
 .description{
   font-style: italic;
@@ -72,4 +73,25 @@
 }
 #modal li{
 	margin-left: 15px;
+}
+#modal .col-sm-12{
+	padding-left: 1px;
+	padding-right: 1px;
+	height: 100%;
+}
+#modal h3{
+	margin-top: 1%;
+	margin-bottom: 1%;
+	height: 10%;
+}
+#modal .form-group{
+	margin-bottom: 1px;
+	height: 20%
+
+}
+#modal #message{
+	height: 100%;
+}
+.contact-formbottom{
+	height: 100%
 }

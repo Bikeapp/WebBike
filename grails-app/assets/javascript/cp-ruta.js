@@ -185,22 +185,51 @@ function cleanMarkers(){
 
 //AJAX para guardar una nueva ruta con los puntos de inicio, intermedios y final que el usuario especificó.
 function guardarRuta(){
-	$.ajax({
-		url: "ruta/guardarRuta",			//Llamo al metodo guardarRuta en el controlador Ruta
-		type: 'POST',
-		datatype: 'text/json',
-		data: {
-			initMarker: JSON.stringify(initMarker.position),			
-			wayPoints: JSON.stringify(wayPoints),
-			endMarker: JSON.stringify(endMarker.position) 
-		},
-		success: function(data) {
-			console.log(data);
-		},
-		error: function (xhr, ajaxOptions, thrownError) {
-        	alert(xhr.status);
-        	alert(thrownError);
-      	}
+
+	var text = '<div id="modal"><div class="modal-content">\
+	<div class="col-sm-12"><h3>¡Ingrese un nombre y descripción para su nueva ruta!</h3><div class="contact-form bottom">\
+    <div class="form-group"><input type="text" name="nombre" class="form-control" required="required" placeholder="Nombre">\
+    </div><div class="form-group">\
+    <textarea name="mensaje" id="message" required="required" class="form-control" rows="8" placeholder="Descripción...">\
+    </textarea></div><div class="form-group"><input type="submit" name="submit" class="btn btn-submit" value="Submit">\
+    </div></div></div></div></div>'
+
+
+	$("#wrapper").append(text);
+	$('#modal').animate({opacity:'1',zIndex:'99'},1000);
+	$('#cp-map-container').animate({opacity:'0.1'},1000);
+	
+	
+	$(document).on('click','input[name="submit"]',function(){
+		var nombre = null;
+		nombre = $('input[name="nombre"]').val();
+		console.log(nombre);
+		var descripcion = null;
+		descripcion = $('textarea[name="mensaje"]').val();
+		console.log(descripcion);
+		if (nombre != null && descripcion != null){
+			$.ajax({
+				url: "ruta/guardarRuta",			//Llamo al metodo guardarRuta en el controlador Ruta
+				type: 'POST',
+				datatype: 'text/json',
+				data: {
+					initMarker: JSON.stringify(initMarker.position),			
+					wayPoints: JSON.stringify(wayPoints),
+					endMarker: JSON.stringify(endMarker.position),
+					nombre: nombre,
+					descripcion: descripcion
+				},
+				success: function(data) {
+					console.log(data);
+					$('#modal').animate({opacity:'0',zIndex:'0'},1000,function(){$('#modal').remove();});
+					$('#cp-map-container').animate({opacity:'1'},1000);
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+					alert(xhr.status);
+					alert(thrownError);
+				}
+			});
+		}
 	});
 }
 

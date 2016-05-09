@@ -22,7 +22,7 @@ class RutaController {
 		int counter = 1;
 		
 		
-		def rutas = new Ruta(nombre:"Nombre Ruta", descripcion:"Descripcion Ruta",calificacion:"Calificacion Ruta")
+		def rutas = new Ruta(nombre:params.nombre, descripcion:params.descripcion,calificacion:"Sin Calificar")
 		rutas.save(flush:true)
 		
 		def punto1 = new PuntoInteres(lat:initMarker.lat,lng:initMarker.lng,ruta:rutas,usuario:sesionService.usuarioEnSesion(),orden:counter++)
