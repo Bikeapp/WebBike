@@ -1,5 +1,6 @@
 <g:javascript>
 var url_obtGrupo = "${createLink(controller:'Grupo',action:'obtenerGrupo')}"
+var url_verGrupo = "${createLink(controller:'Grupo',action:'verificarDuplicado')}"
 </g:javascript>
 <g:each in="${grupos}" >
 <li>

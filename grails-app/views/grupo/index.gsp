@@ -32,7 +32,6 @@
 </g:each>
 </div>
 
-
 <asset:stylesheet href="foto.css" />
 <div class="container">
 <!-- Example row of columns -->
@@ -40,6 +39,8 @@
 <p>BikeApp&copy; 2016 Company, Inc.</p>
 </footer>
 </div> <!-- /container -->
+
+
 
 </body>
 </html>

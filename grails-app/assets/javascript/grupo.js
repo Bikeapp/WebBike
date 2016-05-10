@@ -17,6 +17,25 @@ function obtenerGrupo(e){
    });
 }
 
+
+function verificarDuplicado(e){
+   $.ajax({
+      type:"POST",
+      url:url_verGrupo,
+      data:{
+         nombre:e
+      },
+      success: function(data){
+         console.log(data);         
+      },
+      error: function(data){
+         console.log(data);
+         alert("Algo ha salido mal, por favor intentelo de nuevo!!");
+      },
+      complete: function(){}
+   });
+}
+
 function unirme(e){
    $.ajax({
       type:"POST",

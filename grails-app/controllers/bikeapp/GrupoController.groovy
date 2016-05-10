@@ -47,6 +47,14 @@ class GrupoController {
       render(template:"grupo",model:[grupo:grupo,miembros:miembros,miembro:miembro])
    }
 
+   def verificarDuplicado(String nombre){
+      
+      def grupo = Grupo.findByNombreIlike(nombre)
+      
+      render(template:"grupo",model:[grupo:grupo]);
+   
+   }
+
    //PERMITE UNIRSE A UN GRUPO, ESTO SIMPLEMENTE SE HACE AGREGANDO UN REGISTRO EN LA TABLA INTERMEDIA
    def unirme(String id){
       def usuario = sesionService.usuarioEnSesion()
