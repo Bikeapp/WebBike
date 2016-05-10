@@ -38,7 +38,7 @@ ${grupo.descripcion}
 <h3>Tag del Grupo</h3>
 <ul class="nav nav-pills">
 <g:each in="${grupo.tags}">
-<li><a href="#">${it}</a></li>
+<li><a href="javascript:buscarTag('${it}')">${it}</a></li>
 </g:each>
 </ul>
 </div>
@@ -48,7 +48,10 @@ ${grupo.descripcion}
 <ul class="gallery">
 <g:each var="miembro" in="${miembros}">
 <li><a href="${createLink(controller:'perfil',action:'show',params:[username:miembro.usuario.username])}">
-<!-- <img src="images/portfolio/popular1.jpg" alt=""> --> ${miembro.usuario.nombre}
+<!--<img src="${assetPath(src:'photo.gif')}" class="img-responsive" alt="">-->
+
+<img src="${assetPath(src:'photo.gif')}" alt=""> 
+ ${miembro.usuario.nombre}
 </a></li>
 </g:each>
 </ul>

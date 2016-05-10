@@ -15,7 +15,9 @@
 
 <div class="portfolio-view">
 <ul class="nav nav-pills">
-<li><a href="${createLink(action:'mostrarEvento',params:[evento:it.id])}"><i class="fa fa-link"></i></a></li>
+<li><a href="${createLink(action:'mostrarEvento',params:[evento:it.id])}">
+<i class="fa fa-link"></i>Ver más
+</a></li>
 <li>
 
 <!--<a href="${assetPath(src:'photo.gif')}" data-lightbox="example-set">
@@ -45,7 +47,7 @@
 
 <div class="portfolio-info ">
 <h2>
-${it.lider.nombre}
+${it.nombre}
 </h2>
 </div>
 

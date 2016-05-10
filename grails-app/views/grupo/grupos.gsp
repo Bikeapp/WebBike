@@ -23,12 +23,10 @@
 <g:javascript>
 var url_busGrupo = "${createLink(controller:'Grupo',action:'buscarGrupos')}"
 </g:javascript>
-<form id="buscar-grupo" name="buscar-grupo" method="post" >
 <div class="form-group">
 <input type="text" name="tags" class="form-control" required="required" placeholder="Tags a buscar" id="tags">
-<input type="button" name="buscar" class="btn btn-submit" value="Buscar" onclick="buscarGrupos()">
+<input type="button" name="buscar" class="btn btn-submit" value="Buscar" onclick="buscarGrupos()" id="buscar">
 </div>
-</form>
 </div>
 </div>
 

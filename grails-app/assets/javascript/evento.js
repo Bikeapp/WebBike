@@ -1,56 +1,38 @@
-var map;
 var marker = null;
 var map_rt;
 var map_pe;
 
-function initMap(tipo){
-   //alert(tipo);
-   var myLatlng = new google.maps.LatLng(4.5,-74);
+//JAVASCRIPT PARA PINTAR LOS MAPAS PARA EL CASO DE EVENTOS, NO LA DEBE MODIFICAR POR NADA, CUALQUIER MODIFICACION Y EL CODIGO QUE HAGA 
+//ESTA MAL YA ESTA PROBADA Y FUNCIONANDO 
+//
+//PARA USARLA DEBE LLAMAR LAS FUNCIONES iniciarMapaCE() y iniciarMapaRuta(ruta) LOS DIVS DEBEN TENER EL NOMBRE APROPIADO mapa-pe y mapa-rt
+//PARA VER EJEMPLOS DE COMO USARLAS VER LAS VISTAS nuevoEvento y _listaEventos 
+
+
+function iniciarMapasCE(){
+   iniciarMapaPE(-4.5,-74);
+   map_pe.addListener('click',function(e){
+      addMarker(e.latLng)
+   });
+}
+
+function iniciarMapaPE(lat,lng){
+   var myLatlng = new google.maps.LatLng(lat,lng);
    var options = {
       center: myLatlng,
       zoom: 15,
       disableDoubleClickZoom: true,
    }
-   map = new google.maps.Map(document.getElementById('mapa'),options);
-
-   map.addListener('click',function(e){
-      addMarker(e.latLng)
-   });
+   map_pe = new google.maps.Map(document.getElementById('mapa-pe'),options);
 }
 
-function callback(puntosRutaJSON){
-   initMaps(puntosRutaJSON);
-}
-
-function initMaps(puntosRutaJSON){
-   //alert(tipo);
-   //MAPA CON EL PUNTO DE ENCUENTRO
-   var lat = $("#lat").val();
-   var lng = $("#lng").val();
-   //alert(lat+" "+lng);
-   var myLatlng = new google.maps.LatLng(lat,lng);
-   var options = {
-      center: myLatlng,
-      zoom: 16,
-      disableDoubleClickZoom: true,
-   }
-
-   map_pe =  new google.maps.Map(document.getElementById('mapa-pe'),options);
-   new google.maps.Marker({
-      position:myLatlng,     
-      map: map_pe,
-      draggable: true,
-      animation: google.maps.Animation.DROP
-   });
-
-
-   //MAPA QUE INDICA LA RUTA
+//SE ENCARGA DE INICIAR EL MAPA CON LOS PUNTOS DE RUTA 
+function iniciarMapaRuta(puntosRutaJSON){
    if( puntosRutaJSON.length > 0){
       myLatlng = new google.maps.LatLng(puntosRutaJSON[0].lat,puntosRutaJSON[0].lng);
    }else{
       myLatlng = new google.maps.LatLng(-4.63,-74.103);
    }
-
    options = {
       center: myLatlng,
       zoom: 13,
@@ -65,23 +47,33 @@ function initMaps(puntosRutaJSON){
          draggable: false,
          animation: google.maps.Animation.DROP
       });
-
    }
+   refrescarMapa(map_rt);
+}
 
-   //NONE TODO CODE HERE
-   //
-   //
+function callback(puntosRutaJSON){
+   var lat = $("#lat").val();
+   var lng = $("#lng").val();
+   iniciarMapaPE(lat,lng);
+   iniciarMapaRuta(puntosRutaJSON);
+   var myLatlng = new google.maps.LatLng(lat,lng);
+   new google.maps.Marker({
+      position:myLatlng,     
+      map: map_pe,
+      draggable: true,
+      animation: google.maps.Animation.DROP
+   });
 }
 
 
-
+//FUNCIONES QUE MANEJAN EL AGREGAR EL PUNTO DE ENCUENTRO AL MAPA, SE ENCARGAN QUE SOLO PUEDA EXISTIR UN PUNTO DE ENCUENTRO
 function addMarker(location){
    if( marker != null){
       marker.setMap(null);
    }
    marker = new google.maps.Marker({
       position:location,
-      map: map,
+      map: map_pe,
       draggable: true,
       animation: google.maps.Animation.DROP
    });
@@ -167,12 +159,21 @@ $(document).ready(function(){
 
    }
    $("#to_map2").hover(function(){
-      google.maps.event.trigger(map_rt,'resize');
+      refrescarMapa(map_rt);
+      //google.maps.event.trigger(map_rt,'resize');
    });
    $("#to_map2").mousemove(function(){
-      google.maps.event.trigger(map_rt,'resize');
+      refrescarMapa(map_rt);
+      //google.maps.event.trigger(map_rt,'resize');
+   });
+
+   $("#to_map2").click(function(){
+      refrescarMapa(map_rt);
    });
 
 });
 
+function refrescarMapa(mapa){
+   google.maps.event.trigger(mapa,'resize');
+}
 

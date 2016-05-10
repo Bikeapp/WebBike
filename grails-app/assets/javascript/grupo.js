@@ -72,6 +72,11 @@ function buscarGrupos(){
    });
 }
 
+function buscarTag(tag){
+   $("#tags").val(tag);
+   $("#buscar").trigger('click');
+}
+
 function limpiar(){
    $("#contenido").val('');
    //$('#comment').animate({'margin-top': '50px'}, 1000);

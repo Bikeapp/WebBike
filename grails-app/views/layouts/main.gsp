@@ -57,7 +57,7 @@
                         <li><a href="${createLink(controller:'foto',action:'index')}">Mis Fotos</a></li>                    
                         <li><a href="${createLink(controller:'evento',action:'index')}">Eventos</a></li>                    
                         <li><a href="${createLink(controller:'grupo',action:'index')}">Grupos</a></li>                    
-
+                        <li><a href="${createLink(controller:'mapa',action:'index')}">Mapa</a></li>                    
                           <li class="dropdown"><a href="#">BikeApp <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="#">Crear Grupo</a></li>
@@ -72,6 +72,12 @@
 </sec:ifAllGranted>
 
                         <li><a href="${createLink(controller:'logout')}">Salir</a></li>                    
+
+
+<!-- TEMPLATES PARA LOS MODALES DE CREACION --> 
+<g:render template="/modales/crearGrupo" />
+<g:render template="/modales/crearEvento" />
+
                     </ul>
                 </div>
                 <div class="search">

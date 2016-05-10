@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta name="layout" content="public"/>
+<asset:stylesheet href="publico" />
 </head>
 
 <body>
@@ -19,10 +20,10 @@
 
 <g:form name="login" method="POST" uri="/j_spring_security_check">
 <div class="form-group">
-<input type="text" class="form-control" name="j_username" required placeholder="Ingrese su nombre de usuario">
+<input type="text" class="form-control text-center" name="j_username" required placeholder="Ingrese su nombre de usuario">
 </div>
 <div class="form-group">
-<input type="password" class="form-control" name="j_password" required placeholder="Ingrese su contraseña">
+<input type="password" class="form-control text-center" name="j_password" required placeholder="Ingrese su contraseña">
 </div>
 
 <div class="form-group">
