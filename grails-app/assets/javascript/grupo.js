@@ -17,23 +17,21 @@ function obtenerGrupo(e){
    });
 }
 
+function check(){
 
-function verificarDuplicado(e){
-   $.ajax({
-      type:"POST",
-      url:url_verGrupo,
-      data:{
-         nombre:e
-      },
-      success: function(data){
-         console.log(data);         
-      },
-      error: function(data){
-         console.log(data);
-         alert("Algo ha salido mal, por favor intentelo de nuevo!!");
-      },
-      complete: function(){}
-   });
+   var count=0;
+   var campos=$(".campoCrear");
+                              
+   campos.each(function(){
+      if($(this).val()=='')
+         count++;
+        
+    });
+    if(count!=0)
+      $("#create").prop('disabled', true);
+    else
+      $("#create").prop('disabled', false);
+   
 }
 
 function unirme(e){

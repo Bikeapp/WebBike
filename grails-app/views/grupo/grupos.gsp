@@ -80,25 +80,22 @@
 
 					<div class="form-group">
 						<label for="nombre">Nombre del grupo:</label>
-						<g:textField name="nombre" class="form-control" placeholder="Nombre"/>					  
+						<g:textField name="nombre" class="form-control campoCrear" placeholder="Nombre"/>					  
 					</div>
 
 					<script>
 							$(document).ready(function(){
-							    $("#nombre").focusout(function() {
-							    	verificarDuplicado($( this ).val());
-								    alert($( this ).val());
-								})
+							    $(".campoCrear").on("input",function() {check();})
 							});
 					</script>
 					<div class="form-group">
 						<label for="descripcion">Descripción del grupo:</label>
-						<g:textArea name="descripcion" class="form-control" placeholder="Descripción" />					  
+						<g:textArea name="descripcion" class="form-control campoCrear" placeholder="Descripción" />					  
 					</div>
 
 					<div class="form-group">
 						<label for="tags">Tags:</label>
-						<g:textArea name="tags" class="form-control" placeholder="Tags (separados por comas ',' )"/>					  
+						<g:textArea name="tags" class="form-control " placeholder="Tags (separados por comas ',' )"/>					  
 					</div>
 
 
@@ -107,7 +104,7 @@
 					
 				</div>
 				<div class="modal-footer">
-					<g:submitButton name="create" class="btn btn-submit" value="Crear" id="create" />									
+					<g:submitButton name="create" class="btn btn-submit" value="Crear" id="create" disabled="true" />									
 				</div>
 				</g:form>
 			</div>
