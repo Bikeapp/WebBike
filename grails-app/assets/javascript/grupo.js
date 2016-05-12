@@ -35,6 +35,23 @@ function unirme(e){
 
 }
 
+function check(){ 
+
+   var count=0;
+   var campos=$(".campoCrear");
+                              
+   campos.each(function(){
+      if($(this).val()=='')
+         count++;
+        
+    });
+    if(count!=0)
+      $("#create").prop('disabled', true);
+    else
+      $("#create").prop('disabled', false);
+   
+ }
+
 function aportar(e){
    $.ajax({
       type:"POST",
