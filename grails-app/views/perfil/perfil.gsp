@@ -24,8 +24,17 @@ $(document).on('click','#amistad',function(event){
 	});
 });
 </script>
-
-
+<style type="text/css">
+    a{
+    color:white;
+    }
+  
+    a:hover {
+     outline: none;
+     text-decoration:none;
+     color:#4fcccd;
+   }
+</style>
 <div id="buttons-container" style="text-align:center;margin-bottom:2%">
 		<h2 class="page-header" >${usuario.username}</h2>
 			<button type="button" class="btn btn-lg btn-primary"><g:link action="actualizar" >Actualizar perfil</g:link></button>
