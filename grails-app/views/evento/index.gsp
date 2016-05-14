@@ -8,10 +8,6 @@
 
 <body>
 
-<g:remoteLink class="logout" controller="logout">
-Logout
-</g:remoteLink> 
-
 <section id="portfolio">
 <div class="container">
 <div class="row">
@@ -24,9 +20,9 @@ var url_obtEventos= "${createLink(controller:'Evento',action:'obtenerEventos')}"
 
 <ul class="portfolio-filter text-center">
 <li><a class="btn btn-default active" href="javascript:obtenerMisEventos('ACTIVOS')">Mis Eventos</a></li>
-<li><a class="btn btn-default" href="javascript:obtenerEventos('ACTIVOS')" data-filter="*">Eventos Futuros</a></li>
-<li><a class="btn btn-default" href="javascript:obtenerMisEventos('PASIVOS')" data-filter="*">Eventos Pasados</a></li>
-<li><a class="btn btn-default" href="javascript:obtenerEventos('PASIVOS')">Eventos Pasados</a></li>
+<li><a class="btn btn-default" href="javascript:obtenerEventos('ACTIVOS')" data-filter="*">Lo que viene</a></li>
+<li><a class="btn btn-default" href="javascript:obtenerMisEventos('PASIVOS')" data-filter="*">A lo que fuí</a></li>
+<li><a class="btn btn-default" href="javascript:obtenerEventos('PASIVOS')">Lo que me perdí</a></li>
 </ul><!--/#portfolio-filter-->
 
 <div id="lista-eventos">

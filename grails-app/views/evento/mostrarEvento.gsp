@@ -73,7 +73,7 @@ ${evento.descripcion}
 </ul>
 </div>
 
-<g:if test="${asis}">
+<g:if test="${asis && valido}">
 <div class="live-preview">
 <a href="${createLink(action:'registrarme',params:[evento:evento.id])}" class="btn btn-common uppercase">Registrarme!!</a>
 </div>

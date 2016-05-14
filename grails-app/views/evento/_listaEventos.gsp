@@ -15,7 +15,9 @@
 
 <div class="portfolio-view">
 <ul class="nav nav-pills">
-<li><a href="${createLink(action:'mostrarEvento',params:[evento:it.id])}"><i class="fa fa-link"></i></a></li>
+<li><a href="${createLink(action:'mostrarEvento',params:[evento:it.id])}">
+<i class="fa fa-link"></i>Ver más
+</a></li>
 <li>
 
 <!--<a href="${assetPath(src:'photo.gif')}" data-lightbox="example-set">
@@ -26,13 +28,14 @@
 -->
 
 <!-- ここからモーダルウィンドウ -->
+<!--
 <div id="modal-content">
    <p>Contenido 1 </p>
    <p>Contenido 2</p>
    <p><a id="modal-close">Cerrar</a></p>
 </div>
-
 <p><a id="modal-open" class="button-link">Resumen</a></p>
+-->
 <!-- ここまでモーダルウィンドウ -->
 
 
@@ -44,7 +47,7 @@
 
 <div class="portfolio-info ">
 <h2>
-${it.lider.nombre}
+${it.nombre}
 </h2>
 </div>
 
@@ -54,6 +57,8 @@ ${it.lider.nombre}
 </g:each>
 
 </div>
+
+<!--
 
 <div class="portfolio-pagination">
 <ul class="pagination">
@@ -67,4 +72,4 @@ ${it.lider.nombre}
 <li><a href="#">right</a></li>
 </ul>
 </div>
-
+-->

@@ -31,7 +31,9 @@ class EventoController {
 
    def obtenerEventos(String tp){
       def usuario = sesionService.usuarioEnSesion()
-      def eventos = UsuarioEvento.findAll().collect{ it.evento }
+      def eventos = UsuarioEvento.findAll()
+      eventos = eventos.findAll{ it.usuario != usuario }
+      eventos = eventos.collect{ it.evento }
       def fechaAc = new Date()
       if(tp == "ACTIVOS") {
          eventos = eventos.findAll { it.fecha.compareTo(fechaAc) >= 0 }
@@ -79,7 +81,9 @@ class EventoController {
       def asistentes = UsuarioEvento.findAllByEvento(ev)
       def puntosRuta = ( ev.ruta == null )? [] : PuntoInteres.findAllByRuta( ev.ruta )
       def asis = !asistentes.any{ it.usuario == sesionService.usuarioEnSesion() }
-      [evento:ev,asistentes:asistentes,asis:asis,puntosRuta:puntosRuta]
+      def fechaAc = new Date()
+      def valido = ev.fecha.compareTo(fechaAc) >= 0
+      [evento:ev,asistentes:asistentes,asis:asis,puntosRuta:puntosRuta,valido:valido]
    }
 
    def resumenEvento(){

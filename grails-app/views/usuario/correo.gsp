@@ -6,12 +6,34 @@
 
 <body>
 
-Por favor ingresa tu nombre de usuario
+
+<section id="portfolio-information" class="padding-top">
+<div class="container">
+<div class="row">
+
+<div class="col-sm-12">
+
+<h2>
+Por favor ingresa tu nombre de usuario.
+</h2>
+
+<div class="text-center">
 
 <g:form url="[action:'reenviar']"  enctype="multipart/form-data">
-<g:textField name="usuario" />
-<g:submitButton class="button" name="submitButton" value="Enviar Correo!" />
+
+<div class="form-group">
+<input type="text" class="form-control" name="usuario" required placeholder="Ingrese su nombre de usuario">
+</div>
+
+<div class="form-group">
+<input type="submit" name="submit" class="btn btn-lg bnt-success" value="Enviar Correo">
+</div>
 </g:form>
+
+
+
+</div>
+
 
 
 </body>

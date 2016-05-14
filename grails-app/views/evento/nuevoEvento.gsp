@@ -31,8 +31,8 @@ Ruta: <g:select name="ruta" value="" from="${rutas.id}" />
 <g:submitButton name="create" class="save" value="Crear" id="create" />
 </fieldset>
 </div>
-<div id="mapa" class="mapa"></div>
-<script src="https://maps.google.com/maps/api/js?callback=initMap" async defer></script>
+<div id="mapa-pe" class="mapa"></div>
+<script src="https://maps.google.com/maps/api/js?callback=iniciarMapasCE" async defer></script>
 </fieldset>
 <p>
 </g:form>

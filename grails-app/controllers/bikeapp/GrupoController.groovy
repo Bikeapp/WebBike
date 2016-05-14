@@ -88,11 +88,13 @@ class GrupoController {
          def tgs = tg.tokenize(",")
          tgs = tgs.collect{ it.trim() }
          tgs = tgs.findAll{ it != ""}
-         print tgs
+         //print tgs
          //tags.each{ print it }
          grupos = Grupo.findAll()
-         grupos = grupos.findAll{ it.tags.any{ tgs.contains(it) } } 
-         print grupos
+         if( ! tgs.any{ it == "*"}){
+            grupos = grupos.findAll{ it.tags.any{ tgs.contains(it) } } 
+         }
+         //print grupos
       }else{
          def usuario = sesionService.usuarioEnSesion()
          grupos = UsuarioGrupo.findAllByUsuario(usuario).collect{ it.grupo }

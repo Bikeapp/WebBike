@@ -10,9 +10,25 @@
 
 <body>
 
-   ${msj}
 
-   Redireccionamiento en 5seg
+
+<section id="portfolio-information" class="padding-top">
+<div class="container">
+<div class="row">
+
+<div class="col-sm-12">
+
+<div class="text-center">
+
+<h2>
+   ${msj}
+</h2>
+   Redireccionamiento al inicio en 5 Segundos.
+</div>
+</div>
+</div>
+</div>
+</section>
 
 </body>
 </html>
