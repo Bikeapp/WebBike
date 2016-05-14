@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	
+
    	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
     <title><g:layoutTitle default="BikeApp - ¡Muevete por Bogotá!"/></title>
-    
-    
+
+
     <!-- Agregamos CSS. /assets/css/ -->
 	<asset:stylesheet src="bootstrap.min.css" />
 	<asset:stylesheet src="font-awesome.min.css" />
@@ -16,11 +16,11 @@
 	<asset:stylesheet src="lightbox.css" />
 	<asset:stylesheet src="main.css" />
 	<asset:stylesheet src="responsive.css" />
-	
+
     <!--[if lt IE 9]>
 	    <script src="js/html5shiv.js"></script>
 	    <script src="js/respond.min.js"></script>
-    <![endif]-->       
+    <![endif]-->
 
 	<!-- Agregamos javascripts. /assets/javascripts/ -->
    	<asset:javascript src="jquery.js" />
@@ -44,9 +44,9 @@ window.location.replace(link);
 
    <!--                     FIN DEL LAYOUT PARA UN USUARIO CON SESION ACTIVA -->
    <!--                     INICIO DEL LAYOUT PARA UN USUARIO SIN SESION ACTIVA -->
-   
+
    <sec:ifNotLoggedIn>
-    <header id="header">      
+    <header id="header">
         <div class="navbar navbar-inverse" role="banner">
             <div class="container">
                 <div class="navbar-header">
@@ -58,14 +58,18 @@ window.location.replace(link);
                     </button>
 
                     <a class="navbar-brand" href="index">
-                    	<h1><img src="<g:resource dir='images' file='logo.png'/>" alt="BikeApp - Logo"></h1>
+
+                    	<h1>BikeApp
+                        <!--<img src="<g:resource dir='images' file='logo.png'/>" alt="BikeApp - Logo">
+                        -->
+                      </h1>
                     </a>
-                    
+
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href='<g:createLink uri="/"/>'>Home</a></li>
-                        <li><a href='<g:createLink controller="usuario" action="login" />'>Login</a></li>            
+                        <li><a href='<g:createLink controller="usuario" action="login" />'>Login</a></li>
                     </ul>
                 </div>
                 <div class="search">
@@ -79,11 +83,11 @@ window.location.replace(link);
             </div>
         </div>
     </header>
-  
-   <g:layoutBody/> 
-   
-   
-   
+
+   <g:layoutBody/>
+
+
+
 	<footer id="footer">
         <div class="container">
             <div class="row">
@@ -91,7 +95,7 @@ window.location.replace(link);
                     <img src="<g:resource dir='images/home' file='under.png'/>" class="img-responsive inline" alt="WHAAAAAT">
                 </div>
                 <div class="col-sm-12">
-                
+
                     <div class="copyright-text text-center">
                         <p>&copy; BikeApp 2016. All Rights Reserved.</p>
                         <p>Designed by BikeApp</a></p>
