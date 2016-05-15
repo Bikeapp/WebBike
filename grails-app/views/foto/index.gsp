@@ -22,7 +22,7 @@
          <div class="container">
             <div class="row">
                <ul class="portfolio-filter text-center">
-                  <g:link type="button" class="btn btn-lg btn-success" action="create"><i class="fa fa-picture" aria-hidden="true"></i>  Añadir Foto</g:link>
+                  <g:link type="button" class="btn btn-lg btn-info" action="create"><i class="fa fa-picture" aria-hidden="true"></i>  Añadir Foto</g:link>
                </ul>
                <div class="portfolio-items">
                   <g:each var="imagen" in="${imagenes}" status="i">
@@ -40,8 +40,6 @@
                                     <li><a href="${createLink(controller:'Foto', action:'pintarImagen', id:"${imagen.id}")}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
                                  </ul>
                               </div>
-                           </div>
-                           <div class="portfolio-info ">
                            </div>
                         </div>
                      </div>
