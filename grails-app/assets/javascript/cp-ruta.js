@@ -211,7 +211,7 @@ function guardarRuta(){
 		console.log(descripcion);
 		if (nombre != null && descripcion != null){
 			$.ajax({
-				url: "ruta/guardarRuta",			//Llamo al metodo guardarRuta en el controlador Ruta
+				url: "../ruta/guardarRuta",			//Llamo al metodo guardarRuta en el controlador Ruta
 				type: 'POST',
 				datatype: 'text/json',
 				data: {
@@ -239,7 +239,7 @@ function guardarRuta(){
 $(document).on('click','#modal li',function(){
 	//AJAX para poder obtener la informacion de la ruta sobre la cual se hizo click.
 	$.ajax({
-		url: "ruta/buscarRuta",			
+		url: "../ruta/buscarRuta",			
 		type: 'POST',
 		datatype: 'text/json',
 		data: {
