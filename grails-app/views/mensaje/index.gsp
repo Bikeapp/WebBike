@@ -31,11 +31,11 @@
 		<div class = "row">
 			<div class = "col-md-3 col-sm-5">
 				<div class="sidebar blog-sidebar">
-					<div class="sidebar-item  recent">
+					<div class="sidebar-item  recent" name="amigos">
 						<h3>Amigos</h3>
 						<g:each var="contacto" in="${conversaciones}">
 							<div class="media">
-								<div class="media-body" name="amigos">
+								<div class="media-body">
 									<g:if test="${ usuario.nombre == contacto.u1.nombre  }">
 										<div class="contacto"><h4>${contacto.u2.username}</h4></div>
 									</g:if>
@@ -53,6 +53,14 @@
 				</div>
 			</div>
 			<div class = "col-md-7 col-sm-7">
+				<div id="mensajes">
+				</div>
+				<div id="input">
+					<g:form>
+						<input type="text" id="contenido" value="Por favor escriba un mensaje"/>
+						<button id="cm">Enviar!</button>
+					</g:form>
+				</div>
 			</div>
 			
 		</div>
@@ -66,7 +74,7 @@
 
 
 <script>
-var nomUsuario = "${usuario.nombre}";
+var nomUsuario = "${usuario.username}";
 var theDialog = $( "#dialog" ).dialog({
 	autoOpen: false,
 	buttons:

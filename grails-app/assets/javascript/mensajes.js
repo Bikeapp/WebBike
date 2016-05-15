@@ -6,7 +6,7 @@ var convSel = null;		//Variable para controlar la conversacion actual.
 $(document).on('click','.contacto',function(){
 	convSel = $(this).text();		//Obtengo UserName
 	$.ajax({
-		url: 'buscarMensajes',			//Llamo a buscarUsuario
+		url: 'mensaje/buscarMensajes',			//Llamo a buscarUsuario
 		type: 'POST',
 		dataType: 'json',					//Que el controlador me devuelva el objeto de tipo JSON.
 		data: {
@@ -15,8 +15,17 @@ $(document).on('click','.contacto',function(){
 		success: function(data) {
 			console.log(data);
 			$('#mensajes').empty();
+			console.log(nomUsuario);
+			console.log(convSel);
 			for(obj in data){
-				$('#mensajes').append("<div class='mensaje'>"+data[obj].contenido+"</div>");	//En caso de ser exitoso el request, iterar por cada objeto(mensaje) y mostrar.
+				if(data[obj].dueño.username == nomUsuario){
+					console.log(1);
+					$('#mensajes').append("<div class='mensaje-propio'>"+data[obj].contenido+"\t - <p>"+nomUsuario+"</p></div>");	//En caso de ser exitoso el request, iterar por cada objeto(mensaje) y mostrar.
+				}
+				else if (data[obj].dueño.username == convSel){
+					console.log(2);
+					$('#mensajes').append("<div class='mensaje-otro'>"+data[obj].contenido+"\t - <p>"+convSel+"</p></div>");
+				}
 			}
 		},
 		error: function (xhr, ajaxOptions, thrownError) {
@@ -38,7 +47,7 @@ $(document).on('click','#cm',function(event){
 	}
 	else{
 		$.ajax({
-			url: 'crearMensaje',			//Llamo a crearMensaje
+			url: 'mensaje/crearMensaje',			//Llamo a crearMensaje
 			type: 'POST',
 			dataType: 'text',					//Que el controlador me devuelva el objeto de tipo texto.
 			data: {
@@ -46,7 +55,7 @@ $(document).on('click','#cm',function(event){
 				contenido: $('#contenido').val(),
 			},
 			success: function(data) {
-				$('#mensajes').append("<div class='mensaje'>"+data+"</div>");		//Agrega el nuevo mensaje al gsp
+				$('#mensajes').append("<div class='mensaje-propio'>"+data+"\t - <p>"+nomUsuario+"</p></div>");		//Agrega el nuevo mensaje al gsp
 			},
 			error: function (xhr, ajaxOptions, thrownError) {
 				alert(xhr.status);
@@ -70,14 +79,14 @@ function crearConversacion(){
 			if (data.u1.nombre == nomUsuario){
 				convSel = $(".contacto:contains("+data.u2.username+")").html();
 				if (convSel == undefined){
-					$('.media-body[name="amigos"]').append("<div class='contacto'><h4>"+data.u2.username+"</h4></div>");
+					$('.div[name="amigos"]').append("<div class='contacto'><h4>"+data.u2.username+"</h4></div>");
 				}
 				convSel = $('.contacto:contains('+data.u2.username+')').html();		//dejar la conversacion seleccionada de una vez. Al escribir un mensaje queda asociado a esta conversacion
 			}
 			else{
 				convSel = $(".contacto:contains("+data.u1.username+")").html();
 				if (convSel == undefined){
-					$('.media-body[name="amigos"]').append("<div class='contacto'><h4>"+data.u1.username+"</h4></div>");	//Mostrar el nombre del destinatario en pantalla.
+					$('.div[name="amigos"]').append("<div class='contacto'><h4>"+data.u1.username+"</h4></div>");	//Mostrar el nombre del destinatario en pantalla.
 				}
 				convSel = $('.contacto:contains('+data.u1.username+')').html();		//dejar la conversacion seleccionada de una vez.Al escribir un mensaje queda asociado a esta conversacion
 			}

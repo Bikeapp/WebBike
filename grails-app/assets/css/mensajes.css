@@ -36,17 +36,33 @@ body{
 }
 #mensajes{
 	width:100%;
-	height:92%;
-	overflow-y:auto;
-	background-color:#faffaf;
+	height:90%;
+}
+.mensaje-propio{
+	background-color:#f0f0f0;
+	padding: 5px;
+	margin-left: 10px;
+	margin-right:10px;
+	text-align:left;
+	
+}
+#opener{
+	cursor: pointer;
+}
+.mensaje-otro{
+	background-color:#c9c9c9;
+	text-align:right;
+	padding: 5px;
+	margin-left: 10px;
+	margin-right:10px;
 }
 #input{
 	width:100%;
 	height:8%;
-	background-color:#aaafaa;
 	display: flex;
 	align-items: center;
 	justify-content: left;
+	padding: 10px;
 }
 #izqTit{
 	height:15%;
@@ -71,9 +87,23 @@ body{
 	padding: 0;
 	
 }
+.media-body{
+	cursor: pointer;
+}
 .container{
 	margin-top:40px;
+	height:70%;
 }
+.row{
+	height:100%;
+}
+.col-md-7{
+	height:100%;
+}
+.col-md-3{
+	height:100%;
+}
+
 .contacto{
 	text-align: left;
 	margin: 5px;

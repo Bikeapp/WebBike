@@ -33,7 +33,9 @@ class MensajeController {
       else{
       	mensajes = null
       }
-      render mensajes as JSON				//devuelvo mensajes a javascript
+      JSON.use('deep'){		//MOTHERFUCKER DEEP JSON.
+        	render mensajes as JSON			//devuelvo mensajes a javascript
+      	}
    }
 
    //Funcion que se encarga de buscar las conversaciones asociadas a un usuario en la base de datos.
