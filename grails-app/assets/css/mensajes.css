@@ -44,7 +44,6 @@ body{
 	margin-left: 10px;
 	margin-right:10px;
 	text-align:left;
-	
 }
 #opener{
 	cursor: pointer;
@@ -107,4 +106,15 @@ body{
 .contacto{
 	text-align: left;
 	margin: 5px;
+}
+.amigoSel{
+	font-weight: bold;
+	background-color: #f7fff2;
+	cursor: pointer;
+}
+.amigo{
+	cursor: pointer;
+}
+#amigos{
+	overflow-y:auto;
 }

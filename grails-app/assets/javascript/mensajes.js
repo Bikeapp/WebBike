@@ -76,19 +76,30 @@ function crearConversacion(){
 		},
 		success: function(data) {		//Si creo la conversacion exitosamente.
 			//Verifica el nombre de usuario  en sesion para identificar el otro usuario de la conversacion e imprimir en pantalla ese nombre.
-			if (data.u1.nombre == nomUsuario){
+			console.log("Mi Usuario: " + nomUsuario);
+			console.log("El Destinatario: " + convSel);
+			console.log("El u1 de la conv: " + data.u1.username);
+			if (data.u1.username == nomUsuario){
+				console.log(1);
 				convSel = $(".contacto:contains("+data.u2.username+")").html();
 				if (convSel == undefined){
-					$('.div[name="amigos"]').append("<div class='contacto'><h4>"+data.u2.username+"</h4></div>");
+					console.log(3);
+					$('#amigos').append("<div class='media'><div class='media-body'><div class='contacto'><h4>"+data.u2.username+"</h4></div></div></div>");
 				}
 				convSel = $('.contacto:contains('+data.u2.username+')').html();		//dejar la conversacion seleccionada de una vez. Al escribir un mensaje queda asociado a esta conversacion
+				console.log(5);
 			}
 			else{
+				console.log(2);
 				convSel = $(".contacto:contains("+data.u1.username+")").html();
 				if (convSel == undefined){
-					$('.div[name="amigos"]').append("<div class='contacto'><h4>"+data.u1.username+"</h4></div>");	//Mostrar el nombre del destinatario en pantalla.
+					console.log(4);
+					var test = $('#amigos').html();
+					console.log(test);
+					$('#amigos').append("<div class='media'><div class='media-body'><div class='contacto'><h4>"+data.u1.username+"</h4></div></div></div>");	//Mostrar el nombre del destinatario en pantalla.
 				}
 				convSel = $('.contacto:contains('+data.u1.username+')').html();		//dejar la conversacion seleccionada de una vez.Al escribir un mensaje queda asociado a esta conversacion
+				console.log(6);
 			}
 		},
 		error: function (xhr, ajaxOptions, thrownError) {

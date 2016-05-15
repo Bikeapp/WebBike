@@ -31,7 +31,7 @@
 		<div class = "row">
 			<div class = "col-md-3 col-sm-5">
 				<div class="sidebar blog-sidebar">
-					<div class="sidebar-item  recent" name="amigos">
+					<div class="sidebar-item  recent" id="amigos">
 						<h3>Amigos</h3>
 						<g:each var="contacto" in="${conversaciones}">
 							<div class="media">
