@@ -60,9 +60,8 @@ $(document).on('click','#cm',function(event){
 function crearConversacion(){
 	var user = $(".amigoSel").html();		//Obtengo el nombre de usuario del destinatario en la conversacion desde el select
 	$.ajax({
-		url: 'crearConversacion',			//Llamo a crearConversacion
+		url: 'mensaje/crearConversacion',			//Llamo a crearConversacion
 		type: 'POST',
-		dataType: 'json',					//Que el controlador me devuelva el objeto de tipo texto.
 		data: {
 			userName: user,			//Envio el nombre de usuario que tengo seleccionado.
 		},
@@ -71,14 +70,14 @@ function crearConversacion(){
 			if (data.u1.nombre == nomUsuario){
 				convSel = $(".contacto:contains("+data.u2.username+")").html();
 				if (convSel == undefined){
-					$('#contactos').append("<div class='contacto'>"+data.u2.username+"</div>");
+					$('.media-body[name="amigos"]').append("<div class='contacto'><h4>"+data.u2.username+"</h4></div>");
 				}
 				convSel = $('.contacto:contains('+data.u2.username+')').html();		//dejar la conversacion seleccionada de una vez. Al escribir un mensaje queda asociado a esta conversacion
 			}
 			else{
 				convSel = $(".contacto:contains("+data.u1.username+")").html();
-				if (convSel == "undefined"){
-					$('#contactos').append("<div class='contacto'>"+data.u1.username+"</div>");	//Mostrar el nombre del destinatario en pantalla.
+				if (convSel == undefined){
+					$('.media-body[name="amigos"]').append("<div class='contacto'><h4>"+data.u1.username+"</h4></div>");	//Mostrar el nombre del destinatario en pantalla.
 				}
 				convSel = $('.contacto:contains('+data.u1.username+')').html();		//dejar la conversacion seleccionada de una vez.Al escribir un mensaje queda asociado a esta conversacion
 			}

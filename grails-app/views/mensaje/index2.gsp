@@ -30,41 +30,42 @@
 	<div class = "container">
 		<div class = "row">
 			<div class = "col-md-3 col-sm-5">
-				<div class="sidebar blog-sidebar">
-					<div class="sidebar-item  recent">
-						<h3>Amigos</h3>
-						<g:each var="contacto" in="${conversaciones}">
-							<div class="media">
-								<div class="media-body" name="amigos">
-									<g:if test="${ usuario.nombre == contacto.u1.nombre  }">
-										<div class="contacto"><h4>${contacto.u2.username}</h4></div>
-									</g:if>
-									<g:if test="${ usuario.nombre == contacto.u2.nombre  }">
-										<div class="contacto"><h4>${contacto.u1.username}</h4></div>
-									</g:if>
-								</div>
-							</div>	
-						</g:each>
-					</div>
-					<div class="sidebar-item  recent">
-						<h3></h3>
-						<h4 id="opener">Nueva Conversacion</h4>
-					</div>
-				</div>
 			</div>
 			<div class = "col-md-7 col-sm-7">
 			</div>
-			
+			<div id="contactos">
+			<g:form>
+				<g:each var="contacto" in="${conversaciones}">
+					<g:if test="${ usuario.nombre == contacto.u1.nombre  }">
+						<div class="contacto">${contacto.u2.username}</div>
+					</g:if>
+					<g:if test="${ usuario.nombre == contacto.u2.nombre  }">
+						<div class="contacto">${contacto.u1.username}</div>
+					</g:if>
+				</g:each>
+			</g:form>
 		</div>
-	</div>
-
-<div id="dialog" title="Seleccione un amigo">
-						<g:each var="amigo" in="${usuarios}">
-							<div class="amigo">${amigo.username}</div>
+			<div id="crearC">
+				<div id="btndiv">
+					<button id="opener">+</button>
+					<div id="dialog" title="Seleccione un amigo">
+						<g:each var="amigo" in="${amigos}">
+							<div class="amigo">${amigo}</div>
 						</g:each>
 					</div>
-
-
+				</div>
+			</div>
+		</div>
+		<div id = "derContainer">
+			<div id="mensajes"></div>
+			<div id="input">
+				<g:form>
+					<input type="text" id="contenido" value="Por favor escriba un mensaje"/>
+					<button id="cm">Enviar!</button>
+				</g:form>
+			</div>
+		</div>
+	</div>
 <script>
 var nomUsuario = "${usuario.nombre}";
 var theDialog = $( "#dialog" ).dialog({
