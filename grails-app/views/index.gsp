@@ -101,7 +101,7 @@
                                                 </div>
                                             </div>
                                             <div class="person-info">
-                                                <h2>Quienes somos</h2>
+                                                <h2>Quienes Somos</h2>
 
                                             </div>
                                         </div>
