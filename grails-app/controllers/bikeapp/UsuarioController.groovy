@@ -85,7 +85,8 @@ class UsuarioController {
       render(view:"satisfactorio",model:[msj:msj])
    }
 
-   def login(){}
+   def login(){      
+   }
    def correo(){}
 
 }

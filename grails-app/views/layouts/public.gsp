@@ -39,6 +39,7 @@
 var link = '<g:createLink controller="perfil" action="index" />'
 window.location.replace(link);
 </script>
+
 </sec:ifLoggedIn>
 
 
@@ -57,8 +58,10 @@ window.location.replace(link);
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="index">
-                    	<h1><img src="<g:resource dir='images' file='logo.png'/>" alt="BikeApp - Logo"></h1>
+                    <a class="navbar-brand" rel="home"  href='<g:createLink uri="/"/>'>
+                       
+                            <g:img  dir="images" file="smlogotipo1.png"/>                            
+                       
                     </a>
                     
                 </div>
