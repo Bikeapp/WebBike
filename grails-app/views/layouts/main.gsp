@@ -45,8 +45,8 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="${createLink(controller:'perfil',action:'index')}">
-                    	<h1><img src="<g:resource dir='images' file='logo.png'/>" alt="BikeApp - Logo"></h1>
+                    <a class="navbar-brand" href="${createLink(controller:'perfil',action:'index')}" style="margin-top:-5%;">
+                    	<img src="<g:resource dir='images' file='logo.png'/>" alt="BikeApp - Logo">
                     </a>
                 </div>
 

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
   <head>
-	
+
    	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
     <title><g:layoutTitle default="BikeApp - ¡Muevete por Bogotá!"/></title>
-    
-    
+
+
     <!-- Agregamos CSS. /assets/css/ -->
 	<asset:stylesheet src="bootstrap.min.css" />
 	<asset:stylesheet src="font-awesome.min.css" />
@@ -15,11 +15,11 @@
 	<asset:stylesheet src="lightbox.css" />
 	<asset:stylesheet src="main.css" />
 	<asset:stylesheet src="responsive.css" />
-	
+
     <!--[if lt IE 9]>
 	    <script src="js/html5shiv.js"></script>
 	    <script src="js/respond.min.js"></script>
-    <![endif]-->       
+    <![endif]-->
 
 	<!-- Agregamos javascripts. /assets/javascripts/ -->
    	<asset:javascript src="jquery.js" />
@@ -43,10 +43,10 @@ window.location.replace(link);
 
    <!--                     FIN DEL LAYOUT PARA UN USUARIO CON SESION ACTIVA -->
    <!--                     INICIO DEL LAYOUT PARA UN USUARIO SIN SESION ACTIVA -->
-   
+
    <sec:ifNotLoggedIn>
 
-    <header id="header">      
+    <header id="header">
         <div class="navbar navbar-inverse" role="banner">
             <div class="container">
                 <div class="navbar-header">
@@ -57,30 +57,30 @@ window.location.replace(link);
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="${createLink(controller:'usuario',action:'index')}">
-                    	<h1><img src="<g:resource dir='images' file='logo.png'/>" alt="BikeApp - Logo"></h1>
+                    <a class="navbar-brand" href="${createLink(controller:'usuario',action:'index')}" style="margin-top:-5%;">
+                    	<img src="<g:resource dir='images' file='logo.png'/>" alt="BikeApp - Logo">
                     </a>
-                    
+
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <!-- vista intermedia de registro -->
-                        <li><a href='<g:createLink controller="usuario" action="login" />'>Registrarme</a></li>            
-                        <li><a href='<g:createLink controller="usuario" action="login" />'>Iniciar Sesión</a></li>            
+                        <li><a href='<g:createLink controller="usuario" action="login" />'>Registrarme</a></li>
+                        <li><a href='<g:createLink controller="usuario" action="login" />'>Iniciar Sesión</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </header>
-  
+
 </sec:ifNotLoggedIn>
 
 
-   <g:layoutBody/> 
-   
-   
-   
-   
+   <g:layoutBody/>
+
+
+
+
 	<footer id="footer">
         <div class="container">
             <div class="row">
