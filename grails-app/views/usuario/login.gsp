@@ -13,17 +13,17 @@
 <div class="row">
 
 <div class="col-sm-12">
-
+<center>
 <h2>Algo ha salido mal, por favor vuelve a intentarlo.</h2>
-
+</center>
 <div class="text-center">
 
 <g:form name="login" method="POST" uri="/j_spring_security_check">
 <div class="form-group">
-<input type="text" class="form-control text-center" name="j_username" required placeholder="Ingrese su nombre de usuario">
+<input type="text" class="form-control text-center" name="j_username" style="width:34%;margin-left:33%" required placeholder="Ingrese su nombre de usuario">
 </div>
 <div class="form-group">
-<input type="password" class="form-control text-center" name="j_password" required placeholder="Ingrese su contraseña">
+<input type="password" class="form-control text-center" name="j_password" style="width:34%;margin-left:33%" required placeholder="Ingrese su contraseña">
 </div>
 
 <div class="form-group">
@@ -37,11 +37,11 @@
 
 
 <div class="project-info overflow">
-<h3>Recuerda:</h3>
+<h3 style="text-align:center">Recuerda:</h3>
 <ul class="elements">
-<li> <i class="fa fa-angle-right"></i> Ingresar tu nombre de usuario y contraseña de forma correcta </li>
-<li> <i class="fa fa-angle-right"></i> Revisar las mayúsculas </li> 
-<li> <i class="fa fa-angle-right"></i> Validar tu cuenta, sino recibiste el correo haz click <g:link controller="usuario" action="correo" >aquí</g:link></li>
+<li style="text-align:center">  Revisar las mayúsculas </li>
+<li style="text-align:center"> Ingresar tu nombre de usuario y contraseña de forma correcta </li>
+<li style="text-align:center"> Validar tu cuenta, sino recibiste el correo haz click <g:link controller="usuario" action="correo" >aquí</g:link></li>
 </ul>
 </div>
 

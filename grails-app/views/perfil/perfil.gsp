@@ -28,7 +28,7 @@ $(document).on('click','#amistad',function(event){
     a{
     color:white;
     }
-  
+
     a:hover {
      outline: none;
      text-decoration:none;
@@ -49,7 +49,7 @@ $(document).on('click','#amistad',function(event){
 <g:if test="${usuario.foto == null}"><img src="${assetPath(src:'no_photo.png')}" class="img-responsive"/></g:if>
 <g:else><img src="${createLink(controller:'Perfil', action:'pintarImagen', id:"${usuario.id}")}" class="img-responsive"/></g:else>
 </div>
-<div class="col-sm-6 " style="text-align:center">
+<div class="col-sm-6 padding" style="text-align:center">
 <h2 >Mensaje distintivo:</h2><h2 style="color:#4fcccd"><g:if test="${usuario.mensaje == null} or ${usuario.mensaje ==""}">Sin mensaje</g:if><g:else>${usuario.mensaje}</g:else></h2>
 <h2 >	Nombre de usuario:</h2><h2 style="color:#4fcccd"> ${usuario.username}</h2>
 <h2 >	Email:</h2>	<h2 style="color:#4fcccd"> ${usuario.email}</h2>
