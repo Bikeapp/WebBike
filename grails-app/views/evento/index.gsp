@@ -11,12 +11,6 @@
 
 <body>
 
-<g:javascript>
-document.addEventListener("DOMContentLoaded", function(event) {
-callback();
-});
-</g:javascript>
-
 	<g:remoteLink class="logout" controller="logout">
 	Logout
 </g:remoteLink> 
@@ -113,11 +107,20 @@ callback();
 			</div>
 		</div>
 
+		<g:javascript>
+		var arg = [];
+		document.addEventListener("DOMContentLoaded", function(event) {
+		initMaps(arg);
+		});
+		</g:javascript>
+
 	</g:form>
 
 </div>
 </div>
 </section>
+
+
 
 
 

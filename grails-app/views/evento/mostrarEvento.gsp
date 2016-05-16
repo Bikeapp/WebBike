@@ -83,6 +83,7 @@
 
 <g:javascript>
 document.addEventListener("DOMContentLoaded", function(event) {
+console.log(${puntosRuta});
 callback(${puntosRuta as JSON});
 });
 </g:javascript>
