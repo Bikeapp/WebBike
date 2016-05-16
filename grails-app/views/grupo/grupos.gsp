@@ -35,6 +35,16 @@ var url_busGrupo = "${createLink(controller:'Grupo',action:'buscarGrupos')}"
 <ul class="nav navbar-stacked" id="listaGrupos">
 <g:render template="listaGrupos" />
 </ul>
+
+<input type="button" name="buscar" class="btn btn-submit" value="Nuevo Grupo" id="btnCrearGrupo">
+
+<script>
+$(document).ready(function(){
+	$("#btnCrearGrupo").click(function(){
+		$("#crearGrupo").modal();
+	});
+});
+</script>
 </div>
 
 </div>
@@ -49,6 +59,8 @@ var url_busGrupo = "${createLink(controller:'Grupo',action:'buscarGrupos')}"
 </div>
 </div>
 </section>
+
+<g:render template="modal" />
 
 <!--/#blog-->
 <!--/#blog-->
