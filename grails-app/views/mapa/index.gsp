@@ -34,6 +34,7 @@
 	</g:javascript>
     <div id="map-container">
         <div id="gmap"></div>
+        <div id="right-panel"></div>
     </div>
   </body>
 </html>

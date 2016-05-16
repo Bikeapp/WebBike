@@ -50,7 +50,7 @@
 				$(document).on('click', '#butRP', function(event) {	
                                      RWayPoints=[];				
 					infowindow.close();
-					var txtOrigen = document.getElementById('txtOr');
+					//var txtOrigen = document.getElementById('txtOr');
 					if (Marker1 != null){						//Verifica si ya había otro marcador establecido como origen.
 						Marker1.setMap(null);
 						Marker1 = tmpMarker;		//Si existia otro, lo reemplaza por el nuevo.
@@ -59,7 +59,7 @@
 					else{
 						Marker1 = tmpMarker;						//Si no existe, lo asigna como nuevo punto de origen.
 					}
-					txtOrigen.value = Marker1.position.toString();			//Utiliza la coordenada del punto para ponerlo como origen en el cuadro de texto.
+					//txtOrigen.value = Marker1.position.toString();			//Utiliza la coordenada del punto para ponerlo como origen en el cuadro de texto.
 					tmpMarker = null;								//El temporal queda vacio, lo que significa que se asigno correctamente el punto de origen.
 				});
 
@@ -84,7 +84,7 @@
 				//Añadir listener al boton de punto final.
 				$(document).on('click', '#butRF', function(event) {					
 					infowindow.close();
-					var txtDestino= document.getElementById('txtDe');
+					//var txtDestino= document.getElementById('txtDe');
 					if (Marker2 != null){
 						Marker2.setMap(null);
 						Marker2 = tmpMarker;
@@ -93,7 +93,7 @@
 					else{
 						Marker2 = tmpMarker;
 					}
-					txtDestino.value = Marker2.position.toString();
+					//txtDestino.value = Marker2.position.toString();
 					tmpMarker = null;
 				});
 			
@@ -269,35 +269,15 @@
 				if (!calculandoRuta ) {
 					calculandoRuta = true;
 					var container = document.createElement('div');
-					var lblOrigen = document.createElement('div');
-					var lblDestino = document.createElement('div');
-					var txtOrigen = document.createElement('input');
-					var txtDestino = document.createElement('input');
 					var btnRuta = document.createElement('button');
-					container.appendChild(lblOrigen);
-					container.appendChild(txtOrigen);
-					container.appendChild(lblDestino);
-					container.appendChild(txtDestino);
 					container.appendChild(btnRuta);
-					container.style.width = '500px';
 					container.style.margin = 'auto';
-					container.style.border = '3px solid black';
 					container.setAttribute('id','direcciones');
 					btnRuta.innerHTML = 'Calcular Ruta';
 					btnRuta.onclick = function() { calcRuta();cleanMarkers(); }
 					btnRuta.style.width = '120px';
 					btnRuta.id = 'btnRu';
 					btnRuta.style.height = '20px';
-					txtOrigen.style.type = 'text';
-					txtOrigen.id='txtOr';
-					txtDestino.id='txtDe';
-					lblOrigen.style.float = 'left';
-					lblOrigen.innerHTML = 'Origen:';
-					txtDestino.style.float = 'left';
-					lblDestino.style.float = 'left';
-					lblDestino.innerHTML = 'Destino:';
-					txtOrigen.style.float = 'left';
-					txtDestino.style.type = 'text';
 					map.controls[google.maps.ControlPosition.TOP_CENTER].push(container);
 				}
 			}
@@ -337,13 +317,13 @@
 			}
 			
 			function toLeft(){
-				$("#mapa").animate({width:'70%'},4000);
+				$("#gmap").animate({width:'70%'},4000);
 				$("#right-panel").animate({width:'30%',opacity:'1'},4000);
 				$("#direcciones").animate({marginLeft:'-170px'},4000);				
 			}
 			
 			function toRight(){
-				$("#mapa").animate({width:'100%'},4000);
+				$("#gmap").animate({width:'100%'},4000);
 				$("#right-panel").animate({width:'0%',opacity:'0'},4000);
 				$("#direcciones").animate({marginLeft:'-auto'},4000);
 			}

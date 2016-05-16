@@ -11,7 +11,7 @@ class MensajeController {
 
    def index(){
       def usuario = sesionService.usuarioEnSesion()  	//Obtenemos el usuario para buscar mensajes que corresponde.
-      [usuario:usuario, conversaciones: ConvU.findAllByU1OrU2(usuario,usuario),amigos: amistadService.Amigos(usuario)]		//El controlador envía al cliente un parametro con los mensajes que encuentre en la BD para el usuario en sesion.
+      [usuario:usuario, conversaciones: ConvU.findAllByU1OrU2(usuario,usuario),amigos: amistadService.Amigos(usuario),usuarios: Usuario.list()]		//El controlador envía al cliente un parametro con los mensajes que encuentre en la BD para el usuario en sesion.
    }
 
 	//Se utiliza para buscar los mensajes asociados a una conversacion entre 2 usuarios.
@@ -33,7 +33,9 @@ class MensajeController {
       else{
       	mensajes = null
       }
-      render mensajes as JSON				//devuelvo mensajes a javascript
+      JSON.use('deep'){		//MOTHERFUCKER DEEP JSON.
+        	render mensajes as JSON			//devuelvo mensajes a javascript
+      	}
    }
 
    //Funcion que se encarga de buscar las conversaciones asociadas a un usuario en la base de datos.
