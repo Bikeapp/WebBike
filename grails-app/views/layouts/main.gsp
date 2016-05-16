@@ -35,6 +35,20 @@
 
 
   	<header id="header">
+
+        <div class="col-sm-12 overflow">
+
+            <div class="social-icons pull-right">
+
+                <ul class="nav nav-pills">
+                    <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                    <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                    <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href=""><i class="fa fa-dribbble"></i></a></li>
+                    <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div> 
+        </div> 
         <div class="navbar navbar-inverse" role="banner">
             <div class="container">
                 <div class="navbar-header">
@@ -45,8 +59,8 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="${createLink(controller:'perfil',action:'index')}" style="margin-top:-5%;">
-                    	<img src="<g:resource dir='images' file='logo.png'/>" alt="BikeApp - Logo">
+                    <a class="navbar-brand" href='<g:createLink uri="/"/>'>
+                         <g:img  dir="images" file="smlogotipo1.png" alt="BikeApp-Logo"/>
                     </a>
                 </div>
 

@@ -57,8 +57,8 @@ window.location.replace(link);
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="${createLink(controller:'usuario',action:'index')}" style="margin-top:-5%;">
-                    	<img src="<g:resource dir='images' file='logo.png'/>" alt="BikeApp - Logo">
+                    <a class="navbar-brand" href='<g:createLink uri="/"/>'>
+                         <g:img  dir="images" file="smlogotipo1.png" alt="BikeApp-Logo"/>
                     </a>
 
                 </div>
