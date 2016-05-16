@@ -12,8 +12,8 @@
 				</div>
 				<div class="modal-body">
 
-					<g:hiddenField id="lat" name="lat" value="-1" />
-					<g:hiddenField id="lng" name="lng" value="-1" />
+					<g:hiddenField id="lat" name="lat" value="4.6370605" />
+					<g:hiddenField id="lng" name="lng" value="-74.0894813" />
 
 					<div class="form-group">
 						<label for="nombre">Nombre del evento:</label>
@@ -62,13 +62,7 @@
 					<g:submitButton class="btn btn-submit" name="create"  value="Crear" id="create" />
 				</div>
 			</div>
-
-			<g:javascript>
-			var arg = [];
-			document.addEventListener("DOMContentLoaded", function(event) {
-			initMaps(arg);
-			});
-			</g:javascript>
+			
 
 		</g:form>
 
