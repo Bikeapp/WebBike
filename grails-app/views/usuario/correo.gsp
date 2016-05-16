@@ -13,16 +13,17 @@
 
 <div class="col-sm-12">
 
+<div class="text-center">
 <h2>
 Por favor ingresa tu nombre de usuario.
 </h2>
 
-<div class="text-center">
 
 <g:form url="[action:'reenviar']"  enctype="multipart/form-data">
 
+
 <div class="form-group">
-<input type="text" class="form-control" name="usuario" required placeholder="Ingrese su nombre de usuario">
+<input type="text" class="form-control" name="usuario" style="width:34%;margin-left:33%" required placeholder="Ingrese su nombre de usuario">
 </div>
 
 <div class="form-group">

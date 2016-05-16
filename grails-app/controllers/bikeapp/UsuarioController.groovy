@@ -91,8 +91,30 @@ class UsuarioController {
    }
 
    def login(){}
+   def logmein(){
+      if( params["j_username"].contains("@") ){
+         print "OK"
+      }
+      forward(uri:"/j_spring_security_check",params:[j_username:params["j_username"],j_password:params["j_password"]])
+   }
+
    def correo(){}
    def bikeapp(){}
+
+
+
+   def contactUs(String mensaje,String nombre,String email){
+      def message = "Nueva sugerencia \n\n"+mensaje+"\n\n"+"Enviado por: "+nombre+" -- "+email
+      sendMail {
+         async true
+         to "bikeappteam@gmail.com"
+         subject "SUGERENCIA - "+nombre
+         body  message
+      }
+      def msj = ""
+      render(view:"satisfactorio",model:[msj:msj])
+   }
+
 
 }
 
