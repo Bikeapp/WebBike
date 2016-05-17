@@ -86,12 +86,13 @@
   }
 
   #home-slider .main-slider {
-    height: 250px;
+    height: 500px;
+   
   }
 
   #home-slider .slide-text {
     top: 0;
-    width: 50%;
+    width: 40%;
   }
 
   #home-slider h1 {
@@ -278,7 +279,7 @@
   }
 
   #home-slider .main-slider {
-    height: 500px;
+    height: 810px;
   }
 
   #home-slider .slide-text {
