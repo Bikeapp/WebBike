@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="main-slider animate-in">
                     <div class="slide-text">
-                        <h1 style="margin-top:0px">Registrate en BikeApp</h1>
+                        <center><h1 style="margin-top:10px">¡Regístrate! </h1></center>
 
 
                         <g:form role="form" class="form-horizontal" name="registro" controller="Usuario" action="registro">
