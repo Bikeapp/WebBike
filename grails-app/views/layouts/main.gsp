@@ -21,6 +21,9 @@
 	    <script src="js/html5shiv.js"></script>
 	    <script src="js/respond.min.js"></script>
     <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_RVgkXwL37ERUgWk139RbwYcSGkAF0-k&signed_in=true&language=es"
+        async defer></script>
 
 	<!-- Agregamos javascripts. /assets/javascripts/ -->
    	<asset:javascript src="jquery.js" />
@@ -28,6 +31,8 @@
 	<asset:javascript src="lightbox.min.js" />
 	<asset:javascript src="wow.min.js" />
 	<asset:javascript src="main.js" />
+    <asset:stylesheet href="evento.css" />
+    <asset:javascript src="evento.js" />
     <g:layoutHead/>
 
   </head>
@@ -60,8 +65,8 @@
                         <li><a href="${createLink(controller:'mapa',action:'index')}">Mapa</a></li>
                           <li class="dropdown"><a href="#">BikeApp <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
-                                <li><a href="#">Crear Grupo</a></li>
-                                <li><a href="#">Nuevo Evento</a></li>
+                                <li><a data-toggle="modal" href="#modalCrearGrupo" >Crear Grupo</a></li>
+                                <li><a data-toggle="modal" href="#modalCrearEvento">Nuevo Evento</a></li>
                                 <li><a href="#"></a></li>
                             </ul>
                         </li>
@@ -75,8 +80,10 @@
 
 
 <!-- TEMPLATES PARA LOS MODALES DE CREACION -->
-<g:render template="/modales/crearGrupo" />
 <g:render template="/modales/crearEvento" />
+<g:render template="/modales/crearGrupo" />
+
+
 
                     </ul>
                 </div>
@@ -93,6 +100,13 @@
     </header>
 
    <g:layoutBody/>
+
+   <g:javascript>
+            var arg = [];
+            document.addEventListener("DOMContentLoaded", function(event) {
+            iniciarMapaRuta(arg);
+            });
+    </g:javascript>
 
 
 
