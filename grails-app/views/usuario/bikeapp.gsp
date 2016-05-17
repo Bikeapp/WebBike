@@ -92,9 +92,6 @@
             </div>
         </div>
     </section>
-form-control 
-
-Quienes somos =? 
 
 </body>
 </html>

@@ -13,19 +13,6 @@
     <title>Mapa</title>
   </head>
   <body>
-    <section id="page-breadcrumb">
-			<div class="vertical-center sun">
-				 <div class="container">
-					<div class="row">
-						<div class="action">
-							<div class="col-sm-12">
-								<h1 class="title">Mapa</h1>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
   	<g:javascript>
   		
 		document.addEventListener("DOMContentLoaded", function(event) {

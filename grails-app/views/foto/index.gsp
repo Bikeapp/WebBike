@@ -3,21 +3,10 @@
    <head>
       <meta name="layout" content="main"/>
       <asset:javascript src="foto.js"/>
+      <asset:stylesheet href="foto.css" />
    </head>
    <body>
-      <section id="page-breadcrumb">
-         <div class="vertical-center sun">
-            <div class="container">
-               <div class="row">
-                  <div class="action">
-                     <div class="col-sm-12">
-                        <h1 class="title">Mis Fotos</h1>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
+
       <section id="portfolio">
          <div class="container">
             <div class="row">
@@ -30,7 +19,7 @@
                         <div class="portfolio-wrapper">
                            <div class="portfolio-single">
                               <div class="portfolio-thumb">
-                                 <img src="${createLink(controller:'Foto', action:'pintarImagen', id:"${imagen.id}")}" class="img-responsive" alt="">
+                                 <img src="${createLink(controller:'Foto', action:'pintarImagen', id:"${imagen.id}")}" height="300" width="200" style="margin-top:2%">
                               </div>
                               <div class="portfolio-view">
                                  <ul class="nav nav-pills">

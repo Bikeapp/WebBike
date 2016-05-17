@@ -124,7 +124,6 @@
 
 
 
-<footer id="footer">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 text-center bottom-separator">
@@ -188,15 +187,9 @@
                      </div>
                    </div>
                 </div>
-                <div class="col-sm-12">
-                    <div class="copyright-text text-center">
-                        <p>© Your Company 2014. All Rights Reserved.</p>
-                        <p>Designed by <a target="_blank" href="http://www.themeum.com">Themeum</a></p>
-                    </div>
-                </div>
+
             </div>
         </div>
-    </footer>
 
 
 </body>

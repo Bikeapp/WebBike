@@ -21,9 +21,6 @@
 	    <script src="js/html5shiv.js"></script>
 	    <script src="js/respond.min.js"></script>
     <![endif]-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_RVgkXwL37ERUgWk139RbwYcSGkAF0-k&signed_in=true&language=es"
-        async defer></script>
 
 	<!-- Agregamos javascripts. /assets/javascripts/ -->
    	<asset:javascript src="jquery.js" />
@@ -41,19 +38,6 @@
 
   	<header id="header">
 
-        <div class="col-sm-12 overflow">
-
-            <div class="social-icons pull-right">
-
-                <ul class="nav nav-pills">
-                    <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                    <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                    <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href=""><i class="fa fa-dribbble"></i></a></li>
-                    <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div> 
-        </div> 
         <div class="navbar navbar-inverse" role="banner">
             <div class="container">
                 <div class="navbar-header">
