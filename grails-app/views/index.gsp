@@ -4,6 +4,8 @@
  <meta name="layout" content="public"/>
  <asset:javascript src="usuario.js" />
 
+  <link rel="shortcut icon" type="image/x-icon" href='${resource(dir: "images", file: "smlogo.png")}' />
+
  <style type="text/css">
  #home-slider {
   background: url('${resource(dir: "images/home", file: "slider-bg.png")}') 0 100% repeat-x;
@@ -122,36 +124,79 @@
 
 
 
+<footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center bottom-separator">
+                    <img src="images/home/under.png" class="img-responsive inline" alt="">
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="testimonial bottom">
+                        <h2>Testimonial</h2>
+                        <div class="media">
+                            <div class="pull-left">
+                                <a href="#"><img src="images/home/profile1.png" alt=""></a>
+                            </div>
+                            <div class="media-body">
+                                <blockquote>BikeApp ha sido la experiencia mas divertida, BikeApp es como mi familia</blockquote>
+                                <h3><a href="#">- Elber Gota</a></h3>
+                            </div>
+                         </div>
+                        <div class="media">
+                            <div class="pull-left">
+                                <a href="#"><img src="images/home/profile2.png" alt=""></a>
+                            </div>
+                            <div class="media-body">
+                                <blockquote>Antes no podia si quiera subirme a una bici. Gracias BikeApp <3</blockquote>
+                                <h3><a href="">- David Dager</a></h3>
+                            </div>
+                        </div>   
+                    </div> 
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="contact-info bottom">
+                        <h2>Info de Contacto</h2>
+                        <address>
+                        E-mail: <a href="mailto:staff@bikeapp.com">staff@bikeapp.com</a> <br> 
+                        Teléfono: (+57) 456 7890 <br> 
+                        Fax:  (1+57) 456 7891 <br> 
+                        </address>
 
-<div class="container">
- <div class="row">
-   <div class="col-sm-12 text-center bottom-separator">
-     <img src="images/home/under.png" class="img-responsive inline" alt="">
-   </div>
-
-   <div class="col-md-4 col-sm-6">
-     <!-- noticias de twitter --> 
-   </div>
-   <div class="col-md-3 col-sm-6">
-   </div>
-   <div class="col-md-4 col-sm-12">
-     <div class="contact-form bottom">
-       <h2>Contactenos</h2>
-       <div class="form-group">
-         <input type="text" name="nombre" id="nombre" class="form-control" required="required" placeholder="Nombre">
-       </div>
-       <div class="form-group">
-         <input type="email" name="email" id="email" class="form-control" required="required" placeholder="Email">
-       </div>
-       <div class="form-group">
-         <textarea name="message" id="mensaje" required="required" class="form-control" rows="8" placeholder="Sugerencia"></textarea>
-       </div>                        
-       <div class="form-group">
-         <input type="submit" name="submit" class="btn btn-submit" value="Enviar" onclick="enviarSugerencia()" />
-       </div>
-     </div>
-   </div>
- </div>
+                        <h2>Dirección</h2>
+                        <address>
+                        Calle 45 No 26-52<br> 
+                        Universidad Nacional de Colombia, <br> 
+                        Bogota D.C. <br> 
+                        <small>la Playita</small> <br> 
+                        </address>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="contact-form bottom">
+                     <h2>Contactenos</h2>
+                     <div class="form-group">
+                       <input type="text" name="nombre" id="nombre" class="form-control" required="required" placeholder="Nombre">
+                     </div>
+                     <div class="form-group">
+                       <input type="email" name="email" id="email" class="form-control" required="required" placeholder="Email">
+                     </div>
+                     <div class="form-group">
+                       <textarea name="message" id="mensaje" required="required" class="form-control" rows="8" placeholder="Sugerencia"></textarea>
+                     </div>                        
+                     <div class="form-group">
+                       <input type="submit" name="submit" class="btn btn-submit" value="Enviar" onclick="enviarSugerencia()" />
+                     </div>
+                   </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="copyright-text text-center">
+                        <p>© Your Company 2014. All Rights Reserved.</p>
+                        <p>Designed by <a target="_blank" href="http://www.themeum.com">Themeum</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
 </body>
