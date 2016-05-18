@@ -1,4 +1,5 @@
 var mod_map_pe;
+var mod_map_rt;
 var marker = null;
 
 $("document").ready(function () {
@@ -48,6 +49,7 @@ function iniciarMapaPEMod(lat,lng){
       disableDoubleClickZoom: true,
    }
    mod_map_pe = new google.maps.Map(document.getElementById('mod-map-pe'),options);
+   mod_map_rt = new google.maps.Map(document.getElementById('mod-map-rt'),options);
 }
 
 //FUNCIONES QUE MANEJAN EL AGREGAR EL PUNTO DE ENCUENTRO AL MAPA, SE ENCARGAN QUE SOLO PUEDA EXISTIR UN PUNTO DE ENCUENTRO
@@ -80,15 +82,85 @@ $(document).ready(function(){
 
    $("#abrirModalCrearEvento").click( function(){
       //google.maps.event.trigger(mod_map_pe,'resize');
-      //
-               iniciarMapaCE();
+      iniciarMapaCE();
+      cargarRutas();
+   });
+
+   $("#codigo-ruta").change(function(){
+      //alert($("#codigo-ruta").val());
+      $.ajax({
+         type:"POST",
+         url:url_obtenerPuntosRutaModal,
+         data:{
+            ruta:$("#codigo-ruta").val()
+         },
+         success: function(data){
+            //alert(data);
+            iniciarMapaRutaModal(data);
+            //$("#codigo-ruta").html(data);
+         },
+         error: function(){
+            alert("Algo ha salido mal, por favor intentelo de nuevo!!");
+         },
+         complete: function(){}
+      });
    });
 
 
 
    $("#modalCrearEvento").hover(function(){
       google.maps.event.trigger(mod_map_pe,'resize');
+      google.maps.event.trigger(mod_map_rt,'resize');
+   });
+
+   $("#mod-map-rt").hover(function(){
+      google.maps.event.trigger(mod_map_rt,'resize');
    });
 });
 
+
+function iniciarMapaRutaModal(puntosRutaJSON){
+   var myLatlng;
+   if( puntosRutaJSON.length > 0){
+      myLatlng = new google.maps.LatLng(puntosRutaJSON[0].lat,puntosRutaJSON[0].lng);
+   }else{
+      myLatlng = new google.maps.LatLng(-4.63,-74.103);
+   }
+   options = {
+      center: myLatlng,
+      zoom: 13,
+      disableDoubleClickZoom: true,
+   }
+   mod_map_rt = new google.maps.Map(document.getElementById('mod-map-rt'),options);
+   //alert(puntosRutaJSON.length);
+   for(var i=0;i<puntosRutaJSON.length;++i){
+      var latlng = new google.maps.LatLng(puntosRutaJSON[i].lat,puntosRutaJSON[i].lng);
+      new google.maps.Marker({
+         position:latlng,     
+         map: mod_map_rt,
+         draggable: false,
+         animation: google.maps.Animation.DROP
+      });
+   }
+   //refrescarMapaMod(mod_map_rt);
+}
+
+
+function cargarRutas(e){
+   $.ajax({
+      type:"POST",
+      url:url_obtenerRutasModal,
+      data:{
+      },
+      success: function(data){
+         //alert(data);
+         $("#codigo-ruta").html(data);
+      },
+      error: function(){
+         alert(url_enviarSugerencia);
+         alert("Algo ha salido mal, por favor intentelo de nuevo!!");
+      },
+      complete: function(){}
+   });
+}
 

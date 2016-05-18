@@ -27,7 +27,7 @@ Fecha y Hora: <g:datePicker id="fecha" name="fecha" precision="minute"/>
 <g:hiddenField id="lat" name="lat" value="-1" />
 <g:hiddenField id="lng" name="lng" value="-1" />
 <br>
-Ruta: <g:select name="ruta" value="" from="${rutas.id}" />
+Ruta: <g:select name="ruta" value="" from="${rutas.nombre}" />
 <fieldset class="buttons">
 <g:submitButton name="create" class="save" value="Crear" id="create" />
 </fieldset>
