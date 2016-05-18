@@ -169,7 +169,7 @@ Programador principal.
                 <div class="post-content overflow">
                 <h2 class="post-title bold">Alex Ortiz</h2>
                 <p>
-Es una buena persona.
+Programador principal.
                 </p>
                </div>
 

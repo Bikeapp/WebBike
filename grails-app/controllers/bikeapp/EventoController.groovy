@@ -50,7 +50,8 @@ class EventoController {
       //respond new Evento(params)
    }
 
-   def guardar(Evento instance){
+   def guardar(){
+      def instance = new Evento()
       def usuario = sesionService.usuarioEnSesion()
       def puntoInteres = new PuntoInteres()
       puntoInteres.usuario = usuario
@@ -69,6 +70,7 @@ class EventoController {
          instance.ruta = Ruta.findById(params["ruta"]);
       }else{
          instance.ruta = null
+         params["ruta"] = null
       }
       print params["ruta"]
       print instance.ruta

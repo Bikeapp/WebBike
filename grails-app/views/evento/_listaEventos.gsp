@@ -10,13 +10,13 @@
 
 <!--preview del evento-->
 <div class="portfolio-thumb">
-<img src="${assetPath(src:'photo.gif')}" class="img-responsive" alt="">
+<img src="${assetPath(src:'event.png')}" class="img-responsive" alt="">
 </div>
 
 <div class="portfolio-view">
 <ul class="nav nav-pills">
 <li><a href="${createLink(action:'mostrarEvento',params:[evento:it.id])}">
-<i class="fa fa-link"></i>+
++
 </a></li>
 <li>
 

@@ -24,9 +24,9 @@
                               <div class="portfolio-view">
                                  <ul class="nav nav-pills">
                                     <li>
-                                       <g:link action="show" params="[imagenactual : imagen.id]"><i class="fa fa-link"></i></g:link>
+                                       <g:link action="show" params="[imagenactual : imagen.id]">+</g:link>
                                     </li>
-                                    <li><a href="${createLink(controller:'Foto', action:'pintarImagen', id:"${imagen.id}")}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                    <li><a href="${createLink(controller:'Foto', action:'pintarImagen', id:"${imagen.id}")}" data-lightbox="example-set">目</a></li>
                                  </ul>
                               </div>
                            </div>

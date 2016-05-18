@@ -2,7 +2,7 @@
 <div id="modalCrearEvento" class="modal fade" role="dialog">
 <div class="modal-dialog">
 
-<g:form url="[controller:'evento', action:'guardar']"  enctype="multipart/form-data">
+<g:form url="[resource:instance,controller:'evento', action:'guardar']"  enctype="multipart/form-data">
 
 <!-- Modal content-->
 <div class="modal-content">
