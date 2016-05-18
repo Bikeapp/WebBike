@@ -5,7 +5,6 @@
 <html lang="en">
 <head>
 <meta name="layout" content="main"/>
-  	<script src="https://maps.google.com/maps/api/js?sensor=false&amp;language=es-ES"></script>
 <asset:javascript src="evento.js" />
 <asset:stylesheet href="evento.css" /> 
 </head>
@@ -26,8 +25,6 @@
 
 
 <div class="tab-content">
-<g:hiddenField name="lng" id="lng" value="${evento.puntoEncuentro.lng}"/>
-<g:hiddenField name="lat" id="lat" value="${evento.puntoEncuentro.lat}"/>
 
 <div class="tab-pane fade active in" id="tab1-item1">
 <div id="mapa-pe" class="mapa">
@@ -38,12 +35,6 @@
 <div id="mapa-rt" class="mapa">
 </div>
 </div>
-<!--
-<g:javascript>
-var ppc = ${puntosRuta}
-</g:javascript>
-<script src="https://maps.google.com/maps/api/js?callback=initMaps" async defer></script>
--->
 </div>
 </div>
 
@@ -88,7 +79,7 @@ ${evento.descripcion}
 
 <g:javascript>
 document.addEventListener("DOMContentLoaded", function(event) {
-      callback(${puntosRuta as JSON});
+      callback(${puntosRuta as JSON},${evento.puntoEncuentro as JSON});
       });
 </g:javascript>
 

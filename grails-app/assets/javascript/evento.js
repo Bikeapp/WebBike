@@ -51,9 +51,9 @@ function iniciarMapaRuta(puntosRutaJSON){
    refrescarMapa(map_rt);
 }
 
-function callback(puntosRutaJSON){
-   var lat = $("#lat").val();
-   var lng = $("#lng").val();
+function callback(puntosRutaJSON,puntoEncuentro){
+   var lat = puntoEncuentro.lat;
+   var lng = puntoEncuentro.lng;
    iniciarMapaPE(lat,lng);
    iniciarMapaRuta(puntosRutaJSON);
    var myLatlng = new google.maps.LatLng(lat,lng);

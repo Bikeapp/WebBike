@@ -7,7 +7,6 @@
   	<!-- Cargamos el css propio de la pagina antes del layout para que sobreescriba solo lo que necesitamos -->
   	<asset:stylesheet src="mapa.css"/>
   	<meta name="layout" content="main"/>
-  	<script src="https://maps.google.com/maps/api/js?sensor=false&amp;language=es-ES"></script>
   	<asset:javascript src="mapa.js"/>
   	<asset:javascript src="ruta.js"/>
     <title>Mapa</title>

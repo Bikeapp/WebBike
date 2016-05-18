@@ -28,8 +28,13 @@
 	<asset:javascript src="lightbox.min.js" />
 	<asset:javascript src="wow.min.js" />
 	<asset:javascript src="main.js" />
-    <asset:stylesheet href="evento.css" />
+
+  	<script src="https://maps.google.com/maps/api/js?sensor=false&amp;language=es-ES"></script>
+    <asset:stylesheet href="usuario.css" />
+<!--
     <asset:javascript src="evento.js" />
+
+-->
     <g:layoutHead/>
 
   </head>
@@ -76,9 +81,7 @@
 
                         <li><a href="${createLink(controller:'logout')}">Salir</a></li>
 
-
 <!-- TEMPLATES PARA LOS MODALES DE CREACION -->
-<g:render template="/modales/crearEvento" />
 <g:render template="/modales/crearGrupo" />
 
 
@@ -99,13 +102,15 @@
 
    <g:layoutBody/>
 
+<!--
+
    <g:javascript>
             var arg = [];
             document.addEventListener("DOMContentLoaded", function(event) {
             iniciarMapaRuta(arg);
             });
     </g:javascript>
-
+-->
 
 
 	<footer id="footer">
