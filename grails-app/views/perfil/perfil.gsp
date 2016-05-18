@@ -41,6 +41,7 @@ $(document).on('click','#amistad',function(event){
 			<button type="button" class="btn btn-lg btn-primary"><g:link action="mensajes">Mensajes</g:link></button>
 <!--			<button type="button" class="btn btn-lg btn-primary">Amistad</button> -->
 </div>
+
 <div class="container">
 
 <div class="row">

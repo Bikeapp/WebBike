@@ -24,7 +24,7 @@
 var url_busGrupo = "${createLink(controller:'Grupo',action:'buscarGrupos')}"
 </g:javascript>
 <div class="form-group">
-<input type="text" name="tags" class="form-control" required="required" placeholder="Tags a buscar" id="tags">
+<input type="text" name="tags" class="form-control" required="required" placeholder="Tags a buscar" id="gp-tags">
 <input type="button" name="buscar" class="btn btn-submit" value="Buscar" onclick="buscarGrupos()" id="buscar">
 </div>
 </div>

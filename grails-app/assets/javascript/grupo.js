@@ -56,13 +56,15 @@ function aportar(e){
 }
 
 function buscarGrupos(){
+   console.log("OK");
    $.ajax({
       type:"POST",
       url:url_busGrupo,
       data:{
-         tg:$("#tags").val()
+         tg:$("#gp-tags").val()
       },
       success: function(data){
+         //alert(data);
          $("#listaGrupos").html(data)
       },
       error: function(){
@@ -73,7 +75,7 @@ function buscarGrupos(){
 }
 
 function buscarTag(tag){
-   $("#tags").val(tag);
+   $("#gp-tags").val(tag);
    $("#buscar").trigger('click');
 }
 

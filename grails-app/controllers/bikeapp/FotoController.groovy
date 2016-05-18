@@ -95,8 +95,9 @@ class FotoController {
    }
 
    def fotosUsuario(String username){
+      def usuario = Usuario.findByUsername(username)
       def imagenes = Foto.findAllByUsuario(Usuario.findByUsername(username))
-      [imagenes:imagenes,username:username]
+      [imagenes:imagenes,username:username,usuario:usuario]
    }
 
 }

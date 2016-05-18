@@ -99,6 +99,8 @@ class GrupoController {
          def usuario = sesionService.usuarioEnSesion()
          grupos = UsuarioGrupo.findAllByUsuario(usuario).collect{ it.grupo }
       }
+      print grupos
+      print tg
       render(template:"listaGrupos",model:[grupos:grupos])
    }
 }

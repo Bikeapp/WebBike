@@ -64,10 +64,15 @@ class EventoController {
       instance.lider = usuario
       instance.fecha = params["fecha"]
       instance.nombre = params["nombre"]
-      instance.save flush:true,failOnError:true
+
       if( params["ruta"] != "-1" ){
          instance.ruta = Ruta.findById(params["ruta"]);
+      }else{
+         instance.ruta = null
       }
+      print params["ruta"]
+      print instance.ruta
+      instance.save flush:true,failOnError:true
 
       def usuarioEvento = new UsuarioEvento()
       usuarioEvento.usuario = usuario

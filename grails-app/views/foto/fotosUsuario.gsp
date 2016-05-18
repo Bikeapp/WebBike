@@ -10,7 +10,7 @@
       <section id="portfolio" class="padding">
          <div class="container">
             <div class="row">
-<h1 class="text-center" style="margin-bottom:5%">Fotos de ${username}</h1>
+<h1 class="text-center" style="margin-bottom:5%">Fotos de ${usuario.nombre}</h1>
                <div class="portfolio-items">
                   <g:each var="imagen" in="${imagenes}" status="i">
                      <div class="col-xs-6 col-sm-4 col-md-3 portfolio-item branded logos">
