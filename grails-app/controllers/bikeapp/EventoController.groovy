@@ -1,6 +1,7 @@
 package bikeapp
 
 import grails.plugin.springsecurity.annotation.Secured
+import grails.converters.JSON
 
 @Secured(['ROLE_USUARIO'])
 class EventoController {
@@ -25,7 +26,7 @@ class EventoController {
       }else{
          eventos = eventos.findAll { it.fecha.compareTo(fechaAc) < 0 }
       }
-      //print eventos
+      print eventos
       render(template:"listaEventos",model:[eventos:eventos])  
    }
 
@@ -64,7 +65,7 @@ class EventoController {
       instance.fecha = params["fecha"]
       instance.nombre = params["nombre"]
       instance.save flush:true,failOnError:true
-      if( params["ruta"] != "Ninguna" ){
+      if( params["ruta"] != "-1" ){
          instance.ruta = Ruta.findById(params["ruta"]);
       }
 
@@ -96,4 +97,24 @@ class EventoController {
       usuarioEvento.save flush:true,failOnError:true
       redirect(action:"mostrarEvento",params:[evento:evento.id])
    }
+
+   def obtenerRutas(){
+      def rutas = Ruta.list()
+      def rutaVacia = new Ruta()
+      rutaVacia.nombre = "-"
+      rutaVacia.id = -1
+      rutas = [rutaVacia]+rutas
+      [rutas:rutas]
+      render(template:"selectorRutas",model:[rutas:rutas])  
+   }
+
+   //casi me muero haciendo esto
+   def obtenerPuntosRuta(String ruta){
+      def rta = Ruta.list()
+      def puntos = PuntoInteres.findAllByRuta(rta)
+      //response.setContentType("application/json")
+      //print (puntos as JSON)
+      render puntos as JSON
+   }
+
 }

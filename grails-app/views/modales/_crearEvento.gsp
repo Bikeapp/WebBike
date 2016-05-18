@@ -2,7 +2,7 @@
 <div id="modalCrearEvento" class="modal fade" role="dialog">
 <div class="modal-dialog">
 
-<g:form url="[resource:instance, action:'guardar']"  enctype="multipart/form-data">
+<g:form url="[resource:instance,controller:'evento', action:'guardar']"  enctype="multipart/form-data">
 
 <!-- Modal content-->
 <div class="modal-content">
@@ -27,6 +27,17 @@
 </div>
 
 
+<div class="form-group">
+<label for="fecha">Ruta:</label>
+<select id="codigo-ruta"> 
+</select>
+</div>
+
+
+<g:javascript>
+var url_obtenerRutasModal = "${createLink(controller:'Evento',action:'obtenerRutas')}"
+var url_obtenerPuntosRutaModal = "${createLink(controller:'Evento',action:'obtenerPuntosRuta')}"
+</g:javascript>
 
 <ul id="mod-tab1" class="nav nav-tabs">
 <li class="active"><a href="#mod-tab1-item1" data-toggle="tab">Punto de Encuentro</a></li>
@@ -51,6 +62,9 @@
 
 
 </div>
+
+<g:hiddenField id="lat" name="lat" value="-1" />
+<g:hiddenField id="lng" name="lng" value="-1" />
 
 
 <div class="modal-footer">

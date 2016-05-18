@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta name="layout" content="main"/>
-	
+	<asset:stylesheet href="evento.css" />
+ <asset:javascript src="evento.js" />
 	
 </head>
 

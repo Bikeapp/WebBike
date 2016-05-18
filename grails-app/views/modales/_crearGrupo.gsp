@@ -7,7 +7,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Nuevo Grupo</h4>
 				</div>
-				<g:form url="[resource:grupoInstance, action:'save']"  enctype="multipart/form-data" role="form">
+				<g:form url="[resource:grupoInstance,controller:'grupo', action:'save']"  enctype="multipart/form-data" role="form">
 				<div class="modal-body">
 
 					<div class="form-group">
