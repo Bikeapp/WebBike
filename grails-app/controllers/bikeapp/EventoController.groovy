@@ -3,7 +3,7 @@ package bikeapp
 import grails.plugin.springsecurity.annotation.Secured
 import grails.converters.JSON
 
-@Secured(['ROLE_USUARIO'])
+@Secured(['ROLE_USUARIO','ROLE_ADMIN'])
 class EventoController {
 
    def sesionService
@@ -110,7 +110,13 @@ class EventoController {
 
    //casi me muero haciendo esto
    def obtenerPuntosRuta(String ruta){
-      def rta = Ruta.list()
+      if( ruta == "-1"){
+         render("{}")
+         return
+      }
+      def rta = Ruta.findById(ruta)
+      print ruta
+      print rta
       def puntos = PuntoInteres.findAllByRuta(rta)
       //response.setContentType("application/json")
       //print (puntos as JSON)

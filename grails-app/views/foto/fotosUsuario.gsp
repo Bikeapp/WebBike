@@ -7,29 +7,17 @@
 </head>
 <body>
 
-      <section id="page-breadcrumb">
-         <div class="vertical-center sun">
-            <div class="container">
-               <div class="row">
-                  <div class="action">
-                     <div class="col-sm-12">
-                        <h1 class="title">Fotos De ${username}</h1>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-      <section id="portfolio">
+      <section id="portfolio" class="padding">
          <div class="container">
             <div class="row">
+<h1 class="text-center" style="margin-bottom:5%">Fotos de ${username}</h1>
                <div class="portfolio-items">
                   <g:each var="imagen" in="${imagenes}" status="i">
                      <div class="col-xs-6 col-sm-4 col-md-3 portfolio-item branded logos">
                         <div class="portfolio-wrapper">
                            <div class="portfolio-single">
                               <div class="portfolio-thumb">
-                                 <img src="${createLink(controller:'Foto', action:'pintarImagen', id:"${imagen.id}")}" class="img-responsive" alt="">
+                                 <img src="${createLink(controller:'Foto', action:'pintarImagen', id:"${imagen.id}")}" height="300" width="200" style="margin-top:2%">
                               </div>
                               <div class="portfolio-view">
                                  <ul class="nav nav-pills">

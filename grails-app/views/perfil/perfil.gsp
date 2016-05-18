@@ -39,7 +39,7 @@ $(document).on('click','#amistad',function(event){
 		<h2 class="page-header" >${usuario.username}</h2>
 			<button type="button" class="btn btn-lg btn-primary"><g:link action="actualizar" >Actualizar perfil</g:link></button>
 			<button type="button" class="btn btn-lg btn-primary"><g:link action="mensajes">Mensajes</g:link></button>
-			<button type="button" class="btn btn-lg btn-primary">Amistad</button>
+<!--			<button type="button" class="btn btn-lg btn-primary">Amistad</button> -->
 </div>
 <div class="container">
 

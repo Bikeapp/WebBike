@@ -98,6 +98,7 @@ $(document).ready(function(){
             //alert(data);
             iniciarMapaRutaModal(data);
             //$("#codigo-ruta").html(data);
+            $("#ruta").val($("#codigo-ruta").val());
          },
          error: function(){
             alert("Algo ha salido mal, por favor intentelo de nuevo!!");
@@ -131,6 +132,7 @@ function iniciarMapaRutaModal(puntosRutaJSON){
       zoom: 13,
       disableDoubleClickZoom: true,
    }
+  // $("#mod-map-rt").html();
    mod_map_rt = new google.maps.Map(document.getElementById('mod-map-rt'),options);
    //alert(puntosRutaJSON.length);
    for(var i=0;i<puntosRutaJSON.length;++i){

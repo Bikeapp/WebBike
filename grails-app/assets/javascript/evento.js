@@ -130,6 +130,14 @@ $(document).ready(function(){
       refrescarMapa(map_rt);
       //google.maps.event.trigger(map_rt,'resize');
    });
+   $("#mapa-pe").hover(function(){
+      refrescarMapa(map_pe);
+   });
+
+   $("#mapa-rt").hover(function(){
+      refrescarMapa(map_rt);
+   });
+   
    $("#to_map2").mousemove(function(){
       refrescarMapa(map_rt);
       //google.maps.event.trigger(map_rt,'resize');

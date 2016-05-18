@@ -2,7 +2,7 @@ package bikeapp
 
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_USUARIO'])
+@Secured(['ROLE_USUARIO','ROLE_ADMIN'])
 class PerfilController {
 
    def sesionService

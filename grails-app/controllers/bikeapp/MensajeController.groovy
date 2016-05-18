@@ -3,7 +3,7 @@ package bikeapp
 import grails.plugin.springsecurity.annotation.Secured
 import grails.converters.JSON
 
-@Secured(['ROLE_USUARIO'])
+@Secured(['ROLE_USUARIO','ROLE_ADMIN'])
 class MensajeController {
 
    def sesionService

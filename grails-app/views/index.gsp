@@ -132,15 +132,7 @@
                 <div class="col-md-4 col-sm-6">
                     <div class="testimonial bottom">
                         <h2>Testimonial</h2>
-                        <div class="media">
-                            <div class="pull-left">
-                                <a href="#"><img src="images/home/profile1.png" alt=""></a>
-                            </div>
-                            <div class="media-body">
-                                <blockquote>BikeApp ha sido la experiencia mas divertida, BikeApp es como mi familia</blockquote>
-                                <h3><a href="#">- Elber Gota</a></h3>
-                            </div>
-                         </div>
+
                         <div class="media">
                             <div class="pull-left">
                                 <a href="#"><img src="images/home/profile2.png" alt=""></a>
@@ -166,7 +158,6 @@
                         Calle 45 No 26-52<br> 
                         Universidad Nacional de Colombia, <br> 
                         Bogota D.C. <br> 
-                        <small>la Playita</small> <br> 
                         </address>
                     </div>
                 </div>
