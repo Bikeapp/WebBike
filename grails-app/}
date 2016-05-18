@@ -1,3 +1,4 @@
+var marker = null;
 var map_rt;
 var map_pe;
 
@@ -19,6 +20,7 @@ function iniciarMapaPE(lat,lng){
 
 //SE ENCARGA DE INICIAR EL MAPA CON LOS PUNTOS DE RUTA 
 function iniciarMapaRuta(puntosRutaJSON){
+   alert("OK");
    if( puntosRutaJSON.length > 0){
       myLatlng = new google.maps.LatLng(puntosRutaJSON[0].lat,puntosRutaJSON[0].lng);
    }else{
@@ -30,7 +32,6 @@ function iniciarMapaRuta(puntosRutaJSON){
       disableDoubleClickZoom: true,
    }
    map_rt = new google.maps.Map(document.getElementById('mapa-rt'),options);
-   
    for(var i=0;i<puntosRutaJSON.length;++i){
       var latlng = new google.maps.LatLng(puntosRutaJSON[i].lat,puntosRutaJSON[i].lng);
       new google.maps.Marker({

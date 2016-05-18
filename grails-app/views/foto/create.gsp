@@ -6,27 +6,10 @@
    </head>
    <body>
 
-      <section id="page-breadcrumb">
-         <div class="vertical-center sun">
-            <div class="container">
-               <div class="row">
-                  <div class="action">
-                     <div class="col-sm-12">
-                        <h1 class="title">Sube Una Foto</h1>
-                        <ul>
-                           <li>
-                              <g:link class="list" action="index">Regresar a las fotos</g:link>
-                           </li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
       <section id="portfolio">
          <div class="container">
             <div class="row">
+<h1>Sube una foto</h1>
                <div class="portfolio-items">
                   <g:form url="[resource:fotoInstance, action:'save']"  enctype="multipart/form-data">
                      <div class="col-sm-6 portfolio-item branded logos">

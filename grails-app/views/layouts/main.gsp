@@ -21,9 +21,6 @@
 	    <script src="js/html5shiv.js"></script>
 	    <script src="js/respond.min.js"></script>
     <![endif]-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_RVgkXwL37ERUgWk139RbwYcSGkAF0-k&signed_in=true&language=es"
-        async defer></script>
 
 	<!-- Agregamos javascripts. /assets/javascripts/ -->
    	<asset:javascript src="jquery.js" />
@@ -31,8 +28,11 @@
 	<asset:javascript src="lightbox.min.js" />
 	<asset:javascript src="wow.min.js" />
 	<asset:javascript src="main.js" />
-    <asset:stylesheet href="evento.css" />
-    <asset:javascript src="evento.js" />
+
+  	<script src="https://maps.google.com/maps/api/js?sensor=false&amp;language=es-ES"></script>
+    <asset:stylesheet href="usuario.css" />
+    <asset:javascript src="usuario.js" />
+
     <g:layoutHead/>
 
   </head>
@@ -41,19 +41,6 @@
 
   	<header id="header">
 
-        <div class="col-sm-12 overflow">
-
-            <div class="social-icons pull-right">
-
-                <ul class="nav nav-pills">
-                    <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                    <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                    <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href=""><i class="fa fa-dribbble"></i></a></li>
-                    <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div> 
-        </div> 
         <div class="navbar navbar-inverse" role="banner">
             <div class="container">
                 <div class="navbar-header">
@@ -80,8 +67,7 @@
                           <li class="dropdown"><a href="#">BikeApp <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a data-toggle="modal" href="#modalCrearGrupo" >Crear Grupo</a></li>
-                                <li><a data-toggle="modal" href="#modalCrearEvento">Nuevo Evento</a></li>
-                                <li><a href="#"></a></li>
+                                <li><a data-toggle="modal" href="#modalCrearEvento" id="abrirModalCrearEvento">Nuevo Evento</a></li>
                             </ul>
                         </li>
 
@@ -91,7 +77,6 @@
 </sec:ifAllGranted>
 
                         <li><a href="${createLink(controller:'logout')}">Salir</a></li>
-
 
 <!-- TEMPLATES PARA LOS MODALES DE CREACION -->
 <g:render template="/modales/crearEvento" />
@@ -115,12 +100,15 @@
 
    <g:layoutBody/>
 
+<!--
    <g:javascript>
             var arg = [];
             document.addEventListener("DOMContentLoaded", function(event) {
-            iniciarMapaRuta(arg);
+               iniciarMapaCE();
             });
     </g:javascript>
+-->
+
 
 
 

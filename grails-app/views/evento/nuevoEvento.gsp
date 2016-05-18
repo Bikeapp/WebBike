@@ -5,6 +5,7 @@
 <!-- ATENTOS DIFIERE MI LLAMADO AL DE FELIPE, FELIPE LO HACE INYECTANDO EL MÉTODO EN EL EVENTO POR MEDIO DE DOM-->
 <asset:javascript src="evento.js" />
 <asset:stylesheet href="evento.css" />
+  	<script src="https://maps.google.com/maps/api/js?sensor=false&amp;language=es-ES"></script>
 </head>
 
 <body>
@@ -32,12 +33,19 @@ Ruta: <g:select name="ruta" value="" from="${rutas.id}" />
 </fieldset>
 </div>
 <div id="mapa-pe" class="mapa"></div>
+<!--
 <script src="https://maps.google.com/maps/api/js?callback=iniciarMapasCE" async defer></script>
+-->
 </fieldset>
 <p>
 </g:form>
 
 
+<g:javascript>
+document.addEventListener("DOMContentLoaded", function(event) {
+iniciarMapasCE();
+      });
+</g:javascript>
 
 </body>
 </html>

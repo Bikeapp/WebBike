@@ -23,7 +23,7 @@ Por favor ingresa tu nombre de usuario.
 
 
 <div class="form-group">
-<input type="text" class="form-control" name="usuario" style="width:34%;margin-left:33%" required placeholder="Ingrese su nombre de usuario">
+<input type="text" class="form-control text-center" name="usuario" style="width:34%;margin-left:33%" required placeholder="Ingrese su nombre de usuario">
 </div>
 
 <div class="form-group">
