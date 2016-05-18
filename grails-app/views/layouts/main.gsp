@@ -31,10 +31,8 @@
 
   	<script src="https://maps.google.com/maps/api/js?sensor=false&amp;language=es-ES"></script>
     <asset:stylesheet href="usuario.css" />
-<!--
-    <asset:javascript src="evento.js" />
+    <asset:javascript src="usuario.js" />
 
--->
     <g:layoutHead/>
 
   </head>
@@ -69,8 +67,7 @@
                           <li class="dropdown"><a href="#">BikeApp <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a data-toggle="modal" href="#modalCrearGrupo" >Crear Grupo</a></li>
-                                <li><a data-toggle="modal" href="#modalCrearEvento">Nuevo Evento</a></li>
-                                <li><a href="#"></a></li>
+                                <li><a data-toggle="modal" href="#modalCrearEvento" id="abrirModalCrearEvento">Nuevo Evento</a></li>
                             </ul>
                         </li>
 
@@ -82,6 +79,7 @@
                         <li><a href="${createLink(controller:'logout')}">Salir</a></li>
 
 <!-- TEMPLATES PARA LOS MODALES DE CREACION -->
+<g:render template="/modales/crearEvento" />
 <g:render template="/modales/crearGrupo" />
 
 
@@ -103,14 +101,15 @@
    <g:layoutBody/>
 
 <!--
-
    <g:javascript>
             var arg = [];
             document.addEventListener("DOMContentLoaded", function(event) {
-            iniciarMapaRuta(arg);
+               iniciarMapaCE();
             });
     </g:javascript>
 -->
+
+
 
 
 	<footer id="footer">

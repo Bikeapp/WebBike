@@ -28,25 +28,24 @@
 
 
 
-<ul id="tab1" class="nav nav-tabs">
-<li class="active"><a href="#tab1-item1" data-toggle="tab">Punto de Encuentro</a></li>
-<li><a href="#tab1-item2" data-toggle="tab" id="to_map2">Mapa de Ruta</a></li>
+<ul id="mod-tab1" class="nav nav-tabs">
+<li class="active"><a href="#mod-tab1-item1" data-toggle="tab">Punto de Encuentro</a></li>
+<li><a href="#mod-tab1-item2" data-toggle="tab" >Mapa de Ruta</a></li>
 </ul>
 
 
 
 <div class="tab-content">
-
-<g:hiddenField name="lng" id="lng" value="-1"/>
-<g:hiddenField name="lat" id="lat" value="-1"/>
-
-<div class="tab-pane fade active in" id="tab1-item1">
+<div class="tab-pane fade active in" id="mod-tab1-item1">
+<div id="mod-map-pe" class="mapa">
 </div>
 </div>
 
-<div class="tab-pane fade" id="tab1-item2">
+<div class="tab-pane fade" id="mod-tab1-item2">
+<div id="mod-map-rt" class="mapa">
 </div>
 </div>
+
 
 </div>
 
