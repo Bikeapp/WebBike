@@ -148,7 +148,7 @@
                     <div class="contact-info bottom">
                         <h2>Info de Contacto</h2>
                         <address>
-                        E-mail: <a href="mailto:staff@bikeapp.com">staff@bikeapp.com</a> <br> 
+                        E-mail: <a href="bikeappteam@gmail.com">bikeappteam@gmail.com</a> <br> 
                         Teléfono: (+57) 456 7890 <br> 
                         Fax:  (1+57) 456 7891 <br> 
                         </address>

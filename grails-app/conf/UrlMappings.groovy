@@ -8,10 +8,11 @@ class UrlMappings {
         }
 
         "/"(view:"/index")
-        "500"(view:'/error_505')
+        "500"(view:'/algoMal')
+        //"500"(view:'/error_505')
         "404"(view:'/error')
         "403"(view:'/error')
-        "400"(view:'/accesoDenegado') 
+        "400"(view:'/algoMal') 
         "/logoutexit"(view:'j_spring_security_logout')
 	}
 }

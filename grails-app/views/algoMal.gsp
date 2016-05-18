@@ -36,9 +36,9 @@
 
                             </div>
 
-                            <h2>PÁGINA NO ENCONTRADA</h2>
+                            <h2>ALGO HA SALIDO MAL</h2>
 
-                            <p>No ha sido posible encontrar lo que buscabas.</p>
+                            <p>No ha sido posible procesar tu solicitud.</p>
 
                             <a href="${createLink(controller:'usuario',action:'index')}" class="btn btn-error">VOLVER AL INICIO</a>
 <!--

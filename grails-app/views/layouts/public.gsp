@@ -65,17 +65,23 @@ window.location.replace(link);
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <!-- vista intermedia de registro -->
-                        <li><a href='<g:createLink controller="usuario" action="login" />'>Iniciar Sesión</a></li>
+
+                        <!--<li><a href="#modalLogin">Iniciar Sesión</a></li>-->
+                                <li><a data-toggle="modal" href="#modalLogin" >Iniciar Sesión</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </header>
 
+<g:render template="/modales/login" />
+
 </sec:ifNotLoggedIn>
 
 
    <g:layoutBody/>
+
+
 
 
 
