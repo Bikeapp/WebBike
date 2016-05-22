@@ -3,6 +3,7 @@ var mod_map_rt;
 var marker = null;
 
 $("document").ready(function () {
+
    //Handler for .ready() called.
    window.setTimeout(function () {
       location.href = link

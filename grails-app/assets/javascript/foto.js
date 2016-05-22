@@ -51,24 +51,78 @@ function addMarker(location){
 }
 
 function actualizarPosicion(location){
-   $("#lat").val(location.lat);
-   $("#lng").val(location.lng);
+
+     
+   $("#latFoto").val(location.lat);
+   $("#lngFoto").val(location.lng);
    //alert( $("#lat").val() + ", "+ $("#lng").val() );
+   doCheck();
+}
+
+function doCheck(){
+
+   var errors=0;
+
+   console.log('check check check ♪');
+
+   var selec = $("#selectorFoto")
+
+   if( selec.val() == ''){
+      errors++;
+      $("#vistaimagen").css("background-color","#ffe6e6");
+     
+   }
+   if($("#ubicacion").is(":checked")){
+      if($("#latFoto").val() == "NONE")
+         errors++;
+      if($("#lngFoto").val() == "NONE" )
+         errors++;
+   }    
+
+
+   
+
+   if(errors==0)
+      $("#createFoto").attr( "disabled", false ); 
+   else
+      $("#createFoto").attr( "disabled", true ); 
+
+   console.log(errors);
+
+   
+
 }
 
 
 /*
  * En esta parte el código se registra el evento "cambio de estado" para el seleccionador de archivos
  */
-$("#selector").change(function(){
-    readURL(this);
+
+
+
+
+$(document).ready(function(){  
+
+   $("#ubicacion").change(function() {
+        doCheck();  
+    });
+
+
+
+   $("#selectorFoto").on('change',function(){
+      doCheck();        
+      readURL(this);
+   });
+
 });
+
+
 
 /*
  * Funcion que valida si hay un archivo seleccionado, si no se genera un mensaje
  */
 $("#create").on("click",function(){
-   var selec = $("#selector")
+   var selec = $("#selectorFoto")
    if( selec.val() == ''){
       alert("Por favor selecione una imagen");
       $("#vistaimagen").css("background-color","#ffe6e6");

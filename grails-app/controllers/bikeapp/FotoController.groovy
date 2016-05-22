@@ -32,13 +32,14 @@ class FotoController {
    //antes de guardar capturo la sesion actual del usuario que esta activa y guardo, al final me dirigo a la pagina principal, es decir
    //a la que tiene el album de fotos, este metodo es invocado por la vista de create
    def save(Foto instancia){
+
       if( instancia == null){
          return response.sendError(500)
       }
       def uploadedFile = request.getFile('selector')
       instancia.imagen = uploadedFile.getBytes()
       //UNA VEZ SE INYECTA LA DEPENDENCIA PUEDO DAR DE ELLA, NOTAR COMO SE SIMPLIFICA LA OBTENCION DEL USUARIO EN SESION ACTIVA
-      if( params["ubicacion"] ){
+      if( params["ubicacion"] ){         
          PuntoInteres pnt = new PuntoInteres()
          pnt.lat = Double.parseDouble(params["lat"])
          pnt.lng = Double.parseDouble(params["lng"])

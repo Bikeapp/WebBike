@@ -66,13 +66,10 @@
 
     </section>
 
-    <script type="text/javascript" src="js/jquery.js"></script>
-
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-
-    <script type="text/javascript" src="js/wow.min.js"></script>
-
-    <script type="text/javascript" src="js/main.js"></script>
+    <asset:javascript src="jquery.js"/>
+    <asset:javascript src="bootstrap.min.js"/>
+    <asset:javascript src="wow.min.js"/>
+    <asset:javascript src="main.js"/>
 
 
 
