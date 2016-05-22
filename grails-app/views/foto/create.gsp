@@ -24,7 +24,7 @@
                      </div>
                      <div class="col-sm-6 ">
                         <fieldset class="buttons">
-                           <g:submitButton name="create" class="save" value="Subir" id="create" class="btn btn-sm btn-info"/>
+                           <g:submitButton name="subir-foto" class="save" value="Subir" id="subir-foto" class="btn btn-sm btn-info"/>
                            <g:checkBox name="ubicacion" id="ubicacion" />
                            Incluir ubicación
                            <g:hiddenField id="lat" name="lat" value="NONE" />

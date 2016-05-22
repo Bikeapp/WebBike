@@ -67,19 +67,7 @@ $("#selector").change(function(){
 /*
  * Funcion que valida si hay un archivo seleccionado, si no se genera un mensaje
  */
-$("#create").on("click",function(){
-   var selec = $("#selector")
-   if( selec.val() == ''){
-      alert("Por favor selecione una imagen");
-      $("#vistaimagen").css("background-color","#ffe6e6");
-      return false;
-   }
-   if( $("#ubicacion").is(":checked") && ( $("#lat").val() == "NONE" || $("#lng").val() == "NONE" ) ){
-      alert("Por favor seleccione la ubicación de la foto");
-      return false;
-   }
-   return true;
-});
+
 
 /*
  * ESTA FUNCION SE ENCARGA DE LIMPIAR EL AREA DE TEXTO DE LOS COMENTARIOS ASI MISMO COMO DESPLAZAR LSO COMENTARIOS HACIA ABAJO
@@ -93,16 +81,33 @@ function limpiar(){
 
 $("document").ready(function(){
    $("#dialogbox").animate({ scrollTop: $("#dialogbox").prop("scrollHeight") }, 3000);
+
+   $("#subir-foto").click(function(){
+      var selec = $("#selector")
+         if( selec.val() == ''){
+            alert("Por favor selecione una imagen");
+            $("#vistaimagen").css("background-color","#ffe6e6");
+            return false;
+         }
+      if( $("#ubicacion").is(":checked") && ( $("#lat").val() == "NONE" || $("#lng").val() == "NONE" ) ){
+         alert("Por favor seleccione la ubicación de la foto");
+         return false;
+      }
+      return true;
+
+      return false;
+   });
+
 });
 
 /*
-$("#ubicacion").change(function(){
+   $("#ubicacion").change(function(){
    if( this.checked ){
-      $("#mapa").show();
+   $("#mapa").show();
    }else{
-      $("#mapa").hide();
+   $("#mapa").hide();
    }
-});
+   });
 */
 
 //AJAX para los comentarios

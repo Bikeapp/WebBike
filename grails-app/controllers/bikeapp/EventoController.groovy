@@ -55,8 +55,8 @@ class EventoController {
       def usuario = sesionService.usuarioEnSesion()
       def puntoInteres = new PuntoInteres()
       puntoInteres.usuario = usuario
-      puntoInteres.lat = Double.parseDouble( params["lat"] )
-      puntoInteres.lng = Double.parseDouble( params["lng"] )
+      puntoInteres.lat = Double.parseDouble( params["mod-lat"] )
+      puntoInteres.lng = Double.parseDouble( params["mod-lng"] )
       puntoInteres.tipo = "PUNTO_ENCUENTRO"
 
       puntoInteres.save flush:true,failOnError:true
@@ -66,11 +66,11 @@ class EventoController {
       instance.fecha = params["fecha"]
       instance.nombre = params["nombre"]
 
-      if( params["ruta"] != "-1" ){
-         instance.ruta = Ruta.findById(params["ruta"]);
+      if( params["mod-ruta"] != "-1" ){
+         instance.ruta = Ruta.findById(params["mod-ruta"]);
       }else{
          instance.ruta = null
-         params["ruta"] = null
+         params["mod-ruta"] = null
       }
       print params["ruta"]
       print instance.ruta

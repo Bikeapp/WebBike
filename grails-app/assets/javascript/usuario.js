@@ -71,8 +71,8 @@ function addMarker(location){
 }
 
 function actualizarPosicion(location){
-   $("#lat").val(location.lat);
-   $("#lng").val(location.lng);
+   $("#mod-lat").val(location.lat);
+   $("#mod-lng").val(location.lng);
    //alert( $("#lat").val() + ", "+ $("#lng").val() );
 }
 

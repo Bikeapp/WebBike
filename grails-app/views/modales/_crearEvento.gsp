@@ -63,9 +63,9 @@ var url_obtenerPuntosRutaModal = "${createLink(controller:'Evento',action:'obten
 
 </div>
 
-<g:hiddenField id="lat" name="lat" value="-1" />
-<g:hiddenField id="lng" name="lng" value="-1" />
-<g:hiddenField id="ruta" name="ruta" value="-1" />
+<g:hiddenField id="mod-lat" name="mod-lat" value="-1" />
+<g:hiddenField id="mod-lng" name="mod-lng" value="-1" />
+<g:hiddenField id="mod-ruta" name="mod-ruta" value="-1" />
 
 
 <div class="modal-footer">
